@@ -29,7 +29,7 @@ jobs:
         env:
           X_AUTH_TOKEN: ${{ secrets.X_AUTH_TOKEN }}
           X_CT0: ${{ secrets.X_CT0 }}
-          TWS_TELEMETRY: "0"
+          TWS_HTTP_BACKEND: curl
         run: python src/scraper.py
 
       - name: Commit JSON
