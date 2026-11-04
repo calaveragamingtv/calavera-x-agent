@@ -1,16 +1,23 @@
-name: Scrape X Posts
+name: Publish X Reply
 
 on:
   workflow_dispatch:
+    inputs:
+      post_id:
+        description: "ID de la publicación de X"
+        required: true
+        type: string
 
-  schedule:
-    - cron: "*/30 * * * *"
+      reply_text:
+        description: "Texto de la respuesta"
+        required: true
+        type: string
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  scrape:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,23 +30,14 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install -r src/requeriments.txt
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
 
-      - name: Scrape X
+      - name: Publish reply
         env:
           X_AUTH_TOKEN: ${{ secrets.X_AUTH_TOKEN }}
           X_CT0: ${{ secrets.X_CT0 }}
-          TWS_HTTP_BACKEND: curl
-        run: python src/scraper.py
-
-      - name: Commit JSON
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add data/posts.json
-
-          if ! git diff --cached --quiet; then
-            git commit -m "Update X posts"
-            git push
-          fi
+          TARGET_POST_ID: ${{ inputs.post_id }}
+          REPLY_TEXT: ${{ inputs.reply_text }}
+        run: python src/publisher.py
