@@ -38,6 +38,8 @@ jobs:
         env:
           X_AUTH_TOKEN: ${{ secrets.X_AUTH_TOKEN }}
           X_CT0: ${{ secrets.X_CT0 }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: gemini-3.5-flash-lite
           TARGET_POST_ID: ${{ inputs.post_id }}
           REPLY_TEXT: ${{ inputs.reply_text }}
         run: python src/publisher.py
