@@ -86,8 +86,6 @@ async def scrape_posts():
 
         print(f"Successfully saved {len(tweets)} posts to {DATA_FILE}")
 
-    finally:
-        await api.pool.close()
 
 
 if __name__ == "__main__":
