@@ -9,7 +9,7 @@ from twscrape import API
 
 # Configuration
 USERNAME = "CalaveraGaming"
-X_ACCOUNT_USERNAME = "TU_USUARIO_REAL_DE_X"
+X_ACCOUNT_USERNAME = "CalaveraGaming"
 
 LIMIT = 10
 
