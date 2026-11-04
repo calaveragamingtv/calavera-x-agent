@@ -1,3 +1,4 @@
+
 import json
 import os
 
@@ -11,6 +12,29 @@ PROMPT_FILE = (
     / "prompts"
     / "x_ranking.txt"
 )
+
+ALLOWED_CATEGORIES = {
+    "official_news",
+    "update",
+    "community",
+    "creator",
+    "discussion",
+    "gameplay",
+    "event",
+    "other"
+}
+
+ALLOWED_PRIORITIES = {
+    "high",
+    "medium",
+    "low"
+}
+
+ALLOWED_ACTIONS = {
+    "reply",
+    "repost",
+    "ignore"
+}
 
 
 class GeminiAnalyzer:
@@ -66,20 +90,31 @@ PUBLICACIONES A ANALIZAR:
         )
 
         if not response.text:
-            raise RuntimeError("Gemini returned an empty response")
+            raise RuntimeError(
+                "Gemini returned an empty response"
+            )
 
-        result = json.loads(response.text)
+        try:
+            result = json.loads(response.text)
+        except json.JSONDecodeError as error:
+            raise ValueError(
+                "Gemini returned invalid JSON"
+            ) from error
 
         return self._validate_result(result, posts)
 
     def _validate_result(self, result, posts):
         if not isinstance(result, dict):
-            raise ValueError("Invalid Gemini response")
+            raise ValueError(
+                "Invalid Gemini response: expected an object"
+            )
 
         ranking = result.get("ranking")
 
         if not isinstance(ranking, list):
-            raise ValueError("Missing ranking list")
+            raise ValueError(
+                "Invalid Gemini response: missing ranking list"
+            )
 
         valid_ids = {
             str(post["id"])
@@ -89,13 +124,21 @@ PUBLICACIONES A ANALIZAR:
         processed_ids = set()
 
         for item in ranking:
+
+            if not isinstance(item, dict):
+                raise ValueError(
+                    "Invalid ranking item: expected an object"
+                )
+
             post_id = str(item.get("post_id", ""))
 
+            # Validate post ID
             if post_id not in valid_ids:
                 raise ValueError(
                     f"Gemini returned unknown post ID: {post_id}"
                 )
 
+            # Prevent duplicate posts
             if post_id in processed_ids:
                 raise ValueError(
                     f"Duplicate post ID: {post_id}"
@@ -103,6 +146,7 @@ PUBLICACIONES A ANALIZAR:
 
             processed_ids.add(post_id)
 
+            # Validate score
             score = item.get("score")
 
             if (
@@ -114,6 +158,33 @@ PUBLICACIONES A ANALIZAR:
                     f"Invalid score for post {post_id}"
                 )
 
+            # Validate category
+            if item.get("category") not in ALLOWED_CATEGORIES:
+                raise ValueError(
+                    f"Invalid category for post {post_id}"
+                )
+
+            # Validate priority
+            if item.get("priority") not in ALLOWED_PRIORITIES:
+                raise ValueError(
+                    f"Invalid priority for post {post_id}"
+                )
+
+            # Validate recommended action
+            if item.get("recommended_action") not in ALLOWED_ACTIONS:
+                raise ValueError(
+                    f"Invalid action for post {post_id}"
+                )
+
+            # Validate reason
+            reason = item.get("reason")
+
+            if not isinstance(reason, str) or not reason.strip():
+                raise ValueError(
+                    f"Missing reason for post {post_id}"
+                )
+
+        # Ensure Gemini analyzed every post
         if processed_ids != valid_ids:
             missing = valid_ids - processed_ids
 
@@ -121,9 +192,12 @@ PUBLICACIONES A ANALIZAR:
                 f"Gemini omitted posts: {sorted(missing)}"
             )
 
+        # Sort by score, highest first
         ranking.sort(
             key=lambda item: item["score"],
             reverse=True
         )
 
-        return {"ranking": ranking}
+        return {
+            "ranking": ranking
+        }
