@@ -58,4 +58,37 @@ async def scrape_posts():
             tweets.append({
                 "id": str(tweet.id),
                 "text": tweet.rawContent,
-                "url": f"https://x
+                "url": f"https://x.com/{USERNAME}/status/{tweet.id}",
+                "created_at": tweet.date.isoformat(),
+                "replies": tweet.replyCount,
+                "reposts": tweet.retweetCount,
+                "likes": tweet.likeCount,
+                "views": tweet.viewCount
+            })
+
+            if len(tweets) >= LIMIT:
+                break
+
+        # Prepare output
+        output = {
+            "account": USERNAME,
+            "updated_at": datetime.now(timezone.utc).isoformat(),
+            "total": len(tweets),
+            "posts": tweets
+        }
+
+        # Create data directory if necessary
+        DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
+
+        # Save JSON
+        with DATA_FILE.open("w", encoding="utf-8") as file:
+            json.dump(output, file, ensure_ascii=False, indent=2)
+
+        print(f"Successfully saved {len(tweets)} posts to {DATA_FILE}")
+
+    finally:
+        await api.pool.close()
+
+
+if __name__ == "__main__":
+    asyncio.run(scrape_posts())
