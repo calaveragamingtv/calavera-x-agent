@@ -1,1 +1,2 @@
 twscrape
+curl-cffi
