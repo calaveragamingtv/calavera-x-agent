@@ -34,12 +34,14 @@ async def scrape_posts():
     })
 
     # Register X account
-    await api.pool.add_account(
-        username="scraper_account",
-        password="",
-        email="",
-        email_password="",
-        cookies=cookies
+   cookie_string = (
+        f"auth_token={auth_token}; "
+        f"ct0={ct0}"
+    )
+    
+    await api.pool.add_account_cookies(
+        username="CalaveraGaming",
+        cookies=cookie_string
     )
 
     print(f"Searching X user: @{USERNAME}")
