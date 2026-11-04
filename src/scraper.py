@@ -1,4 +1,3 @@
-```python
 import asyncio
 import json
 import os
@@ -92,4 +91,4 @@ async def scrape_posts():
 
 if __name__ == "__main__":
     asyncio.run(scrape_posts())
-```
+
