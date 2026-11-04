@@ -9,6 +9,8 @@ from twscrape import API
 
 # Configuration
 USERNAME = "CalaveraGaming"
+X_ACCOUNT_USERNAME = "TU_USUARIO_REAL_DE_X"
+
 LIMIT = 10
 
 DATA_FILE = Path("data/posts.json")
@@ -17,6 +19,7 @@ DB_FILE = "accounts.db"
 
 async def scrape_posts():
 
+    # Read credentials
     auth_token = os.environ.get("X_AUTH_TOKEN")
     ct0 = os.environ.get("X_CT0")
 
@@ -25,28 +28,24 @@ async def scrape_posts():
             "Missing X_AUTH_TOKEN or X_CT0 environment variables"
         )
 
+    # Initialize API
     api = API(DB_FILE)
 
     # Prepare cookies
-    cookies = json.dumps({
-        "auth_token": auth_token,
-        "ct0": ct0
-    })
-
-    # Register X account
-   cookie_string = (
+    cookie_string = (
         f"auth_token={auth_token}; "
         f"ct0={ct0}"
     )
-    
+
+    # Register X account
     await api.pool.add_account_cookies(
-        username="CalaveraGaming",
+        username=X_ACCOUNT_USERNAME,
         cookies=cookie_string
     )
 
     print(f"Searching X user: @{USERNAME}")
 
-    # Get user
+    # Get user information
     user = await api.user_by_login(USERNAME)
 
     if not user:
@@ -73,7 +72,7 @@ async def scrape_posts():
         if len(tweets) >= LIMIT:
             break
 
-    # Prepare JSON
+    # Prepare JSON output
     output = {
         "account": USERNAME,
         "updated_at": datetime.now(timezone.utc).isoformat(),
@@ -81,16 +80,22 @@ async def scrape_posts():
         "posts": tweets
     }
 
-    # Create directory
+    # Create data directory
     DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
 
     # Save JSON
     with DATA_FILE.open("w", encoding="utf-8") as file:
-        json.dump(output, file, ensure_ascii=False, indent=2)
+        json.dump(
+            output,
+            file,
+            ensure_ascii=False,
+            indent=2
+        )
 
-    print(f"Successfully saved {len(tweets)} posts to {DATA_FILE}")
+    print(
+        f"Successfully saved {len(tweets)} posts to {DATA_FILE}"
+    )
 
 
 if __name__ == "__main__":
     asyncio.run(scrape_posts())
-
