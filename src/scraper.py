@@ -1,3 +1,4 @@
+```python
 import asyncio
 import json
 import os
@@ -7,6 +8,7 @@ from datetime import datetime, timezone
 from twscrape import API
 
 
+# Configuration
 USERNAME = "CalaveraGaming"
 LIMIT = 10
 
@@ -15,64 +17,46 @@ DB_FILE = "accounts.db"
 
 
 async def scrape_posts():
-    auth_token = os.environ["X_AUTH_TOKEN"]
-    ct0 = os.environ["X_CT0"]
+    auth_token = os.environ.get("X_AUTH_TOKEN")
+    ct0 = os.environ.get("X_CT0")
+
+    if not auth_token or not ct0:
+        raise RuntimeError("Missing X_AUTH_TOKEN or X_CT0 environment variables")
 
     api = API(DB_FILE)
 
-    # Registrar la sesión mediante cookies
-    await api.pool.add_account(
-        username="scraper_account",
-        password="",
-        email="",
-        email_password="",
-        cookies={
+    try:
+        # Convert cookies dictionary to JSON string
+        cookies = json.dumps({
             "auth_token": auth_token,
             "ct0": ct0
-        }
-    )
-
-    # Obtener usuario
-    user = await api.user_by_login(USERNAME)
-
-    if not user:
-        raise RuntimeError(f"No se encontró el usuario {USERNAME}")
-
-    # Obtener publicaciones
-    tweets = []
-
-    async for tweet in api.user_tweets(user.id, limit=LIMIT):
-        tweets.append({
-            "id": str(tweet.id),
-            "text": tweet.rawContent,
-            "url": f"https://x.com/{USERNAME}/status/{tweet.id}",
-            "created_at": tweet.date.isoformat(),
-            "replies": tweet.replyCount,
-            "reposts": tweet.retweetCount,
-            "likes": tweet.likeCount,
-            "views": tweet.viewCount
         })
 
-        if len(tweets) >= LIMIT:
-            break
+        # Register X account
+        await api.pool.add_account(
+            username="scraper_account",
+            password="",
+            email="",
+            email_password="",
+            cookies=cookies
+        )
 
-    # Guardar JSON
-    DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
+        print(f"Searching X user: @{USERNAME}")
 
-    output = {
-        "account": USERNAME,
-        "updated_at": datetime.now(timezone.utc).isoformat(),
-        "total": len(tweets),
-        "posts": tweets
-    }
+        # Get user information
+        user = await api.user_by_login(USERNAME)
 
-    with DATA_FILE.open("w", encoding="utf-8") as file:
-        json.dump(output, file, ensure_ascii=False, indent=2)
+        if not user:
+            raise RuntimeError(f"X user not found: @{USERNAME}")
 
-    print(f"Se guardaron {len(tweets)} publicaciones.")
+        print(f"User found: {user.username} (ID: {user.id})")
 
-    await api.pool.close()
+        # Retrieve latest posts
+        tweets = []
 
+        async for tweet in api.user_tweets(user.id, limit=LIMIT):
 
-if __name__ == "__main__":
-    asyncio.run(scrape_posts())
+            tweets.append({
+                "id": str(tweet.id),
+                "text": tweet.rawContent,
+                "url": f"https://x
