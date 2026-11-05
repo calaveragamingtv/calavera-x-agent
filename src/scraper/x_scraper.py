@@ -1,5 +1,6 @@
 
 import os
+os.environ["TWS_HTTP_BACKEND"] = "curl"
 from twscrape import API
 
 
