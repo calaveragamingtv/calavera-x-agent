@@ -38,6 +38,7 @@ jobs:
           X_AUTH_TOKEN: ${{ secrets.X_AUTH_TOKEN }}
           X_CT0: ${{ secrets.X_CT0 }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          X_ACCOUNT_USERNAME: ${{ secrets.X_ACCOUNT_USERNAME }}
           GEMINI_MODEL: gemini-3.5-flash-lite
         run: python -m src.main
 
