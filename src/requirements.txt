@@ -1,4 +1,2 @@
-twscrape
-curl-cffi
 playwright
 google-genai
