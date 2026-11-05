@@ -56,6 +56,29 @@ class XScraper:
         self.page.set_default_timeout(15000)
 
         print("Playwright browser initialized")
+        
+        # Temporary authentication diagnostic
+        print("Testing X session...")
+        
+        response = await self.page.goto(
+            "https://x.com/home",
+            wait_until="domcontentloaded",
+            timeout=60000
+        )
+        
+        print(
+            "X HOME HTTP STATUS:",
+            response.status if response else "No response"
+        )
+        
+        print("X HOME URL:", self.page.url)
+        
+        print(
+            "AUTH COOKIE PRESENT:",
+            bool(await self.context.cookies("https://x.com"))
+        )
+        
+        print("PAGE TITLE:", await self.page.title())
 
     async def get_user_posts(self, username, limit=10):
         if self.page is None:
