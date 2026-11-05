@@ -1,5 +1,5 @@
 
-name: Run X Agent
+name: Scrape and Analyze X Posts
 
 on:
   workflow_dispatch:
@@ -11,41 +11,46 @@ permissions:
   contents: write
 
 jobs:
-  run-agent:
+  scrape-and-analyze:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Python
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: "pip"
 
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: |
-          pip install -r src/requirements.txt
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Install Playwright Chromium
+        run: |
+          playwright install chromium --with-deps
 
       - name: Run X Agent
         env:
           X_AUTH_TOKEN: ${{ secrets.X_AUTH_TOKEN }}
           X_CT0: ${{ secrets.X_CT0 }}
-          X_ACCOUNT_USERNAME: ${{ secrets.X_ACCOUNT_USERNAME }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: gemini-3.5-flash-lite
-        run: python src/main.py
+        run: python -m src.main
 
-      - name: Save results
+      - name: Commit generated data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add data/posts.json data/ranking.json
 
-          if ! git diff --cached --quiet; then
-            git commit -m "Update X posts and AI ranking"
-            git push
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
           else
-            echo "No changes to save"
+            git commit -m "Update X posts and ranking"
+            git push
           fi
