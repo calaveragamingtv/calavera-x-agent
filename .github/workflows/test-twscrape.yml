@@ -7,6 +7,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
 
     steps:
       - name: Checkout
@@ -19,7 +20,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install twscrape curl-cffi
+          python -m pip install --upgrade pip
+          python -m pip install --no-cache-dir twscrape curl-cffi
 
       - name: Test X scraper
         env:
