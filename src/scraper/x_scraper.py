@@ -1,64 +1,66 @@
 
 import os
-import asyncio
-
-# Seleccionar backend antes de importar twscrape
-os.environ.setdefault("TWS_HTTP_BACKEND", "curl")
-
 from twscrape import API
 
 
-USERNAME = "CalaveraGaming"
-LIMIT = 10
+class XScraper:
 
+    def __init__(self, db_file="twscrape.db"):
+        self.db_file = db_file
+        self.api = API(db_file)
+        self.authenticated = False
 
-async def main():
-    auth_token = os.getenv("X_AUTH_TOKEN")
-    ct0 = os.getenv("X_CT0")
-    account_username = os.getenv("X_ACCOUNT_USERNAME")
+    async def authenticate(self):
+        auth_token = os.getenv("X_AUTH_TOKEN")
+        ct0 = os.getenv("X_CT0")
+        username = os.getenv("X_ACCOUNT_USERNAME")
 
-    if not auth_token or not ct0 or not account_username:
-        raise RuntimeError("Missing X authentication secrets")
+        if not auth_token or not ct0 or not username:
+            raise RuntimeError("Missing X authentication secrets")
 
-    # Base de datos independiente para no reutilizar bloqueos anteriores
-    api = API("twscrape_test.db")
+        cookies = f"auth_token={auth_token}; ct0={ct0}"
 
-    cookies = f"auth_token={auth_token}; ct0={ct0}"
+        await self.api.pool.add_account_cookies(
+            username=username,
+            cookies=cookies
+        )
 
-    await api.pool.add_account_cookies(
-        username=account_username,
-        cookies=cookies
-    )
+        self.authenticated = True
+        print("X authentication configured successfully")
 
-    print(f"Searching X user: @{USERNAME}")
+    async def get_user_posts(self, username, limit=10):
+        if not self.authenticated:
+            raise RuntimeError("XScraper is not authenticated")
 
-    user = await api.user_by_login(USERNAME)
+        if limit < 1:
+            raise ValueError("limit must be greater than zero")
 
-    if not user:
-        raise RuntimeError(f"User not found: @{USERNAME}")
+        print(f"Searching X user: @{username}")
 
-    print(f"User found: {user.username}")
-    print(f"User ID: {user.id}")
-    print(f"\nLast {LIMIT} posts:\n")
+        user = await self.api.user_by_login(username)
 
-    count = 0
+        if not user:
+            raise RuntimeError(f"X user not found: @{username}")
 
-    async for tweet in api.user_tweets(user.id, limit=LIMIT):
-        count += 1
+        print(f"User found: {user.username} (ID: {user.id})")
 
-        print("=" * 60)
-        print(f"ID: {tweet.id}")
-        print(f"Date: {tweet.date}")
-        print(f"Text: {tweet.rawContent}")
-        print(f"Likes: {tweet.likeCount}")
-        print(f"Replies: {tweet.replyCount}")
-        print(f"Reposts: {tweet.retweetCount}")
-        print(f"Views: {tweet.viewCount}")
-        print(f"URL: https://x.com/{USERNAME}/status/{tweet.id}")
+        posts = []
 
-    print("=" * 60)
-    print(f"\nSuccessfully retrieved {count} posts")
+        async for tweet in self.api.user_tweets(user.id, limit=limit):
+            posts.append({
+                "id": str(tweet.id),
+                "text": tweet.rawContent,
+                "url": f"https://x.com/{username}/status/{tweet.id}",
+                "created_at": tweet.date.isoformat(),
+                "replies": tweet.replyCount,
+                "reposts": tweet.retweetCount,
+                "likes": tweet.likeCount,
+                "views": tweet.viewCount
+            })
 
+            if len(posts) >= limit:
+                break
 
-if __name__ == "__main__":
-    asyncio.run(main())
+        print(f"Successfully retrieved {len(posts)} posts")
+
+        return posts
