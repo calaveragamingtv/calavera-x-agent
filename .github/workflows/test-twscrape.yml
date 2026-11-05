@@ -27,4 +27,4 @@ jobs:
           X_CT0: ${{ secrets.X_CT0 }}
           X_ACCOUNT_USERNAME: ${{ secrets.X_ACCOUNT_USERNAME }}
           TWS_HTTP_BACKEND: curl
-        run: python test_twscrape.py
+        run: python src/test_twscrape.py
