@@ -29,10 +29,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r src/requirements.txt
 
-      - name: Install Playwright Chromium
-        run: |
-          playwright install chromium --with-deps
-
       - name: Run X Agent
         env:
           X_AUTH_TOKEN: ${{ secrets.X_AUTH_TOKEN }}
