@@ -1,0 +1,11 @@
+{
+  "reply": {
+    "enabled": false
+  },
+  "repost": {
+    "enabled": false
+  },
+  "like": {
+    "enabled": false
+  }
+}
