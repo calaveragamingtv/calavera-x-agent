@@ -1,6 +1,6 @@
 {
   "account": "monitored_accounts",
-  "updated_at": "2026-11-07T14:43:25.243364+00:00",
+  "updated_at": "2026-11-07T15:08:31.691545+00:00",
   "total": 20,
   "posts": [
     {
@@ -12,7 +12,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 1,
-      "views": 40,
+      "views": 41,
       "monitored_by": [
         {
           "account_id": "815409347689934848",
