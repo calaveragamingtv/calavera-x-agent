@@ -129,6 +129,7 @@ def evaluate_reply_eligibility(tracker, rankings):
     return eligible, blocked
 
 
+
 def generate_reply_drafts(tracker, eligible_ids, rankings):
     print("\nGenerating reply drafts...")
 
@@ -151,6 +152,16 @@ def generate_reply_drafts(tracker, eligible_ids, rankings):
             print(f"Reply generation skipped: post not found ({post_id})")
             continue
 
+        reply_action = post["actions"]["reply"]
+
+        # Never overwrite an existing action or generated payload.
+        if reply_action["status"] != "not_started":
+            print(
+                f"Reply draft skipped for {post_id}: "
+                f"status is {reply_action['status']}"
+            )
+            continue
+
         try:
             reply_text = generator.generate_reply(
                 post,
@@ -161,15 +172,29 @@ def generate_reply_drafts(tracker, eligible_ids, rankings):
                 print(f"Reply generation returned empty text: {post_id}")
                 continue
 
-            print(f"\nGenerated reply for post {post_id}:")
+            payload = {
+                "post_id": post_id,
+                "reply_text": reply_text,
+                "generated_at": datetime.now(timezone.utc).isoformat()
+            }
+
+            # Persist the generated reply before any future X action.
+            tracker.mark_action_started(
+                post_id,
+                "reply",
+                payload=payload
+            )
+
+            print(f"\nReply draft saved for post {post_id}:")
             print(reply_text)
             print(f"Reply length: {len(reply_text)}/280 characters")
+            print("Reply status: processing (not published)")
 
         except Exception as error:
             print(f"Reply generation failed for {post_id}: {error}")
             raise
 
-    print("\nDry run only: generated replies were not sent to X.")
+    print("\nDry run only: generated replies were saved, not sent to X.")
 
 
 def main():
