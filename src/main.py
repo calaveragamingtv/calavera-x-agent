@@ -19,6 +19,7 @@ RETTIWT_FILE = DATA_DIR / "rettiwt_posts.json"
 RANKING_FILE = DATA_DIR / "ranking.json"
 
 REPLY_ACTION_SCRIPT = Path("src/actions/x_reply.mjs")
+REPOST_ACTION_SCRIPT = Path("src/actions/x_repost.mjs")
 
 
 def save_json(file_path, data):
@@ -333,6 +334,152 @@ def test_reply_drafts(tracker, eligible_ids):
     print("DRY RUN: no replies were published to X.")
     print("All tested replies remain in drafted state.")
 
+def generate_repost_drafts(tracker, rankings):
+    print("\nGenerating repost drafts...")
+
+    candidates = [
+        item
+        for item in rankings
+        if item.get("recommended_action") == "repost"
+    ]
+
+    candidates.sort(
+        key=lambda item: item.get("score", 0),
+        reverse=True
+    )
+
+    generated = 0
+
+    for item in candidates:
+        post_id = str(item.get("post_id", "")).strip()
+
+        if not post_id:
+            continue
+
+        post = tracker.get_post(post_id)
+
+        if not post:
+            print(f"Repost skipped: post not found ({post_id})")
+            continue
+
+        repost_action = post["actions"]["repost"]
+        status = repost_action["status"]
+
+        if status == "drafted":
+            print(f"Existing repost draft preserved: {post_id}")
+            continue
+
+        if status not in ("not_started", "failed"):
+            print(f"Repost skipped for {post_id}: status is {status}")
+            continue
+
+        payload = {
+            "post_id": post_id,
+            "generated_at": datetime.now(timezone.utc).isoformat()
+        }
+
+        tracker.mark_action_drafted(
+            post_id,
+            "repost",
+            payload
+        )
+
+        print(f"Repost draft saved: {post_id}")
+        generated += 1
+
+    print(f"Repost drafts generated or preserved: {generated}")
+
+
+def test_repost_drafts(tracker, rankings):
+    print("\nTesting repost drafts with Node.js...")
+
+    if not REPOST_ACTION_SCRIPT.exists():
+        raise FileNotFoundError(
+            f"Repost action script not found: {REPOST_ACTION_SCRIPT}"
+        )
+
+    candidates = [
+        item
+        for item in rankings
+        if item.get("recommended_action") == "repost"
+    ]
+
+    tested = 0
+
+    for item in candidates:
+        post_id = str(item.get("post_id", "")).strip()
+        post = tracker.get_post(post_id)
+
+        if not post:
+            continue
+
+        repost_action = post["actions"]["repost"]
+
+        if repost_action["status"] != "drafted":
+            continue
+
+        request = {"post_id": post_id}
+
+        print(f"\nTesting repost for post {post_id}...")
+
+        result = subprocess.run(
+            ["node", str(REPOST_ACTION_SCRIPT)],
+            input=json.dumps(request),
+            capture_output=True,
+            text=True,
+            check=False
+        )
+
+        if result.stderr:
+            print(result.stderr.strip())
+
+        if result.returncode != 0:
+            raise RuntimeError(
+                f"Node.js repost dry run failed for {post_id}: "
+                f"{result.stdout.strip()}"
+            )
+
+        try:
+            action_result = json.loads(result.stdout.strip())
+        except json.JSONDecodeError as error:
+            raise RuntimeError(
+                f"Invalid JSON returned by Node.js for repost {post_id}"
+            ) from error
+
+        expected = {
+            "success": True,
+            "dry_run": True,
+            "published": False,
+            "original_post_id": post_id
+        }
+
+        for field, value in expected.items():
+            if action_result.get(field) != value:
+                raise RuntimeError(
+                    f"Unexpected repost result for {post_id}: "
+                    f"{field} expected {value!r}, "
+                    f"got {action_result.get(field)!r}"
+                )
+
+        updated_post = tracker.get_post(post_id)
+        updated_status = updated_post["actions"]["repost"]["status"]
+
+        if updated_status != "drafted":
+            raise RuntimeError(
+                f"Unexpected tracker state after repost dry run: "
+                f"{updated_status}"
+            )
+
+        print(
+            "Validated: success=True, dry_run=True, "
+            "published=False, tracker_status=drafted"
+        )
+
+        tested += 1
+
+    print(f"\nRepost drafts tested successfully: {tested}")
+    print("DRY RUN: no reposts were published to X.")
+
 def main():
     print("Starting X Agent")
 
@@ -461,6 +608,18 @@ def main():
     test_reply_drafts(
         tracker,
         eligible
+    )
+
+    # 12. Generate and persist repost drafts
+    generate_repost_drafts(
+        tracker,
+        all_rankings
+    )
+    
+    # 13. Test repost drafts through Node.js (DRY RUN)
+    test_repost_drafts(
+        tracker,
+        all_rankings
     )
 
     print(f"\nTracker contains {len(tracker.data['posts'])} posts")
