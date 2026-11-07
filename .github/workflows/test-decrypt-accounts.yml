@@ -1,0 +1,28 @@
+
+name: Test Decrypt Accounts
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r src/requirements.txt
+
+      - name: Test account decryption
+        env:
+          ACCOUNTS_ENCRYPTION_KEY: ${{ secrets.ACCOUNTS_ENCRYPTION_KEY }}
+        run: python -m src.tools.test_decrypt_accounts
