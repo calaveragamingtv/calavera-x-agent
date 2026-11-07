@@ -1,0 +1,9 @@
+{
+  "accounts": [
+    {
+      "username_encrypted": "B6AUT4ArNqZfKDsghaOh9RaXrW/3E1aItFMssVUIEkWKCze12QFgHtKJ",
+      "type": "streamer",
+      "enabled": true
+    }
+  ]
+}
