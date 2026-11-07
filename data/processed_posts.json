@@ -330,13 +330,17 @@
           "payload": null
         },
         "repost": {
-          "status": "not_started",
+          "status": "drafted",
           "attempts": 0,
           "last_attempt_at": null,
           "completed_at": null,
           "error": null,
           "external_id": null,
-          "payload": null
+          "payload": {
+            "post_id": "2116576282876027280",
+            "generated_at": "2026-11-07T21:19:12.670144+00:00",
+            "stage": "drafted"
+          }
         }
       },
       "author_id": "815409347689934848"
@@ -531,13 +535,17 @@
           "payload": null
         },
         "repost": {
-          "status": "not_started",
+          "status": "drafted",
           "attempts": 0,
           "last_attempt_at": null,
           "completed_at": null,
           "error": null,
           "external_id": null,
-          "payload": null
+          "payload": {
+            "post_id": "2115851580268237173",
+            "generated_at": "2026-11-07T21:19:12.671496+00:00",
+            "stage": "drafted"
+          }
         }
       },
       "author_id": "815409347689934848"
@@ -629,13 +637,17 @@
           "payload": null
         },
         "repost": {
-          "status": "not_started",
+          "status": "drafted",
           "attempts": 0,
           "last_attempt_at": null,
           "completed_at": null,
           "error": null,
           "external_id": null,
-          "payload": null
+          "payload": {
+            "post_id": "2115489259197014282",
+            "generated_at": "2026-11-07T21:19:12.672673+00:00",
+            "stage": "drafted"
+          }
         }
       },
       "author_id": "815409347689934848"
@@ -678,13 +690,17 @@
           "payload": null
         },
         "repost": {
-          "status": "not_started",
+          "status": "drafted",
           "attempts": 0,
           "last_attempt_at": null,
           "completed_at": null,
           "error": null,
           "external_id": null,
-          "payload": null
+          "payload": {
+            "post_id": "2115440881591349591",
+            "generated_at": "2026-11-07T21:19:12.668720+00:00",
+            "stage": "drafted"
+          }
         }
       },
       "author_id": "815409347689934848"
@@ -1022,13 +1038,17 @@
           "payload": null
         },
         "repost": {
-          "status": "not_started",
+          "status": "drafted",
           "attempts": 0,
           "last_attempt_at": null,
           "completed_at": null,
           "error": null,
           "external_id": null,
-          "payload": null
+          "payload": {
+            "post_id": "2119113024111812800",
+            "generated_at": "2026-11-07T21:19:12.666605+00:00",
+            "stage": "drafted"
+          }
         }
       }
     }
