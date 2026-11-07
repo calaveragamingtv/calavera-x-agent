@@ -1,0 +1,35 @@
+
+name: Test Rettiwt
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Rettiwt
+        run: npm install --no-save rettiwt-api@7.1.4
+
+      - name: Test X scraper
+        env:
+          RETTIWT_API_KEY: ${{ secrets.RETTIWT_API_KEY }}
+        run: node src/test_rettiwt.mjs
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rettiwt-results
+          path: data/rettiwt_posts.json
+          if-no-files-found: ignore
