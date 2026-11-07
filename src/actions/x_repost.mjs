@@ -1,6 +1,5 @@
 import process from 'node:process';
-
-const REAL_REPOSTING_ENABLED = false;
+import { isActionEnabled } from './action_config.mjs';
 
 async function readInput() {
     let input = '';
@@ -34,7 +33,9 @@ async function main() {
         console.error('X Repost Action initialized');
         console.error(`Original post ID: ${postId}`);
 
-        if (!REAL_REPOSTING_ENABLED) {
+        const enabled = await isActionEnabled('repost');
+
+        if (!enabled) {
             console.error('DRY RUN: no request was sent to X.');
 
             outputResult({
@@ -48,7 +49,6 @@ async function main() {
         }
 
         const { Rettiwt } = await import('rettiwt-api');
-
         const apiKey = process.env.RETTIWT_API_KEY;
 
         if (!apiKey) {
