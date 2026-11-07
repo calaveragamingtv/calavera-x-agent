@@ -9,6 +9,7 @@ from datetime import datetime, timezone
 
 class PostTracker:
     ACTIONS = ("like", "reply", "repost")
+
     ACTION_STATUSES = (
         "not_started",
         "processing",
@@ -46,6 +47,35 @@ class PostTracker:
 
         # Already using the new structure.
         if isinstance(data.get("posts"), dict):
+            changed = False
+
+            for post in data["posts"].values():
+                if not isinstance(post, dict):
+                    continue
+
+                actions = post.setdefault("actions", {})
+
+                for action in self.ACTIONS:
+                    action_data = actions.setdefault(action, {})
+
+                    defaults = {
+                        "status": "not_started",
+                        "attempts": 0,
+                        "last_attempt_at": None,
+                        "completed_at": None,
+                        "error": None,
+                        "external_id": None,
+                        "payload": None
+                    }
+
+                    for key, value in defaults.items():
+                        if key not in action_data:
+                            action_data[key] = value
+                            changed = True
+
+            if changed:
+                self._save_data(data)
+
             return data
 
         # Migrate legacy structure.
@@ -80,7 +110,8 @@ class PostTracker:
                     "last_attempt_at": old_action.get("last_attempt_at"),
                     "completed_at": old_action.get("completed_at"),
                     "error": old_action.get("error"),
-                    "external_id": old_action.get("external_id")
+                    "external_id": old_action.get("external_id"),
+                    "payload": old_action.get("payload")
                 }
 
             analysis_status = old_analysis.get("status", "pending")
@@ -118,17 +149,16 @@ class PostTracker:
             "from legacy tracker format"
         )
 
-        self.data = migrated_data
-        self._save()
+        self._save_data(migrated_data)
 
         return migrated_data
 
-    def _save(self) -> None:
+    def _save_data(self, data: dict) -> None:
         temporary_file = self.file_path.with_suffix(".tmp")
 
         with temporary_file.open("w", encoding="utf-8") as file:
             json.dump(
-                self.data,
+                data,
                 file,
                 ensure_ascii=False,
                 indent=2
@@ -138,12 +168,10 @@ class PostTracker:
 
         temporary_file.replace(self.file_path)
 
+    def _save(self) -> None:
+        self._save_data(self.data)
+
     def register_posts(self, posts: list[dict]) -> list[str]:
-        """
-        Registers new posts and updates missing author metadata
-        on posts that were previously registered.
-        Returns the IDs of newly registered posts.
-        """
         new_ids = []
         changed = False
 
@@ -158,8 +186,6 @@ class PostTracker:
             if author_id is not None:
                 author_id = str(author_id)
 
-            # Update metadata on existing posts without
-            # resetting their analysis or action statuses.
             if post_id in self.data["posts"]:
                 tracked_post = self.data["posts"][post_id]
 
@@ -191,7 +217,8 @@ class PostTracker:
                         "last_attempt_at": None,
                         "completed_at": None,
                         "error": None,
-                        "external_id": None
+                        "external_id": None,
+                        "payload": None
                     }
                     for action in self.ACTIONS
                 }
@@ -238,9 +265,11 @@ class PostTracker:
     def mark_action_started(
         self,
         post_id: str,
-        action: str
+        action: str,
+        payload: dict | None = None
     ) -> None:
         self._validate_action(action)
+
         post = self._get_post(post_id)
         action_data = post["actions"][action]
 
@@ -254,6 +283,8 @@ class PostTracker:
         action_data["attempts"] += 1
         action_data["last_attempt_at"] = self._now()
         action_data["error"] = None
+        action_data["external_id"] = None
+        action_data["payload"] = payload
 
         self._save()
 
@@ -287,6 +318,46 @@ class PostTracker:
             action_data["completed_at"] = self._now()
 
         self._save()
+
+    def recover_interrupted_actions(
+        self,
+        action: str | None = None
+    ) -> int:
+        """
+        Marks interrupted processing actions as unknown.
+        They must never be retried automatically.
+        """
+        if action is not None:
+            self._validate_action(action)
+
+        recovered = 0
+
+        for post in self.data["posts"].values():
+            actions = post.get("actions", {})
+
+            selected_actions = (
+                [action]
+                if action is not None
+                else self.ACTIONS
+            )
+
+            for action_name in selected_actions:
+                action_data = actions.get(action_name, {})
+
+                if action_data.get("status") != "processing":
+                    continue
+
+                action_data["status"] = "unknown"
+                action_data["error"] = (
+                    "Execution interrupted; publication result unknown"
+                )
+
+                recovered += 1
+
+        if recovered:
+            self._save()
+
+        return recovered
 
     def get_post(self, post_id: str) -> dict | None:
         return self.data["posts"].get(str(post_id))
