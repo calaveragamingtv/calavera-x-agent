@@ -57,6 +57,16 @@ def recover_interrupted_replies(tracker):
     return recovered
 
 
+def migrate_existing_reply_drafts(tracker):
+    print("\nMigrating existing reply drafts...")
+
+    migrated = tracker.migrate_legacy_reply_drafts()
+
+    print(f"Existing reply drafts migrated: {migrated}")
+
+    return migrated
+
+
 def evaluate_reply_eligibility(tracker, rankings):
     print("\nEvaluating reply eligibility...")
 
@@ -129,7 +139,6 @@ def evaluate_reply_eligibility(tracker, rankings):
     return eligible, blocked
 
 
-
 def generate_reply_drafts(tracker, eligible_ids, rankings):
     print("\nGenerating reply drafts...")
 
@@ -154,10 +163,14 @@ def generate_reply_drafts(tracker, eligible_ids, rankings):
 
         reply_action = post["actions"]["reply"]
 
-        # Never overwrite an existing action or generated payload.
+        # Preserve existing drafts and never overwrite them.
+        if reply_action["status"] == "drafted":
+            print(f"Existing reply draft preserved: {post_id}")
+            continue
+
         if reply_action["status"] != "not_started":
             print(
-                f"Reply draft skipped for {post_id}: "
+                f"Reply generation skipped for {post_id}: "
                 f"status is {reply_action['status']}"
             )
             continue
@@ -178,17 +191,16 @@ def generate_reply_drafts(tracker, eligible_ids, rankings):
                 "generated_at": datetime.now(timezone.utc).isoformat()
             }
 
-            # Persist the generated reply before any future X action.
-            tracker.mark_action_started(
+            tracker.mark_action_drafted(
                 post_id,
                 "reply",
-                payload=payload
+                payload
             )
 
             print(f"\nReply draft saved for post {post_id}:")
             print(reply_text)
             print(f"Reply length: {len(reply_text)}/280 characters")
-            print("Reply status: processing (not published)")
+            print("Reply status: drafted (not published)")
 
         except Exception as error:
             print(f"Reply generation failed for {post_id}: {error}")
@@ -218,15 +230,18 @@ def main():
     # 3. Load persistent tracker
     tracker = PostTracker()
 
-    # 4. Recover interrupted replies
+    # 4. Migrate the existing draft before recovery.
+    migrate_existing_reply_drafts(tracker)
+
+    # 5. Recover only interrupted sending operations.
     recover_interrupted_replies(tracker)
 
-    # 5. Register new posts
+    # 6. Register new posts
     new_ids = tracker.register_posts(posts)
 
     print(f"New posts registered: {len(new_ids)}")
 
-    # 6. Analyze posts that need analysis
+    # 7. Analyze posts that need analysis
     pending_ids = tracker.get_unanalyzed_ids()
 
     print(f"Posts pending analysis: {len(pending_ids)}")
@@ -278,7 +293,7 @@ def main():
     else:
         print("No posts require analysis. Skipping Gemini.")
 
-    # 7. Generate ranking from completed analyses
+    # 8. Generate ranking from completed analyses
     all_rankings = []
 
     for post_id, post in tracker.data["posts"].items():
@@ -305,13 +320,13 @@ def main():
 
     print(f"Ranking saved: {len(all_rankings)} analyzed posts")
 
-    # 8. Evaluate reply eligibility
+    # 9. Evaluate reply eligibility
     eligible, blocked = evaluate_reply_eligibility(
         tracker,
         all_rankings
     )
 
-    # 9. Generate reply drafts without publishing
+    # 10. Generate and persist drafts without publishing
     generate_reply_drafts(
         tracker,
         eligible,
