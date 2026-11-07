@@ -1,3 +1,4 @@
 twscrape
 curl-cffi
 google-genai
+cryptography
