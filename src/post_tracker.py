@@ -1,9 +1,9 @@
 
 import json
 import os
+
 from pathlib import Path
 from datetime import datetime, timezone
-from typing import Any
 
 
 class PostTracker:
@@ -31,7 +31,7 @@ class PostTracker:
                 "schema_version": 1,
                 "posts": {}
             }
-    
+
         try:
             with self.file_path.open("r", encoding="utf-8") as file:
                 data = json.load(file)
@@ -39,47 +39,40 @@ class PostTracker:
             raise RuntimeError(
                 f"Invalid tracker JSON: {self.file_path}"
             ) from exc
-    
+
         if not isinstance(data, dict):
             raise RuntimeError("Invalid processed_posts.json structure")
-    
-        # Already using the new structure
+
+        # Already using the new structure.
         if isinstance(data.get("posts"), dict):
             return data
-    
-        # Migrate legacy structure:
-        # {
-        #   "post_id": {
-        #       "text": "...",
-        #       "analysis": {...},
-        #       "actions": {...}
-        #   }
-        # }
+
+        # Migrate legacy structure.
         migrated_posts = {}
-    
+
         for post_id, old_post in data.items():
             if not isinstance(old_post, dict):
                 raise RuntimeError(
                     f"Invalid legacy post structure: {post_id}"
                 )
-    
+
             old_analysis = old_post.get("analysis", {})
             old_actions = old_post.get("actions", {})
-    
+
             if not isinstance(old_analysis, dict):
                 old_analysis = {}
-    
+
             if not isinstance(old_actions, dict):
                 old_actions = {}
-    
+
             migrated_actions = {}
-    
+
             for action in self.ACTIONS:
                 old_action = old_actions.get(action, {})
-    
+
                 if not isinstance(old_action, dict):
                     old_action = {}
-    
+
                 migrated_actions[action] = {
                     "status": old_action.get("status", "not_started"),
                     "attempts": old_action.get("attempts", 0),
@@ -88,20 +81,24 @@ class PostTracker:
                     "error": old_action.get("error"),
                     "external_id": old_action.get("external_id")
                 }
-    
+
             analysis_status = old_analysis.get("status", "pending")
-    
+
             migrated_analysis = {
                 "status": analysis_status,
                 "result": old_analysis.get("result")
             }
-    
-            # Preserve results from the previous tracker format.
+
             if analysis_status == "completed" and not migrated_analysis["result"]:
                 migrated_analysis["legacy_result"] = old_analysis.copy()
-    
+
             migrated_posts[str(post_id)] = {
                 "id": str(post_id),
+                "author_id": (
+                    str(old_post["author_id"])
+                    if old_post.get("author_id") is not None
+                    else None
+                ),
                 "text": old_post.get("text", ""),
                 "url": old_post.get("url"),
                 "created_at": old_post.get("created_at"),
@@ -109,22 +106,21 @@ class PostTracker:
                 "analysis": migrated_analysis,
                 "actions": migrated_actions
             }
-    
+
         migrated_data = {
             "schema_version": 1,
             "posts": migrated_posts
         }
-    
+
         print(
             f"Migrated {len(migrated_posts)} posts "
             "from legacy tracker format"
         )
-    
+
         self.data = migrated_data
         self._save()
-    
-        return migrated_data
 
+        return migrated_data
 
     def _save(self) -> None:
         temporary_file = self.file_path.with_suffix(".tmp")
@@ -143,10 +139,12 @@ class PostTracker:
 
     def register_posts(self, posts: list[dict]) -> list[str]:
         """
-        Registers new posts.
-        Returns the IDs that were not previously registered.
+        Registers new posts and updates missing author metadata
+        on posts that were previously registered.
+        Returns the IDs of newly registered posts.
         """
         new_ids = []
+        changed = False
 
         for post in posts:
             post_id = str(post.get("id", "")).strip()
@@ -154,13 +152,27 @@ class PostTracker:
             if not post_id:
                 raise ValueError("A post without ID cannot be registered")
 
+            author_id = post.get("author_id")
+
+            if author_id is not None:
+                author_id = str(author_id)
+
+            # Update metadata on existing posts without
+            # resetting their analysis or action statuses.
             if post_id in self.data["posts"]:
+                tracked_post = self.data["posts"][post_id]
+
+                if author_id and not tracked_post.get("author_id"):
+                    tracked_post["author_id"] = author_id
+                    changed = True
+
                 continue
 
             text = post.get("text") or post.get("fullText") or ""
 
             self.data["posts"][post_id] = {
                 "id": post_id,
+                "author_id": author_id,
                 "text": text,
                 "url": post.get("url"),
                 "created_at": post.get("created_at") or post.get("createdAt"),
@@ -185,8 +197,9 @@ class PostTracker:
             }
 
             new_ids.append(post_id)
+            changed = True
 
-        if new_ids:
+        if changed:
             self._save()
 
         return new_ids
