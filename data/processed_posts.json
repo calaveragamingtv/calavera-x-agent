@@ -672,13 +672,19 @@
       },
       "actions": {
         "like": {
-          "status": "not_started",
+          "status": "drafted",
           "attempts": 0,
           "last_attempt_at": null,
           "completed_at": null,
           "error": null,
           "external_id": null,
-          "payload": null
+          "payload": {
+            "post_id": "2115440881591349591",
+            "reason": "interesting_post",
+            "score": 90.0,
+            "generated_at": "2026-11-07T22:58:26.914787+00:00",
+            "stage": "drafted"
+          }
         },
         "reply": {
           "status": "not_started",
@@ -1020,13 +1026,19 @@
       },
       "actions": {
         "like": {
-          "status": "not_started",
+          "status": "drafted",
           "attempts": 0,
           "last_attempt_at": null,
           "completed_at": null,
           "error": null,
           "external_id": null,
-          "payload": null
+          "payload": {
+            "post_id": "2119113024111812800",
+            "reason": "interesting_post",
+            "score": 95.0,
+            "generated_at": "2026-11-07T22:58:26.912304+00:00",
+            "stage": "drafted"
+          }
         },
         "reply": {
           "status": "not_started",
