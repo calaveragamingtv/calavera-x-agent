@@ -1,5 +1,5 @@
-
 import json
+import re
 import subprocess
 from pathlib import Path
 from datetime import datetime, timezone
@@ -13,6 +13,9 @@ USERNAME = "monitored_accounts"
 LIMIT = 10
 MAX_TOTAL_REPLIES = 2
 
+MAX_LIKES_PER_RUN = 2
+MIN_LIKE_SCORE = 70
+
 DATA_DIR = Path("data")
 POSTS_FILE = DATA_DIR / "posts.json"
 RETTIWT_FILE = DATA_DIR / "rettiwt_posts.json"
@@ -20,6 +23,7 @@ RANKING_FILE = DATA_DIR / "ranking.json"
 
 REPLY_ACTION_SCRIPT = Path("src/actions/x_reply.mjs")
 REPOST_ACTION_SCRIPT = Path("src/actions/x_repost.mjs")
+LIKE_ACTION_SCRIPT = Path("src/actions/x_like.mjs")
 
 
 def save_json(file_path, data):
@@ -167,7 +171,6 @@ def generate_reply_drafts(tracker, eligible_ids, rankings):
 
         reply_action = post["actions"]["reply"]
 
-        # Preserve existing drafts and never overwrite them.
         if reply_action["status"] == "drafted":
             print(f"Existing reply draft preserved: {post_id}")
             continue
@@ -211,7 +214,6 @@ def generate_reply_drafts(tracker, eligible_ids, rankings):
             raise
 
     print("\nReply drafts generated or preserved.")
-
 
 
 def test_reply_drafts(tracker, eligible_ids):
@@ -308,7 +310,6 @@ def test_reply_drafts(tracker, eligible_ids):
                     f"{field} expected {expected!r}, got {actual!r}"
                 )
 
-        # A dry run must never change the persisted action state.
         updated_post = tracker.get_post(post_id)
         updated_status = (
             updated_post.get("actions", {})
@@ -333,6 +334,7 @@ def test_reply_drafts(tracker, eligible_ids):
     print(f"\nReply drafts tested successfully: {tested}")
     print("DRY RUN: no replies were published to X.")
     print("All tested replies remain in drafted state.")
+
 
 def generate_repost_drafts(tracker, rankings):
     print("\nGenerating repost drafts...")
@@ -480,6 +482,233 @@ def test_repost_drafts(tracker, rankings):
     print(f"\nRepost drafts tested successfully: {tested}")
     print("DRY RUN: no reposts were published to X.")
 
+
+def is_stream_announcement(text):
+    if not isinstance(text, str) or not text.strip():
+        return False
+
+    normalized = text.lower()
+
+    patterns = [
+        r"\bestoy en directo\b",
+        r"\bestamos en directo\b",
+        r"\ben directo\b",
+        r"\bestoy en vivo\b",
+        r"\bestamos en vivo\b",
+        r"\ben vivo\b",
+        r"\bya estamos live\b",
+        r"\bestoy live\b",
+        r"\bestamos live\b",
+        r"\bi['’]m live\b",
+        r"\bwe['’]re live\b",
+        r"\blive now\b",
+        r"\bstream is live\b",
+        r"\bgoing live\b",
+        r"\bstreaming now\b",
+    ]
+
+    return any(
+        re.search(pattern, normalized)
+        for pattern in patterns
+    )
+
+
+def generate_like_drafts(tracker, rankings):
+    print("\nGenerating like drafts...")
+
+    candidates_by_id = {}
+
+    # Stream announcements have priority over regular interesting posts.
+    for post_id, post in tracker.data["posts"].items():
+        if is_stream_announcement(post.get("text", "")):
+            candidates_by_id[str(post_id)] = {
+                "post_id": str(post_id),
+                "reason": "stream_announcement",
+                "score": 101
+            }
+
+    # Add interesting posts recommended by Gemini.
+    for item in rankings:
+        try:
+            score = float(item.get("score", 0))
+        except (TypeError, ValueError):
+            continue
+
+        if score < MIN_LIKE_SCORE:
+            continue
+
+        post_id = str(item.get("post_id", "")).strip()
+
+        if not post_id:
+            continue
+
+        if post_id not in candidates_by_id:
+            candidates_by_id[post_id] = {
+                "post_id": post_id,
+                "reason": "interesting_post",
+                "score": score
+            }
+
+    candidates = sorted(
+        candidates_by_id.values(),
+        key=lambda item: item["score"],
+        reverse=True
+    )
+
+    eligible = []
+
+    for candidate in candidates:
+        post_id = candidate["post_id"]
+        post = tracker.get_post(post_id)
+
+        if not post:
+            continue
+
+        like_action = post["actions"]["like"]
+        status = like_action["status"]
+
+        if status in ("completed", "unknown", "processing"):
+            continue
+
+        if status not in ("not_started", "failed", "drafted"):
+            continue
+
+        eligible.append(candidate)
+
+    selected = eligible[:MAX_LIKES_PER_RUN]
+
+    print(f"Like candidates: {len(candidates)}")
+    print(f"Eligible likes: {len(eligible)}")
+    print(f"Selected this execution: {len(selected)}")
+
+    for candidate in selected:
+        post_id = candidate["post_id"]
+        post = tracker.get_post(post_id)
+        like_action = post["actions"]["like"]
+
+        if like_action["status"] == "drafted":
+            print(f"Existing like draft preserved: {post_id}")
+            continue
+
+        payload = {
+            "post_id": post_id,
+            "reason": candidate["reason"],
+            "score": candidate["score"],
+            "generated_at": datetime.now(timezone.utc).isoformat()
+        }
+
+        tracker.mark_action_drafted(
+            post_id,
+            "like",
+            payload
+        )
+
+        print(
+            f"Like draft saved: {post_id} "
+            f"(reason={candidate['reason']}, "
+            f"score={candidate['score']})"
+        )
+
+    return [
+        candidate["post_id"]
+        for candidate in selected
+    ]
+
+
+def test_like_drafts(tracker, selected_ids):
+    print("\nTesting like drafts with Node.js...")
+
+    if not selected_ids:
+        print("No eligible likes to test.")
+        return
+
+    if not LIKE_ACTION_SCRIPT.exists():
+        raise FileNotFoundError(
+            f"Like action script not found: {LIKE_ACTION_SCRIPT}"
+        )
+
+    tested = 0
+
+    for post_id in selected_ids:
+        post = tracker.get_post(post_id)
+
+        if not post:
+            print(f"Like test skipped: post not found ({post_id})")
+            continue
+
+        like_action = post["actions"]["like"]
+
+        if like_action["status"] != "drafted":
+            print(
+                f"Like test skipped for {post_id}: "
+                f"status is {like_action['status']}"
+            )
+            continue
+
+        request = {"post_id": post_id}
+
+        print(f"\nTesting like for post {post_id}...")
+
+        result = subprocess.run(
+            ["node", str(LIKE_ACTION_SCRIPT)],
+            input=json.dumps(request),
+            capture_output=True,
+            text=True,
+            check=False
+        )
+
+        if result.stderr:
+            print(result.stderr.strip())
+
+        if result.returncode != 0:
+            raise RuntimeError(
+                f"Node.js like dry run failed for {post_id}: "
+                f"{result.stdout.strip()}"
+            )
+
+        try:
+            action_result = json.loads(result.stdout.strip())
+        except json.JSONDecodeError as error:
+            raise RuntimeError(
+                f"Invalid JSON returned by Node.js for like {post_id}: "
+                f"{result.stdout.strip()}"
+            ) from error
+
+        expected = {
+            "success": True,
+            "dry_run": True,
+            "liked": False,
+            "original_post_id": post_id
+        }
+
+        for field, value in expected.items():
+            if action_result.get(field) != value:
+                raise RuntimeError(
+                    f"Unexpected like result for {post_id}: "
+                    f"{field} expected {value!r}, "
+                    f"got {action_result.get(field)!r}"
+                )
+
+        updated_post = tracker.get_post(post_id)
+        updated_status = updated_post["actions"]["like"]["status"]
+
+        if updated_status != "drafted":
+            raise RuntimeError(
+                f"Unexpected tracker state after like dry run: "
+                f"{updated_status}"
+            )
+
+        print(
+            "Validated: success=True, dry_run=True, "
+            "liked=False, tracker_status=drafted"
+        )
+
+        tested += 1
+
+    print(f"\nLike drafts tested successfully: {tested}")
+    print("DRY RUN: no likes were sent to X.")
+
+
 def main():
     print("Starting X Agent")
 
@@ -604,7 +833,7 @@ def main():
         all_rankings
     )
 
-    # 11. Test the saved drafts through Node.js (DRY RUN)
+    # 11. Test reply drafts through Node.js (DRY RUN)
     test_reply_drafts(
         tracker,
         eligible
@@ -615,11 +844,22 @@ def main():
         tracker,
         all_rankings
     )
-    
+
     # 13. Test repost drafts through Node.js (DRY RUN)
     test_repost_drafts(
         tracker,
         all_rankings
+    )
+
+    # 14. Generate and test like drafts (DRY RUN)
+    like_ids = generate_like_drafts(
+        tracker,
+        all_rankings
+    )
+
+    test_like_drafts(
+        tracker,
+        like_ids
     )
 
     print(f"\nTracker contains {len(tracker.data['posts'])} posts")
