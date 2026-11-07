@@ -37,6 +37,7 @@ jobs:
       - name: Scrape X with Rettiwt
         env:
           RETTIWT_API_KEY: ${{ secrets.RETTIWT_API_KEY }}
+          ACCOUNTS_ENCRYPTION_KEY: ${{ secrets.ACCOUNTS_ENCRYPTION_KEY }}
         run: node src/test_rettiwt.mjs
 
       # 4. Install Python
