@@ -42,8 +42,8 @@ async function main() {
 
     const tweets = Array.isArray(result)
         ? result
-        : Array.isArray(result?.data)
-            ? result.data
+        : Array.isArray(result?.list)
+            ? result.list
             : [];
 
     if (tweets.length === 0) {
