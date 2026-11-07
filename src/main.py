@@ -247,8 +247,9 @@ def test_reply_drafts(tracker, eligible_ids):
         reply_text = payload.get("reply_text")
 
         if not isinstance(reply_text, str) or not reply_text.strip():
-            print(f"Reply test skipped: empty draft ({post_id})")
-            continue
+            raise RuntimeError(
+                f"Invalid reply draft for post {post_id}"
+            )
 
         request = {
             "post_id": post_id,
@@ -285,55 +286,52 @@ def test_reply_drafts(tracker, eligible_ids):
 
         if not isinstance(action_result, dict):
             raise RuntimeError(
-                f"Invalid Node.js response for post {post_id}: "
-                "expected a JSON object"
+                f"Invalid Node.js response for post {post_id}"
             )
 
-        if action_result.get("success") is not True:
-            raise RuntimeError(
-                f"Node.js reported failure for post {post_id}: "
-                f"{action_result.get('error', 'Unknown error')}"
-            )
+        expected_values = {
+            "success": True,
+            "dry_run": True,
+            "published": False,
+            "original_post_id": str(post_id),
+            "reply_text": reply_text,
+            "reply_length": len(reply_text)
+        }
 
-        if action_result.get("dry_run") is not True:
-            raise RuntimeError(
-                f"Unexpected execution mode for post {post_id}: "
-                "expected dry_run=true"
-            )
+        for field, expected in expected_values.items():
+            actual = action_result.get(field)
 
-        if action_result.get("published") is not False:
-            raise RuntimeError(
-                f"Unexpected publication status for post {post_id}: "
-                "expected published=false"
-            )
+            if actual != expected:
+                raise RuntimeError(
+                    f"Unexpected Node.js result for post {post_id}: "
+                    f"{field} expected {expected!r}, got {actual!r}"
+                )
 
-        if str(action_result.get("original_post_id")) != str(post_id):
-            raise RuntimeError(
-                f"Post ID mismatch in Node.js response for {post_id}"
-            )
+        # A dry run must never change the persisted action state.
+        updated_post = tracker.get_post(post_id)
+        updated_status = (
+            updated_post.get("actions", {})
+            .get("reply", {})
+            .get("status")
+        )
 
-        if action_result.get("reply_text") != reply_text:
+        if updated_status != "drafted":
             raise RuntimeError(
-                f"Reply text mismatch in Node.js response for {post_id}"
-            )
-
-        if action_result.get("reply_length") != len(reply_text):
-            raise RuntimeError(
-                f"Reply length mismatch in Node.js response for {post_id}"
+                f"Unexpected tracker state after dry run for {post_id}: "
+                f"{updated_status}"
             )
 
         print(
-            f"Validated Node.js result: "
-            f"success={action_result['success']}, "
-            f"dry_run={action_result['dry_run']}, "
-            f"published={action_result['published']}"
+            "Validated: "
+            "success=True, dry_run=True, published=False, "
+            "tracker_status=drafted"
         )
 
         tested += 1
 
     print(f"\nReply drafts tested successfully: {tested}")
     print("DRY RUN: no replies were published to X.")
-
+    print("All tested replies remain in drafted state.")
 
 def main():
     print("Starting X Agent")
