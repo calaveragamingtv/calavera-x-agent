@@ -1,10 +1,11 @@
 {
   "account": "monitored_accounts",
-  "updated_at": "2026-11-07T14:29:33.323915+00:00",
+  "updated_at": "2026-11-07T14:36:27.063081+00:00",
   "total": 20,
   "posts": [
     {
       "id": "2118878190437273865",
+      "author_id": "815409347689934848",
       "text": "El patch Printed and Polished ya está disponible. Arrancamos con un rework total en los blueprints sin fragmentos en workbenches, la nueva UZI 9mm con dos modos de disparo y más de 3.000 bans iniciales a scripters. ¿Cómo cambia esto tu early game? https://t.co/slgdvpVSqA",
       "url": "https://x.com/CalaveraGaming/status/2118878190437273865",
       "created_at": "2026-11-07T01:28:22.000Z",
@@ -21,6 +22,7 @@
     },
     {
       "id": "2118776885878386718",
+      "author_id": "815409347689934848",
       "text": "Nos reventaron la base en el día 2, pero ya armamos la opereta para recuperar todo y volver arriba wacho. 💀 #Rust https://t.co/r8gIvLIihw",
       "url": "https://x.com/CalaveraGaming/status/2118776885878386718",
       "created_at": "2026-11-06T18:45:49.000Z",
@@ -37,6 +39,7 @@
     },
     {
       "id": "2118448648484765698",
+      "author_id": "815409347689934848",
       "text": "Arrancó el Rust Wipe para gorditos y la base ya es un delirio total. 💀 #Rust https://t.co/r8gIvLIihw",
       "url": "https://x.com/CalaveraGaming/status/2118448648484765698",
       "created_at": "2026-11-05T21:01:31.000Z",
@@ -53,6 +56,7 @@
     },
     {
       "id": "2117368999033856445",
+      "author_id": "815409347689934848",
       "text": "Lunes de rust del bueno con el calaveramingtv 💀 #Rust https://t.co/r8gIvLIihw",
       "url": "https://x.com/CalaveraGaming/status/2117368999033856445",
       "created_at": "2026-11-02T21:31:22.000Z",
@@ -69,6 +73,7 @@
     },
     {
       "id": "2116938805496213845",
+      "author_id": "815409347689934848",
       "text": "Poner la Skull Trophy Pack en la base solo sirve para dejar evidencia de a quién te robaste y que después te vengan a raidear por rencor. https://t.co/i143E0ButV",
       "url": "https://x.com/CalaveraGaming/status/2116938805496213845",
       "created_at": "2026-11-01T17:01:56.000Z",
@@ -85,6 +90,7 @@
     },
     {
       "id": "2116651789558714850",
+      "author_id": "815409347689934848",
       "text": "¿Salva la roca y sale snowball o nos mandamos terrible papelón en la playa? Pasen a tirar ideas al chat. 💀 #Rust https://t.co/r8gIvLIihw",
       "url": "https://x.com/CalaveraGaming/status/2116651789558714850",
       "created_at": "2026-10-31T22:01:26.000Z",
@@ -101,6 +107,7 @@
     },
     {
       "id": "2116576282876027280",
+      "author_id": "815409347689934848",
       "text": "Un día dura el drop exclusivo de Twitch Rivals y ya veo a más de uno colgando toda la noche solo por la mochila. https://t.co/hIu5Eymust",
       "url": "https://x.com/CalaveraGaming/status/2116576282876027280",
       "created_at": "2026-10-31T17:01:24.000Z",
@@ -117,6 +124,7 @@
     },
     {
       "id": "2116277956507009079",
+      "author_id": "815409347689934848",
       "text": "¿Día 2 y ya estamos a los tiros limpios y sin ropa? Pasen a dejar ideas al chat para defender la base 💀 #Rust https://t.co/r8gIvLIihw",
       "url": "https://x.com/CalaveraGaming/status/2116277956507009079",
       "created_at": "2026-10-30T21:15:58.000Z",
@@ -133,6 +141,7 @@
     },
     {
       "id": "2116214057229246565",
+      "author_id": "815409347689934848",
       "text": "Aparecieron portales de cultistas por todo el mapa y los pocos que entraron y volvieron no quieren contar nada. Buena suerte cruzando eso solo a medianoche. https://t.co/7JiLQf7qpi",
       "url": "https://x.com/CalaveraGaming/status/2116214057229246565",
       "created_at": "2026-10-30T17:02:03.000Z",
@@ -149,6 +158,7 @@
     },
     {
       "id": "2115911921840918913",
+      "author_id": "815409347689934848",
       "text": "¿Arrancamos este wipe del rico con todo o nos revientan la choza en cinco minutos? Pásense a tirar estrategias al chat 💀 #Rust https://t.co/r8gIvLIihw",
       "url": "https://x.com/CalaveraGaming/status/2115911921840918913",
       "created_at": "2026-10-29T21:01:28.000Z",
@@ -165,6 +175,7 @@
     },
     {
       "id": "2115851580268237173",
+      "author_id": "815409347689934848",
       "text": "Armarte tu propio Frankenstein, sacarlo a pasear con la P y que mate al primer pesado que te cruces en el mapa es el mejor agregado del evento. https://t.co/P7SuJRHbg9",
       "url": "https://x.com/CalaveraGaming/status/2115851580268237173",
       "created_at": "2026-10-29T17:01:42.000Z",
@@ -181,6 +192,7 @@
     },
     {
       "id": "2115549586970259890",
+      "author_id": "815409347689934848",
       "text": "¿Arrancamos con una roca y una piedra en la playa o se pudre todo y sale snowball hoy? Pasen a tirar ideas al chat. 💀 #Rust https://t.co/r8gIvLIihw",
       "url": "https://x.com/CalaveraGaming/status/2115549586970259890",
       "created_at": "2026-10-28T21:01:41.000Z",
@@ -197,6 +209,7 @@
     },
     {
       "id": "2115489259197014282",
+      "author_id": "815409347689934848",
       "text": "Tres minutos de Candy Hunt y tenés a todo el server corriendo como desesperados para rascar un M249 antes de que termine octubre. https://t.co/fVSeqsiucT",
       "url": "https://x.com/CalaveraGaming/status/2115489259197014282",
       "created_at": "2026-10-28T17:01:57.000Z",
@@ -213,6 +226,7 @@
     },
     {
       "id": "2115440881591349591",
+      "author_id": "815409347689934848",
       "text": "El patch de Halloween 2026 ya está acá con el Candy Hunt cada dos días y premios que van desde scrap hasta un M249. Sumale la mesa de Frankenstein para armar tu propio pet con partes de cuerpos y los nuevos portales misteriosos. https://t.co/aqBbCm4Mr2",
       "url": "https://x.com/CalaveraGaming/status/2115440881591349591",
       "created_at": "2026-10-28T13:49:43.000Z",
@@ -229,6 +243,7 @@
     },
     {
       "id": "2114832284054339880",
+      "author_id": "815409347689934848",
       "text": "¿Lunes de gorditos sebados o papelón asegurado en el wipe? Pasen a tirar estrategias al chat. 💀 #Rust https://t.co/r8gIvLIihw",
       "url": "https://x.com/CalaveraGaming/status/2114832284054339880",
       "created_at": "2026-10-26T21:31:22.000Z",
@@ -245,6 +260,7 @@
     },
     {
       "id": "2114764536515317983",
+      "author_id": "815409347689934848",
       "text": "El patch de Halloween 2026 ya arrancó con el evento Candy Hunt cada dos días in-game y la posibilidad de armar tu propio monstruo de Frankenstein con partes de cuerpos para que te defienda. ¿Vas a farmear caramelos o a cazar momias? https://t.co/c8PdSOrLQU",
       "url": "https://x.com/CalaveraGaming/status/2114764536515317983",
       "created_at": "2026-10-26T17:02:10.000Z",
@@ -261,6 +277,7 @@
     },
     {
       "id": "2114118753566720304",
+      "author_id": "815409347689934848",
       "text": "¿Armamos tremenda base hoy con PvP, PvE y raid incluida o nos raidean antes de armar el primer muro? Pasen a tirar estrategia al chat. 💀 #Rust https://t.co/r8gIvLIihw",
       "url": "https://x.com/CalaveraGaming/status/2114118753566720304",
       "created_at": "2026-10-24T22:16:03.000Z",
@@ -277,6 +294,7 @@
     },
     {
       "id": "2113745127453659270",
+      "author_id": "815409347689934848",
       "text": "¿Entrar un día tarde al wipe es pudrición asegurada o todavía se puede salvar la base? Pasen a tirar estrategias al chat. 💀 #Rust https://t.co/r8gIvLIihw",
       "url": "https://x.com/CalaveraGaming/status/2113745127453659270",
       "created_at": "2026-10-23T21:31:24.000Z",
@@ -293,6 +311,7 @@
     },
     {
       "id": "2113677287908360502",
+      "author_id": "815409347689934848",
       "text": "Ya arrancó el evento de Halloween 2026 y trajo el Candy Hunt cada dos días para farmear hasta un M249, sumado a la Frankenstein's table para armar tu propio monstruo con partes de cuerpos y controlarlo con la P. https://t.co/ER8F9wWYlb",
       "url": "https://x.com/CalaveraGaming/status/2113677287908360502",
       "created_at": "2026-10-23T17:01:50.000Z",
@@ -309,6 +328,7 @@
     },
     {
       "id": "2113352596358394198",
+      "author_id": "815409347689934848",
       "text": "¿Arrancamos ABISAL junto a DEOWASD en este evento de Rust Islas o nos armamos mejor antes? Pasen a tirar ideas al chat. 💀 #Rust https://t.co/R3hbnzkoSR",
       "url": "https://x.com/CalaveraGaming/status/2113352596358394198",
       "created_at": "2026-10-22T19:31:37.000Z",
