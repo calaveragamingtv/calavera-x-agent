@@ -121,6 +121,21 @@ async function main() {
                 const data = typeof tweet.toJSON === 'function'
                     ? tweet.toJSON()
                     : tweet;
+                
+                if (!globalThis.authorDebugDone) {
+                    globalThis.authorDebugDone = true;
+                
+                    console.log('RAW TWEET FIELDS:', Object.keys(data));
+                
+                    for (const [key, value] of Object.entries(data)) {
+                        if (value && typeof value === 'object') {
+                            console.log(
+                                `NESTED FIELD ${key}:`,
+                                Object.keys(value)
+                            );
+                        }
+                    }
+                }
 
                 if (!data?.id) {
                     continue;
