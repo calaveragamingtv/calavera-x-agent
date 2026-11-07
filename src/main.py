@@ -1,5 +1,6 @@
 
 import json
+import subprocess
 from pathlib import Path
 from datetime import datetime, timezone
 
@@ -16,6 +17,8 @@ DATA_DIR = Path("data")
 POSTS_FILE = DATA_DIR / "posts.json"
 RETTIWT_FILE = DATA_DIR / "rettiwt_posts.json"
 RANKING_FILE = DATA_DIR / "ranking.json"
+
+REPLY_ACTION_SCRIPT = Path("src/actions/x_reply.mjs")
 
 
 def save_json(file_path, data):
@@ -206,7 +209,77 @@ def generate_reply_drafts(tracker, eligible_ids, rankings):
             print(f"Reply generation failed for {post_id}: {error}")
             raise
 
-    print("\nDry run only: generated replies were saved, not sent to X.")
+    print("\nReply drafts generated or preserved.")
+
+
+def test_reply_drafts(tracker, eligible_ids):
+    print("\nTesting reply drafts with Node.js...")
+
+    if not eligible_ids:
+        print("No eligible replies to test.")
+        return
+
+    if not REPLY_ACTION_SCRIPT.exists():
+        raise FileNotFoundError(
+            f"Reply action script not found: {REPLY_ACTION_SCRIPT}"
+        )
+
+    tested = 0
+
+    for post_id in eligible_ids:
+        post = tracker.get_post(post_id)
+
+        if not post:
+            print(f"Reply test skipped: post not found ({post_id})")
+            continue
+
+        reply_action = post.get("actions", {}).get("reply", {})
+
+        if reply_action.get("status") != "drafted":
+            print(
+                f"Reply test skipped for {post_id}: "
+                f"status is {reply_action.get('status')}"
+            )
+            continue
+
+        payload = reply_action.get("payload") or {}
+        reply_text = payload.get("reply_text")
+
+        if not isinstance(reply_text, str) or not reply_text.strip():
+            print(f"Reply test skipped: empty draft ({post_id})")
+            continue
+
+        request = {
+            "post_id": post_id,
+            "reply_text": reply_text
+        }
+
+        print(f"\nTesting reply for post {post_id}...")
+
+        result = subprocess.run(
+            ["node", str(REPLY_ACTION_SCRIPT)],
+            input=json.dumps(request, ensure_ascii=False),
+            capture_output=True,
+            text=True,
+            check=False
+        )
+
+        if result.stdout:
+            print(result.stdout.strip())
+
+        if result.stderr:
+            print(result.stderr.strip())
+
+        if result.returncode != 0:
+            raise RuntimeError(
+                f"Node.js reply dry run failed for post {post_id} "
+                f"with exit code {result.returncode}"
+            )
+
+        tested += 1
+
+    print(f"\nReply drafts tested successfully: {tested}")
+    print("DRY RUN: no replies were published to X.")
 
 
 def main():
@@ -230,10 +303,10 @@ def main():
     # 3. Load persistent tracker
     tracker = PostTracker()
 
-    # 4. Migrate the existing draft before recovery.
+    # 4. Migrate existing drafts before recovery
     migrate_existing_reply_drafts(tracker)
 
-    # 5. Recover only interrupted sending operations.
+    # 5. Recover interrupted sending operations
     recover_interrupted_replies(tracker)
 
     # 6. Register new posts
@@ -326,14 +399,20 @@ def main():
         all_rankings
     )
 
-    # 10. Generate and persist drafts without publishing
+    # 10. Generate and persist reply drafts
     generate_reply_drafts(
         tracker,
         eligible,
         all_rankings
     )
 
-    print(f"Tracker contains {len(tracker.data['posts'])} posts")
+    # 11. Test the saved drafts through Node.js (DRY RUN)
+    test_reply_drafts(
+        tracker,
+        eligible
+    )
+
+    print(f"\nTracker contains {len(tracker.data['posts'])} posts")
     print("\nX Agent completed successfully")
 
 
