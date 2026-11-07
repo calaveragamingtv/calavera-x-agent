@@ -18,4 +18,4 @@ jobs:
           python-version: "3.12"
 
       - name: Run tracker tests
-        run: python -m src/test_tracker
+        run: python -m src.test_tracker
