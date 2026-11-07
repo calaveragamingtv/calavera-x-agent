@@ -12,6 +12,7 @@ class PostTracker:
 
     ACTION_STATUSES = (
         "not_started",
+        "drafted",
         "processing",
         "completed",
         "failed",
@@ -45,7 +46,6 @@ class PostTracker:
         if not isinstance(data, dict):
             raise RuntimeError("Invalid processed_posts.json structure")
 
-        # Already using the new structure.
         if isinstance(data.get("posts"), dict):
             changed = False
 
@@ -53,10 +53,20 @@ class PostTracker:
                 if not isinstance(post, dict):
                     continue
 
-                actions = post.setdefault("actions", {})
+                actions = post.get("actions")
+
+                if not isinstance(actions, dict):
+                    actions = {}
+                    post["actions"] = actions
+                    changed = True
 
                 for action in self.ACTIONS:
-                    action_data = actions.setdefault(action, {})
+                    action_data = actions.get(action)
+
+                    if not isinstance(action_data, dict):
+                        action_data = {}
+                        actions[action] = action_data
+                        changed = True
 
                     defaults = {
                         "status": "not_started",
@@ -204,12 +214,10 @@ class PostTracker:
                 "url": post.get("url"),
                 "created_at": post.get("created_at") or post.get("createdAt"),
                 "first_seen_at": self._now(),
-
                 "analysis": {
                     "status": "pending",
                     "result": None
                 },
-
                 "actions": {
                     action: {
                         "status": "not_started",
@@ -262,6 +270,67 @@ class PostTracker:
 
         self._save()
 
+    def migrate_legacy_reply_drafts(self) -> int:
+        """
+        Converts previously generated reply drafts stored as processing
+        into drafted, without losing their text or counting them as sent.
+        """
+        migrated = 0
+
+        for post in self.data["posts"].values():
+            action = post.get("actions", {}).get("reply", {})
+
+            if action.get("status") != "processing":
+                continue
+
+            payload = action.get("payload")
+
+            if not isinstance(payload, dict):
+                continue
+
+            if payload.get("stage") is not None:
+                continue
+
+            payload["stage"] = "drafted"
+            action["status"] = "drafted"
+            action["error"] = None
+
+            migrated += 1
+
+        if migrated:
+            self._save()
+
+        return migrated
+
+    def mark_action_drafted(
+        self,
+        post_id: str,
+        action: str,
+        payload: dict
+    ) -> None:
+        self._validate_action(action)
+
+        if not isinstance(payload, dict):
+            raise ValueError("Action payload must be a dictionary")
+
+        post = self._get_post(post_id)
+        action_data = post["actions"][action]
+
+        if action_data["status"] not in ("not_started", "failed"):
+            raise RuntimeError(
+                f"Cannot save {action} draft for {post_id}: "
+                f"current status is {action_data['status']}"
+            )
+
+        saved_payload = dict(payload)
+        saved_payload["stage"] = "drafted"
+
+        action_data["status"] = "drafted"
+        action_data["payload"] = saved_payload
+        action_data["error"] = None
+
+        self._save()
+
     def mark_action_started(
         self,
         post_id: str,
@@ -273,18 +342,33 @@ class PostTracker:
         post = self._get_post(post_id)
         action_data = post["actions"][action]
 
-        if action_data["status"] not in ("not_started", "failed"):
+        if action_data["status"] not in (
+            "not_started",
+            "drafted",
+            "failed"
+        ):
             raise RuntimeError(
                 f"Cannot start {action} for {post_id}: "
                 f"current status is {action_data['status']}"
             )
+
+        if payload is not None:
+            if not isinstance(payload, dict):
+                raise ValueError("Action payload must be a dictionary")
+
+            saved_payload = dict(payload)
+        else:
+            saved_payload = action_data.get("payload")
+
+        if isinstance(saved_payload, dict):
+            saved_payload["stage"] = "sending"
 
         action_data["status"] = "processing"
         action_data["attempts"] += 1
         action_data["last_attempt_at"] = self._now()
         action_data["error"] = None
         action_data["external_id"] = None
-        action_data["payload"] = payload
+        action_data["payload"] = saved_payload
 
         self._save()
 
@@ -324,8 +408,8 @@ class PostTracker:
         action: str | None = None
     ) -> int:
         """
-        Marks interrupted processing actions as unknown.
-        They must never be retried automatically.
+        Marks interrupted sending actions as unknown.
+        Drafted actions are preserved and never recovered as interrupted.
         """
         if action is not None:
             self._validate_action(action)
@@ -345,6 +429,19 @@ class PostTracker:
                 action_data = actions.get(action_name, {})
 
                 if action_data.get("status") != "processing":
+                    continue
+
+                payload = action_data.get("payload")
+
+                # A legacy reply draft may still be in processing.
+                # Preserve it rather than treating it as a sent action.
+                if (
+                    action_name == "reply"
+                    and isinstance(payload, dict)
+                    and payload.get("stage") == "drafted"
+                ):
+                    action_data["status"] = "drafted"
+                    recovered += 1
                     continue
 
                 action_data["status"] = "unknown"
@@ -376,6 +473,15 @@ class PostTracker:
             post_id
             for post_id, post in self.data["posts"].items()
             if post["actions"][action]["status"] in ("not_started", "failed")
+        ]
+
+    def get_drafted_action_ids(self, action: str) -> list[str]:
+        self._validate_action(action)
+
+        return [
+            post_id
+            for post_id, post in self.data["posts"].items()
+            if post["actions"][action]["status"] == "drafted"
         ]
 
     def _get_post(self, post_id: str) -> dict:
