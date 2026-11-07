@@ -1,0 +1,24 @@
+{
+  "2118878190437273865": {
+    "text": "El patch Printed and Polished ya está disponible...",
+    "url": "https://x.com/CalaveraGaming/status/2118878190437273865",
+    "created_at": "2026-11-07T01:28:22.000Z",
+    "first_seen_at": "2026-11-07T02:00:00Z",
+    "analysis": {
+      "status": "completed",
+      "score": 85,
+      "recommended_action": "reply"
+    },
+    "actions": {
+      "like": {
+        "status": "not_started"
+      },
+      "reply": {
+        "status": "not_started"
+      },
+      "repost": {
+        "status": "not_started"
+      }
+    }
+  }
+}
