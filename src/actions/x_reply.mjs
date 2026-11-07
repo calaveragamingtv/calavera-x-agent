@@ -1,7 +1,8 @@
 
 import process from 'node:process';
+import { isActionEnabled } from './action_config.mjs';
 
-const REAL_POSTING_ENABLED = false;
+
 
 async function readInput() {
     let input = '';
@@ -44,8 +45,10 @@ async function main() {
         console.error('X Reply Action initialized');
         console.error(`Original post ID: ${postId}`);
         console.error(`Reply length: ${replyText.length}/280`);
-
-        if (!REAL_POSTING_ENABLED) {
+        
+        const enabled = await isActionEnabled('reply');
+        
+        if (!enabled) {
             console.error('DRY RUN: no request was sent to X.');
 
             outputResult({
