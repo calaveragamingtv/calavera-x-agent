@@ -164,6 +164,9 @@ async function main() {
 
                 postsById.set(postId, {
                     id: postId,
+                    author_id: data.tweetBy?.id
+                        ? String(data.tweetBy.id)
+                        : null,
                     text: data.fullText ?? '',
                     url: data.url ?? null,
                     created_at: data.createdAt ?? null,
