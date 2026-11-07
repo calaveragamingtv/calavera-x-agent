@@ -46,6 +46,16 @@ def load_rettiwt_posts():
     return posts
 
 
+def recover_interrupted_replies(tracker):
+    print("\nRecovering interrupted replies...")
+
+    recovered = tracker.recover_interrupted_actions("reply")
+
+    print(f"Interrupted replies recovered: {recovered}")
+
+    return recovered
+
+
 def evaluate_reply_eligibility(tracker, rankings):
     print("\nEvaluating reply eligibility...")
 
@@ -101,9 +111,6 @@ def evaluate_reply_eligibility(tracker, rankings):
 
         eligible.append(post_id)
 
-        # Reserve the slot during this evaluation.
-        # This prevents multiple posts from the same author
-        # from being considered eligible in the same run.
         planned_total += 1
         planned_by_author[author_id] = (
             planned_by_author.get(author_id, 0) + 1
@@ -142,14 +149,18 @@ def main():
         "posts": posts
     })
 
-    # 3. Register posts in persistent tracker
+    # 3. Load persistent tracker
     tracker = PostTracker()
 
+    # 4. Recover replies interrupted during a previous execution
+    recover_interrupted_replies(tracker)
+
+    # 5. Register new posts
     new_ids = tracker.register_posts(posts)
 
     print(f"New posts registered: {len(new_ids)}")
 
-    # 4. Get posts that still need analysis
+    # 6. Get posts that still need analysis
     pending_ids = tracker.get_unanalyzed_ids()
 
     print(f"Posts pending analysis: {len(pending_ids)}")
@@ -179,7 +190,7 @@ def main():
                 for item in result["ranking"]
             }
 
-            # 5. Persist each successful analysis
+            # 7. Persist each successful analysis
             for post_id in pending_ids:
                 tracker.mark_analysis_completed(
                     post_id,
@@ -202,7 +213,7 @@ def main():
     else:
         print("No posts require analysis. Skipping Gemini.")
 
-    # 6. Generate ranking from all completed analyses
+    # 8. Generate ranking from all completed analyses
     all_rankings = []
 
     for post_id, post in tracker.data["posts"].items():
@@ -229,7 +240,7 @@ def main():
 
     print(f"Ranking saved: {len(all_rankings)} analyzed posts")
 
-    # 7. Evaluate reply eligibility without executing actions
+    # 9. Evaluate reply eligibility without executing actions
     eligible, blocked = evaluate_reply_eligibility(
         tracker,
         all_rankings
