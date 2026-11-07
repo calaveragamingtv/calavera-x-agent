@@ -7,7 +7,7 @@ from src.ai.gemini_analyzer import GeminiAnalyzer
 from src.post_tracker import PostTracker
 
 
-USERNAME = "CalaveraGaming"
+USERNAME = "monitored_accounts"
 LIMIT = 10
 
 DATA_DIR = Path("data")
@@ -42,7 +42,7 @@ def load_rettiwt_posts():
         if not isinstance(post, dict) or not post.get("id"):
             raise ValueError("Invalid post: missing ID")
 
-    return posts[:LIMIT]
+    return posts
 
 
 def main():
