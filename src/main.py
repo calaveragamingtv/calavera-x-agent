@@ -9,6 +9,7 @@ from src.post_tracker import PostTracker
 
 USERNAME = "monitored_accounts"
 LIMIT = 10
+MAX_TOTAL_REPLIES = 2
 
 DATA_DIR = Path("data")
 POSTS_FILE = DATA_DIR / "posts.json"
@@ -45,6 +46,84 @@ def load_rettiwt_posts():
     return posts
 
 
+def evaluate_reply_eligibility(tracker, rankings):
+    print("\nEvaluating reply eligibility...")
+
+    candidates = [
+        item
+        for item in rankings
+        if item.get("recommended_action") == "reply"
+    ]
+
+    candidates.sort(
+        key=lambda item: item.get("score", 0),
+        reverse=True
+    )
+
+    planned_total = 0
+    planned_by_author = {}
+
+    eligible = []
+    blocked = []
+
+    for item in candidates:
+        post_id = str(item["post_id"])
+        post = tracker.get_post(post_id)
+
+        if not post:
+            blocked.append((post_id, "post_not_found"))
+            continue
+
+        author_id = post.get("author_id")
+
+        if not author_id:
+            blocked.append((post_id, "missing_author_id"))
+            continue
+
+        author_id = str(author_id)
+
+        usage = tracker.get_reply_usage(author_id)
+
+        if (
+            usage["total_replies"] + planned_total
+            >= MAX_TOTAL_REPLIES
+        ):
+            blocked.append((post_id, "global_test_limit_reached"))
+            continue
+
+        if (
+            usage["author_replies_today"]
+            + planned_by_author.get(author_id, 0)
+            >= 1
+        ):
+            blocked.append((post_id, "author_daily_limit_reached"))
+            continue
+
+        eligible.append(post_id)
+
+        # Reserve the slot during this evaluation.
+        # This prevents multiple posts from the same author
+        # from being considered eligible in the same run.
+        planned_total += 1
+        planned_by_author[author_id] = (
+            planned_by_author.get(author_id, 0) + 1
+        )
+
+    print(f"Reply candidates from Gemini: {len(candidates)}")
+    print(f"Eligible replies: {len(eligible)}")
+    print(f"Blocked replies: {len(blocked)}")
+
+    for post_id in eligible:
+        print(f"Reply eligible: {post_id}")
+
+    for post_id, reason in blocked:
+        print(f"Reply blocked: {post_id} ({reason})")
+
+    print("Dry run only: no actions sent to X.")
+
+    return eligible, blocked
+
+
 def main():
     print("Starting X Agent")
 
@@ -75,10 +154,9 @@ def main():
 
     print(f"Posts pending analysis: {len(pending_ids)}")
 
+    analyzer = None
+
     if pending_ids:
-        # Build analysis input from tracker.
-        # This also includes previously failed posts that
-        # are no longer present in the latest Rettiwt timeline.
         pending_posts = []
 
         for post_id in pending_ids:
@@ -144,18 +222,20 @@ def main():
     save_json(RANKING_FILE, {
         "account": USERNAME,
         "analyzed_at": datetime.now(timezone.utc).isoformat(),
-        "model": (
-            analyzer.model
-            if pending_ids
-            else None
-        ),
+        "model": analyzer.model if analyzer else None,
         "total": len(all_rankings),
         "ranking": all_rankings
     })
 
     print(f"Ranking saved: {len(all_rankings)} analyzed posts")
-    print(f"Tracker contains {len(tracker.data['posts'])} posts")
 
+    # 7. Evaluate reply eligibility without executing actions
+    eligible, blocked = evaluate_reply_eligibility(
+        tracker,
+        all_rankings
+    )
+
+    print(f"Tracker contains {len(tracker.data['posts'])} posts")
     print("\nX Agent completed successfully")
 
 
