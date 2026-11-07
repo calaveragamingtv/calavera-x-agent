@@ -982,6 +982,55 @@
         }
       },
       "author_id": "815409347689934848"
+    },
+    "2119113024111812800": {
+      "id": "2119113024111812800",
+      "author_id": "815409347689934848",
+      "text": "Adiós a gastar scrap en los tech trees. Vuelven los fragments, pages y books para avanzar. O te hacés de alianzas para conseguir lo que te falta o te quedás atrás. https://t.co/ly0RmnIftK",
+      "url": "https://x.com/CalaveraGaming/status/2119113024111812800",
+      "created_at": "2026-11-07T17:01:30.000Z",
+      "first_seen_at": "2026-11-07T20:03:33.802254+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2119113024111812800",
+          "score": 95,
+          "category": "update",
+          "priority": "high",
+          "recommended_action": "repost",
+          "reason": "Trata sobre un cambio radical y muy esperado en la progresión de Rust (vuelta de fragments, pages y books, adiós a los tech trees), lo cual genera altísimo impacto en la comunidad, debate y oportunidad perfecta para que CalaveraGaming comparta su postura."
+        },
+        "completed_at": "2026-11-07T20:03:35.024203+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      }
     }
   }
 }

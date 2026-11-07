@@ -1,9 +1,17 @@
 {
   "account": "monitored_accounts",
-  "analyzed_at": "2026-11-07T15:33:52.220216+00:00",
-  "model": null,
-  "total": 19,
+  "analyzed_at": "2026-11-07T20:03:35.026447+00:00",
+  "model": "gemini-3.5-flash-lite",
+  "total": 20,
   "ranking": [
+    {
+      "post_id": "2119113024111812800",
+      "score": 95,
+      "category": "update",
+      "priority": "high",
+      "recommended_action": "repost",
+      "reason": "Trata sobre un cambio radical y muy esperado en la progresión de Rust (vuelta de fragments, pages y books, adiós a los tech trees), lo cual genera altísimo impacto en la comunidad, debate y oportunidad perfecta para que CalaveraGaming comparta su postura."
+    },
     {
       "post_id": "2115440881591349591",
       "score": 90,
