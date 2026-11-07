@@ -2,6 +2,7 @@
 import json
 import os
 
+from zoneinfo import ZoneInfo
 from pathlib import Path
 from datetime import datetime, timezone
 
@@ -317,3 +318,79 @@ class PostTracker:
     def _validate_action(self, action: str) -> None:
         if action not in self.ACTIONS:
             raise ValueError(f"Unsupported action: {action}")
+
+    @staticmethod
+    def _argentina_date(timestamp: str | None):
+        if not timestamp:
+            return None
+
+        try:
+            parsed = datetime.fromisoformat(
+                timestamp.replace("Z", "+00:00")
+            )
+
+            if parsed.tzinfo is None:
+                parsed = parsed.replace(tzinfo=timezone.utc)
+
+            return parsed.astimezone(
+                ZoneInfo("America/Argentina/Buenos_Aires")
+            ).date()
+
+        except (ValueError, TypeError):
+            return None
+
+    def get_reply_usage(self, author_id: str) -> dict:
+        today = datetime.now(
+            ZoneInfo("America/Argentina/Buenos_Aires")
+        ).date()
+
+        author_id = str(author_id)
+
+        total_replies = 0
+        author_replies_today = 0
+
+        for post in self.data["posts"].values():
+            action = post.get("actions", {}).get("reply", {})
+            status = action.get("status")
+
+            if status not in ("completed", "unknown"):
+                continue
+
+            total_replies += 1
+
+            timestamp = (
+                action.get("completed_at")
+                if status == "completed"
+                else action.get("last_attempt_at")
+            )
+
+            if (
+                str(post.get("author_id") or "") == author_id
+                and self._argentina_date(timestamp) == today
+            ):
+                author_replies_today += 1
+
+        return {
+            "total_replies": total_replies,
+            "author_replies_today": author_replies_today,
+            "today": today.isoformat()
+        }
+
+    def can_reply_to_author_today(
+        self,
+        author_id: str,
+        max_total_replies: int = 2
+    ) -> tuple[bool, str]:
+
+        if not author_id:
+            return False, "missing_author_id"
+
+        usage = self.get_reply_usage(author_id)
+
+        if usage["total_replies"] >= max_total_replies:
+            return False, "global_test_limit_reached"
+
+        if usage["author_replies_today"] >= 1:
+            return False, "author_daily_limit_reached"
+
+        return True, "allowed"
