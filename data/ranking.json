@@ -1,9 +1,17 @@
 {
-  "account": "CalaveraGaming",
-  "analyzed_at": "2026-11-07T02:34:52.265817+00:00",
-  "model": null,
-  "total": 9,
+  "account": "monitored_accounts",
+  "analyzed_at": "2026-11-07T03:11:03.204418+00:00",
+  "model": "gemini-3.5-flash-lite",
+  "total": 19,
   "ranking": [
+    {
+      "post_id": "2115440881591349591",
+      "score": 90,
+      "category": "update",
+      "priority": "high",
+      "recommended_action": "repost",
+      "reason": "Detalla con precisión el parche oficial de Halloween 2026, incluyendo mecánicas clave como el Candy Hunt, la mesa de Frankenstein y los portales, ideal para posicionar la cuenta como fuente de información útil."
+    },
     {
       "post_id": "2116214057229246565",
       "score": 85,
@@ -11,6 +19,22 @@
       "priority": "high",
       "recommended_action": "reply",
       "reason": "Menciona una novedad importante dentro del juego como los portales de cultistas, ideal para debatir mecánicas con la comunidad."
+    },
+    {
+      "post_id": "2114764536515317983",
+      "score": 85,
+      "category": "update",
+      "priority": "high",
+      "recommended_action": "ignore",
+      "reason": "Menciona el inicio del parche de Halloween 2026 y sus mecánicas principales, pero al ser similar y posterior a otros tweets informativos del parche, tiene menor novedad."
+    },
+    {
+      "post_id": "2113677287908360502",
+      "score": 85,
+      "category": "update",
+      "priority": "high",
+      "recommended_action": "ignore",
+      "reason": "Excelente resumen técnico y práctico del evento de Halloween 2026 y la Frankenstein's table, aunque temporalmente ya fue cubierto por publicaciones más recientes."
     },
     {
       "post_id": "2116576282876027280",
@@ -21,12 +45,36 @@
       "reason": "Toca el tema de los drops exclusivos de Twitch Rivals, un evento relevante para creadores y espectadores de Rust."
     },
     {
+      "post_id": "2115851580268237173",
+      "score": 75,
+      "category": "gameplay",
+      "priority": "high",
+      "recommended_action": "repost",
+      "reason": "Comparte una experiencia directa y divertida utilizando una de las mecánicas nuevas del evento de Halloween (el monstruo de Frankenstein y su control con la P), excelente para generar identidad."
+    },
+    {
+      "post_id": "2115489259197014282",
+      "score": 70,
+      "category": "event",
+      "priority": "high",
+      "recommended_action": "repost",
+      "reason": "Destaca la dinámica rápida del Candy Hunt dentro del evento de Halloween, generando curiosidad y contexto sobre el ambiente actual de los servidores."
+    },
+    {
       "post_id": "2118448648484765698",
       "score": 65,
       "category": "gameplay",
       "priority": "medium",
       "recommended_action": "ignore",
       "reason": "Publicación propia sobre el inicio del wipe, útil para la actividad de la cuenta pero sin generar nueva información externa."
+    },
+    {
+      "post_id": "2113352596358394198",
+      "score": 65,
+      "category": "event",
+      "priority": "medium",
+      "recommended_action": "reply",
+      "reason": "Involucra un evento activo de Rust Islas junto a otros creadores (DEOWASD), lo que ofrece una oportunidad moderada de interacción con la comunidad."
     },
     {
       "post_id": "2118776885878386718",
@@ -69,12 +117,44 @@
       "reason": "Comentario sobre objetos del juego (Skull Trophy Pack) y dinámicas de raideo por rencor."
     },
     {
+      "post_id": "2115549586970259890",
+      "score": 55,
+      "category": "discussion",
+      "priority": "medium",
+      "recommended_action": "ignore",
+      "reason": "Posteo de convocatoria clásico para iniciar directo o debate sobre el inicio de un wipe, enfocado en la propia comunidad del autor."
+    },
+    {
+      "post_id": "2114832284054339880",
+      "score": 50,
+      "category": "discussion",
+      "priority": "medium",
+      "recommended_action": "ignore",
+      "reason": "Pregunta interactiva orientada a la audiencia sobre estrategias de wipe, útil para el stream propio pero de baja relevancia externa."
+    },
+    {
+      "post_id": "2114118753566720304",
+      "score": 50,
+      "category": "discussion",
+      "priority": "medium",
+      "recommended_action": "ignore",
+      "reason": "Consigna típica para abrir debate sobre PvP y raids en el chat, sin aportar novedades informativas sobre el juego en general."
+    },
+    {
       "post_id": "2117368999033856445",
       "score": 45,
       "category": "creator",
       "priority": "medium",
       "recommended_action": "ignore",
       "reason": "Mención o recordatorio de stream del canal."
+    },
+    {
+      "post_id": "2113745127453659270",
+      "score": 45,
+      "category": "discussion",
+      "priority": "medium",
+      "recommended_action": "ignore",
+      "reason": "Consulta orientada a la retención de la propia audiencia sobre entrar tarde a un wipe, con bajo impacto analítico externo."
     }
   ]
 }

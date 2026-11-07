@@ -447,6 +447,456 @@
           "external_id": null
         }
       }
+    },
+    "2115851580268237173": {
+      "id": "2115851580268237173",
+      "text": "Armarte tu propio Frankenstein, sacarlo a pasear con la P y que mate al primer pesado que te cruces en el mapa es el mejor agregado del evento. https://t.co/P7SuJRHbg9",
+      "url": "https://x.com/CalaveraGaming/status/2115851580268237173",
+      "created_at": "2026-10-29T17:01:42.000Z",
+      "first_seen_at": "2026-11-07T03:10:59.697289+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2115851580268237173",
+          "score": 75,
+          "category": "gameplay",
+          "priority": "high",
+          "recommended_action": "repost",
+          "reason": "Comparte una experiencia directa y divertida utilizando una de las mecánicas nuevas del evento de Halloween (el monstruo de Frankenstein y su control con la P), excelente para generar identidad."
+        },
+        "completed_at": "2026-11-07T03:11:03.188731+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        }
+      }
+    },
+    "2115549586970259890": {
+      "id": "2115549586970259890",
+      "text": "¿Arrancamos con una roca y una piedra en la playa o se pudre todo y sale snowball hoy? Pasen a tirar ideas al chat. 💀 #Rust https://t.co/r8gIvLIihw",
+      "url": "https://x.com/CalaveraGaming/status/2115549586970259890",
+      "created_at": "2026-10-28T21:01:41.000Z",
+      "first_seen_at": "2026-11-07T03:10:59.697301+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2115549586970259890",
+          "score": 55,
+          "category": "discussion",
+          "priority": "medium",
+          "recommended_action": "ignore",
+          "reason": "Posteo de convocatoria clásico para iniciar directo o debate sobre el inicio de un wipe, enfocado en la propia comunidad del autor."
+        },
+        "completed_at": "2026-11-07T03:11:03.190720+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        }
+      }
+    },
+    "2115489259197014282": {
+      "id": "2115489259197014282",
+      "text": "Tres minutos de Candy Hunt y tenés a todo el server corriendo como desesperados para rascar un M249 antes de que termine octubre. https://t.co/fVSeqsiucT",
+      "url": "https://x.com/CalaveraGaming/status/2115489259197014282",
+      "created_at": "2026-10-28T17:01:57.000Z",
+      "first_seen_at": "2026-11-07T03:10:59.697307+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2115489259197014282",
+          "score": 70,
+          "category": "event",
+          "priority": "high",
+          "recommended_action": "repost",
+          "reason": "Destaca la dinámica rápida del Candy Hunt dentro del evento de Halloween, generando curiosidad y contexto sobre el ambiente actual de los servidores."
+        },
+        "completed_at": "2026-11-07T03:11:03.192622+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        }
+      }
+    },
+    "2115440881591349591": {
+      "id": "2115440881591349591",
+      "text": "El patch de Halloween 2026 ya está acá con el Candy Hunt cada dos días y premios que van desde scrap hasta un M249. Sumale la mesa de Frankenstein para armar tu propio pet con partes de cuerpos y los nuevos portales misteriosos. https://t.co/aqBbCm4Mr2",
+      "url": "https://x.com/CalaveraGaming/status/2115440881591349591",
+      "created_at": "2026-10-28T13:49:43.000Z",
+      "first_seen_at": "2026-11-07T03:10:59.697310+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2115440881591349591",
+          "score": 90,
+          "category": "update",
+          "priority": "high",
+          "recommended_action": "repost",
+          "reason": "Detalla con precisión el parche oficial de Halloween 2026, incluyendo mecánicas clave como el Candy Hunt, la mesa de Frankenstein y los portales, ideal para posicionar la cuenta como fuente de información útil."
+        },
+        "completed_at": "2026-11-07T03:11:03.194181+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        }
+      }
+    },
+    "2114832284054339880": {
+      "id": "2114832284054339880",
+      "text": "¿Lunes de gorditos sebados o papelón asegurado en el wipe? Pasen a tirar estrategias al chat. 💀 #Rust https://t.co/r8gIvLIihw",
+      "url": "https://x.com/CalaveraGaming/status/2114832284054339880",
+      "created_at": "2026-10-26T21:31:22.000Z",
+      "first_seen_at": "2026-11-07T03:10:59.697315+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2114832284054339880",
+          "score": 50,
+          "category": "discussion",
+          "priority": "medium",
+          "recommended_action": "ignore",
+          "reason": "Pregunta interactiva orientada a la audiencia sobre estrategias de wipe, útil para el stream propio pero de baja relevancia externa."
+        },
+        "completed_at": "2026-11-07T03:11:03.195584+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        }
+      }
+    },
+    "2114764536515317983": {
+      "id": "2114764536515317983",
+      "text": "El patch de Halloween 2026 ya arrancó con el evento Candy Hunt cada dos días in-game y la posibilidad de armar tu propio monstruo de Frankenstein con partes de cuerpos para que te defienda. ¿Vas a farmear caramelos o a cazar momias? https://t.co/c8PdSOrLQU",
+      "url": "https://x.com/CalaveraGaming/status/2114764536515317983",
+      "created_at": "2026-10-26T17:02:10.000Z",
+      "first_seen_at": "2026-11-07T03:10:59.697321+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2114764536515317983",
+          "score": 85,
+          "category": "update",
+          "priority": "high",
+          "recommended_action": "ignore",
+          "reason": "Menciona el inicio del parche de Halloween 2026 y sus mecánicas principales, pero al ser similar y posterior a otros tweets informativos del parche, tiene menor novedad."
+        },
+        "completed_at": "2026-11-07T03:11:03.197169+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        }
+      }
+    },
+    "2114118753566720304": {
+      "id": "2114118753566720304",
+      "text": "¿Armamos tremenda base hoy con PvP, PvE y raid incluida o nos raidean antes de armar el primer muro? Pasen a tirar estrategia al chat. 💀 #Rust https://t.co/r8gIvLIihw",
+      "url": "https://x.com/CalaveraGaming/status/2114118753566720304",
+      "created_at": "2026-10-24T22:16:03.000Z",
+      "first_seen_at": "2026-11-07T03:10:59.697325+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2114118753566720304",
+          "score": 50,
+          "category": "discussion",
+          "priority": "medium",
+          "recommended_action": "ignore",
+          "reason": "Consigna típica para abrir debate sobre PvP y raids en el chat, sin aportar novedades informativas sobre el juego en general."
+        },
+        "completed_at": "2026-11-07T03:11:03.198563+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        }
+      }
+    },
+    "2113745127453659270": {
+      "id": "2113745127453659270",
+      "text": "¿Entrar un día tarde al wipe es pudrición asegurada o todavía se puede salvar la base? Pasen a tirar estrategias al chat. 💀 #Rust https://t.co/r8gIvLIihw",
+      "url": "https://x.com/CalaveraGaming/status/2113745127453659270",
+      "created_at": "2026-10-23T21:31:24.000Z",
+      "first_seen_at": "2026-11-07T03:10:59.697328+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2113745127453659270",
+          "score": 45,
+          "category": "discussion",
+          "priority": "medium",
+          "recommended_action": "ignore",
+          "reason": "Consulta orientada a la retención de la propia audiencia sobre entrar tarde a un wipe, con bajo impacto analítico externo."
+        },
+        "completed_at": "2026-11-07T03:11:03.200068+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        }
+      }
+    },
+    "2113677287908360502": {
+      "id": "2113677287908360502",
+      "text": "Ya arrancó el evento de Halloween 2026 y trajo el Candy Hunt cada dos días para farmear hasta un M249, sumado a la Frankenstein's table para armar tu propio monstruo con partes de cuerpos y controlarlo con la P. https://t.co/ER8F9wWYlb",
+      "url": "https://x.com/CalaveraGaming/status/2113677287908360502",
+      "created_at": "2026-10-23T17:01:50.000Z",
+      "first_seen_at": "2026-11-07T03:10:59.697330+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2113677287908360502",
+          "score": 85,
+          "category": "update",
+          "priority": "high",
+          "recommended_action": "ignore",
+          "reason": "Excelente resumen técnico y práctico del evento de Halloween 2026 y la Frankenstein's table, aunque temporalmente ya fue cubierto por publicaciones más recientes."
+        },
+        "completed_at": "2026-11-07T03:11:03.201469+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        }
+      }
+    },
+    "2113352596358394198": {
+      "id": "2113352596358394198",
+      "text": "¿Arrancamos ABISAL junto a DEOWASD en este evento de Rust Islas o nos armamos mejor antes? Pasen a tirar ideas al chat. 💀 #Rust https://t.co/R3hbnzkoSR",
+      "url": "https://x.com/CalaveraGaming/status/2113352596358394198",
+      "created_at": "2026-10-22T19:31:37.000Z",
+      "first_seen_at": "2026-11-07T03:10:59.697333+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2113352596358394198",
+          "score": 65,
+          "category": "event",
+          "priority": "medium",
+          "recommended_action": "reply",
+          "reason": "Involucra un evento activo de Rust Islas junto a otros creadores (DEOWASD), lo que ofrece una oportunidad moderada de interacción con la comunidad."
+        },
+        "completed_at": "2026-11-07T03:11:03.202857+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null
+        }
+      }
     }
   }
 }
