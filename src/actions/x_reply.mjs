@@ -1,8 +1,5 @@
-
 import process from 'node:process';
 import { isActionEnabled } from './action_config.mjs';
-
-
 
 async function readInput() {
     let input = '';
@@ -45,9 +42,9 @@ async function main() {
         console.error('X Reply Action initialized');
         console.error(`Original post ID: ${postId}`);
         console.error(`Reply length: ${replyText.length}/280`);
-        
+
         const enabled = await isActionEnabled('reply');
-        
+
         if (!enabled) {
             console.error('DRY RUN: no request was sent to X.');
 
@@ -64,7 +61,6 @@ async function main() {
         }
 
         const { Rettiwt } = await import('rettiwt-api');
-
         const apiKey = process.env.RETTIWT_API_KEY;
 
         if (!apiKey) {
