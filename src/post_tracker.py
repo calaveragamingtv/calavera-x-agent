@@ -31,7 +31,7 @@ class PostTracker:
                 "schema_version": 1,
                 "posts": {}
             }
-
+    
         try:
             with self.file_path.open("r", encoding="utf-8") as file:
                 data = json.load(file)
@@ -39,11 +39,92 @@ class PostTracker:
             raise RuntimeError(
                 f"Invalid tracker JSON: {self.file_path}"
             ) from exc
-
-        if not isinstance(data, dict) or not isinstance(data.get("posts"), dict):
+    
+        if not isinstance(data, dict):
             raise RuntimeError("Invalid processed_posts.json structure")
+    
+        # Already using the new structure
+        if isinstance(data.get("posts"), dict):
+            return data
+    
+        # Migrate legacy structure:
+        # {
+        #   "post_id": {
+        #       "text": "...",
+        #       "analysis": {...},
+        #       "actions": {...}
+        #   }
+        # }
+        migrated_posts = {}
+    
+        for post_id, old_post in data.items():
+            if not isinstance(old_post, dict):
+                raise RuntimeError(
+                    f"Invalid legacy post structure: {post_id}"
+                )
+    
+            old_analysis = old_post.get("analysis", {})
+            old_actions = old_post.get("actions", {})
+    
+            if not isinstance(old_analysis, dict):
+                old_analysis = {}
+    
+            if not isinstance(old_actions, dict):
+                old_actions = {}
+    
+            migrated_actions = {}
+    
+            for action in self.ACTIONS:
+                old_action = old_actions.get(action, {})
+    
+                if not isinstance(old_action, dict):
+                    old_action = {}
+    
+                migrated_actions[action] = {
+                    "status": old_action.get("status", "not_started"),
+                    "attempts": old_action.get("attempts", 0),
+                    "last_attempt_at": old_action.get("last_attempt_at"),
+                    "completed_at": old_action.get("completed_at"),
+                    "error": old_action.get("error"),
+                    "external_id": old_action.get("external_id")
+                }
+    
+            analysis_status = old_analysis.get("status", "pending")
+    
+            migrated_analysis = {
+                "status": analysis_status,
+                "result": old_analysis.get("result")
+            }
+    
+            # Preserve results from the previous tracker format.
+            if analysis_status == "completed" and not migrated_analysis["result"]:
+                migrated_analysis["legacy_result"] = old_analysis.copy()
+    
+            migrated_posts[str(post_id)] = {
+                "id": str(post_id),
+                "text": old_post.get("text", ""),
+                "url": old_post.get("url"),
+                "created_at": old_post.get("created_at"),
+                "first_seen_at": old_post.get("first_seen_at", self._now()),
+                "analysis": migrated_analysis,
+                "actions": migrated_actions
+            }
+    
+        migrated_data = {
+            "schema_version": 1,
+            "posts": migrated_posts
+        }
+    
+        print(
+            f"Migrated {len(migrated_posts)} posts "
+            "from legacy tracker format"
+        )
+    
+        self.data = migrated_data
+        self._save()
+    
+        return migrated_data
 
-        return data
 
     def _save(self) -> None:
         temporary_file = self.file_path.with_suffix(".tmp")
