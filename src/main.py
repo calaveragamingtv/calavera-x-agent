@@ -212,6 +212,7 @@ def generate_reply_drafts(tracker, eligible_ids, rankings):
     print("\nReply drafts generated or preserved.")
 
 
+
 def test_reply_drafts(tracker, eligible_ids):
     print("\nTesting reply drafts with Node.js...")
 
@@ -264,17 +265,69 @@ def test_reply_drafts(tracker, eligible_ids):
             check=False
         )
 
-        if result.stdout:
-            print(result.stdout.strip())
-
         if result.stderr:
             print(result.stderr.strip())
 
         if result.returncode != 0:
             raise RuntimeError(
-                f"Node.js reply dry run failed for post {post_id} "
-                f"with exit code {result.returncode}"
+                f"Node.js reply dry run failed for post {post_id}. "
+                f"Exit code: {result.returncode}. "
+                f"Output: {result.stdout.strip()}"
             )
+
+        try:
+            action_result = json.loads(result.stdout.strip())
+        except json.JSONDecodeError as error:
+            raise RuntimeError(
+                f"Invalid JSON returned by Node.js for post {post_id}: "
+                f"{result.stdout.strip()}"
+            ) from error
+
+        if not isinstance(action_result, dict):
+            raise RuntimeError(
+                f"Invalid Node.js response for post {post_id}: "
+                "expected a JSON object"
+            )
+
+        if action_result.get("success") is not True:
+            raise RuntimeError(
+                f"Node.js reported failure for post {post_id}: "
+                f"{action_result.get('error', 'Unknown error')}"
+            )
+
+        if action_result.get("dry_run") is not True:
+            raise RuntimeError(
+                f"Unexpected execution mode for post {post_id}: "
+                "expected dry_run=true"
+            )
+
+        if action_result.get("published") is not False:
+            raise RuntimeError(
+                f"Unexpected publication status for post {post_id}: "
+                "expected published=false"
+            )
+
+        if str(action_result.get("original_post_id")) != str(post_id):
+            raise RuntimeError(
+                f"Post ID mismatch in Node.js response for {post_id}"
+            )
+
+        if action_result.get("reply_text") != reply_text:
+            raise RuntimeError(
+                f"Reply text mismatch in Node.js response for {post_id}"
+            )
+
+        if action_result.get("reply_length") != len(reply_text):
+            raise RuntimeError(
+                f"Reply length mismatch in Node.js response for {post_id}"
+            )
+
+        print(
+            f"Validated Node.js result: "
+            f"success={action_result['success']}, "
+            f"dry_run={action_result['dry_run']}, "
+            f"published={action_result['published']}"
+        )
 
         tested += 1
 
