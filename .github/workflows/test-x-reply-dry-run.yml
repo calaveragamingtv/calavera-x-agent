@@ -1,0 +1,51 @@
+
+name: Test X Reply (Dry Run)
+
+on:
+  workflow_dispatch:
+    inputs:
+      post_id:
+        description: "ID of the original X post"
+        required: true
+        default: "2116214057229246565"
+      reply_text:
+        description: "Reply text to test"
+        required: true
+        default: "Voy a entrar con una antorcha y cero looteo, que pase lo que tenga que pasar"
+
+permissions:
+  contents: read
+
+jobs:
+  test-reply:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Prepare test request
+        env:
+          POST_ID: ${{ inputs.post_id }}
+          REPLY_TEXT: ${{ inputs.reply_text }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+
+          request = {
+              "post_id": os.environ["POST_ID"],
+              "reply_text": os.environ["REPLY_TEXT"]
+          }
+
+          with open("reply_request.json", "w", encoding="utf-8") as file:
+              json.dump(request, file, ensure_ascii=False)
+          PY
+
+      - name: Test reply action (DRY RUN)
+        run: node src/actions/x_reply.mjs < reply_request.json
