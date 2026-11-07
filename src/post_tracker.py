@@ -270,37 +270,44 @@ class PostTracker:
 
         self._save()
 
-    def migrate_legacy_reply_drafts(self) -> int:
-        """
-        Converts previously generated reply drafts stored as processing
-        into drafted, without losing their text or counting them as sent.
-        """
-        migrated = 0
+    
+def migrate_legacy_reply_drafts(self) -> int:
+    """
+    Converts legacy reply drafts stored as processing into drafted.
+    These were generated drafts, not actual publishing attempts.
+    """
+    migrated = 0
 
-        for post in self.data["posts"].values():
-            action = post.get("actions", {}).get("reply", {})
+    for post in self.data["posts"].values():
+        action = post.get("actions", {}).get("reply", {})
 
-            if action.get("status") != "processing":
-                continue
+        if action.get("status") != "processing":
+            continue
 
-            payload = action.get("payload")
+        payload = action.get("payload")
 
-            if not isinstance(payload, dict):
-                continue
+        if not isinstance(payload, dict):
+            continue
 
-            if payload.get("stage") is not None:
-                continue
+        if payload.get("stage") is not None:
+            continue
 
-            payload["stage"] = "drafted"
-            action["status"] = "drafted"
-            action["error"] = None
+        payload["stage"] = "drafted"
 
-            migrated += 1
+        action["status"] = "drafted"
+        action["attempts"] = 0
+        action["last_attempt_at"] = None
+        action["completed_at"] = None
+        action["external_id"] = None
+        action["error"] = None
 
-        if migrated:
-            self._save()
+        migrated += 1
 
-        return migrated
+    if migrated:
+        self._save()
+
+    return migrated
+
 
     def mark_action_drafted(
         self,
@@ -372,6 +379,7 @@ class PostTracker:
 
         self._save()
 
+    
     def mark_action_result(
         self,
         post_id: str,
@@ -381,60 +389,72 @@ class PostTracker:
         external_id: str | None = None
     ) -> None:
         self._validate_action(action)
-
+    
         if status not in ("completed", "failed", "unknown"):
             raise ValueError(f"Invalid action result: {status}")
-
+    
+        if status == "completed" and not external_id:
+            raise ValueError(
+                "Cannot mark action as completed without an external ID"
+            )
+    
         post = self._get_post(post_id)
         action_data = post["actions"][action]
-
+    
         if action_data["status"] != "processing":
             raise RuntimeError(
                 f"Cannot finish {action} for {post_id}: "
                 f"current status is {action_data['status']}"
             )
-
+    
         action_data["status"] = status
         action_data["error"] = error
-        action_data["external_id"] = external_id
-
+        action_data["external_id"] = (
+            str(external_id) if external_id is not None else None
+        )
+    
+        payload = action_data.get("payload")
+    
+        if isinstance(payload, dict):
+            payload["stage"] = status
+    
         if status == "completed":
             action_data["completed_at"] = self._now()
-
+    
         self._save()
 
+
+    
     def recover_interrupted_actions(
         self,
         action: str | None = None
     ) -> int:
         """
         Marks interrupted sending actions as unknown.
-        Drafted actions are preserved and never recovered as interrupted.
+        Drafted actions are preserved.
         """
         if action is not None:
             self._validate_action(action)
-
+    
         recovered = 0
-
+    
         for post in self.data["posts"].values():
             actions = post.get("actions", {})
-
+    
             selected_actions = (
                 [action]
                 if action is not None
                 else self.ACTIONS
             )
-
+    
             for action_name in selected_actions:
                 action_data = actions.get(action_name, {})
-
+    
                 if action_data.get("status") != "processing":
                     continue
-
+    
                 payload = action_data.get("payload")
-
-                # A legacy reply draft may still be in processing.
-                # Preserve it rather than treating it as a sent action.
+    
                 if (
                     action_name == "reply"
                     and isinstance(payload, dict)
@@ -443,18 +463,22 @@ class PostTracker:
                     action_data["status"] = "drafted"
                     recovered += 1
                     continue
-
+    
                 action_data["status"] = "unknown"
                 action_data["error"] = (
                     "Execution interrupted; publication result unknown"
                 )
-
+    
+                if isinstance(payload, dict):
+                    payload["stage"] = "unknown"
+    
                 recovered += 1
-
+    
         if recovered:
             self._save()
-
+    
         return recovered
+
 
     def get_post(self, post_id: str) -> dict | None:
         return self.data["posts"].get(str(post_id))
