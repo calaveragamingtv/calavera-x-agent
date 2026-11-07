@@ -26,71 +26,91 @@ function validateRequest(request) {
     }
 
     if (replyText.length > 280) {
-        throw new Error(
-            `Reply exceeds 280 characters: ${replyText.length}`
-        );
+        throw new Error(`Reply exceeds 280 characters: ${replyText.length}`);
     }
 
-    return {
-        postId,
-        replyText
-    };
+    return { postId, replyText };
+}
+
+function outputResult(result) {
+    process.stdout.write(JSON.stringify(result) + '\n');
 }
 
 async function main() {
-    const request = await readInput();
+    try {
+        const request = await readInput();
+        const { postId, replyText } = validateRequest(request);
 
-    const { postId, replyText } = validateRequest(request);
+        console.error('X Reply Action initialized');
+        console.error(`Original post ID: ${postId}`);
+        console.error(`Reply length: ${replyText.length}/280`);
 
-    console.log('X Reply Action initialized');
-    console.log(`Original post ID: ${postId}`);
-    console.log(`Reply length: ${replyText.length}/280`);
-    console.log(`Reply text: ${replyText}`);
+        if (!REAL_POSTING_ENABLED) {
+            console.error('DRY RUN: no request was sent to X.');
 
-    if (!REAL_POSTING_ENABLED) {
-        console.log('DRY RUN: real posting is disabled.');
-        console.log('No request was sent to X.');
+            outputResult({
+                success: true,
+                dry_run: true,
+                published: false,
+                original_post_id: postId,
+                reply_text: replyText,
+                reply_length: replyText.length
+            });
 
-        return;
+            return;
+        }
+
+        const { Rettiwt } = await import('rettiwt-api');
+
+        const apiKey = process.env.RETTIWT_API_KEY;
+
+        if (!apiKey) {
+            throw new Error('Missing RETTIWT_API_KEY');
+        }
+
+        const rettiwt = new Rettiwt({
+            apiKey,
+            logging: false
+        });
+
+        const result = await rettiwt.tweet.post({
+            text: replyText,
+            replyTo: postId
+        });
+
+        const tweet = typeof result?.toJSON === 'function'
+            ? result.toJSON()
+            : result;
+
+        const replyId = typeof tweet === 'string'
+            ? tweet
+            : tweet?.id;
+
+        if (!replyId) {
+            throw new Error(
+                'Rettiwt did not return a reply ID. Publication status must be verified.'
+            );
+        }
+
+        outputResult({
+            success: true,
+            dry_run: false,
+            published: true,
+            original_post_id: postId,
+            reply_id: String(replyId),
+            reply_url: tweet?.url ?? `https://x.com/i/status/${replyId}`
+        });
+
+    } catch (error) {
+        console.error(`X Reply Action error: ${error.message}`);
+
+        outputResult({
+            success: false,
+            error: error.message
+        });
+
+        process.exitCode = 1;
     }
-
-    const { Rettiwt } = await import('rettiwt-api');
-
-    const apiKey = process.env.RETTIWT_API_KEY;
-
-    if (!apiKey) {
-        throw new Error('Missing RETTIWT_API_KEY');
-    }
-
-    const rettiwt = new Rettiwt({
-        apiKey,
-        logging: false
-    });
-
-    const replyId = await rettiwt.tweet.post({
-        text: replyText,
-        replyTo: postId
-    });
-
-    if (!replyId) {
-        throw new Error(
-            'Rettiwt did not return a reply ID. Publication status must be verified.'
-        );
-    }
-
-    console.log(JSON.stringify({
-        success: true,
-        original_post_id: postId,
-        reply_id: String(replyId),
-        reply_url: `https://x.com/i/status/${replyId}`
-    }));
 }
 
-main().catch(error => {
-    console.error(JSON.stringify({
-        success: false,
-        error: error.message
-    }));
-
-    process.exit(1);
-});
+main();
