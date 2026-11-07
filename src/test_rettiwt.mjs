@@ -37,18 +37,39 @@ async function main() {
         LIMIT
     );
 
-    const tweets = result?.data ?? [];
+    console.log('Timeline response type:', Array.isArray(result) ? 'array' : typeof result);
+    console.log('Timeline response keys:', Object.keys(result ?? {}));
 
-    const posts = tweets.slice(0, LIMIT).map(tweet => ({
-        id: tweet.id,
-        text: tweet.fullText,
-        url: tweet.url,
-        created_at: tweet.createdAt,
-        replies: tweet.replyCount ?? 0,
-        reposts: tweet.retweetCount ?? 0,
-        likes: tweet.likeCount ?? 0,
-        views: tweet.viewCount ?? 0
-    }));
+    const tweets = Array.isArray(result)
+        ? result
+        : Array.isArray(result?.data)
+            ? result.data
+            : [];
+
+    if (tweets.length === 0) {
+        console.log('No tweets found in expected response structure.');
+        console.log('Response preview:', JSON.stringify(result, null, 2).slice(0, 5000));
+        throw new Error('Timeline returned no recognizable tweets');
+    }
+
+    const posts = tweets
+        .slice(0, LIMIT)
+        .map(tweet => {
+            const data = typeof tweet.toJSON === 'function'
+                ? tweet.toJSON()
+                : tweet;
+
+            return {
+                id: data.id,
+                text: data.fullText,
+                url: data.url,
+                created_at: data.createdAt,
+                replies: data.replyCount ?? 0,
+                reposts: data.retweetCount ?? 0,
+                likes: data.likeCount ?? 0,
+                views: data.viewCount ?? 0
+            };
+        });
 
     fs.mkdirSync('data', { recursive: true });
 
@@ -59,7 +80,7 @@ async function main() {
     );
 
     console.log('================================');
-    console.log(`Retrieved ${posts.length} posts`);
+    console.log(`Successfully retrieved ${posts.length} posts`);
 
     for (const post of posts) {
         console.log('--------------------------------');
