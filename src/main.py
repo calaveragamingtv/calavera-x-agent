@@ -4,6 +4,7 @@ from pathlib import Path
 from datetime import datetime, timezone
 
 from src.ai.gemini_analyzer import GeminiAnalyzer
+from src.ai.gemini_reply_generator import GeminiReplyGenerator
 from src.post_tracker import PostTracker
 
 
@@ -91,7 +92,6 @@ def evaluate_reply_eligibility(tracker, rankings):
             continue
 
         author_id = str(author_id)
-
         usage = tracker.get_reply_usage(author_id)
 
         if (
@@ -126,9 +126,50 @@ def evaluate_reply_eligibility(tracker, rankings):
     for post_id, reason in blocked:
         print(f"Reply blocked: {post_id} ({reason})")
 
-    print("Dry run only: no actions sent to X.")
-
     return eligible, blocked
+
+
+def generate_reply_drafts(tracker, eligible_ids, rankings):
+    print("\nGenerating reply drafts...")
+
+    if not eligible_ids:
+        print("No eligible posts. Skipping reply generation.")
+        return
+
+    ranking_by_id = {
+        str(item["post_id"]): item
+        for item in rankings
+    }
+
+    generator = GeminiReplyGenerator()
+
+    for post_id in eligible_ids:
+        post = tracker.get_post(post_id)
+        ranking_item = ranking_by_id.get(post_id)
+
+        if not post:
+            print(f"Reply generation skipped: post not found ({post_id})")
+            continue
+
+        try:
+            reply_text = generator.generate_reply(
+                post,
+                ranking_item
+            )
+
+            if not reply_text:
+                print(f"Reply generation returned empty text: {post_id}")
+                continue
+
+            print(f"\nGenerated reply for post {post_id}:")
+            print(reply_text)
+            print(f"Reply length: {len(reply_text)}/280 characters")
+
+        except Exception as error:
+            print(f"Reply generation failed for {post_id}: {error}")
+            raise
+
+    print("\nDry run only: generated replies were not sent to X.")
 
 
 def main():
@@ -152,7 +193,7 @@ def main():
     # 3. Load persistent tracker
     tracker = PostTracker()
 
-    # 4. Recover replies interrupted during a previous execution
+    # 4. Recover interrupted replies
     recover_interrupted_replies(tracker)
 
     # 5. Register new posts
@@ -160,7 +201,7 @@ def main():
 
     print(f"New posts registered: {len(new_ids)}")
 
-    # 6. Get posts that still need analysis
+    # 6. Analyze posts that need analysis
     pending_ids = tracker.get_unanalyzed_ids()
 
     print(f"Posts pending analysis: {len(pending_ids)}")
@@ -190,7 +231,6 @@ def main():
                 for item in result["ranking"]
             }
 
-            # 7. Persist each successful analysis
             for post_id in pending_ids:
                 tracker.mark_analysis_completed(
                     post_id,
@@ -213,7 +253,7 @@ def main():
     else:
         print("No posts require analysis. Skipping Gemini.")
 
-    # 8. Generate ranking from all completed analyses
+    # 7. Generate ranking from completed analyses
     all_rankings = []
 
     for post_id, post in tracker.data["posts"].items():
@@ -240,9 +280,16 @@ def main():
 
     print(f"Ranking saved: {len(all_rankings)} analyzed posts")
 
-    # 9. Evaluate reply eligibility without executing actions
+    # 8. Evaluate reply eligibility
     eligible, blocked = evaluate_reply_eligibility(
         tracker,
+        all_rankings
+    )
+
+    # 9. Generate reply drafts without publishing
+    generate_reply_drafts(
+        tracker,
+        eligible,
         all_rankings
     )
 
