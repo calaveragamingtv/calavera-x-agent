@@ -419,7 +419,7 @@
           "payload": null
         },
         "reply": {
-          "status": "processing",
+          "status": "drafted",
           "attempts": 1,
           "last_attempt_at": "2026-11-07T15:21:44.405199+00:00",
           "completed_at": null,
@@ -428,7 +428,8 @@
           "payload": {
             "post_id": "2116214057229246565",
             "reply_text": "Voy a entrar con una antorcha y cero looteo, que pase lo que tenga que pasar",
-            "generated_at": "2026-11-07T15:21:44.405179+00:00"
+            "generated_at": "2026-11-07T15:21:44.405179+00:00",
+            "stage": "drafted"
           }
         },
         "repost": {
