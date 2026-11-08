@@ -367,6 +367,39 @@ class PostTracker:
 
         self._save()
 
+    
+    def cancel_like_draft(
+        self,
+        post_id: str,
+        reason: str = "No longer approved by current evaluation"
+    ) -> bool:
+        """
+        Cancels an outdated Like draft.
+
+        This method only affects Likes currently in drafted status.
+        Replies and Reposts are never modified.
+        """
+        post = self.get_post(post_id)
+
+        if post is None:
+            return False
+
+        like_action = post["actions"]["like"]
+
+        if like_action["status"] != "drafted":
+            return False
+
+        like_action["status"] = "not_started"
+        like_action["payload"] = None
+        like_action["error"] = f"Like draft canceled: {reason}"
+        like_action["external_id"] = None
+        like_action["completed_at"] = None
+
+        self._save()
+
+        return True
+
+
     def mark_action_started(
         self,
         post_id: str,
