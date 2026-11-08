@@ -482,49 +482,40 @@ def test_repost_drafts(tracker, rankings):
     print(f"\nRepost drafts tested successfully: {tested}")
     print("DRY RUN: no reposts were published to X.")
 
+def is_stream_announcement(post):
+    if not isinstance(post, dict):
+        return False
 
-def is_stream_announcement(text):
+    text = post.get("text", "")
+
     if not isinstance(text, str) or not text.strip():
+        return False
+
+    # Only consider accounts explicitly configured as streamers.
+    monitored_by = post.get("monitored_by", [])
+
+    if not isinstance(monitored_by, list):
+        return False
+
+    is_streamer = any(
+        isinstance(account, dict)
+        and str(account.get("account_type", "")).lower() == "streamer"
+        for account in monitored_by
+    )
+
+    if not is_streamer:
         return False
 
     normalized = text.lower()
 
+    # A Twitch or Kick channel link is enough.
     platform_link = re.search(
         r"(?:https?://)?(?:www\.)?"
         r"(?:twitch\.tv|kick\.com)/[a-z0-9_]+",
         normalized
     )
 
-    live_phrases = [
-        r"\bestoy en directo\b",
-        r"\bestamos en directo\b",
-        r"\ben directo\b",
-        r"\bestoy en vivo\b",
-        r"\bestamos en vivo\b",
-        r"\ben vivo\b",
-        r"\bestoy on\b",
-        r"\bestamos on\b",
-        r"\bya estamos on\b",
-        r"\bya estoy on\b",
-        r"\bestoy live\b",
-        r"\bestamos live\b",
-        r"\bya estamos live\b",
-        r"\bi['’]m live\b",
-        r"\bwe['’]re live\b",
-        r"\blive now\b",
-        r"\bstream is live\b",
-        r"\bgoing live\b",
-        r"\bstreaming now\b",
-        r"\bprendimos\b",
-        r"\bya prend[ií]\b",
-    ]
-
-    has_live_phrase = any(
-        re.search(pattern, normalized)
-        for pattern in live_phrases
-    )
-
-    return bool(platform_link and has_live_phrase)
+    return bool(platform_link)
 
 
 def generate_like_drafts(tracker, rankings):
@@ -532,9 +523,9 @@ def generate_like_drafts(tracker, rankings):
 
     candidates_by_id = {}
 
-    # Stream announcements have priority over regular interesting posts.
+    # Streamer posts containing Twitch/Kick links have priority.
     for post_id, post in tracker.data["posts"].items():
-        if is_stream_announcement(post.get("text", "")):
+        if is_stream_announcement(post):
             candidates_by_id[str(post_id)] = {
                 "post_id": str(post_id),
                 "reason": "stream_announcement",
@@ -601,7 +592,10 @@ def generate_like_drafts(tracker, rankings):
         like_action = post["actions"]["like"]
 
         if like_action["status"] == "drafted":
-            print(f"Existing like draft preserved: {post_id}")
+            print(
+                f"Existing like draft preserved: {post_id} "
+                f"(reason={candidate['reason']})"
+            )
             continue
 
         payload = {
@@ -627,7 +621,6 @@ def generate_like_drafts(tracker, rankings):
         candidate["post_id"]
         for candidate in selected
     ]
-
 
 def test_like_drafts(tracker, selected_ids):
     print("\nTesting like drafts with Node.js...")
