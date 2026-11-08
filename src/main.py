@@ -26,6 +26,7 @@ LIKE_EVALUATIONS_FILE = DATA_DIR / "like_evaluations.json"
 REPLY_ACTION_SCRIPT = Path("src/actions/x_reply.mjs")
 REPOST_ACTION_SCRIPT = Path("src/actions/x_repost.mjs")
 LIKE_ACTION_SCRIPT = Path("src/actions/x_like.mjs")
+ACTION_CONFIG_FILE = Path("config/x_actions.json")
 
 
 def save_json(file_path, data):
@@ -860,8 +861,46 @@ def generate_like_drafts(tracker, evaluations):
         for candidate in selected
     ]
 
+def load_like_action_config():
+    if not ACTION_CONFIG_FILE.exists():
+        raise FileNotFoundError(
+            f"Action config not found: {ACTION_CONFIG_FILE}"
+        )
+
+    with ACTION_CONFIG_FILE.open("r", encoding="utf-8") as file:
+        config = json.load(file)
+
+    if not isinstance(config, dict):
+        raise ValueError("Invalid action config")
+
+    like_config = config.get("like")
+
+    if not isinstance(like_config, dict):
+        raise ValueError("Missing Like configuration")
+
+    enabled = like_config.get("enabled")
+
+    if not isinstance(enabled, bool):
+        raise ValueError("Invalid Like enabled setting")
+
+    return enabled
+
 def test_like_drafts(tracker, selected_ids):
     print("\nTesting like drafts with Node.js...")
+
+    enabled = load_like_action_config()
+
+    if enabled:
+        print("LIVE LIKE MODE ENABLED")
+
+        if enabled:
+            print("LIVE LIKE MODE ENABLED")
+        
+            # Only one real Like during the initial test.
+            selected_ids = selected_ids[:1]
+
+    else:
+        print("DRY RUN MODE: Like is disabled.")
 
     if not selected_ids:
         print("No eligible likes to test.")
@@ -881,78 +920,184 @@ def test_like_drafts(tracker, selected_ids):
             print(f"Like test skipped: post not found ({post_id})")
             continue
 
-        like_action = post["actions"]["like"]
+        like_action = post.get("actions", {}).get("like", {})
+        status = like_action.get("status")
 
-        if like_action["status"] != "drafted":
+        if status != "drafted":
             print(
                 f"Like test skipped for {post_id}: "
-                f"status is {like_action['status']}"
+                f"status is {status}"
             )
             continue
 
-        request = {"post_id": post_id}
+        request = {"post_id": str(post_id)}
 
         print(f"\nTesting like for post {post_id}...")
 
-        result = subprocess.run(
-            ["node", str(LIKE_ACTION_SCRIPT)],
-            input=json.dumps(request),
-            capture_output=True,
-            text=True,
-            check=False
-        )
-
-        if result.stderr:
-            print(result.stderr.strip())
-
-        if result.returncode != 0:
-            raise RuntimeError(
-                f"Node.js like dry run failed for {post_id}: "
-                f"{result.stdout.strip()}"
+        # DRY RUN: no tracker state transition is necessary.
+        if not enabled:
+            result = subprocess.run(
+                ["node", str(LIKE_ACTION_SCRIPT)],
+                input=json.dumps(request),
+                capture_output=True,
+                text=True,
+                check=False
             )
 
-        try:
-            action_result = json.loads(result.stdout.strip())
-        except json.JSONDecodeError as error:
-            raise RuntimeError(
-                f"Invalid JSON returned by Node.js for like {post_id}: "
-                f"{result.stdout.strip()}"
-            ) from error
+            if result.stderr:
+                print(result.stderr.strip())
 
-        expected = {
-            "success": True,
-            "dry_run": True,
-            "liked": False,
-            "original_post_id": post_id
-        }
-
-        for field, value in expected.items():
-            if action_result.get(field) != value:
+            if result.returncode != 0:
                 raise RuntimeError(
-                    f"Unexpected like result for {post_id}: "
-                    f"{field} expected {value!r}, "
-                    f"got {action_result.get(field)!r}"
+                    f"Node.js like dry run failed for {post_id}: "
+                    f"{result.stdout.strip()}"
                 )
 
-        updated_post = tracker.get_post(post_id)
-        updated_status = updated_post["actions"]["like"]["status"]
+            try:
+                action_result = json.loads(result.stdout.strip())
+            except json.JSONDecodeError as error:
+                raise RuntimeError(
+                    f"Invalid JSON returned by Node.js for like "
+                    f"{post_id}: {result.stdout.strip()}"
+                ) from error
 
-        if updated_status != "drafted":
-            raise RuntimeError(
-                f"Unexpected tracker state after like dry run: "
-                f"{updated_status}"
+            expected = {
+                "success": True,
+                "dry_run": True,
+                "liked": False,
+                "original_post_id": str(post_id)
+            }
+
+            for field, value in expected.items():
+                if action_result.get(field) != value:
+                    raise RuntimeError(
+                        f"Unexpected like result for {post_id}: "
+                        f"{field} expected {value!r}, "
+                        f"got {action_result.get(field)!r}"
+                    )
+
+            updated_post = tracker.get_post(post_id)
+            updated_status = (
+                updated_post["actions"]["like"]["status"]
             )
 
-        print(
-            "Validated: success=True, dry_run=True, "
-            "liked=False, tracker_status=drafted"
+            if updated_status != "drafted":
+                raise RuntimeError(
+                    f"Unexpected tracker state after Like dry run: "
+                    f"{updated_status}"
+                )
+
+            print(
+                "Validated: success=True, dry_run=True, "
+                "liked=False, tracker_status=drafted"
+            )
+
+            tested += 1
+            continue
+
+        # LIVE EXECUTION:
+        # Persist processing BEFORE calling Node.js.
+        tracker.mark_action_started(
+            post_id,
+            "like",
+            {
+                "post_id": str(post_id),
+                "mode": "controlled_live_test",
+                "stage": "sending"
+            }
         )
 
-        tested += 1
+        try:
+            result = subprocess.run(
+                ["node", str(LIKE_ACTION_SCRIPT)],
+                input=json.dumps(request),
+                capture_output=True,
+                text=True,
+                check=False
+            )
 
-    print(f"\nLike drafts tested successfully: {tested}")
-    print("DRY RUN: no likes were sent to X.")
+            if result.stderr:
+                print(result.stderr.strip())
 
+            if result.returncode != 0:
+                raise RuntimeError(
+                    f"Node.js Like action failed. "
+                    f"Exit code: {result.returncode}. "
+                    f"Output: {result.stdout.strip()}"
+                )
+
+            try:
+                action_result = json.loads(result.stdout.strip())
+            except json.JSONDecodeError as error:
+                raise RuntimeError(
+                    f"Invalid JSON returned by Node.js: "
+                    f"{result.stdout.strip()}"
+                ) from error
+
+            expected = {
+                "success": True,
+                "dry_run": False,
+                "liked": True,
+                "original_post_id": str(post_id)
+            }
+
+            for field, value in expected.items():
+                if action_result.get(field) != value:
+                    raise RuntimeError(
+                        f"Unexpected live Like result: "
+                        f"{field} expected {value!r}, "
+                        f"got {action_result.get(field)!r}"
+                    )
+
+            # Rettiwt confirms the Like, but does not return
+            # a separate Like ID. The original post ID is used
+            # as the external reference for this action.
+            tracker.mark_action_result(
+                post_id,
+                "like",
+                "completed",
+                external_id=str(post_id)
+            )
+
+            print(
+                "LIVE LIKE CONFIRMED: "
+                f"post={post_id}, tracker_status=completed"
+            )
+
+            tested += 1
+
+        except Exception as error:
+            # We cannot safely know whether X received the request.
+            # Never retry automatically in this situation.
+            current_post = tracker.get_post(post_id)
+            current_status = (
+                current_post.get("actions", {})
+                .get("like", {})
+                .get("status")
+            )
+
+            if current_status == "processing":
+                tracker.mark_action_result(
+                    post_id,
+                    "like",
+                    "unknown",
+                    error=str(error)
+                )
+
+            print(
+                f"Like result is uncertain for {post_id}. "
+                "Tracker status set to unknown. "
+                "Manual verification is required."
+            )
+
+            raise
+
+    if enabled:
+        print(f"\nLive Likes confirmed: {tested}")
+        print("Only the explicitly authorized post was eligible.")
+    else:
+        print(f"\nLike drafts tested successfully: {tested}")
+        print("DRY RUN: no likes were sent to X.")
 
 def main():
     print("Starting X Agent")
@@ -980,6 +1125,10 @@ def main():
 
     # 5. Recover interrupted sending operations
     recover_interrupted_replies(tracker)
+
+    print("\nRecovering interrupted likes...")
+    recovered_likes = tracker.recover_interrupted_actions("like")
+    print(f"Interrupted likes recovered: {recovered_likes}")
 
     # 6. Register new posts
     new_ids = tracker.register_posts(posts)
