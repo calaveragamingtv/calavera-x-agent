@@ -6,6 +6,6 @@
     "enabled": false
   },
   "like": {
-    "enabled": false
+    "enabled": true
   }
 }
