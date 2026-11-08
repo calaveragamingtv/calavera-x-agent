@@ -98,17 +98,17 @@
           "payload": null
         },
         "reply": {
-          "status": "drafted",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-08T23:58:08.729178+00:00",
+          "completed_at": "2026-11-08T23:58:09.515045+00:00",
           "error": null,
-          "external_id": null,
+          "external_id": "2119580263424679960",
           "payload": {
             "post_id": "2119113024111812800",
             "reply_text": "Se van a matar por tradear en outpost, extrañaba el dolor de cabeza de juntar pages",
-            "generated_at": "2026-11-08T23:02:12.323960+00:00",
-            "stage": "drafted"
+            "mode": "live",
+            "stage": "completed"
           }
         },
         "repost": {
@@ -338,13 +338,21 @@
       },
       "actions": {
         "like": {
-          "status": "not_started",
+          "status": "drafted",
           "attempts": 0,
           "last_attempt_at": null,
           "completed_at": null,
           "error": null,
           "external_id": null,
-          "payload": null
+          "payload": {
+            "post_id": "2117368999033856445",
+            "reason": "stream_announcement",
+            "score": 90,
+            "category": "twitch",
+            "evaluation_reason": "Contiene un enlace válido a la plataforma Twitch.tv, activando la prioridad establecida.",
+            "generated_at": "2026-11-08T23:58:09.628472+00:00",
+            "stage": "drafted"
+          }
         },
         "reply": {
           "status": "not_started",
