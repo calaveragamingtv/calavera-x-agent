@@ -214,20 +214,16 @@
       },
       "actions": {
         "like": {
-          "status": "drafted",
-          "attempts": 0,
-          "last_attempt_at": null,
+          "status": "unknown",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-08T23:04:03.862141+00:00",
           "completed_at": null,
-          "error": null,
+          "error": "Node.js Like action failed. Exit code: 1. Output: {\"success\":false,\"error\":\"Missing RETTIWT_API_KEY\"}",
           "external_id": null,
           "payload": {
             "post_id": "2118776885878386718",
-            "reason": "stream_announcement",
-            "score": 90,
-            "category": "twitch",
-            "evaluation_reason": "La publicación incluye un enlace válido a Twitch.tv, cumpliendo con la prioridad de plataformas de contenido.",
-            "generated_at": "2026-11-08T23:02:16.643238+00:00",
-            "stage": "drafted"
+            "mode": "controlled_live_test",
+            "stage": "unknown"
           }
         },
         "reply": {
