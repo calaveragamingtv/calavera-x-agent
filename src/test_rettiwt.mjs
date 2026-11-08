@@ -7,6 +7,8 @@ const LIMIT = 10;
 const ACCOUNTS_FILE = 'config/monitored_accounts.json';
 const OUTPUT_FILE = 'data/rettiwt_posts.json';
 
+const expandedUrlCache = new Map();
+
 function loadEncryptionKey() {
     const encodedKey = process.env.ACCOUNTS_ENCRYPTION_KEY;
 
@@ -70,6 +72,66 @@ function loadAccounts() {
         }));
 }
 
+async function expandShortUrl(shortUrl) {
+    if (expandedUrlCache.has(shortUrl)) {
+        return expandedUrlCache.get(shortUrl);
+    }
+
+    const promise = (async () => {
+        for (const method of ['HEAD', 'GET']) {
+            let response;
+
+            try {
+                response = await fetch(shortUrl, {
+                    method,
+                    redirect: 'follow',
+                    signal: AbortSignal.timeout(10000)
+                });
+
+                const finalUrl = response.url;
+
+                if (method === 'GET') {
+                    await response.body?.cancel();
+                }
+
+                if (finalUrl && finalUrl !== shortUrl) {
+                    return finalUrl;
+                }
+            } catch (error) {
+                if (method === 'GET') {
+                    console.warn(
+                        `Could not expand URL ${shortUrl}: ${error.message}`
+                    );
+                }
+            }
+        }
+
+        return null;
+    })();
+
+    expandedUrlCache.set(shortUrl, promise);
+
+    return promise;
+}
+
+async function getExpandedUrls(text) {
+    const shortUrls = [
+        ...new Set(
+            (text.match(/https?:\/\/t\.co\/[a-zA-Z0-9]+/g) || [])
+        )
+    ];
+
+    if (shortUrls.length === 0) {
+        return [];
+    }
+
+    const results = await Promise.all(
+        shortUrls.map(url => expandShortUrl(url))
+    );
+
+    return results.filter(Boolean);
+}
+
 async function main() {
     const apiKey = process.env.RETTIWT_API_KEY;
 
@@ -121,27 +183,15 @@ async function main() {
                 const data = typeof tweet.toJSON === 'function'
                     ? tweet.toJSON()
                     : tweet;
-                
-                if (!globalThis.authorDebugDone) {
-                    globalThis.authorDebugDone = true;
-                
-                    console.log('RAW TWEET FIELDS:', Object.keys(data));
-                
-                    for (const [key, value] of Object.entries(data)) {
-                        if (value && typeof value === 'object') {
-                            console.log(
-                                `NESTED FIELD ${key}:`,
-                                Object.keys(value)
-                            );
-                        }
-                    }
-                }
 
                 if (!data?.id) {
                     continue;
                 }
 
                 const postId = String(data.id);
+                const postText = data.fullText ?? '';
+
+                const expandedUrls = await getExpandedUrls(postText);
 
                 const monitoredBy = {
                     account_id: String(user.id),
@@ -159,6 +209,13 @@ async function main() {
                         existing.monitored_by.push(monitoredBy);
                     }
 
+                    existing.expanded_urls = [
+                        ...new Set([
+                            ...(existing.expanded_urls || []),
+                            ...expandedUrls
+                        ])
+                    ];
+
                     continue;
                 }
 
@@ -167,8 +224,9 @@ async function main() {
                     author_id: data.tweetBy?.id
                         ? String(data.tweetBy.id)
                         : null,
-                    text: data.fullText ?? '',
+                    text: postText,
                     url: data.url ?? null,
+                    expanded_urls: expandedUrls,
                     created_at: data.createdAt ?? null,
                     replies: data.replyCount ?? 0,
                     reposts: data.retweetCount ?? 0,
@@ -180,7 +238,12 @@ async function main() {
 
             console.log(`Account ${index + 1}: timeline processed`);
 
-        } catch {
+        } catch (error) {
+            console.error(
+                `Account ${index + 1} error:`,
+                error.message
+            );
+
             throw new Error(
                 `Failed to process monitored account ${index + 1}`
             );
@@ -201,7 +264,12 @@ async function main() {
         'utf8'
     );
 
+    const expandedCount = posts.filter(
+        post => post.expanded_urls.length > 0
+    ).length;
+
     console.log(`Total unique posts retrieved: ${posts.length}`);
+    console.log(`Posts with expanded URLs: ${expandedCount}`);
     console.log(`Posts saved to ${OUTPUT_FILE}`);
 }
 
