@@ -79,10 +79,8 @@ async function expandShortUrl(shortUrl) {
 
     const promise = (async () => {
         for (const method of ['HEAD', 'GET']) {
-            let response;
-
             try {
-                response = await fetch(shortUrl, {
+                const response = await fetch(shortUrl, {
                     method,
                     redirect: 'follow',
                     signal: AbortSignal.timeout(10000)
@@ -132,6 +130,29 @@ async function getExpandedUrls(text) {
     return results.filter(Boolean);
 }
 
+/**
+ * Temporary diagnostic.
+ *
+ * We intentionally do not assume that tweetBy.id is the author ID.
+ * The returned structure will help us identify the correct field.
+ */
+function logAuthorDiagnostic(data, postId) {
+    console.log(
+        `\nAUTHOR DIAGNOSTIC FOR POST ${postId}:`
+    );
+
+    console.log(
+        JSON.stringify({
+            keys: Object.keys(data),
+            tweetBy: data.tweetBy ?? null,
+            user: data.user ?? null,
+            author: data.author ?? null,
+            retweetedTweet: data.retweetedTweet ?? null,
+            quotedTweet: data.quotedTweet ?? null
+        }, null, 2)
+    );
+}
+
 async function main() {
     const apiKey = process.env.RETTIWT_API_KEY;
 
@@ -145,7 +166,9 @@ async function main() {
         throw new Error('No enabled monitored accounts');
     }
 
-    console.log(`Starting X scraper: ${accounts.length} accounts`);
+    console.log(
+        `Starting X scraper: ${accounts.length} accounts`
+    );
 
     const rettiwt = new Rettiwt({
         apiKey,
@@ -153,6 +176,8 @@ async function main() {
     });
 
     const postsById = new Map();
+
+    let authorDiagnosticDone = false;
 
     for (let index = 0; index < accounts.length; index++) {
         const account = accounts[index];
@@ -162,7 +187,9 @@ async function main() {
         );
 
         try {
-            const user = await rettiwt.user.details(account.username);
+            const user = await rettiwt.user.details(
+                account.username
+            );
 
             if (!user?.id) {
                 throw new Error('Account not found');
@@ -189,9 +216,19 @@ async function main() {
                 }
 
                 const postId = String(data.id);
+
+                // Inspect one real tweet to identify Rettiwt's
+                // actual author structure.
+                if (!authorDiagnosticDone) {
+                    logAuthorDiagnostic(data, postId);
+                    authorDiagnosticDone = true;
+                }
+
                 const postText = data.fullText ?? '';
 
-                const expandedUrls = await getExpandedUrls(postText);
+                const expandedUrls = await getExpandedUrls(
+                    postText
+                );
 
                 const monitoredBy = {
                     account_id: String(user.id),
@@ -201,9 +238,11 @@ async function main() {
                 if (postsById.has(postId)) {
                     const existing = postsById.get(postId);
 
-                    const alreadyRegistered = existing.monitored_by.some(
-                        item => item.account_id === monitoredBy.account_id
-                    );
+                    const alreadyRegistered =
+                        existing.monitored_by.some(
+                            item =>
+                                item.account_id === monitoredBy.account_id
+                        );
 
                     if (!alreadyRegistered) {
                         existing.monitored_by.push(monitoredBy);
@@ -221,22 +260,30 @@ async function main() {
 
                 postsById.set(postId, {
                     id: postId,
+
+                    // Kept unchanged temporarily until we confirm
+                    // the correct Rettiwt author field.
                     author_id: data.tweetBy?.id
                         ? String(data.tweetBy.id)
                         : null,
+
                     text: postText,
                     url: data.url ?? null,
                     expanded_urls: expandedUrls,
                     created_at: data.createdAt ?? null,
+
                     replies: data.replyCount ?? 0,
                     reposts: data.retweetCount ?? 0,
                     likes: data.likeCount ?? 0,
                     views: data.viewCount ?? 0,
+
                     monitored_by: [monitoredBy]
                 });
             }
 
-            console.log(`Account ${index + 1}: timeline processed`);
+            console.log(
+                `Account ${index + 1}: timeline processed`
+            );
 
         } catch (error) {
             console.error(
@@ -253,10 +300,14 @@ async function main() {
     const posts = Array.from(postsById.values());
 
     if (posts.length === 0) {
-        throw new Error('No posts retrieved from monitored accounts');
+        throw new Error(
+            'No posts retrieved from monitored accounts'
+        );
     }
 
-    fs.mkdirSync('data', { recursive: true });
+    fs.mkdirSync('data', {
+        recursive: true
+    });
 
     fs.writeFileSync(
         OUTPUT_FILE,
@@ -268,8 +319,16 @@ async function main() {
         post => post.expanded_urls.length > 0
     ).length;
 
+    const authors = new Set(
+        posts
+            .map(post => post.author_id)
+            .filter(Boolean)
+    );
+
     console.log(`Total unique posts retrieved: ${posts.length}`);
     console.log(`Posts with expanded URLs: ${expandedCount}`);
+    console.log(`Unique author IDs detected: ${authors.size}`);
+    console.log(`Posts without author ID: ${posts.filter(post => !post.author_id).length}`);
     console.log(`Posts saved to ${OUTPUT_FILE}`);
 }
 
