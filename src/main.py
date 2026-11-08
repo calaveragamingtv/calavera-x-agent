@@ -626,6 +626,7 @@ def is_stream_announcement(post):
     )
 
 
+
 def generate_like_drafts(tracker, evaluations):
     print("\nGenerating like drafts...")
 
@@ -658,34 +659,105 @@ def generate_like_drafts(tracker, evaluations):
         if status not in ("not_started", "failed", "drafted"):
             continue
 
-        if is_stream_announcement(post):
-            priority = 2
-            reason = "stream_announcement"
-        elif has_platform_link(post):
-            priority = 1
-            reason = "platform_link"
+        platform_link = has_platform_link(post)
+        stream_announcement = is_stream_announcement(post)
+
+        if platform_link:
+            priority = 2 if stream_announcement else 1
+            reason = (
+                "stream_announcement"
+                if stream_announcement
+                else "platform_link"
+            )
+
+            # Platform links retain their special priority.
             score = max(score, 90)
+
         else:
             priority = 0
             reason = "interesting_post"
 
+        author_id = str(
+            post.get("author_id") or f"unknown_{post_id}"
+        )
+
         candidates.append({
             "post_id": post_id,
+            "author_id": author_id,
             "reason": reason,
             "score": score,
             "category": evaluation.get("category", "other"),
             "evaluation_reason": evaluation.get("reason", ""),
-            "priority": priority
+            "priority": priority,
+            "relationship": platform_link
         })
 
     candidates.sort(
-        key=lambda item: (item["priority"], item["score"]),
+        key=lambda item: (
+            item["priority"],
+            item["score"]
+        ),
         reverse=True
     )
 
-    selected = candidates[:MAX_LIKES_PER_RUN]
+    selected = []
+    selected_authors = set()
+
+    relationship_selected = False
+    genuine_selected = False
+
+    # First pass: balance relationship-building and genuine content.
+    for candidate in candidates:
+        if len(selected) >= MAX_LIKES_PER_RUN:
+            break
+
+        author_id = candidate["author_id"]
+
+        if author_id in selected_authors:
+            continue
+
+        if candidate["relationship"]:
+            if relationship_selected:
+                continue
+
+            relationship_selected = True
+
+        else:
+            if genuine_selected:
+                continue
+
+            genuine_selected = True
+
+        selected.append(candidate)
+        selected_authors.add(author_id)
+
+    # Second pass: fill remaining slots if one category had
+    # insufficient eligible candidates.
+    if len(selected) < MAX_LIKES_PER_RUN:
+        for candidate in candidates:
+            if len(selected) >= MAX_LIKES_PER_RUN:
+                break
+
+            if candidate in selected:
+                continue
+
+            author_id = candidate["author_id"]
+
+            if author_id in selected_authors:
+                continue
+
+            selected.append(candidate)
+            selected_authors.add(author_id)
 
     print(f"Like candidates approved by Gemini: {len(candidates)}")
+    print(
+        f"Relationship candidates: "
+        f"{sum(1 for item in candidates if item['relationship'])}"
+    )
+    print(
+        f"Genuine content candidates: "
+        f"{sum(1 for item in candidates if not item['relationship'])}"
+    )
     print(f"Selected this execution: {len(selected)}")
 
     for candidate in selected:
@@ -709,14 +781,22 @@ def generate_like_drafts(tracker, evaluations):
             "generated_at": datetime.now(timezone.utc).isoformat()
         }
 
-        tracker.mark_action_drafted(post_id, "like", payload)
+        tracker.mark_action_drafted(
+            post_id,
+            "like",
+            payload
+        )
 
         print(
             f"Like draft saved: {post_id} "
-            f"(reason={candidate['reason']}, score={candidate['score']})"
+            f"(reason={candidate['reason']}, "
+            f"score={candidate['score']})"
         )
 
-    return [candidate["post_id"] for candidate in selected]
+    return [
+        candidate["post_id"]
+        for candidate in selected
+    ]
 
 
 def test_like_drafts(tracker, selected_ids):
