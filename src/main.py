@@ -991,6 +991,32 @@ def load_like_action_config():
 
     return enabled
 
+def load_reply_action_config():
+    if not ACTION_CONFIG_FILE.exists():
+        raise FileNotFoundError(
+            f"Action config not found: {ACTION_CONFIG_FILE}"
+        )
+
+    with ACTION_CONFIG_FILE.open("r", encoding="utf-8") as file:
+        config = json.load(file)
+
+    if not isinstance(config, dict):
+        raise ValueError("Invalid action config")
+
+    reply_config = config.get("reply")
+
+    if not isinstance(reply_config, dict):
+        raise ValueError("Missing Reply configuration")
+
+    enabled = reply_config.get("enabled")
+
+    if not isinstance(enabled, bool):
+        raise ValueError("Invalid Reply enabled setting")
+
+    return enabled
+
+
+
 def test_like_drafts(tracker, selected_ids):
     print("\nTesting like drafts with Node.js...")
 
