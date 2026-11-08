@@ -626,13 +626,56 @@ def is_stream_announcement(post):
     )
 
 
-
 def generate_like_drafts(tracker, evaluations):
     print("\nGenerating like drafts...")
 
+    # Normalize IDs to strings.
+    evaluations_by_id = {
+        str(post_id): evaluation
+        for post_id, evaluation in evaluations.items()
+    }
+
+    # --------------------------------------------------
+    # 1. Cancel outdated Like drafts.
+    # --------------------------------------------------
+
+    canceled = 0
+
+    for post_id in tracker.get_drafted_action_ids("like"):
+        evaluation = evaluations_by_id.get(str(post_id))
+
+        # Do not cancel drafts for posts that were not evaluated
+        # during this execution.
+        if evaluation is None:
+            continue
+
+        should_like = evaluation.get("should_like") is True
+
+        try:
+            score = int(evaluation.get("score", 0))
+        except (TypeError, ValueError):
+            score = 0
+
+        if not should_like or score < MIN_LIKE_SCORE:
+            if tracker.cancel_like_draft(
+                post_id,
+                reason="Rejected by current Gemini evaluation"
+            ):
+                canceled += 1
+                print(
+                    f"Outdated Like draft canceled: {post_id} "
+                    f"(score={score}, should_like={should_like})"
+                )
+
+    print(f"Outdated Like drafts canceled: {canceled}")
+
+    # --------------------------------------------------
+    # 2. Build eligible candidates.
+    # --------------------------------------------------
+
     candidates = []
 
-    for post_id, evaluation in evaluations.items():
+    for post_id, evaluation in evaluations_by_id.items():
         if evaluation.get("should_like") is not True:
             continue
 
@@ -644,7 +687,6 @@ def generate_like_drafts(tracker, evaluations):
         if score < MIN_LIKE_SCORE:
             continue
 
-        post_id = str(post_id)
         post = tracker.get_post(post_id)
 
         if not post:
@@ -664,6 +706,7 @@ def generate_like_drafts(tracker, evaluations):
 
         if platform_link:
             priority = 2 if stream_announcement else 1
+
             reason = (
                 "stream_announcement"
                 if stream_announcement
@@ -700,13 +743,17 @@ def generate_like_drafts(tracker, evaluations):
         reverse=True
     )
 
+    # --------------------------------------------------
+    # 3. Select candidates with balanced objectives.
+    # --------------------------------------------------
+
     selected = []
     selected_authors = set()
 
     relationship_selected = False
     genuine_selected = False
 
-    # First pass: balance relationship-building and genuine content.
+    # First pass: prioritize one candidate from each objective.
     for candidate in candidates:
         if len(selected) >= MAX_LIKES_PER_RUN:
             break
@@ -731,8 +778,8 @@ def generate_like_drafts(tracker, evaluations):
         selected.append(candidate)
         selected_authors.add(author_id)
 
-    # Second pass: fill remaining slots if one category had
-    # insufficient eligible candidates.
+    # Second pass: fill remaining slots when one objective
+    # does not have enough eligible candidates.
     if len(selected) < MAX_LIKES_PER_RUN:
         for candidate in candidates:
             if len(selected) >= MAX_LIKES_PER_RUN:
@@ -759,6 +806,10 @@ def generate_like_drafts(tracker, evaluations):
         f"{sum(1 for item in candidates if not item['relationship'])}"
     )
     print(f"Selected this execution: {len(selected)}")
+
+    # --------------------------------------------------
+    # 4. Save drafts.
+    # --------------------------------------------------
 
     for candidate in selected:
         post_id = candidate["post_id"]
@@ -797,6 +848,7 @@ def generate_like_drafts(tracker, evaluations):
         candidate["post_id"]
         for candidate in selected
     ]
+
 
 
 def test_like_drafts(tracker, selected_ids):
