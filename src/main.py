@@ -114,10 +114,7 @@ def evaluate_reply_eligibility(tracker, rankings):
         author_id = str(author_id)
         usage = tracker.get_reply_usage(author_id)
 
-        if (
-            usage["total_replies"] + planned_total
-            >= MAX_TOTAL_REPLIES
-        ):
+        if planned_total >= MAX_TOTAL_REPLIES:
             blocked.append((post_id, "global_test_limit_reached"))
             continue
 
