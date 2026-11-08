@@ -1,0 +1,168 @@
+{
+  "account": "monitored_accounts",
+  "analyzed_at": "2026-11-08T23:02:11.724490+00:00",
+  "model": "gemini-3.5-flash-lite",
+  "total": 20,
+  "ranking": [
+    {
+      "post_id": "2118878190437273865",
+      "score": 95,
+      "category": "official_news",
+      "priority": "high",
+      "recommended_action": "repost",
+      "reason": "Noticia oficial clave sobre el parche Printed and Polished, cambios importantes en blueprints y anti-cheat."
+    },
+    {
+      "post_id": "2115440881591349591",
+      "score": 92,
+      "category": "official_news",
+      "priority": "high",
+      "recommended_action": "repost",
+      "reason": "Detalles completos del parche de Halloween 2026, evento Candy Hunt y novedades del juego."
+    },
+    {
+      "post_id": "2114764536515317983",
+      "score": 88,
+      "category": "official_news",
+      "priority": "high",
+      "recommended_action": "repost",
+      "reason": "Anuncio oficial sobre el inicio del evento de Halloween y mecánicas de los monstruos de Frankenstein."
+    },
+    {
+      "post_id": "2119113024111812800",
+      "score": 85,
+      "category": "update",
+      "priority": "high",
+      "recommended_action": "reply",
+      "reason": "Gran cambio en la progresión del juego al eliminar tech trees y volver a los fragments, pages y books."
+    },
+    {
+      "post_id": "2119475420072452243",
+      "score": 80,
+      "category": "gameplay",
+      "priority": "high",
+      "recommended_action": "reply",
+      "reason": "Impacto directo de la nueva Uzi en el PvP de bases y el meta actual."
+    },
+    {
+      "post_id": "2116214057229246565",
+      "score": 75,
+      "category": "update",
+      "priority": "high",
+      "recommended_action": "reply",
+      "reason": "Información sobre los nuevos portales de cultistas en el mapa que generan gran misterio y discusión."
+    },
+    {
+      "post_id": "2115851580268237173",
+      "score": 72,
+      "category": "gameplay",
+      "priority": "high",
+      "recommended_action": "reply",
+      "reason": "Experiencia destacada sobre las mecánicas de Frankenstein y su utilidad en combate."
+    },
+    {
+      "post_id": "2115489259197014282",
+      "score": 68,
+      "category": "event",
+      "priority": "medium",
+      "recommended_action": "reply",
+      "reason": "Comentario sobre la dinámica frenética del Candy Hunt y la obtención del M249."
+    },
+    {
+      "post_id": "2116576282876027280",
+      "score": 65,
+      "category": "community",
+      "priority": "medium",
+      "recommended_action": "reply",
+      "reason": "Reflexión sobre los drops exclusivos de Twitch Rivals y el comportamiento de la comunidad."
+    },
+    {
+      "post_id": "2116938805496213845",
+      "score": 62,
+      "category": "discussion",
+      "priority": "medium",
+      "recommended_action": "reply",
+      "reason": "Debate sobre el uso de la Skull Trophy Pack y las consecuencias de mostrar trofeos en la base."
+    },
+    {
+      "post_id": "2118776885878386718",
+      "score": 58,
+      "category": "gameplay",
+      "priority": "medium",
+      "recommended_action": "ignore",
+      "reason": "Posteo sobre el progreso personal tras un raid, con menor potencial de debate técnico."
+    },
+    {
+      "post_id": "2118448648484765698",
+      "score": 55,
+      "category": "gameplay",
+      "priority": "medium",
+      "recommended_action": "ignore",
+      "reason": "Mención general sobre el inicio del wipe."
+    },
+    {
+      "post_id": "2116277956507009079",
+      "score": 52,
+      "category": "discussion",
+      "priority": "medium",
+      "recommended_action": "ignore",
+      "reason": "Pregunta estándar para interactuar con el chat sobre la defensa de bases."
+    },
+    {
+      "post_id": "2115911921840918913",
+      "score": 50,
+      "category": "discussion",
+      "priority": "medium",
+      "recommended_action": "ignore",
+      "reason": "Llamado a la comunidad para discutir estrategias de inicio de wipe."
+    },
+    {
+      "post_id": "2114118753566720304",
+      "score": 48,
+      "category": "discussion",
+      "priority": "medium",
+      "recommended_action": "ignore",
+      "reason": "Pregunta orientada a la interacción con seguidores sobre planes de base."
+    },
+    {
+      "post_id": "2116651789558714850",
+      "score": 45,
+      "category": "discussion",
+      "priority": "medium",
+      "recommended_action": "ignore",
+      "reason": "Interacción típica de directo sobre jugadas en la playa."
+    },
+    {
+      "post_id": "2113745127453659270",
+      "score": 42,
+      "category": "discussion",
+      "priority": "medium",
+      "recommended_action": "ignore",
+      "reason": "Consulta sobre entrar tarde a un servidor."
+    },
+    {
+      "post_id": "2115549586970259890",
+      "score": 38,
+      "category": "discussion",
+      "priority": "low",
+      "recommended_action": "ignore",
+      "reason": "Formato repetitivo de llamado a la acción para el stream."
+    },
+    {
+      "post_id": "2117368999033856445",
+      "score": 35,
+      "category": "other",
+      "priority": "low",
+      "recommended_action": "ignore",
+      "reason": "Anuncio simple de inicio de directo sin contenido analítico relevante."
+    },
+    {
+      "post_id": "2114832284054339880",
+      "score": 32,
+      "category": "discussion",
+      "priority": "low",
+      "recommended_action": "ignore",
+      "reason": "Pregunta genérica de inicio de semana de streaming."
+    }
+  ]
+}
