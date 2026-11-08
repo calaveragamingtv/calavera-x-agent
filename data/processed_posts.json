@@ -276,13 +276,17 @@
       },
       "actions": {
         "like": {
-          "status": "not_started",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-08T23:08:48.861910+00:00",
+          "completed_at": "2026-11-08T23:08:50.289301+00:00",
           "error": null,
-          "external_id": null,
-          "payload": null
+          "external_id": "2118448648484765698",
+          "payload": {
+            "post_id": "2118448648484765698",
+            "mode": "controlled_live_test",
+            "stage": "completed"
+          }
         },
         "reply": {
           "status": "not_started",
