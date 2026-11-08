@@ -190,38 +190,59 @@ class PostTracker:
     def _save(self) -> None:
         self._save_data(self.data)
 
+    
     def register_posts(self, posts: list[dict]) -> list[str]:
         new_ids = []
         changed = False
-
+    
         for post in posts:
             post_id = str(post.get("id", "")).strip()
-
+    
             if not post_id:
                 raise ValueError("A post without ID cannot be registered")
-
+    
             author_id = post.get("author_id")
-
+    
             if author_id is not None:
                 author_id = str(author_id)
-
+    
+            expanded_urls = post.get("expanded_urls", [])
+            monitored_by = post.get("monitored_by", [])
+    
+            if not isinstance(expanded_urls, list):
+                expanded_urls = []
+    
+            if not isinstance(monitored_by, list):
+                monitored_by = []
+    
             if post_id in self.data["posts"]:
                 tracked_post = self.data["posts"][post_id]
-
+    
                 if author_id and not tracked_post.get("author_id"):
                     tracked_post["author_id"] = author_id
                     changed = True
-
+    
+                # Refresh metadata without modifying existing action states.
+                for field, value in (
+                    ("expanded_urls", expanded_urls),
+                    ("monitored_by", monitored_by),
+                ):
+                    if tracked_post.get(field) != value:
+                        tracked_post[field] = value
+                        changed = True
+    
                 continue
-
+    
             text = post.get("text") or post.get("fullText") or ""
-
+    
             self.data["posts"][post_id] = {
                 "id": post_id,
                 "author_id": author_id,
                 "text": text,
                 "url": post.get("url"),
                 "created_at": post.get("created_at") or post.get("createdAt"),
+                "expanded_urls": expanded_urls,
+                "monitored_by": monitored_by,
                 "first_seen_at": self._now(),
                 "analysis": {
                     "status": "pending",
@@ -240,14 +261,15 @@ class PostTracker:
                     for action in self.ACTIONS
                 }
             }
-
+    
             new_ids.append(post_id)
             changed = True
-
+    
         if changed:
             self._save()
-
+    
         return new_ids
+
 
     def mark_analysis_completed(
         self,
