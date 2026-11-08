@@ -228,7 +228,18 @@ def test_reply_drafts(tracker, eligible_ids):
             f"Reply action script not found: {REPLY_ACTION_SCRIPT}"
         )
 
+    live_enabled = load_reply_action_config()
+
+    if live_enabled:
+        print("LIVE REPLY MODE ENABLED")
+        print(
+            f"Maximum replies per execution: {MAX_TOTAL_REPLIES}"
+        )
+    else:
+        print("DRY RUN MODE: Reply is disabled.")
+
     tested = 0
+    published = 0
 
     for post_id in eligible_ids:
         post = tracker.get_post(post_id)
@@ -246,6 +257,13 @@ def test_reply_drafts(tracker, eligible_ids):
             )
             continue
 
+        if live_enabled and published >= MAX_TOTAL_REPLIES:
+            print(
+                f"Maximum replies per execution reached: "
+                f"{MAX_TOTAL_REPLIES}"
+            )
+            break
+
         payload = reply_action.get("payload") or {}
         reply_text = payload.get("reply_text")
 
@@ -255,85 +273,173 @@ def test_reply_drafts(tracker, eligible_ids):
             )
 
         request = {
-            "post_id": post_id,
+            "post_id": str(post_id),
             "reply_text": reply_text
         }
 
         print(f"\nTesting reply for post {post_id}...")
 
-        result = subprocess.run(
-            ["node", str(REPLY_ACTION_SCRIPT)],
-            input=json.dumps(request, ensure_ascii=False),
-            capture_output=True,
-            text=True,
-            check=False
-        )
-
-        if result.stderr:
-            print(result.stderr.strip())
-
-        if result.returncode != 0:
-            raise RuntimeError(
-                f"Node.js reply dry run failed for post {post_id}. "
-                f"Exit code: {result.returncode}. "
-                f"Output: {result.stdout.strip()}"
+        if live_enabled:
+            tracker.mark_action_started(
+                post_id,
+                "reply",
+                {
+                    "post_id": str(post_id),
+                    "reply_text": reply_text,
+                    "mode": "live",
+                    "stage": "sending"
+                }
             )
 
         try:
-            action_result = json.loads(result.stdout.strip())
-        except json.JSONDecodeError as error:
-            raise RuntimeError(
-                f"Invalid JSON returned by Node.js for post {post_id}: "
-                f"{result.stdout.strip()}"
-            ) from error
-
-        if not isinstance(action_result, dict):
-            raise RuntimeError(
-                f"Invalid Node.js response for post {post_id}"
+            result = subprocess.run(
+                ["node", str(REPLY_ACTION_SCRIPT)],
+                input=json.dumps(request, ensure_ascii=False),
+                capture_output=True,
+                text=True,
+                check=False
             )
 
-        expected_values = {
-            "success": True,
-            "dry_run": True,
-            "published": False,
-            "original_post_id": str(post_id),
-            "reply_text": reply_text,
-            "reply_length": len(reply_text)
-        }
+            if result.stderr:
+                print(result.stderr.strip())
 
-        for field, expected in expected_values.items():
-            actual = action_result.get(field)
-
-            if actual != expected:
+            if result.returncode != 0:
                 raise RuntimeError(
-                    f"Unexpected Node.js result for post {post_id}: "
-                    f"{field} expected {expected!r}, got {actual!r}"
+                    f"Node.js reply action failed for post {post_id}. "
+                    f"Exit code: {result.returncode}. "
+                    f"Output: {result.stdout.strip()}"
                 )
 
-        updated_post = tracker.get_post(post_id)
-        updated_status = (
-            updated_post.get("actions", {})
-            .get("reply", {})
-            .get("status")
-        )
+            try:
+                action_result = json.loads(result.stdout.strip())
+            except json.JSONDecodeError as error:
+                raise RuntimeError(
+                    f"Invalid JSON returned by Node.js for post {post_id}: "
+                    f"{result.stdout.strip()}"
+                ) from error
 
-        if updated_status != "drafted":
-            raise RuntimeError(
-                f"Unexpected tracker state after dry run for {post_id}: "
-                f"{updated_status}"
-            )
+            if not isinstance(action_result, dict):
+                raise RuntimeError(
+                    f"Invalid Node.js response for post {post_id}"
+                )
 
-        print(
-            "Validated: "
-            "success=True, dry_run=True, published=False, "
-            "tracker_status=drafted"
-        )
+            if live_enabled:
+                expected_values = {
+                    "success": True,
+                    "dry_run": False,
+                    "published": True,
+                    "original_post_id": str(post_id)
+                }
 
-        tested += 1
+                for field, expected in expected_values.items():
+                    actual = action_result.get(field)
+
+                    if actual != expected:
+                        raise RuntimeError(
+                            f"Unexpected Node.js result for post {post_id}: "
+                            f"{field} expected {expected!r}, got {actual!r}"
+                        )
+
+                reply_id = action_result.get("reply_id")
+
+                if not isinstance(reply_id, str) or not reply_id.strip():
+                    raise RuntimeError(
+                        f"Missing reply ID for post {post_id}"
+                    )
+
+                tracker.mark_action_result(
+                    post_id,
+                    "reply",
+                    "completed",
+                    external_id=reply_id
+                )
+
+                print(
+                    f"LIVE REPLY CONFIRMED: post={post_id}, "
+                    f"reply_id={reply_id}, tracker_status=completed"
+                )
+
+                published += 1
+
+            else:
+                expected_values = {
+                    "success": True,
+                    "dry_run": True,
+                    "published": False,
+                    "original_post_id": str(post_id),
+                    "reply_text": reply_text,
+                    "reply_length": len(reply_text)
+                }
+
+                for field, expected in expected_values.items():
+                    actual = action_result.get(field)
+
+                    if actual != expected:
+                        raise RuntimeError(
+                            f"Unexpected Node.js result for post {post_id}: "
+                            f"{field} expected {expected!r}, got {actual!r}"
+                        )
+
+                updated_post = tracker.get_post(post_id)
+                updated_status = (
+                    updated_post.get("actions", {})
+                    .get("reply", {})
+                    .get("status")
+                )
+
+                if updated_status != "drafted":
+                    raise RuntimeError(
+                        f"Unexpected tracker state after dry run for "
+                        f"{post_id}: {updated_status}"
+                    )
+
+                print(
+                    "Validated: success=True, dry_run=True, "
+                    "published=False, tracker_status=drafted"
+                )
+
+            tested += 1
+
+        except Exception:
+            if live_enabled:
+                updated_post = tracker.get_post(post_id)
+                current_status = (
+                    updated_post.get("actions", {})
+                    .get("reply", {})
+                    .get("status")
+                ) if updated_post else None
+
+                if current_status == "processing":
+                    tracker.mark_action_result(
+                        post_id,
+                        "reply",
+                        "unknown",
+                        error=(
+                            "Reply execution result is uncertain. "
+                            "Manual verification required."
+                        )
+                    )
+
+                    print(
+                        f"Reply result is uncertain for {post_id}. "
+                        "Tracker status set to unknown. "
+                        "Manual verification is required."
+                    )
+
+            raise
 
     print(f"\nReply drafts tested successfully: {tested}")
-    print("DRY RUN: no replies were published to X.")
-    print("All tested replies remain in drafted state.")
+
+    if live_enabled:
+        print(f"Live Replies confirmed: {published}")
+        print(
+            f"Maximum replies per execution: {MAX_TOTAL_REPLIES}"
+        )
+    else:
+        print("DRY RUN: no replies were published to X.")
+        print("All tested replies remain in drafted state.")
+
+
 
 
 def generate_repost_drafts(tracker, rankings):
