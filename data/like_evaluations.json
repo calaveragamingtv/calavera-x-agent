@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-08T15:11:51.417903+00:00",
-  "total": 21,
+  "updated_at": "2026-11-08T18:02:24.403381+00:00",
+  "total": 22,
   "evaluations": {
     "2118776885878386718": {
       "post_id": "2118776885878386718",
@@ -148,6 +148,13 @@
       "score": 60,
       "category": "rust",
       "reason": "La publicación menciona una actualización de Rust, pero carece de un enlace prioritario y su impacto es moderado para justificar un Like."
+    },
+    "2119475420072452243": {
+      "post_id": "2119475420072452243",
+      "should_like": true,
+      "score": 85,
+      "category": "rust",
+      "reason": "Aporta una opinión y análisis interesante sobre una nueva mecánica de juego en Rust y su impacto en el PvP."
     }
   }
 }

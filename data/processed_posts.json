@@ -1255,6 +1255,64 @@
           "account_type": "streamer"
         }
       ]
+    },
+    "2119475420072452243": {
+      "id": "2119475420072452243",
+      "author_id": "815409347689934848",
+      "text": "La Uzi nueva con la culata plegada entra con escudos y es full auto. El pvp de bases se va a volver insoportable de inmediato. https://t.co/WASxRQBWeb",
+      "url": "https://x.com/CalaveraGaming/status/2119475420072452243",
+      "created_at": "2026-11-08T17:01:32.000Z",
+      "expanded_urls": [
+        "https://twitter.com/CalaveraGaming/status/2119475420072452243"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-08T18:02:22.344900+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2119475420072452243",
+          "score": 85,
+          "category": "gameplay",
+          "priority": "high",
+          "recommended_action": "reply",
+          "reason": "Analiza un cambio directo en el meta de Rust relacionado con la Uzi nueva y escudos, lo que genera gran debate y es ideal para la interacción con la comunidad."
+        },
+        "completed_at": "2026-11-08T18:02:23.278588+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      }
     }
   }
 }

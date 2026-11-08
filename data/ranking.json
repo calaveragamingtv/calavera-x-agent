@@ -1,8 +1,8 @@
 {
   "account": "monitored_accounts",
-  "analyzed_at": "2026-11-08T15:11:46.851311+00:00",
-  "model": null,
-  "total": 20,
+  "analyzed_at": "2026-11-08T18:02:23.281277+00:00",
+  "model": "gemini-3.5-flash-lite",
+  "total": 21,
   "ranking": [
     {
       "post_id": "2119113024111812800",
@@ -43,6 +43,14 @@
       "priority": "high",
       "recommended_action": "ignore",
       "reason": "Excelente resumen técnico y práctico del evento de Halloween 2026 y la Frankenstein's table, aunque temporalmente ya fue cubierto por publicaciones más recientes."
+    },
+    {
+      "post_id": "2119475420072452243",
+      "score": 85,
+      "category": "gameplay",
+      "priority": "high",
+      "recommended_action": "reply",
+      "reason": "Analiza un cambio directo en el meta de Rust relacionado con la Uzi nueva y escudos, lo que genera gran debate y es ideal para la interacción con la comunidad."
     },
     {
       "post_id": "2116576282876027280",

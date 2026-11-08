@@ -1,8 +1,28 @@
 {
   "account": "monitored_accounts",
-  "updated_at": "2026-11-08T15:11:46.850197+00:00",
+  "updated_at": "2026-11-08T18:02:22.343798+00:00",
   "total": 20,
   "posts": [
+    {
+      "id": "2119475420072452243",
+      "author_id": "815409347689934848",
+      "text": "La Uzi nueva con la culata plegada entra con escudos y es full auto. El pvp de bases se va a volver insoportable de inmediato. https://t.co/WASxRQBWeb",
+      "url": "https://x.com/CalaveraGaming/status/2119475420072452243",
+      "expanded_urls": [
+        "https://twitter.com/CalaveraGaming/status/2119475420072452243"
+      ],
+      "created_at": "2026-11-08T17:01:32.000Z",
+      "replies": 0,
+      "reposts": 0,
+      "likes": 0,
+      "views": 12,
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ]
+    },
     {
       "id": "2119113024111812800",
       "author_id": "815409347689934848",
@@ -35,7 +55,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 1,
-      "views": 51,
+      "views": 52,
       "monitored_by": [
         {
           "account_id": "815409347689934848",
@@ -376,26 +396,6 @@
       "reposts": 0,
       "likes": 2,
       "views": 106,
-      "monitored_by": [
-        {
-          "account_id": "815409347689934848",
-          "account_type": "streamer"
-        }
-      ]
-    },
-    {
-      "id": "2113677287908360502",
-      "author_id": "815409347689934848",
-      "text": "Ya arrancó el evento de Halloween 2026 y trajo el Candy Hunt cada dos días para farmear hasta un M249, sumado a la Frankenstein's table para armar tu propio monstruo con partes de cuerpos y controlarlo con la P. https://t.co/ER8F9wWYlb",
-      "url": "https://x.com/CalaveraGaming/status/2113677287908360502",
-      "expanded_urls": [
-        "https://twitter.com/CalaveraGaming/status/2113677287908360502"
-      ],
-      "created_at": "2026-10-23T17:01:50.000Z",
-      "replies": 0,
-      "reposts": 0,
-      "likes": 0,
-      "views": 81,
       "monitored_by": [
         {
           "account_id": "815409347689934848",
