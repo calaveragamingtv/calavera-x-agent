@@ -45,7 +45,16 @@
           "payload": null
         }
       },
-      "author_id": "815409347689934848"
+      "author_id": "815409347689934848",
+      "expanded_urls": [
+        "https://twitter.com/CalaveraGaming/status/2118878190437273865"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ]
     },
     "2118776885878386718": {
       "id": "2118776885878386718",
@@ -67,13 +76,19 @@
       },
       "actions": {
         "like": {
-          "status": "not_started",
+          "status": "drafted",
           "attempts": 0,
           "last_attempt_at": null,
           "completed_at": null,
           "error": null,
           "external_id": null,
-          "payload": null
+          "payload": {
+            "post_id": "2118776885878386718",
+            "reason": "stream_announcement",
+            "score": 101,
+            "generated_at": "2026-11-08T05:29:33.169474+00:00",
+            "stage": "drafted"
+          }
         },
         "reply": {
           "status": "not_started",
@@ -94,7 +109,16 @@
           "payload": null
         }
       },
-      "author_id": "815409347689934848"
+      "author_id": "815409347689934848",
+      "expanded_urls": [
+        "https://www.twitch.tv/CalaveraGamingTV"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ]
     },
     "2118448648484765698": {
       "id": "2118448648484765698",
@@ -116,13 +140,19 @@
       },
       "actions": {
         "like": {
-          "status": "not_started",
+          "status": "drafted",
           "attempts": 0,
           "last_attempt_at": null,
           "completed_at": null,
           "error": null,
           "external_id": null,
-          "payload": null
+          "payload": {
+            "post_id": "2118448648484765698",
+            "reason": "stream_announcement",
+            "score": 101,
+            "generated_at": "2026-11-08T05:29:33.172049+00:00",
+            "stage": "drafted"
+          }
         },
         "reply": {
           "status": "not_started",
@@ -143,7 +173,16 @@
           "payload": null
         }
       },
-      "author_id": "815409347689934848"
+      "author_id": "815409347689934848",
+      "expanded_urls": [
+        "https://www.twitch.tv/CalaveraGamingTV"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ]
     },
     "2117368999033856445": {
       "id": "2117368999033856445",
@@ -192,7 +231,16 @@
           "payload": null
         }
       },
-      "author_id": "815409347689934848"
+      "author_id": "815409347689934848",
+      "expanded_urls": [
+        "https://www.twitch.tv/CalaveraGamingTV"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ]
     },
     "2116938805496213845": {
       "id": "2116938805496213845",
@@ -241,7 +289,16 @@
           "payload": null
         }
       },
-      "author_id": "815409347689934848"
+      "author_id": "815409347689934848",
+      "expanded_urls": [
+        "https://twitter.com/CalaveraGaming/status/2116938805496213845"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ]
     },
     "2116651789558714850": {
       "id": "2116651789558714850",
@@ -290,7 +347,16 @@
           "payload": null
         }
       },
-      "author_id": "815409347689934848"
+      "author_id": "815409347689934848",
+      "expanded_urls": [
+        "https://www.twitch.tv/CalaveraGamingTV"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ]
     },
     "2116576282876027280": {
       "id": "2116576282876027280",
@@ -343,7 +409,16 @@
           }
         }
       },
-      "author_id": "815409347689934848"
+      "author_id": "815409347689934848",
+      "expanded_urls": [
+        "https://twitter.com/CalaveraGaming/status/2116576282876027280"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ]
     },
     "2116277956507009079": {
       "id": "2116277956507009079",
@@ -392,7 +467,16 @@
           "payload": null
         }
       },
-      "author_id": "815409347689934848"
+      "author_id": "815409347689934848",
+      "expanded_urls": [
+        "https://www.twitch.tv/CalaveraGamingTV"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ]
     },
     "2116214057229246565": {
       "id": "2116214057229246565",
@@ -446,7 +530,16 @@
           "payload": null
         }
       },
-      "author_id": "815409347689934848"
+      "author_id": "815409347689934848",
+      "expanded_urls": [
+        "https://twitter.com/CalaveraGaming/status/2116214057229246565"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ]
     },
     "2115911921840918913": {
       "id": "2115911921840918913",
@@ -495,7 +588,16 @@
           "payload": null
         }
       },
-      "author_id": "815409347689934848"
+      "author_id": "815409347689934848",
+      "expanded_urls": [
+        "https://www.twitch.tv/CalaveraGamingTV"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ]
     },
     "2115851580268237173": {
       "id": "2115851580268237173",
@@ -548,7 +650,16 @@
           }
         }
       },
-      "author_id": "815409347689934848"
+      "author_id": "815409347689934848",
+      "expanded_urls": [
+        "https://twitter.com/CalaveraGaming/status/2115851580268237173"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ]
     },
     "2115549586970259890": {
       "id": "2115549586970259890",
@@ -597,7 +708,16 @@
           "payload": null
         }
       },
-      "author_id": "815409347689934848"
+      "author_id": "815409347689934848",
+      "expanded_urls": [
+        "https://www.twitch.tv/CalaveraGamingTV"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ]
     },
     "2115489259197014282": {
       "id": "2115489259197014282",
@@ -650,7 +770,16 @@
           }
         }
       },
-      "author_id": "815409347689934848"
+      "author_id": "815409347689934848",
+      "expanded_urls": [
+        "https://twitter.com/CalaveraGaming/status/2115489259197014282"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ]
     },
     "2115440881591349591": {
       "id": "2115440881591349591",
@@ -709,7 +838,16 @@
           }
         }
       },
-      "author_id": "815409347689934848"
+      "author_id": "815409347689934848",
+      "expanded_urls": [
+        "https://twitter.com/CalaveraGaming/status/2115440881591349591"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ]
     },
     "2114832284054339880": {
       "id": "2114832284054339880",
@@ -758,7 +896,16 @@
           "payload": null
         }
       },
-      "author_id": "815409347689934848"
+      "author_id": "815409347689934848",
+      "expanded_urls": [
+        "https://www.twitch.tv/CalaveraGamingTV"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ]
     },
     "2114764536515317983": {
       "id": "2114764536515317983",
@@ -807,7 +954,16 @@
           "payload": null
         }
       },
-      "author_id": "815409347689934848"
+      "author_id": "815409347689934848",
+      "expanded_urls": [
+        "https://twitter.com/CalaveraGaming/status/2114764536515317983"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ]
     },
     "2114118753566720304": {
       "id": "2114118753566720304",
@@ -856,7 +1012,16 @@
           "payload": null
         }
       },
-      "author_id": "815409347689934848"
+      "author_id": "815409347689934848",
+      "expanded_urls": [
+        "https://www.twitch.tv/CalaveraGamingTV"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ]
     },
     "2113745127453659270": {
       "id": "2113745127453659270",
@@ -905,7 +1070,16 @@
           "payload": null
         }
       },
-      "author_id": "815409347689934848"
+      "author_id": "815409347689934848",
+      "expanded_urls": [
+        "https://www.twitch.tv/CalaveraGamingTV"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ]
     },
     "2113677287908360502": {
       "id": "2113677287908360502",
@@ -954,7 +1128,16 @@
           "payload": null
         }
       },
-      "author_id": "815409347689934848"
+      "author_id": "815409347689934848",
+      "expanded_urls": [
+        "https://twitter.com/CalaveraGaming/status/2113677287908360502"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ]
     },
     "2113352596358394198": {
       "id": "2113352596358394198",
@@ -1062,7 +1245,16 @@
             "stage": "drafted"
           }
         }
-      }
+      },
+      "expanded_urls": [
+        "https://twitter.com/CalaveraGaming/status/2119113024111812800"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ]
     }
   }
 }
