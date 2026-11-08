@@ -482,6 +482,7 @@ def test_repost_drafts(tracker, rankings):
     print(f"\nRepost drafts tested successfully: {tested}")
     print("DRY RUN: no reposts were published to X.")
 
+
 def is_stream_announcement(post):
     if not isinstance(post, dict):
         return False
@@ -491,7 +492,6 @@ def is_stream_announcement(post):
     if not isinstance(text, str) or not text.strip():
         return False
 
-    # Only consider accounts explicitly configured as streamers.
     monitored_by = post.get("monitored_by", [])
 
     if not isinstance(monitored_by, list):
@@ -506,16 +506,27 @@ def is_stream_announcement(post):
     if not is_streamer:
         return False
 
-    normalized = text.lower()
+    expanded_urls = post.get("expanded_urls", [])
 
-    # A Twitch or Kick channel link is enough.
+    if not isinstance(expanded_urls, list):
+        expanded_urls = []
+
+    searchable_content = " ".join([
+        text,
+        *[
+            url for url in expanded_urls
+            if isinstance(url, str)
+        ]
+    ]).lower()
+
     platform_link = re.search(
         r"(?:https?://)?(?:www\.)?"
         r"(?:twitch\.tv|kick\.com)/[a-z0-9_]+",
-        normalized
+        searchable_content
     )
 
     return bool(platform_link)
+
 
 
 def generate_like_drafts(tracker, rankings):
