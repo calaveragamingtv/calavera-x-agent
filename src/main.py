@@ -489,28 +489,42 @@ def is_stream_announcement(text):
 
     normalized = text.lower()
 
-    patterns = [
+    platform_link = re.search(
+        r"(?:https?://)?(?:www\.)?"
+        r"(?:twitch\.tv|kick\.com)/[a-z0-9_]+",
+        normalized
+    )
+
+    live_phrases = [
         r"\bestoy en directo\b",
         r"\bestamos en directo\b",
         r"\ben directo\b",
         r"\bestoy en vivo\b",
         r"\bestamos en vivo\b",
         r"\ben vivo\b",
-        r"\bya estamos live\b",
+        r"\bestoy on\b",
+        r"\bestamos on\b",
+        r"\bya estamos on\b",
+        r"\bya estoy on\b",
         r"\bestoy live\b",
         r"\bestamos live\b",
+        r"\bya estamos live\b",
         r"\bi['’]m live\b",
         r"\bwe['’]re live\b",
         r"\blive now\b",
         r"\bstream is live\b",
         r"\bgoing live\b",
         r"\bstreaming now\b",
+        r"\bprendimos\b",
+        r"\bya prend[ií]\b",
     ]
 
-    return any(
+    has_live_phrase = any(
         re.search(pattern, normalized)
-        for pattern in patterns
+        for pattern in live_phrases
     )
+
+    return bool(platform_link and has_live_phrase)
 
 
 def generate_like_drafts(tracker, rankings):
