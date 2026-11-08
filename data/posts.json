@@ -1,6 +1,6 @@
 {
   "account": "monitored_accounts",
-  "updated_at": "2026-11-08T12:09:12.207973+00:00",
+  "updated_at": "2026-11-08T15:03:45.513231+00:00",
   "total": 20,
   "posts": [
     {
@@ -15,7 +15,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 0,
-      "views": 20,
+      "views": 23,
       "monitored_by": [
         {
           "account_id": "815409347689934848",
@@ -35,7 +35,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 1,
-      "views": 49,
+      "views": 51,
       "monitored_by": [
         {
           "account_id": "815409347689934848",
@@ -55,7 +55,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 0,
-      "views": 41,
+      "views": 42,
       "monitored_by": [
         {
           "account_id": "815409347689934848",
@@ -75,7 +75,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 1,
-      "views": 118,
+      "views": 119,
       "monitored_by": [
         {
           "account_id": "815409347689934848",
@@ -95,7 +95,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 2,
-      "views": 155,
+      "views": 156,
       "monitored_by": [
         {
           "account_id": "815409347689934848",
@@ -115,7 +115,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 0,
-      "views": 46,
+      "views": 47,
       "monitored_by": [
         {
           "account_id": "815409347689934848",
@@ -135,7 +135,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 0,
-      "views": 46,
+      "views": 47,
       "monitored_by": [
         {
           "account_id": "815409347689934848",

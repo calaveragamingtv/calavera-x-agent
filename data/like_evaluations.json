@@ -1,0 +1,153 @@
+{
+  "updated_at": "2026-11-08T15:03:49.421292+00:00",
+  "total": 21,
+  "evaluations": {
+    "2118776885878386718": {
+      "post_id": "2118776885878386718",
+      "should_like": true,
+      "score": 90,
+      "category": "twitch",
+      "reason": "La publicación contiene un enlace válido a Twitch."
+    },
+    "2118448648484765698": {
+      "post_id": "2118448648484765698",
+      "should_like": true,
+      "score": 90,
+      "category": "twitch",
+      "reason": "La publicación contiene un enlace válido a Twitch."
+    },
+    "2117368999033856445": {
+      "post_id": "2117368999033856445",
+      "should_like": true,
+      "score": 90,
+      "category": "twitch",
+      "reason": "La publicación contiene un enlace válido a Twitch."
+    },
+    "2116651789558714850": {
+      "post_id": "2116651789558714850",
+      "should_like": true,
+      "score": 90,
+      "category": "twitch",
+      "reason": "La publicación contiene un enlace válido a Twitch."
+    },
+    "2116277956507009079": {
+      "post_id": "2116277956507009079",
+      "should_like": true,
+      "score": 90,
+      "category": "twitch",
+      "reason": "La publicación contiene un enlace válido a Twitch."
+    },
+    "2115911921840918913": {
+      "post_id": "2115911921840918913",
+      "should_like": true,
+      "score": 90,
+      "category": "twitch",
+      "reason": "La publicación contiene un enlace válido a Twitch."
+    },
+    "2115549586970259890": {
+      "post_id": "2115549586970259890",
+      "should_like": true,
+      "score": 90,
+      "category": "twitch",
+      "reason": "La publicación contiene un enlace válido a Twitch."
+    },
+    "2114832284054339880": {
+      "post_id": "2114832284054339880",
+      "should_like": true,
+      "score": 90,
+      "category": "twitch",
+      "reason": "La publicación contiene un enlace válido a Twitch."
+    },
+    "2114118753566720304": {
+      "post_id": "2114118753566720304",
+      "should_like": true,
+      "score": 90,
+      "category": "twitch",
+      "reason": "La publicación contiene un enlace válido a Twitch."
+    },
+    "2113745127453659270": {
+      "post_id": "2113745127453659270",
+      "should_like": true,
+      "score": 90,
+      "category": "twitch",
+      "reason": "La publicación contiene un enlace válido a Twitch."
+    },
+    "2118878190437273865": {
+      "post_id": "2118878190437273865",
+      "should_like": false,
+      "score": 70,
+      "category": "rust",
+      "reason": "Contenido moderadamente interesante sobre Rust, pero no contiene un enlace a Twitch, Kick o YouTube ni alcanza el umbral de 75."
+    },
+    "2116938805496213845": {
+      "post_id": "2116938805496213845",
+      "should_like": false,
+      "score": 70,
+      "category": "rust",
+      "reason": "Contenido interesante sobre Rust pero sin enlace a plataformas de streaming."
+    },
+    "2116576282876027280": {
+      "post_id": "2116576282876027280",
+      "should_like": false,
+      "score": 70,
+      "category": "rust",
+      "reason": "Comentario sobre drops de Twitch, pero la URL expandida es de X y no de la plataforma de streaming."
+    },
+    "2116214057229246565": {
+      "post_id": "2116214057229246565",
+      "should_like": false,
+      "score": 70,
+      "category": "rust",
+      "reason": "Contenido interesante de gaming sin enlace prioritario."
+    },
+    "2115851580268237173": {
+      "post_id": "2115851580268237173",
+      "should_like": false,
+      "score": 70,
+      "category": "rust",
+      "reason": "Contenido de Rust sin enlace prioritario."
+    },
+    "2115489259197014282": {
+      "post_id": "2115489259197014282",
+      "should_like": false,
+      "score": 70,
+      "category": "rust",
+      "reason": "Contenido de Rust sin enlace prioritario."
+    },
+    "2115440881591349591": {
+      "post_id": "2115440881591349591",
+      "should_like": false,
+      "score": 70,
+      "category": "rust",
+      "reason": "Información sobre parche de Rust sin enlace prioritario."
+    },
+    "2114764536515317983": {
+      "post_id": "2114764536515317983",
+      "should_like": false,
+      "score": 70,
+      "category": "rust",
+      "reason": "Información de evento sin enlace prioritario."
+    },
+    "2113677287908360502": {
+      "post_id": "2113677287908360502",
+      "should_like": false,
+      "score": 70,
+      "category": "rust",
+      "reason": "Información de evento sin enlace prioritario."
+    },
+    "2113352596358394198": {
+      "post_id": "2113352596358394198",
+      "should_like": false,
+      "score": 70,
+      "category": "rust",
+      "reason": "Contenido de Rust con enlace acortado que no pertenece a las plataformas prioritarias."
+    },
+    "2119113024111812800": {
+      "post_id": "2119113024111812800",
+      "should_like": false,
+      "score": 70,
+      "category": "rust",
+      "reason": "Información sobre actualización de Rust sin enlace prioritario."
+    }
+  }
+}
