@@ -1064,16 +1064,16 @@
           "payload": null
         },
         "repost": {
-          "status": "drafted",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-09T01:52:23.780462+00:00",
+          "completed_at": "2026-11-09T01:52:24.560966+00:00",
           "error": null,
-          "external_id": null,
+          "external_id": "2114764536515317983",
           "payload": {
             "post_id": "2114764536515317983",
-            "generated_at": "2026-11-08T23:02:12.372004+00:00",
-            "stage": "drafted"
+            "mode": "live",
+            "stage": "completed"
           }
         }
       }
