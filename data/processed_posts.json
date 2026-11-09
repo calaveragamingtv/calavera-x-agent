@@ -170,16 +170,16 @@
           "payload": null
         },
         "repost": {
-          "status": "drafted",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-09T00:06:59.564295+00:00",
+          "completed_at": "2026-11-09T00:07:00.658581+00:00",
           "error": null,
-          "external_id": null,
+          "external_id": "2118878190437273865",
           "payload": {
             "post_id": "2118878190437273865",
-            "generated_at": "2026-11-08T23:02:12.367590+00:00",
-            "stage": "drafted"
+            "mode": "live",
+            "stage": "completed"
           }
         }
       }
@@ -944,16 +944,16 @@
           "payload": null
         },
         "repost": {
-          "status": "drafted",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-09T00:07:00.660197+00:00",
+          "completed_at": "2026-11-09T00:07:01.310538+00:00",
           "error": null,
-          "external_id": null,
+          "external_id": "2115440881591349591",
           "payload": {
             "post_id": "2115440881591349591",
-            "generated_at": "2026-11-08T23:02:12.370189+00:00",
-            "stage": "drafted"
+            "mode": "live",
+            "stage": "completed"
           }
         }
       }
