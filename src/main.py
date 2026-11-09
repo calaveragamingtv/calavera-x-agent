@@ -1180,9 +1180,6 @@ def test_like_drafts(tracker, selected_ids):
         if enabled:
             print("LIVE LIKE MODE ENABLED")
 
-            # Only one real Like during the initial test.
-            selected_ids = selected_ids[:1]
-
     else:
         print("DRY RUN MODE: Like is disabled.")
 
