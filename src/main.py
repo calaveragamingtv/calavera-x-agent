@@ -14,6 +14,8 @@ USERNAME = "monitored_accounts"
 LIMIT = 10
 MAX_TOTAL_REPLIES = 2
 
+MAX_REPOSTS_PER_RUN = 2
+
 MAX_LIKES_PER_RUN = 2
 MIN_LIKE_SCORE = 75
 
@@ -400,7 +402,7 @@ def test_reply_drafts(tracker, eligible_ids):
 
             tested += 1
 
-        except Exception:
+        except Exception as error:
             if live_enabled:
                 updated_post = tracker.get_post(post_id)
                 current_status = (
@@ -438,8 +440,6 @@ def test_reply_drafts(tracker, eligible_ids):
     else:
         print("DRY RUN: no replies were published to X.")
         print("All tested replies remain in drafted state.")
-
-
 
 
 def generate_repost_drafts(tracker, rankings):
@@ -506,87 +506,213 @@ def test_repost_drafts(tracker, rankings):
             f"Repost action script not found: {REPOST_ACTION_SCRIPT}"
         )
 
-    candidates = [
-        item
-        for item in rankings
-        if item.get("recommended_action") == "repost"
-    ]
+    live_enabled = load_repost_action_config()
 
-    tested = 0
+    if live_enabled:
+        print("LIVE REPOST MODE ENABLED")
+        print(
+            f"Maximum reposts per execution: {MAX_REPOSTS_PER_RUN}"
+        )
+    else:
+        print("DRY RUN MODE: Repost is disabled.")
 
-    for item in candidates:
+    # Preserve ranking order and select up to the configured number
+    # of posts that actually have a pending repost draft.
+    candidates = []
+
+    for item in rankings:
+        if item.get("recommended_action") != "repost":
+            continue
+
         post_id = str(item.get("post_id", "")).strip()
+
+        if not post_id:
+            continue
+
         post = tracker.get_post(post_id)
 
         if not post:
             continue
 
-        repost_action = post["actions"]["repost"]
+        repost_action = post.get("actions", {}).get("repost", {})
 
-        if repost_action["status"] != "drafted":
+        if repost_action.get("status") != "drafted":
             continue
 
+        candidates.append(post_id)
+
+        if len(candidates) >= MAX_REPOSTS_PER_RUN:
+            break
+
+    print(f"Pending repost drafts selected: {len(candidates)}")
+
+    if not candidates:
+        print("No pending repost drafts to test.")
+        return
+
+    tested = 0
+    published = 0
+
+    for post_id in candidates:
         request = {"post_id": post_id}
 
         print(f"\nTesting repost for post {post_id}...")
 
-        result = subprocess.run(
-            ["node", str(REPOST_ACTION_SCRIPT)],
-            input=json.dumps(request),
-            capture_output=True,
-            text=True,
-            check=False
-        )
-
-        if result.stderr:
-            print(result.stderr.strip())
-
-        if result.returncode != 0:
-            raise RuntimeError(
-                f"Node.js repost dry run failed for {post_id}: "
-                f"{result.stdout.strip()}"
+        if live_enabled:
+            tracker.mark_action_started(
+                post_id,
+                "repost",
+                {
+                    "post_id": post_id,
+                    "mode": "live",
+                    "stage": "sending"
+                }
             )
 
         try:
-            action_result = json.loads(result.stdout.strip())
-        except json.JSONDecodeError as error:
-            raise RuntimeError(
-                f"Invalid JSON returned by Node.js for repost {post_id}"
-            ) from error
-
-        expected = {
-            "success": True,
-            "dry_run": True,
-            "published": False,
-            "original_post_id": post_id
-        }
-
-        for field, value in expected.items():
-            if action_result.get(field) != value:
-                raise RuntimeError(
-                    f"Unexpected repost result for {post_id}: "
-                    f"{field} expected {value!r}, "
-                    f"got {action_result.get(field)!r}"
-                )
-
-        updated_post = tracker.get_post(post_id)
-        updated_status = updated_post["actions"]["repost"]["status"]
-
-        if updated_status != "drafted":
-            raise RuntimeError(
-                f"Unexpected tracker state after repost dry run: "
-                f"{updated_status}"
+            result = subprocess.run(
+                ["node", str(REPOST_ACTION_SCRIPT)],
+                input=json.dumps(request, ensure_ascii=False),
+                capture_output=True,
+                text=True,
+                check=False
             )
 
-        print(
-            "Validated: success=True, dry_run=True, "
-            "published=False, tracker_status=drafted"
-        )
+            if result.stderr:
+                print(result.stderr.strip())
 
-        tested += 1
+            if result.returncode != 0:
+                raise RuntimeError(
+                    f"Node.js repost action failed for post {post_id}. "
+                    f"Exit code: {result.returncode}. "
+                    f"Output: {result.stdout.strip()}"
+                )
+
+            try:
+                action_result = json.loads(result.stdout.strip())
+            except json.JSONDecodeError as error:
+                raise RuntimeError(
+                    f"Invalid JSON returned by Node.js for repost "
+                    f"{post_id}: {result.stdout.strip()}"
+                ) from error
+
+            if not isinstance(action_result, dict):
+                raise RuntimeError(
+                    f"Invalid Node.js response for repost {post_id}"
+                )
+
+            if live_enabled:
+                expected = {
+                    "success": True,
+                    "dry_run": False,
+                    "published": True,
+                    "original_post_id": post_id
+                }
+
+                for field, value in expected.items():
+                    actual = action_result.get(field)
+
+                    if actual != value:
+                        raise RuntimeError(
+                            f"Unexpected live repost result for "
+                            f"{post_id}: {field} expected {value!r}, "
+                            f"got {actual!r}"
+                        )
+
+                # Rettiwt confirms the repost but does not return
+                # a separate repost ID. Keep the original post ID
+                # as the external reference for this action.
+                tracker.mark_action_result(
+                    post_id,
+                    "repost",
+                    "completed",
+                    external_id=post_id
+                )
+
+                print(
+                    f"LIVE REPOST CONFIRMED: post={post_id}, "
+                    "tracker_status=completed"
+                )
+
+                published += 1
+
+            else:
+                expected = {
+                    "success": True,
+                    "dry_run": True,
+                    "published": False,
+                    "original_post_id": post_id
+                }
+
+                for field, value in expected.items():
+                    actual = action_result.get(field)
+
+                    if actual != value:
+                        raise RuntimeError(
+                            f"Unexpected repost dry run result for "
+                            f"{post_id}: {field} expected {value!r}, "
+                            f"got {actual!r}"
+                        )
+
+                updated_post = tracker.get_post(post_id)
+                updated_status = (
+                    updated_post.get("actions", {})
+                    .get("repost", {})
+                    .get("status")
+                ) if updated_post else None
+
+                if updated_status != "drafted":
+                    raise RuntimeError(
+                        f"Unexpected tracker state after repost "
+                        f"dry run for {post_id}: {updated_status}"
+                    )
+
+                print(
+                    "Validated: success=True, dry_run=True, "
+                    "published=False, tracker_status=drafted"
+                )
+
+            tested += 1
+
+        except Exception as error:
+            if live_enabled:
+                updated_post = tracker.get_post(post_id)
+                current_status = (
+                    updated_post.get("actions", {})
+                    .get("repost", {})
+                    .get("status")
+                ) if updated_post else None
+
+                if current_status == "processing":
+                    tracker.mark_action_result(
+                        post_id,
+                        "repost",
+                        "unknown",
+                        error=(
+                            "Repost execution result is uncertain. "
+                            f"Details: {error}. "
+                            "Manual verification required."
+                        )
+                    )
+
+                    print(
+                        f"Repost result is uncertain for {post_id}. "
+                        "Tracker status set to unknown. "
+                        "Manual verification is required."
+                    )
+
+            raise
 
     print(f"\nRepost drafts tested successfully: {tested}")
-    print("DRY RUN: no reposts were published to X.")
+
+    if live_enabled:
+        print(f"Live Reposts confirmed: {published}")
+        print(
+            f"Maximum reposts per execution: {MAX_REPOSTS_PER_RUN}"
+        )
+    else:
+        print("DRY RUN: no reposts were published to X.")
+        print("All tested reposts remain in drafted state.")
 
 
 def load_like_evaluations():
@@ -967,6 +1093,7 @@ def generate_like_drafts(tracker, evaluations):
         for candidate in selected
     ]
 
+
 def load_like_action_config():
     if not ACTION_CONFIG_FILE.exists():
         raise FileNotFoundError(
@@ -990,6 +1117,7 @@ def load_like_action_config():
         raise ValueError("Invalid Like enabled setting")
 
     return enabled
+
 
 def load_reply_action_config():
     if not ACTION_CONFIG_FILE.exists():
@@ -1016,6 +1144,30 @@ def load_reply_action_config():
     return enabled
 
 
+def load_repost_action_config():
+    if not ACTION_CONFIG_FILE.exists():
+        raise FileNotFoundError(
+            f"Action config not found: {ACTION_CONFIG_FILE}"
+        )
+
+    with ACTION_CONFIG_FILE.open("r", encoding="utf-8") as file:
+        config = json.load(file)
+
+    if not isinstance(config, dict):
+        raise ValueError("Invalid action config")
+
+    repost_config = config.get("repost")
+
+    if not isinstance(repost_config, dict):
+        raise ValueError("Missing Repost configuration")
+
+    enabled = repost_config.get("enabled")
+
+    if not isinstance(enabled, bool):
+        raise ValueError("Invalid Repost enabled setting")
+
+    return enabled
+
 
 def test_like_drafts(tracker, selected_ids):
     print("\nTesting like drafts with Node.js...")
@@ -1027,7 +1179,7 @@ def test_like_drafts(tracker, selected_ids):
 
         if enabled:
             print("LIVE LIKE MODE ENABLED")
-        
+
             # Only one real Like during the initial test.
             selected_ids = selected_ids[:1]
 
@@ -1231,6 +1383,7 @@ def test_like_drafts(tracker, selected_ids):
         print(f"\nLike drafts tested successfully: {tested}")
         print("DRY RUN: no likes were sent to X.")
 
+
 def main():
     print("Starting X Agent")
 
@@ -1261,6 +1414,10 @@ def main():
     print("\nRecovering interrupted likes...")
     recovered_likes = tracker.recover_interrupted_actions("like")
     print(f"Interrupted likes recovered: {recovered_likes}")
+
+    print("\nRecovering interrupted reposts...")
+    recovered_reposts = tracker.recover_interrupted_actions("repost")
+    print(f"Interrupted reposts recovered: {recovered_reposts}")
 
     # 6. Register new posts
     new_ids = tracker.register_posts(posts)
@@ -1359,7 +1516,7 @@ def main():
         all_rankings
     )
 
-    # 11. Test reply drafts through Node.js (DRY RUN)
+    # 11. Test reply drafts through Node.js
     test_reply_drafts(
         tracker,
         eligible
@@ -1371,7 +1528,7 @@ def main():
         all_rankings
     )
 
-    # 13. Test repost drafts through Node.js (DRY RUN)
+    # 13. Test repost drafts through Node.js
     test_repost_drafts(
         tracker,
         all_rankings
@@ -1380,7 +1537,7 @@ def main():
     # 14. Evaluate posts for Likes with the dedicated Gemini prompt
     like_evaluations = evaluate_like_candidates(tracker)
 
-    # 15. Generate and test like drafts (DRY RUN)
+    # 15. Generate and test like drafts
     like_ids = generate_like_drafts(
         tracker,
         like_evaluations
