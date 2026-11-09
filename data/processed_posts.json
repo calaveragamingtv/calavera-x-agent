@@ -1193,6 +1193,124 @@
           "payload": null
         }
       }
+    },
+    "2119625078648513018": {
+      "id": "2119625078648513018",
+      "author_id": "815409347689934848",
+      "text": "Es tan facil tiltear al team!!!\n\nhttps://t.co/yh2IlE3c92",
+      "url": "https://x.com/CalaveraGaming/status/2119625078648513018",
+      "created_at": "2026-11-09T02:56:14.000Z",
+      "expanded_urls": [
+        "https://www.youtube.com/shorts/u260bcL31_o?feature=share"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-09T09:29:53.587965+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2119625078648513018",
+          "score": 50,
+          "category": "gameplay",
+          "priority": "medium",
+          "recommended_action": "ignore",
+          "reason": "Publicación propia de la cuenta sobre la dinámica de juego, útil para mantener actividad pero sin información nueva u oportunidad de interacción externa relevante."
+        },
+        "completed_at": "2026-11-09T09:29:54.818934+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      }
+    },
+    "2119609015844123082": {
+      "id": "2119609015844123082",
+      "author_id": "815409347689934848",
+      "text": "RT @CalaveraGaming: El patch de Halloween 2026 ya arrancó con el evento Candy Hunt cada dos días in-game y la posibilidad de armar tu propi…",
+      "url": "https://x.com/CalaveraGaming/status/2119609015844123082",
+      "created_at": "2026-11-09T01:52:24.000Z",
+      "expanded_urls": [],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-09T09:29:53.587974+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2119609015844123082",
+          "score": 75,
+          "category": "update",
+          "priority": "high",
+          "recommended_action": "repost",
+          "reason": "Es un repost de la propia cuenta enfocado en el parche de Halloween 2026 y el evento Candy Hunt, lo cual es altamente relevante para la comunidad de Rust y el posicionamiento del creador."
+        },
+        "completed_at": "2026-11-09T09:29:54.821020+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "unknown",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-09T09:29:54.839779+00:00",
+          "completed_at": null,
+          "error": "Repost execution result is uncertain. Details: Node.js repost action failed for post 2119609015844123082. Exit code: 1. Output: {\"success\":false,\"error\":\"Unknown error\"}. Manual verification required.",
+          "external_id": null,
+          "payload": {
+            "post_id": "2119609015844123082",
+            "mode": "live",
+            "stage": "unknown"
+          }
+        }
+      }
     }
   }
 }

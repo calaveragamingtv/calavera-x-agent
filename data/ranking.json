@@ -1,8 +1,8 @@
 {
   "account": "monitored_accounts",
-  "analyzed_at": "2026-11-09T01:52:23.776141+00:00",
-  "model": null,
-  "total": 20,
+  "analyzed_at": "2026-11-09T09:29:54.822451+00:00",
+  "model": "gemini-3.5-flash-lite",
+  "total": 22,
   "ranking": [
     {
       "post_id": "2118878190437273865",
@@ -51,6 +51,14 @@
       "priority": "high",
       "recommended_action": "reply",
       "reason": "Información sobre los nuevos portales de cultistas en el mapa que generan gran misterio y discusión."
+    },
+    {
+      "post_id": "2119609015844123082",
+      "score": 75,
+      "category": "update",
+      "priority": "high",
+      "recommended_action": "repost",
+      "reason": "Es un repost de la propia cuenta enfocado en el parche de Halloween 2026 y el evento Candy Hunt, lo cual es altamente relevante para la comunidad de Rust y el posicionamiento del creador."
     },
     {
       "post_id": "2115851580268237173",
@@ -115,6 +123,14 @@
       "priority": "medium",
       "recommended_action": "ignore",
       "reason": "Llamado a la comunidad para discutir estrategias de inicio de wipe."
+    },
+    {
+      "post_id": "2119625078648513018",
+      "score": 50,
+      "category": "gameplay",
+      "priority": "medium",
+      "recommended_action": "ignore",
+      "reason": "Publicación propia de la cuenta sobre la dinámica de juego, útil para mantener actividad pero sin información nueva u oportunidad de interacción externa relevante."
     },
     {
       "post_id": "2114118753566720304",
