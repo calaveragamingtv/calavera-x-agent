@@ -1311,6 +1311,64 @@
           }
         }
       }
+    },
+    "2119837852515111122": {
+      "id": "2119837852515111122",
+      "author_id": "815409347689934848",
+      "text": "Ahora hay que mimar a las vacas desde chiquitas para que tengan buen Potential y rindan más. Cuidar la granja dejó de ser un trámite. https://t.co/DizLEwFE5L",
+      "url": "https://x.com/CalaveraGaming/status/2119837852515111122",
+      "created_at": "2026-11-09T17:01:43.000Z",
+      "expanded_urls": [
+        "https://twitter.com/CalaveraGaming/status/2119837852515111122"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-09T20:00:15.252455+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2119837852515111122",
+          "score": 45,
+          "category": "gameplay",
+          "priority": "medium",
+          "recommended_action": "ignore",
+          "reason": "Es una publicación propia sobre la mecánica de agricultura y animales en Rust, útil para mantener actividad pero no requiere respuesta ni repost al ser del propio creador."
+        },
+        "completed_at": "2026-11-09T20:00:16.305621+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      }
     }
   }
 }

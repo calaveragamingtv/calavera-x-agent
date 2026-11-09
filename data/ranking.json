@@ -1,8 +1,8 @@
 {
   "account": "monitored_accounts",
-  "analyzed_at": "2026-11-09T09:29:54.822451+00:00",
+  "analyzed_at": "2026-11-09T20:00:16.308090+00:00",
   "model": "gemini-3.5-flash-lite",
-  "total": 22,
+  "total": 23,
   "ranking": [
     {
       "post_id": "2118878190437273865",
@@ -147,6 +147,14 @@
       "priority": "medium",
       "recommended_action": "ignore",
       "reason": "Interacción típica de directo sobre jugadas en la playa."
+    },
+    {
+      "post_id": "2119837852515111122",
+      "score": 45,
+      "category": "gameplay",
+      "priority": "medium",
+      "recommended_action": "ignore",
+      "reason": "Es una publicación propia sobre la mecánica de agricultura y animales en Rust, útil para mantener actividad pero no requiere respuesta ni repost al ser del propio creador."
     },
     {
       "post_id": "2113745127453659270",

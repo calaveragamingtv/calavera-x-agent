@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-08T23:02:16.639741+00:00",
-  "total": 20,
+  "updated_at": "2026-11-09T20:00:17.715939+00:00",
+  "total": 23,
   "evaluations": {
     "2118776885878386718": {
       "post_id": "2118776885878386718",
@@ -141,6 +141,27 @@
       "score": 80,
       "category": "rust",
       "reason": "Ofrece un comentario humorístico y situaciones típicas del juego que generan identificación en la comunidad."
+    },
+    "2119625078648513018": {
+      "post_id": "2119625078648513018",
+      "should_like": true,
+      "score": 95,
+      "category": "youtube",
+      "reason": "La publicación incluye un enlace válido a YouTube Shorts (youtube.com), aplicando la prioridad de plataformas de contenido."
+    },
+    "2119609015844123082": {
+      "post_id": "2119609015844123082",
+      "should_like": true,
+      "score": 85,
+      "category": "rust",
+      "reason": "Contenido muy interesante sobre una actualización y evento de Halloween en Rust, aportando novedades valiosas para la comunidad."
+    },
+    "2119837852515111122": {
+      "post_id": "2119837852515111122",
+      "should_like": true,
+      "score": 82,
+      "category": "gaming",
+      "reason": "Comentario entretenido y original sobre mecánicas de granja y simulación en los videojuegos, generando valor genuino de contenido."
     }
   }
 }

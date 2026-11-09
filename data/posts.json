@@ -1,8 +1,28 @@
 {
   "account": "monitored_accounts",
-  "updated_at": "2026-11-09T09:29:53.587213+00:00",
+  "updated_at": "2026-11-09T20:00:15.251477+00:00",
   "total": 20,
   "posts": [
+    {
+      "id": "2119837852515111122",
+      "author_id": "815409347689934848",
+      "text": "Ahora hay que mimar a las vacas desde chiquitas para que tengan buen Potential y rindan más. Cuidar la granja dejó de ser un trámite. https://t.co/DizLEwFE5L",
+      "url": "https://x.com/CalaveraGaming/status/2119837852515111122",
+      "expanded_urls": [
+        "https://twitter.com/CalaveraGaming/status/2119837852515111122"
+      ],
+      "created_at": "2026-11-09T17:01:43.000Z",
+      "replies": 0,
+      "reposts": 0,
+      "likes": 0,
+      "views": 16,
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ]
+    },
     {
       "id": "2119625078648513018",
       "author_id": "815409347689934848",
@@ -15,7 +35,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 0,
-      "views": 16,
+      "views": 20,
       "monitored_by": [
         {
           "account_id": "815409347689934848",
@@ -53,7 +73,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 0,
-      "views": 36,
+      "views": 48,
       "monitored_by": [
         {
           "account_id": "815409347689934848",
@@ -374,26 +394,6 @@
       "reposts": 0,
       "likes": 0,
       "views": 46,
-      "monitored_by": [
-        {
-          "account_id": "815409347689934848",
-          "account_type": "streamer"
-        }
-      ]
-    },
-    {
-      "id": "2114764536515317983",
-      "author_id": "815409347689934848",
-      "text": "El patch de Halloween 2026 ya arrancó con el evento Candy Hunt cada dos días in-game y la posibilidad de armar tu propio monstruo de Frankenstein con partes de cuerpos para que te defienda. ¿Vas a farmear caramelos o a cazar momias? https://t.co/c8PdSOrLQU",
-      "url": "https://x.com/CalaveraGaming/status/2114764536515317983",
-      "expanded_urls": [
-        "https://twitter.com/CalaveraGaming/status/2114764536515317983"
-      ],
-      "created_at": "2026-10-26T17:02:10.000Z",
-      "replies": 0,
-      "reposts": 1,
-      "likes": 1,
-      "views": 133,
       "monitored_by": [
         {
           "account_id": "815409347689934848",
