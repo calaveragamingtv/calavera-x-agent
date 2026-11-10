@@ -23,10 +23,135 @@ class PostTracker:
     # sent. Unknown results also consume quota to prevent accidental retries.
     CONSUMING_STATUSES = ("processing", "completed", "unknown")
 
-    def __init__(self, file_path: str | Path = "data/processed_posts.json"):
+    def __init__(
+        self,
+        file_path: str | Path = "data/processed_posts.json",
+        config_path: str | Path = "config/x_actions.json"
+    ):
         self.file_path = Path(file_path)
+        self.config_path = Path(config_path)
+
         self.file_path.parent.mkdir(parents=True, exist_ok=True)
+
+        # Load centralized action limits and timezone.
+        self.config = self._load_config()
+        self.timezone = ZoneInfo(self.config["timezone"])
+
         self.data = self._load()
+
+    def _load_config(self) -> dict:
+        """Load and validate the centralized X actions configuration."""
+
+        if not self.config_path.exists():
+            raise FileNotFoundError(
+                f"X actions configuration not found: {self.config_path}"
+            )
+
+        try:
+            with self.config_path.open("r", encoding="utf-8") as file:
+                config = json.load(file)
+
+        except json.JSONDecodeError as exc:
+            raise RuntimeError(
+                f"Invalid X actions configuration: {self.config_path}"
+            ) from exc
+
+        if not isinstance(config, dict):
+            raise RuntimeError("Invalid x_actions.json structure")
+
+        actions = config.get("actions")
+        limits = config.get("limits")
+        timezone_name = config.get("timezone")
+
+        if not isinstance(actions, dict):
+            raise RuntimeError(
+                "Missing or invalid 'actions' configuration"
+            )
+
+        if not isinstance(limits, dict):
+            raise RuntimeError(
+                "Missing or invalid 'limits' configuration"
+            )
+
+        if (
+            not isinstance(timezone_name, str)
+            or not timezone_name.strip()
+        ):
+            raise RuntimeError(
+                "Missing or invalid timezone configuration"
+            )
+
+        try:
+            ZoneInfo(timezone_name)
+
+        except Exception as exc:
+            raise RuntimeError(
+                f"Invalid timezone in x_actions.json: {timezone_name}"
+            ) from exc
+
+        # Validate daily limits for every action.
+        for action in self.ACTIONS:
+            action_limits = limits.get(action)
+
+            if not isinstance(action_limits, dict):
+                raise RuntimeError(
+                    f"Missing limits configuration for action: {action}"
+                )
+
+            max_per_day = action_limits.get("max_per_day")
+
+            if (
+                not isinstance(max_per_day, int)
+                or isinstance(max_per_day, bool)
+                or max_per_day < 0
+            ):
+                raise RuntimeError(
+                    f"Invalid max_per_day for action: {action}"
+                )
+
+        # Validate the per-author Reply limit.
+        max_replies_per_author = limits["reply"].get(
+            "max_per_author_per_day"
+        )
+
+        if (
+            not isinstance(max_replies_per_author, int)
+            or isinstance(max_replies_per_author, bool)
+            or max_replies_per_author < 0
+        ):
+            raise RuntimeError(
+                "Invalid reply.max_per_author_per_day configuration"
+            )
+
+        config["timezone"] = timezone_name
+
+        print("X actions configuration loaded successfully")
+        print(f"Configured timezone: {timezone_name}")
+
+        for action in self.ACTIONS:
+            print(
+                f"{action.capitalize()} daily limit: "
+                f"{limits[action]['max_per_day']}"
+            )
+
+        print(
+            "Reply per-author daily limit: "
+            f"{max_replies_per_author}"
+        )
+
+        return config
+
+    def get_action_limit(self, action: str) -> int:
+        """Return the configured daily limit for an action."""
+
+        self._validate_action(action)
+
+        return self.config["limits"][action]["max_per_day"]
+
+    def get_reply_author_limit(self) -> int:
+        """Return the configured daily Reply limit per author."""
+
+        return self.config["limits"]["reply"]["max_per_author_per_day"]
 
     @staticmethod
     def _now() -> str:
@@ -42,6 +167,7 @@ class PostTracker:
         try:
             with self.file_path.open("r", encoding="utf-8") as file:
                 data = json.load(file)
+
         except json.JSONDecodeError as exc:
             raise RuntimeError(
                 f"Invalid tracker JSON: {self.file_path}"
@@ -194,38 +320,37 @@ class PostTracker:
     def _save(self) -> None:
         self._save_data(self.data)
 
-    
     def register_posts(self, posts: list[dict]) -> list[str]:
         new_ids = []
         changed = False
-    
+
         for post in posts:
             post_id = str(post.get("id", "")).strip()
-    
+
             if not post_id:
                 raise ValueError("A post without ID cannot be registered")
-    
+
             author_id = post.get("author_id")
-    
+
             if author_id is not None:
                 author_id = str(author_id)
-    
+
             expanded_urls = post.get("expanded_urls", [])
             monitored_by = post.get("monitored_by", [])
-    
+
             if not isinstance(expanded_urls, list):
                 expanded_urls = []
-    
+
             if not isinstance(monitored_by, list):
                 monitored_by = []
-    
+
             if post_id in self.data["posts"]:
                 tracked_post = self.data["posts"][post_id]
-    
+
                 if author_id and not tracked_post.get("author_id"):
                     tracked_post["author_id"] = author_id
                     changed = True
-    
+
                 # Refresh metadata without modifying existing action states.
                 for field, value in (
                     ("expanded_urls", expanded_urls),
@@ -234,11 +359,11 @@ class PostTracker:
                     if tracked_post.get(field) != value:
                         tracked_post[field] = value
                         changed = True
-    
+
                 continue
-    
+
             text = post.get("text") or post.get("fullText") or ""
-    
+
             self.data["posts"][post_id] = {
                 "id": post_id,
                 "author_id": author_id,
@@ -265,15 +390,14 @@ class PostTracker:
                     for action in self.ACTIONS
                 }
             }
-    
+
             new_ids.append(post_id)
             changed = True
-    
+
         if changed:
             self._save()
-    
-        return new_ids
 
+        return new_ids
 
     def mark_analysis_completed(
         self,
@@ -371,7 +495,6 @@ class PostTracker:
 
         self._save()
 
-    
     def cancel_like_draft(
         self,
         post_id: str,
@@ -403,7 +526,6 @@ class PostTracker:
 
         return True
 
-
     def mark_action_started(
         self,
         post_id: str,
@@ -430,6 +552,7 @@ class PostTracker:
                 raise ValueError("Action payload must be a dictionary")
 
             saved_payload = dict(payload)
+
         else:
             saved_payload = action_data.get("payload")
 
@@ -582,8 +705,9 @@ class PostTracker:
         if action not in self.ACTIONS:
             raise ValueError(f"Unsupported action: {action}")
 
-    @staticmethod
-    def _argentina_date(timestamp: str | None):
+    def _local_date(self, timestamp: str | None):
+        """Convert a timestamp to a date using the configured timezone."""
+
         if not timestamp:
             return None
 
@@ -595,22 +719,22 @@ class PostTracker:
             if parsed.tzinfo is None:
                 parsed = parsed.replace(tzinfo=timezone.utc)
 
-            return parsed.astimezone(
-                ZoneInfo("America/Argentina/Buenos_Aires")
-            ).date()
+            return parsed.astimezone(self.timezone).date()
 
         except (ValueError, TypeError):
             return None
 
     def get_action_usage(self, action: str) -> dict:
-        """Return the number of attempts for an action during today's
-        Argentina-local date. Processing and unknown attempts consume quota.
         """
+        Return today's usage for an action in the configured timezone.
+
+        Processing and unknown attempts consume quota.
+        Completed actions use their completion timestamp.
+        """
+
         self._validate_action(action)
 
-        today = datetime.now(
-            ZoneInfo("America/Argentina/Buenos_Aires")
-        ).date()
+        today = datetime.now(self.timezone).date()
         total_today = 0
 
         for post in self.data["posts"].values():
@@ -626,7 +750,7 @@ class PostTracker:
                 else action_data.get("last_attempt_at")
             )
 
-            if self._argentina_date(timestamp) == today:
+            if self._local_date(timestamp) == today:
                 total_today += 1
 
         return {
@@ -637,24 +761,29 @@ class PostTracker:
     def can_perform_action_today(
         self,
         action: str,
-        max_per_day: int
+        max_per_day: int | None = None
     ) -> tuple[bool, str]:
+        """
+        Check whether an action can be performed today.
+
+        max_per_day is retained for compatibility with older callers.
+        The configured value in x_actions.json is always authoritative.
+        """
+
         self._validate_action(action)
 
-        if max_per_day < 0:
-            raise ValueError("max_per_day cannot be negative")
-
+        configured_limit = self.get_action_limit(action)
         usage = self.get_action_usage(action)
 
-        if usage["total_today"] >= max_per_day:
+        if usage["total_today"] >= configured_limit:
             return False, "daily_action_limit_reached"
 
         return True, "allowed"
 
     def get_reply_usage(self, author_id: str) -> dict:
-        today = datetime.now(
-            ZoneInfo("America/Argentina/Buenos_Aires")
-        ).date()
+        """Return today's total Reply usage and usage for a specific author."""
+
+        today = datetime.now(self.timezone).date()
 
         author_id = str(author_id)
         total_replies_today = 0
@@ -673,7 +802,7 @@ class PostTracker:
                 else action.get("last_attempt_at")
             )
 
-            if self._argentina_date(timestamp) != today:
+            if self._local_date(timestamp) != today:
                 continue
 
             total_replies_today += 1
@@ -682,8 +811,6 @@ class PostTracker:
                 author_replies_today += 1
 
         return {
-            # Keep the old key for compatibility, but its value is now
-            # correctly scoped to today's usage rather than all-time usage.
             "total_replies": total_replies_today,
             "total_replies_today": total_replies_today,
             "author_replies_today": author_replies_today,
@@ -693,18 +820,27 @@ class PostTracker:
     def can_reply_to_author_today(
         self,
         author_id: str,
-        max_total_replies: int = 2
+        max_total_replies: int | None = None
     ) -> tuple[bool, str]:
+        """
+        Check both the global daily Reply limit and the per-author limit.
+
+        max_total_replies is retained for compatibility with older callers.
+        Both configured values in x_actions.json are authoritative.
+        """
 
         if not author_id:
             return False, "missing_author_id"
 
         usage = self.get_reply_usage(author_id)
 
+        max_total_replies = self.get_action_limit("reply")
+        max_replies_per_author = self.get_reply_author_limit()
+
         if usage["total_replies_today"] >= max_total_replies:
             return False, "daily_reply_limit_reached"
 
-        if usage["author_replies_today"] >= 1:
+        if usage["author_replies_today"] >= max_replies_per_author:
             return False, "author_daily_limit_reached"
 
         return True, "allowed"
