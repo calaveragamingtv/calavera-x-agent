@@ -19,6 +19,10 @@ class PostTracker:
         "unknown",
     )
 
+    CONSUMING_STATUSES = ("processing", "completed", "unknown")
+
+    ARGENTINA_TZ = ZoneInfo("America/Argentina/Buenos_Aires")
+
     def __init__(self, file_path: str | Path = "data/processed_posts.json"):
         self.file_path = Path(file_path)
         self.file_path.parent.mkdir(parents=True, exist_ok=True)
@@ -27,6 +31,10 @@ class PostTracker:
     @staticmethod
     def _now() -> str:
         return datetime.now(timezone.utc).isoformat()
+
+    @classmethod
+    def _today_argentina(cls):
+        return datetime.now(cls.ARGENTINA_TZ).date()
 
     def _load(self) -> dict:
         if not self.file_path.exists():
@@ -190,38 +198,37 @@ class PostTracker:
     def _save(self) -> None:
         self._save_data(self.data)
 
-    
     def register_posts(self, posts: list[dict]) -> list[str]:
         new_ids = []
         changed = False
-    
+
         for post in posts:
             post_id = str(post.get("id", "")).strip()
-    
+
             if not post_id:
                 raise ValueError("A post without ID cannot be registered")
-    
+
             author_id = post.get("author_id")
-    
+
             if author_id is not None:
                 author_id = str(author_id)
-    
+
             expanded_urls = post.get("expanded_urls", [])
             monitored_by = post.get("monitored_by", [])
-    
+
             if not isinstance(expanded_urls, list):
                 expanded_urls = []
-    
+
             if not isinstance(monitored_by, list):
                 monitored_by = []
-    
+
             if post_id in self.data["posts"]:
                 tracked_post = self.data["posts"][post_id]
-    
+
                 if author_id and not tracked_post.get("author_id"):
                     tracked_post["author_id"] = author_id
                     changed = True
-    
+
                 # Refresh metadata without modifying existing action states.
                 for field, value in (
                     ("expanded_urls", expanded_urls),
@@ -230,11 +237,11 @@ class PostTracker:
                     if tracked_post.get(field) != value:
                         tracked_post[field] = value
                         changed = True
-    
+
                 continue
-    
+
             text = post.get("text") or post.get("fullText") or ""
-    
+
             self.data["posts"][post_id] = {
                 "id": post_id,
                 "author_id": author_id,
@@ -261,15 +268,14 @@ class PostTracker:
                     for action in self.ACTIONS
                 }
             }
-    
+
             new_ids.append(post_id)
             changed = True
-    
+
         if changed:
             self._save()
-    
-        return new_ids
 
+        return new_ids
 
     def mark_analysis_completed(
         self,
@@ -367,7 +373,6 @@ class PostTracker:
 
         self._save()
 
-    
     def cancel_like_draft(
         self,
         post_id: str,
@@ -398,7 +403,6 @@ class PostTracker:
         self._save()
 
         return True
-
 
     def mark_action_started(
         self,
@@ -578,8 +582,8 @@ class PostTracker:
         if action not in self.ACTIONS:
             raise ValueError(f"Unsupported action: {action}")
 
-    @staticmethod
-    def _argentina_date(timestamp: str | None):
+    @classmethod
+    def _argentina_date(cls, timestamp: str | None):
         if not timestamp:
             return None
 
@@ -591,31 +595,81 @@ class PostTracker:
             if parsed.tzinfo is None:
                 parsed = parsed.replace(tzinfo=timezone.utc)
 
-            return parsed.astimezone(
-                ZoneInfo("America/Argentina/Buenos_Aires")
-            ).date()
+            return parsed.astimezone(cls.ARGENTINA_TZ).date()
 
         except (ValueError, TypeError):
             return None
 
-    def get_reply_usage(self, author_id: str) -> dict:
-        today = datetime.now(
-            ZoneInfo("America/Argentina/Buenos_Aires")
-        ).date()
+    def get_action_usage(self, action: str) -> dict:
+        """
+        Returns the daily usage for an action in Argentina time.
 
+        processing, completed and unknown consume the daily limit.
+        drafted, not_started and failed do not consume it.
+        """
+        self._validate_action(action)
+
+        today = self._today_argentina()
+        total_today = 0
+
+        for post in self.data["posts"].values():
+            action_data = post.get("actions", {}).get(action, {})
+            status = action_data.get("status")
+
+            if status not in self.CONSUMING_STATUSES:
+                continue
+
+            timestamp = (
+                action_data.get("completed_at")
+                if status == "completed"
+                else action_data.get("last_attempt_at")
+            )
+
+            if self._argentina_date(timestamp) == today:
+                total_today += 1
+
+        return {
+            "action": action,
+            "total_today": total_today,
+            "today": today.isoformat()
+        }
+
+    def can_perform_action_today(
+        self,
+        action: str,
+        max_per_day: int
+    ) -> tuple[bool, str]:
+        """
+        Checks whether an action can still be performed today.
+        """
+        self._validate_action(action)
+
+        if max_per_day < 1:
+            raise ValueError("max_per_day must be greater than zero")
+
+        usage = self.get_action_usage(action)
+
+        if usage["total_today"] >= max_per_day:
+            return False, "daily_limit_reached"
+
+        return True, "allowed"
+
+    def get_reply_usage(self, author_id: str) -> dict:
+        """
+        Returns global daily Reply usage and daily usage for one author.
+        """
+        today = self._today_argentina()
         author_id = str(author_id)
 
-        total_replies = 0
+        total_replies_today = 0
         author_replies_today = 0
 
         for post in self.data["posts"].values():
             action = post.get("actions", {}).get("reply", {})
             status = action.get("status")
 
-            if status not in ("completed", "unknown"):
+            if status not in self.CONSUMING_STATUSES:
                 continue
-
-            total_replies += 1
 
             timestamp = (
                 action.get("completed_at")
@@ -623,14 +677,18 @@ class PostTracker:
                 else action.get("last_attempt_at")
             )
 
-            if (
-                str(post.get("author_id") or "") == author_id
-                and self._argentina_date(timestamp) == today
-            ):
+            if self._argentina_date(timestamp) != today:
+                continue
+
+            total_replies_today += 1
+
+            if str(post.get("author_id") or "") == author_id:
                 author_replies_today += 1
 
         return {
-            "total_replies": total_replies,
+            # Kept for compatibility with existing main.py callers.
+            "total_replies": total_replies_today,
+            "total_replies_today": total_replies_today,
             "author_replies_today": author_replies_today,
             "today": today.isoformat()
         }
@@ -640,14 +698,16 @@ class PostTracker:
         author_id: str,
         max_total_replies: int = 2
     ) -> tuple[bool, str]:
-
+        """
+        Checks both the global daily Reply limit and the per-author limit.
+        """
         if not author_id:
             return False, "missing_author_id"
 
         usage = self.get_reply_usage(author_id)
 
-        if usage["total_replies"] >= max_total_replies:
-            return False, "global_test_limit_reached"
+        if usage["total_replies_today"] >= max_total_replies:
+            return False, "daily_reply_limit_reached"
 
         if usage["author_replies_today"] >= 1:
             return False, "author_daily_limit_reached"
