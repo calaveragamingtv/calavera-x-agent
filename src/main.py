@@ -94,6 +94,14 @@ def evaluate_reply_eligibility(tracker, rankings):
         reverse=True
     )
 
+    # The tracker counts attempts already made today (Argentina time).
+    # Drafts selected in this pass are added to that daily usage.
+    daily_usage = tracker.get_action_usage("reply")
+    remaining_today = max(
+        0,
+        MAX_TOTAL_REPLIES - daily_usage["total_today"]
+    )
+
     planned_total = 0
     planned_by_author = {}
 
@@ -117,8 +125,8 @@ def evaluate_reply_eligibility(tracker, rankings):
         author_id = str(author_id)
         usage = tracker.get_reply_usage(author_id)
 
-        if planned_total >= MAX_TOTAL_REPLIES:
-            blocked.append((post_id, "global_test_limit_reached"))
+        if planned_total >= remaining_today:
+            blocked.append((post_id, "daily_reply_limit_reached"))
             continue
 
         if (
@@ -235,7 +243,7 @@ def test_reply_drafts(tracker, eligible_ids):
     if live_enabled:
         print("LIVE REPLY MODE ENABLED")
         print(
-            f"Maximum replies per execution: {MAX_TOTAL_REPLIES}"
+            f"Maximum replies per day: {MAX_TOTAL_REPLIES}"
         )
     else:
         print("DRY RUN MODE: Reply is disabled.")
@@ -259,12 +267,25 @@ def test_reply_drafts(tracker, eligible_ids):
             )
             continue
 
-        if live_enabled and published >= MAX_TOTAL_REPLIES:
-            print(
-                f"Maximum replies per execution reached: "
-                f"{MAX_TOTAL_REPLIES}"
+        if live_enabled:
+            author_id = post.get("author_id")
+            allowed, reason = tracker.can_reply_to_author_today(
+                str(author_id) if author_id else "",
+                MAX_TOTAL_REPLIES
             )
-            break
+
+            if not allowed:
+                print(
+                    f"Reply blocked for {post_id}: {reason}"
+                )
+                continue
+
+            if published >= MAX_TOTAL_REPLIES:
+                print(
+                    f"Maximum replies per day reached: "
+                    f"{MAX_TOTAL_REPLIES}"
+                )
+                break
 
         payload = reply_action.get("payload") or {}
         reply_text = payload.get("reply_text")
@@ -435,7 +456,7 @@ def test_reply_drafts(tracker, eligible_ids):
     if live_enabled:
         print(f"Live Replies confirmed: {published}")
         print(
-            f"Maximum replies per execution: {MAX_TOTAL_REPLIES}"
+            f"Maximum replies per day: {MAX_TOTAL_REPLIES}"
         )
     else:
         print("DRY RUN: no replies were published to X.")
@@ -511,13 +532,32 @@ def test_repost_drafts(tracker, rankings):
     if live_enabled:
         print("LIVE REPOST MODE ENABLED")
         print(
-            f"Maximum reposts per execution: {MAX_REPOSTS_PER_RUN}"
+            f"Maximum reposts per day: {MAX_REPOSTS_PER_RUN}"
         )
     else:
         print("DRY RUN MODE: Repost is disabled.")
 
-    # Preserve ranking order and select up to the configured number
-    # of posts that actually have a pending repost draft.
+    # The external scheduler runs this workflow once per day. Use the
+    # tracker's Argentina-day usage as the source of truth so an accidental
+    # second execution cannot exceed the daily limit.
+    if live_enabled:
+        repost_usage = tracker.get_action_usage("repost")
+        remaining_reposts = max(
+            0,
+            MAX_REPOSTS_PER_RUN - repost_usage["total_today"]
+        )
+    else:
+        remaining_reposts = MAX_REPOSTS_PER_RUN
+
+    if remaining_reposts <= 0:
+        print(
+            f"Daily repost limit already reached: "
+            f"{MAX_REPOSTS_PER_RUN}"
+        )
+        return
+
+    # Preserve ranking order and select only pending drafts within
+    # the remaining daily allowance.
     candidates = []
 
     for item in rankings:
@@ -541,7 +581,7 @@ def test_repost_drafts(tracker, rankings):
 
         candidates.append(post_id)
 
-        if len(candidates) >= MAX_REPOSTS_PER_RUN:
+        if len(candidates) >= remaining_reposts:
             break
 
     print(f"Pending repost drafts selected: {len(candidates)}")
@@ -559,6 +599,15 @@ def test_repost_drafts(tracker, rankings):
         print(f"\nTesting repost for post {post_id}...")
 
         if live_enabled:
+            allowed, reason = tracker.can_perform_action_today(
+                "repost",
+                MAX_REPOSTS_PER_RUN
+            )
+
+            if not allowed:
+                print(f"Repost blocked for {post_id}: {reason}")
+                break
+
             tracker.mark_action_started(
                 post_id,
                 "repost",
@@ -708,7 +757,7 @@ def test_repost_drafts(tracker, rankings):
     if live_enabled:
         print(f"Live Reposts confirmed: {published}")
         print(
-            f"Maximum reposts per execution: {MAX_REPOSTS_PER_RUN}"
+            f"Maximum reposts per day: {MAX_REPOSTS_PER_RUN}"
         )
     else:
         print("DRY RUN: no reposts were published to X.")
@@ -1176,9 +1225,7 @@ def test_like_drafts(tracker, selected_ids):
 
     if enabled:
         print("LIVE LIKE MODE ENABLED")
-
-        if enabled:
-            print("LIVE LIKE MODE ENABLED")
+        print(f"Maximum likes per day: {MAX_LIKES_PER_RUN}")
 
     else:
         print("DRY RUN MODE: Like is disabled.")
@@ -1277,6 +1324,16 @@ def test_like_drafts(tracker, selected_ids):
             continue
 
         # LIVE EXECUTION:
+        # Check the daily quota before persisting processing or calling Node.js.
+        allowed, reason = tracker.can_perform_action_today(
+            "like",
+            MAX_LIKES_PER_RUN
+        )
+
+        if not allowed:
+            print(f"Like blocked for {post_id}: {reason}")
+            break
+
         # Persist processing BEFORE calling Node.js.
         tracker.mark_action_started(
             post_id,
@@ -1375,7 +1432,7 @@ def test_like_drafts(tracker, selected_ids):
 
     if enabled:
         print(f"\nLive Likes confirmed: {tested}")
-        print("Only the explicitly authorized post was eligible.")
+        print(f"Maximum likes per day: {MAX_LIKES_PER_RUN}")
     else:
         print(f"\nLike drafts tested successfully: {tested}")
         print("DRY RUN: no likes were sent to X.")
