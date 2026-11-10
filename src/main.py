@@ -1,6 +1,7 @@
 import json
 import re
 import subprocess
+import traceback
 from pathlib import Path
 from datetime import datetime, timezone
 
@@ -221,7 +222,8 @@ def generate_reply_drafts(tracker, eligible_ids, rankings):
 
         except Exception as error:
             print(f"Reply generation failed for {post_id}: {error}")
-            raise
+            traceback.print_exc()
+            continue
 
     print("\nReply drafts generated or preserved.")
 
@@ -829,6 +831,14 @@ def evaluate_like_candidates(tracker):
 
     evaluator = GeminiLikeEvaluator()
     result = evaluator.evaluate_posts(pending_posts)
+
+    if result is None:
+        print(
+            "Like evaluation unavailable. "
+            "Posts will remain pending for the next execution."
+        )
+        return None
+
     new_evaluations = result["evaluations"]
 
     for item in new_evaluations:
@@ -1582,20 +1592,27 @@ def main():
         tracker,
         all_rankings
     )
-
+ 
     # 14. Evaluate posts for Likes with the dedicated Gemini prompt
     like_evaluations = evaluate_like_candidates(tracker)
 
-    # 15. Generate and test like drafts
-    like_ids = generate_like_drafts(
-        tracker,
-        like_evaluations
-    )
+    if like_evaluations is None:
+        print(
+            "Like processing skipped because Gemini evaluation failed. "
+            "Pending posts will be retried in the next execution."
+        )
+    else:
+        # 15. Generate and test like drafts
+        like_ids = generate_like_drafts(
+            tracker,
+            like_evaluations
+        )
 
-    test_like_drafts(
-        tracker,
-        like_ids
-    )
+        test_like_drafts(
+            tracker,
+            like_ids
+        )
+
 
     print(f"\nTracker contains {len(tracker.data['posts'])} posts")
     print("\nX Agent completed successfully")
