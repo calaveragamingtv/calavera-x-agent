@@ -1438,6 +1438,7 @@ def test_like_drafts(tracker, selected_ids):
         print("DRY RUN: no likes were sent to X.")
 
 
+
 def main():
     print("Starting X Agent")
 
@@ -1500,32 +1501,18 @@ def main():
 
         analyzer = GeminiAnalyzer()
 
-        try:
-            result = analyzer.analyze_posts(pending_posts)
+        result = analyzer.analyze_posts(pending_posts)
 
-            if result is None:
-                print(
-                    "Gemini analysis unavailable. "
-                    "Posts will remain pending for the next execution."
-                )
-            else:
-                ranking_by_id = {
-                    str(item["post_id"]): item
-                    for item in result["ranking"]
-                }
-            
-                for post_id in pending_ids:
-                    tracker.mark_analysis_completed(
-                        post_id,
-                        ranking_by_id[post_id]
-                    )
-            
-                print(f"Successfully analyzed {len(pending_ids)} posts")
-            
-                        ranking_by_id = {
-                            str(item["post_id"]): item
-                            for item in result["ranking"]
-                        }
+        if result is None:
+            print(
+                "Gemini analysis unavailable. "
+                "Posts will remain pending for the next execution."
+            )
+        else:
+            ranking_by_id = {
+                str(item["post_id"]): item
+                for item in result["ranking"]
+            }
 
             for post_id in pending_ids:
                 tracker.mark_analysis_completed(
@@ -1612,6 +1599,7 @@ def main():
 
     print(f"\nTracker contains {len(tracker.data['posts'])} posts")
     print("\nX Agent completed successfully")
+
 
 
 if __name__ == "__main__":
