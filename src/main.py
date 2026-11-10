@@ -1503,10 +1503,29 @@ def main():
         try:
             result = analyzer.analyze_posts(pending_posts)
 
-            ranking_by_id = {
-                str(item["post_id"]): item
-                for item in result["ranking"]
-            }
+            if result is None:
+                print(
+                    "Gemini analysis unavailable. "
+                    "Posts will remain pending for the next execution."
+                )
+            else:
+                ranking_by_id = {
+                    str(item["post_id"]): item
+                    for item in result["ranking"]
+                }
+            
+                for post_id in pending_ids:
+                    tracker.mark_analysis_completed(
+                        post_id,
+                        ranking_by_id[post_id]
+                    )
+            
+                print(f"Successfully analyzed {len(pending_ids)} posts")
+            
+                        ranking_by_id = {
+                            str(item["post_id"]): item
+                            for item in result["ranking"]
+                        }
 
             for post_id in pending_ids:
                 tracker.mark_analysis_completed(
@@ -1515,17 +1534,6 @@ def main():
                 )
 
             print(f"Successfully analyzed {len(pending_ids)} posts")
-
-        except Exception as error:
-            print(f"Gemini analysis failed: {error}")
-
-            for post_id in pending_ids:
-                tracker.mark_analysis_failed(
-                    post_id,
-                    str(error)
-                )
-
-            raise
 
     else:
         print("No posts require analysis. Skipping Gemini.")
