@@ -1387,9 +1387,16 @@
       ],
       "first_seen_at": "2026-11-10T18:33:20.349281+00:00",
       "analysis": {
-        "status": "failed",
-        "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
-        "last_attempt_at": "2026-11-10T18:33:21.395535+00:00"
+        "status": "completed",
+        "result": {
+          "post_id": "2120200207635714171",
+          "score": 95,
+          "category": "update",
+          "priority": "high",
+          "recommended_action": "reply",
+          "reason": "Trata sobre una optimización de rendimiento muy esperada en Rust (rendimiento al entrar a bases gigantes y reducción de lag spikes), lo cual tiene un impacto directo y masivo en la comunidad y experiencia de juego, ideal para aportar la perspectiva del creador."
+        },
+        "completed_at": "2026-11-10T23:08:56.809230+00:00"
       },
       "actions": {
         "like": {
@@ -1402,13 +1409,18 @@
           "payload": null
         },
         "reply": {
-          "status": "not_started",
+          "status": "drafted",
           "attempts": 0,
           "last_attempt_at": null,
           "completed_at": null,
           "error": null,
           "external_id": null,
-          "payload": null
+          "payload": {
+            "post_id": "2120200207635714171",
+            "reply_text": "Por fin se puede raidear un zergling sin que explote la tostadora, era hora.",
+            "generated_at": "2026-11-10T23:09:00.128732+00:00",
+            "stage": "drafted"
+          }
         },
         "repost": {
           "status": "not_started",

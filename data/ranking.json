@@ -1,8 +1,8 @@
 {
   "account": "monitored_accounts",
-  "analyzed_at": "2026-11-10T23:00:56.947888+00:00",
+  "analyzed_at": "2026-11-10T23:08:56.814263+00:00",
   "model": "gemini-3.5-flash-lite",
-  "total": 23,
+  "total": 24,
   "ranking": [
     {
       "post_id": "2118878190437273865",
@@ -11,6 +11,14 @@
       "priority": "high",
       "recommended_action": "repost",
       "reason": "Noticia oficial clave sobre el parche Printed and Polished, cambios importantes en blueprints y anti-cheat."
+    },
+    {
+      "post_id": "2120200207635714171",
+      "score": 95,
+      "category": "update",
+      "priority": "high",
+      "recommended_action": "reply",
+      "reason": "Trata sobre una optimización de rendimiento muy esperada en Rust (rendimiento al entrar a bases gigantes y reducción de lag spikes), lo cual tiene un impacto directo y masivo en la comunidad y experiencia de juego, ideal para aportar la perspectiva del creador."
     },
     {
       "post_id": "2115440881591349591",

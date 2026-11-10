@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-09T20:00:17.715939+00:00",
-  "total": 23,
+  "updated_at": "2026-11-10T23:09:01.277906+00:00",
+  "total": 24,
   "evaluations": {
     "2118776885878386718": {
       "post_id": "2118776885878386718",
@@ -162,6 +162,13 @@
       "score": 82,
       "category": "gaming",
       "reason": "Comentario entretenido y original sobre mecánicas de granja y simulación en los videojuegos, generando valor genuino de contenido."
+    },
+    "2120200207635714171": {
+      "post_id": "2120200207635714171",
+      "should_like": true,
+      "score": 85,
+      "category": "rust",
+      "reason": "La publicación aporta información técnica muy relevante sobre optimizaciones y mejoras de rendimiento en el juego, resultando de gran utilidad e interés para la comunidad."
     }
   }
 }
