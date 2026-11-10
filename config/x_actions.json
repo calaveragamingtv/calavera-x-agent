@@ -1,11 +1,26 @@
 {
-  "reply": {
-    "enabled": false
+  "actions": {
+    "like": {
+      "enabled": false
+    },
+    "reply": {
+      "enabled": false
+    },
+    "repost": {
+      "enabled": false
+    }
   },
-  "repost": {
-    "enabled": false
+  "limits": {
+    "like": {
+      "max_per_day": 2
+    },
+    "reply": {
+      "max_per_day": 2,
+      "max_per_author_per_day": 1
+    },
+    "repost": {
+      "max_per_day": 2
+    }
   },
-  "like": {
-    "enabled": false
-  }
+  "timezone": "America/Argentina/Buenos_Aires"
 }
