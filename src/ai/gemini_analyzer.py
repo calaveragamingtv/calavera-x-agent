@@ -1,10 +1,14 @@
 
 import json
 import os
+import logging
 
 from pathlib import Path
 from google import genai
 from google.genai import types
+
+
+logger = logging.getLogger(__name__)
 
 
 PROMPT_FILE = (
@@ -64,15 +68,16 @@ class GeminiAnalyzer:
         if not posts:
             return {"ranking": []}
 
-        prompt = self._load_prompt()
+        try:
+            prompt = self._load_prompt()
 
-        posts_json = json.dumps(
-            posts,
-            ensure_ascii=False,
-            indent=2
-        )
+            posts_json = json.dumps(
+                posts,
+                ensure_ascii=False,
+                indent=2
+            )
 
-        contents = f"""
+            contents = f"""
 {prompt}
 
 PUBLICACIONES A ANALIZAR:
@@ -80,28 +85,38 @@ PUBLICACIONES A ANALIZAR:
 {posts_json}
 """
 
-        response = self.client.models.generate_content(
-            model=self.model,
-            contents=contents,
-            config=types.GenerateContentConfig(
-                temperature=0.2,
-                response_mime_type="application/json"
-            )
-        )
-
-        if not response.text:
-            raise RuntimeError(
-                "Gemini returned an empty response"
+            response = self.client.models.generate_content(
+                model=self.model,
+                contents=contents,
+                config=types.GenerateContentConfig(
+                    temperature=0.2,
+                    response_mime_type="application/json"
+                )
             )
 
-        try:
-            result = json.loads(response.text)
-        except json.JSONDecodeError as error:
-            raise ValueError(
-                "Gemini returned invalid JSON"
-            ) from error
+            if not response.text:
+                raise RuntimeError(
+                    "Gemini returned an empty response"
+                )
 
-        return self._validate_result(result, posts)
+            try:
+                result = json.loads(response.text)
+            except json.JSONDecodeError as error:
+                raise ValueError(
+                    "Gemini returned invalid JSON"
+                ) from error
+
+            return self._validate_result(result, posts)
+
+        except Exception:
+            logger.exception(
+                "Gemini analysis failed. "
+                "Model: %s. Posts: %s",
+                self.model,
+                len(posts)
+            )
+
+            return None
 
     def _validate_result(self, result, posts):
         if not isinstance(result, dict):
@@ -132,13 +147,11 @@ PUBLICACIONES A ANALIZAR:
 
             post_id = str(item.get("post_id", ""))
 
-            # Validate post ID
             if post_id not in valid_ids:
                 raise ValueError(
                     f"Gemini returned unknown post ID: {post_id}"
                 )
 
-            # Prevent duplicate posts
             if post_id in processed_ids:
                 raise ValueError(
                     f"Duplicate post ID: {post_id}"
@@ -146,7 +159,6 @@ PUBLICACIONES A ANALIZAR:
 
             processed_ids.add(post_id)
 
-            # Validate score
             score = item.get("score")
 
             if (
@@ -158,25 +170,21 @@ PUBLICACIONES A ANALIZAR:
                     f"Invalid score for post {post_id}"
                 )
 
-            # Validate category
             if item.get("category") not in ALLOWED_CATEGORIES:
                 raise ValueError(
                     f"Invalid category for post {post_id}"
                 )
 
-            # Validate priority
             if item.get("priority") not in ALLOWED_PRIORITIES:
                 raise ValueError(
                     f"Invalid priority for post {post_id}"
                 )
 
-            # Validate recommended action
             if item.get("recommended_action") not in ALLOWED_ACTIONS:
                 raise ValueError(
                     f"Invalid action for post {post_id}"
                 )
 
-            # Validate reason
             reason = item.get("reason")
 
             if not isinstance(reason, str) or not reason.strip():
@@ -184,7 +192,6 @@ PUBLICACIONES A ANALIZAR:
                     f"Missing reason for post {post_id}"
                 )
 
-        # Ensure Gemini analyzed every post
         if processed_ids != valid_ids:
             missing = valid_ids - processed_ids
 
@@ -192,7 +199,6 @@ PUBLICACIONES A ANALIZAR:
                 f"Gemini omitted posts: {sorted(missing)}"
             )
 
-        # Sort by score, highest first
         ranking.sort(
             key=lambda item: item["score"],
             reverse=True
