@@ -1,6 +1,7 @@
 
 import json
 import os
+import traceback
 
 from pathlib import Path
 from google import genai
@@ -66,17 +67,18 @@ class GeminiLikeEvaluator:
         if not posts:
             return {"evaluations": []}
 
-        self._validate_input_posts(posts)
+        try:
+            self._validate_input_posts(posts)
 
-        prompt = self._load_prompt()
+            prompt = self._load_prompt()
 
-        posts_json = json.dumps(
-            posts,
-            ensure_ascii=False,
-            indent=2
-        )
+            posts_json = json.dumps(
+                posts,
+                ensure_ascii=False,
+                indent=2
+            )
 
-        contents = f"""
+            contents = f"""
 {prompt}
 
 PUBLICACIONES A EVALUAR:
@@ -84,28 +86,40 @@ PUBLICACIONES A EVALUAR:
 {posts_json}
 """
 
-        response = self.client.models.generate_content(
-            model=self.model,
-            contents=contents,
-            config=types.GenerateContentConfig(
-                temperature=0.2,
-                response_mime_type="application/json"
-            )
-        )
-
-        if not response.text:
-            raise RuntimeError(
-                "Gemini Like Evaluator returned an empty response"
+            response = self.client.models.generate_content(
+                model=self.model,
+                contents=contents,
+                config=types.GenerateContentConfig(
+                    temperature=0.2,
+                    response_mime_type="application/json"
+                )
             )
 
-        try:
-            result = json.loads(response.text)
-        except json.JSONDecodeError as error:
-            raise ValueError(
-                "Gemini Like Evaluator returned invalid JSON"
-            ) from error
+            if not response.text:
+                raise RuntimeError(
+                    "Gemini Like Evaluator returned an empty response"
+                )
 
-        return self._validate_result(result, posts)
+            try:
+                result = json.loads(response.text)
+            except json.JSONDecodeError as error:
+                raise ValueError(
+                    "Gemini Like Evaluator returned invalid JSON"
+                ) from error
+
+            return self._validate_result(result, posts)
+
+        except Exception as error:
+            print(
+                f"Gemini Like evaluation failed. "
+                f"Model: {self.model}. Posts: {len(posts)}. "
+                f"Error: {error}",
+                flush=True
+            )
+
+            traceback.print_exc()
+
+            return None
 
     def _validate_input_posts(self, posts):
         if not isinstance(posts, list):
