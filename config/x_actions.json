@@ -3,7 +3,7 @@
     "enabled": false
   },
   "repost": {
-    "enabled": true
+    "enabled": false
   },
   "like": {
     "enabled": false
