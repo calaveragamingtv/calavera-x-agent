@@ -30,6 +30,7 @@
   },
   "execution": {
     "enabled": true,
+    "calls_per_day": 4,
     "max_runs_per_day": 2,
     "random_delay_minutes": 15
   },
