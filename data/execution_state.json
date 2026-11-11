@@ -1,6 +1,6 @@
 {
   "date": "2026-11-11",
-  "calls": 4,
+  "calls": 5,
   "runs": [
     {
       "run_id": "43062879025",
@@ -47,6 +47,13 @@
       "status": "selected",
       "reason": "mandatory_execution",
       "timestamp": "2026-11-11T14:01:35.632062-03:00"
+    },
+    {
+      "run_id": "43076873528",
+      "call": 5,
+      "status": "skipped",
+      "reason": "daily_execution_target_reached",
+      "timestamp": "2026-11-11T15:20:52.169654-03:00"
     }
   ]
 }
