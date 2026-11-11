@@ -9,6 +9,11 @@
       "username_encrypted": "rL0BmYR3HYu8fU4fPcq6r5hZPP5OPz8Q8AsTY1ERtOq89qLKDg==",
       "type": "server",
       "enabled": true
+    },
+    {
+      "username_encrypted": "a+39giihl80fJ6XfBkw/jbtyQEfMJI8onu/xwETYrpuCas4bgCt/Zd8=",
+      "type": "server",
+      "enabled": true
     }
   ]
 }
