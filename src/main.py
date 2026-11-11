@@ -24,7 +24,6 @@ REPOST_ACTION_SCRIPT = Path("src/actions/x_repost.mjs")
 LIKE_ACTION_SCRIPT = Path("src/actions/x_like.mjs")
 ACTION_CONFIG_FILE = Path("config/x_actions.json")
 
-# Configuration is loaded once per execution.
 ACTION_SETTINGS = None
 
 
@@ -189,8 +188,6 @@ def evaluate_reply_eligibility(tracker, rankings):
         reverse=True
     )
 
-    # The tracker counts attempts already made today (Argentina time).
-    # Drafts selected in this pass are added to that daily usage.
     daily_usage = tracker.get_action_usage("reply")
     remaining_today = max(
         0,
@@ -227,7 +224,10 @@ def evaluate_reply_eligibility(tracker, rankings):
         if (
             usage["author_replies_today"]
             + planned_by_author.get(author_id, 0)
-            >= get_action_limit("reply", "max_per_author_per_day")
+            >= get_action_limit(
+                "reply",
+                "max_per_author_per_day"
+            )
         ):
             blocked.append((post_id, "author_daily_limit_reached"))
             continue
@@ -271,7 +271,9 @@ def generate_reply_drafts(tracker, eligible_ids, rankings):
         ranking_item = ranking_by_id.get(post_id)
 
         if not post:
-            print(f"Reply generation skipped: post not found ({post_id})")
+            print(
+                f"Reply generation skipped: post not found ({post_id})"
+            )
             continue
 
         reply_action = post["actions"]["reply"]
@@ -294,7 +296,9 @@ def generate_reply_drafts(tracker, eligible_ids, rankings):
             )
 
             if not reply_text:
-                print(f"Reply generation returned empty text: {post_id}")
+                print(
+                    f"Reply generation returned empty text: {post_id}"
+                )
                 continue
 
             payload = {
@@ -319,7 +323,6 @@ def generate_reply_drafts(tracker, eligible_ids, rankings):
             raise
 
     print("\nReply drafts generated or preserved.")
-
 
 
 def test_reply_drafts(tracker, eligible_ids):
@@ -359,8 +362,6 @@ def test_reply_drafts(tracker, eligible_ids):
         reply_action = post.get("actions", {}).get("reply", {})
         current_status = reply_action.get("status")
 
-        # Only drafts can be tested. Never automatically retry
-        # processing, completed, or unknown actions.
         if current_status != "drafted":
             print(
                 f"Reply skipped for {post_id}: "
@@ -406,9 +407,6 @@ def test_reply_drafts(tracker, eligible_ids):
 
         print(f"\nProcessing reply for post {post_id}...")
 
-        # Persist processing BEFORE starting the external process.
-        # If GitHub Actions stops after this point, recovery changes
-        # processing to unknown, preventing an automatic duplicate.
         if live_enabled:
             tracker.mark_action_started(
                 post_id,
@@ -490,7 +488,6 @@ def test_reply_drafts(tracker, eligible_ids):
                 tested += 1
                 continue
 
-            # Validate that Node is reporting on the requested post.
             if action_result.get("original_post_id") != str(post_id):
                 raise RuntimeError(
                     "Node.js returned a mismatched original_post_id"
@@ -579,8 +576,6 @@ def test_reply_drafts(tracker, eligible_ids):
                     .get("status")
                 ) if updated_post else None
 
-                # Once processing was persisted, any unclassifiable
-                # execution result is uncertain. Never retry it.
                 if current_status == "processing":
                     tracker.mark_action_result(
                         post_id,
@@ -608,8 +603,6 @@ def test_reply_drafts(tracker, eligible_ids):
                     f"Dry-run execution failed for {post_id}: {error}"
                 )
 
-            # Continue with other drafts. The current post is either
-            # failed, unknown, or still drafted in dry-run mode.
             continue
 
     print("\nReply execution summary:")
@@ -620,7 +613,6 @@ def test_reply_drafts(tracker, eligible_ids):
 
     if not live_enabled:
         print("DRY RUN: no replies were published to X.")
-
 
 
 def generate_repost_drafts(tracker, rankings):
@@ -697,14 +689,11 @@ def test_repost_drafts(tracker, rankings):
     else:
         print("DRY RUN MODE: Repost is disabled.")
 
-    # The external scheduler runs this workflow once per day. Use the
-    # tracker's Argentina-day usage as the source of truth so an accidental
-    # second execution cannot exceed the daily limit.
     if live_enabled:
-        repost_usage = tracker.get_action_usage("repost")
+        usage = tracker.get_action_usage("repost")
         remaining_reposts = max(
             0,
-            get_action_limit("repost") - repost_usage["total_today"]
+            get_action_limit("repost") - usage["total_today"]
         )
     else:
         remaining_reposts = get_action_limit("repost")
@@ -716,8 +705,6 @@ def test_repost_drafts(tracker, rankings):
         )
         return
 
-    # Preserve ranking order and select only pending drafts within
-    # the remaining daily allowance.
     candidates = []
 
     for item in rankings:
@@ -752,11 +739,32 @@ def test_repost_drafts(tracker, rankings):
 
     tested = 0
     published = 0
+    failed = 0
+    unknown = 0
 
     for post_id in candidates:
-        request = {"post_id": post_id}
+        post = tracker.get_post(post_id)
 
-        print(f"\nTesting repost for post {post_id}...")
+        if not post:
+            print(f"Repost skipped: post not found ({post_id})")
+            continue
+
+        current_status = (
+            post.get("actions", {})
+            .get("repost", {})
+            .get("status")
+        )
+
+        if current_status != "drafted":
+            print(
+                f"Repost skipped for {post_id}: "
+                f"status is {current_status}"
+            )
+            continue
+
+        request = {"post_id": str(post_id)}
+
+        print(f"\nProcessing repost for post {post_id}...")
 
         if live_enabled:
             allowed, reason = tracker.can_perform_action_today(
@@ -772,7 +780,7 @@ def test_repost_drafts(tracker, rankings):
                 post_id,
                 "repost",
                 {
-                    "post_id": post_id,
+                    "post_id": str(post_id),
                     "mode": "live",
                     "stage": "sending"
                 }
@@ -784,83 +792,49 @@ def test_repost_drafts(tracker, rankings):
                 input=json.dumps(request, ensure_ascii=False),
                 capture_output=True,
                 text=True,
-                check=False
+                check=False,
+                timeout=120
             )
 
             if result.stderr:
                 print(result.stderr.strip())
 
-            if result.returncode != 0:
-                raise RuntimeError(
-                    f"Node.js repost action failed for post {post_id}. "
-                    f"Exit code: {result.returncode}. "
-                    f"Output: {result.stdout.strip()}"
-                )
-
             try:
                 action_result = json.loads(result.stdout.strip())
-            except json.JSONDecodeError as error:
+            except (json.JSONDecodeError, TypeError):
                 raise RuntimeError(
-                    f"Invalid JSON returned by Node.js for repost "
-                    f"{post_id}: {result.stdout.strip()}"
-                ) from error
+                    "Node.js did not return valid structured JSON. "
+                    f"Exit code: {result.returncode}. "
+                    f"Output: {result.stdout.strip()[:1000]}"
+                )
 
             if not isinstance(action_result, dict):
                 raise RuntimeError(
-                    f"Invalid Node.js response for repost {post_id}"
+                    "Node.js returned an invalid result structure"
                 )
 
-            if live_enabled:
+            if action_result.get("original_post_id") != str(post_id):
+                raise RuntimeError(
+                    "Node.js returned a mismatched original_post_id"
+                )
+
+            result_status = action_result.get("status")
+
+            if not live_enabled:
                 expected = {
-                    "success": True,
-                    "dry_run": False,
-                    "published": True,
-                    "original_post_id": post_id
-                }
-
-                for field, value in expected.items():
-                    actual = action_result.get(field)
-
-                    if actual != value:
-                        raise RuntimeError(
-                            f"Unexpected live repost result for "
-                            f"{post_id}: {field} expected {value!r}, "
-                            f"got {actual!r}"
-                        )
-
-                # Rettiwt confirms the repost but does not return
-                # a separate repost ID. Keep the original post ID
-                # as the external reference for this action.
-                tracker.mark_action_result(
-                    post_id,
-                    "repost",
-                    "completed",
-                    external_id=post_id
-                )
-
-                print(
-                    f"LIVE REPOST CONFIRMED: post={post_id}, "
-                    "tracker_status=completed"
-                )
-
-                published += 1
-
-            else:
-                expected = {
+                    "status": "dry_run",
                     "success": True,
                     "dry_run": True,
-                    "published": False,
-                    "original_post_id": post_id
+                    "reposted": False,
+                    "original_post_id": str(post_id)
                 }
 
                 for field, value in expected.items():
-                    actual = action_result.get(field)
-
-                    if actual != value:
+                    if action_result.get(field) != value:
                         raise RuntimeError(
-                            f"Unexpected repost dry run result for "
-                            f"{post_id}: {field} expected {value!r}, "
-                            f"got {actual!r}"
+                            f"Invalid repost dry-run result: {field} "
+                            f"expected {value!r}, "
+                            f"got {action_result.get(field)!r}"
                         )
 
                 updated_post = tracker.get_post(post_id)
@@ -872,16 +846,87 @@ def test_repost_drafts(tracker, rankings):
 
                 if updated_status != "drafted":
                     raise RuntimeError(
-                        f"Unexpected tracker state after repost "
-                        f"dry run for {post_id}: {updated_status}"
+                        "Dry-run unexpectedly modified tracker status: "
+                        f"{updated_status}"
                     )
 
                 print(
-                    "Validated: success=True, dry_run=True, "
-                    "published=False, tracker_status=drafted"
+                    f"DRY RUN CONFIRMED: {post_id}. "
+                    "No repost was sent to X."
                 )
 
-            tested += 1
+                tested += 1
+                continue
+
+            if result_status == "completed":
+                if (
+                    action_result.get("success") is not True
+                    or action_result.get("dry_run") is not False
+                    or action_result.get("reposted") is not True
+                ):
+                    raise RuntimeError(
+                        "Incomplete repost confirmation from Node.js"
+                    )
+
+                tracker.mark_action_result(
+                    post_id,
+                    "repost",
+                    "completed",
+                    external_id=str(post_id)
+                )
+
+                published += 1
+                tested += 1
+
+                print(
+                    f"REPOST CONFIRMED: post={post_id}, "
+                    "status=completed"
+                )
+
+            elif result_status == "failed":
+                error_message = str(
+                    action_result.get("error")
+                    or "Repost failed before reaching X"
+                )
+
+                tracker.mark_action_result(
+                    post_id,
+                    "repost",
+                    "failed",
+                    error=error_message
+                )
+
+                failed += 1
+
+                print(
+                    f"REPOST FAILED: post={post_id}. "
+                    f"Reason: {error_message}"
+                )
+
+            elif result_status == "unknown":
+                error_message = str(
+                    action_result.get("error")
+                    or "Repost result could not be determined"
+                )
+
+                tracker.mark_action_result(
+                    post_id,
+                    "repost",
+                    "unknown",
+                    error=error_message
+                )
+
+                unknown += 1
+
+                print(
+                    f"REPOST UNKNOWN: post={post_id}. "
+                    "Manual verification required. No automatic retry."
+                )
+
+            else:
+                raise RuntimeError(
+                    f"Unrecognized Node.js result status: {result_status!r}"
+                )
 
         except Exception as error:
             if live_enabled:
@@ -898,30 +943,37 @@ def test_repost_drafts(tracker, rankings):
                         "repost",
                         "unknown",
                         error=(
-                            "Repost execution result is uncertain. "
-                            f"Details: {error}. "
-                            "Manual verification required."
+                            "Repost execution result is uncertain: "
+                            f"{error}. Manual verification required."
                         )
                     )
 
+                    unknown += 1
+
                     print(
-                        f"Repost result is uncertain for {post_id}. "
-                        "Tracker status set to unknown. "
-                        "Manual verification is required."
+                        f"REPOST UNKNOWN: post={post_id}. "
+                        "Tracker locked against automatic retry."
+                    )
+                else:
+                    print(
+                        f"Repost processing error for {post_id}: {error}"
                     )
 
-            raise
+            else:
+                print(
+                    f"Repost dry-run failed for {post_id}: {error}"
+                )
 
-    print(f"\nRepost drafts tested successfully: {tested}")
+            continue
 
-    if live_enabled:
-        print(f"Live Reposts confirmed: {published}")
-        print(
-            f"Maximum reposts per day: {get_action_limit('repost')}"
-        )
-    else:
+    print("\nRepost execution summary:")
+    print(f"Results processed: {tested}")
+    print(f"Reposts confirmed: {published}")
+    print(f"Confirmed failures: {failed}")
+    print(f"Uncertain results: {unknown}")
+
+    if not live_enabled:
         print("DRY RUN: no reposts were published to X.")
-        print("All tested reposts remain in drafted state.")
 
 
 def load_like_evaluations():
@@ -952,8 +1004,6 @@ def evaluate_like_candidates(tracker, active_post_ids):
     evaluations = load_like_evaluations()
     pending_posts = []
 
-    # Only evaluate posts in the latest timeline window. Cached evaluations
-    # remain available and are reused if a post leaves and later re-enters it.
     for post_id in active_post_ids:
         post = tracker.get_post(post_id)
 
@@ -1044,7 +1094,11 @@ def has_platform_link(post, platforms=None):
         part for part in searchable_parts if isinstance(part, str)
     )
     domains = "|".join(platforms)
-    pattern = r"(?:https?://)?(?:www\.)?(?:" + domains + r")(?:[/:?#]|$)"
+    pattern = (
+        r"(?:https?://)?(?:www\.)?(?:"
+        + domains
+        + r")(?:[/:?#]|$)"
+    )
 
     return bool(re.search(pattern, searchable_content, re.IGNORECASE))
 
@@ -1076,18 +1130,13 @@ def is_stream_announcement(post):
 def generate_like_drafts(tracker, evaluations, active_post_ids):
     print("\nGenerating like drafts...")
 
-    # The active set is the union of the latest configured posts per
-    # monitored account, as supplied by the Rettiwt scraper.
     active_post_id_set = {str(post_id) for post_id in active_post_ids}
 
-    # Normalize evaluation IDs without discarding the persistent cache.
     evaluations = {
         str(post_id): evaluation
         for post_id, evaluation in evaluations.items()
     }
 
-    # Cancel outdated drafts only when the post was evaluated
-    # during the current execution.
     outdated_drafts = 0
 
     for post_id in tracker.get_drafted_action_ids("like"):
@@ -1146,8 +1195,6 @@ def generate_like_drafts(tracker, evaluations, active_post_ids):
         like_action = post.get("actions", {}).get("like", {})
         status = like_action.get("status", "not_started")
 
-        # Never select actions that are already completed,
-        # processing, or have an unknown result.
         if status in ("completed", "unknown", "processing"):
             continue
 
@@ -1164,10 +1211,7 @@ def generate_like_drafts(tracker, evaluations, active_post_ids):
                 if stream_announcement
                 else "platform_link"
             )
-
-            # Platform links retain their special priority.
             score = max(score, 90)
-
         else:
             priority = 0
             reason = "interesting_post"
@@ -1195,7 +1239,6 @@ def generate_like_drafts(tracker, evaluations, active_post_ids):
         reverse=True
     )
 
-    # Diagnostic: inspect author diversity.
     unique_authors = {
         candidate["author_id"]
         for candidate in candidates
@@ -1221,9 +1264,7 @@ def generate_like_drafts(tracker, evaluations, active_post_ids):
     relationship_selected = False
     genuine_selected = False
 
-    # First pass: balance relationship-building and genuine content.
     for candidate in candidates:
-
         if len(selected) >= get_action_limit("like"):
             break
 
@@ -1235,24 +1276,17 @@ def generate_like_drafts(tracker, evaluations, active_post_ids):
         if candidate["relationship"]:
             if relationship_selected:
                 continue
-
             relationship_selected = True
-
         else:
             if genuine_selected:
                 continue
-
             genuine_selected = True
 
         selected.append(candidate)
         selected_authors.add(author_id)
 
-    # Second pass: fill remaining slots if one category
-    # had insufficient eligible candidates.
     if len(selected) < get_action_limit("like"):
-
         for candidate in candidates:
-
             if len(selected) >= get_action_limit("like"):
                 break
 
@@ -1268,27 +1302,21 @@ def generate_like_drafts(tracker, evaluations, active_post_ids):
             selected_authors.add(author_id)
 
     print(f"Like candidates approved by Gemini: {len(candidates)}")
-
     print(
         f"Relationship candidates: "
         f"{sum(1 for item in candidates if item['relationship'])}"
     )
-
     print(
         f"Genuine content candidates: "
         f"{sum(1 for item in candidates if not item['relationship'])}"
     )
-
     print(f"Selected this execution: {len(selected)}")
 
-    # Save selected drafts.
     for candidate in selected:
-
         post_id = candidate["post_id"]
         post = tracker.get_post(post_id)
         like_action = post["actions"]["like"]
 
-        # Preserve existing drafts.
         if like_action["status"] == "drafted":
             print(
                 f"Existing like draft preserved: {post_id} "
@@ -1353,9 +1381,9 @@ def load_repost_action_config():
 def test_like_drafts(tracker, selected_ids):
     print("\nTesting like drafts with Node.js...")
 
-    enabled = load_like_action_config()
+    live_enabled = load_like_action_config()
 
-    if enabled:
+    if live_enabled:
         print("LIVE LIKE MODE ENABLED")
         print(f"Maximum likes per day: {get_action_limit('like')}")
     else:
@@ -1371,201 +1399,238 @@ def test_like_drafts(tracker, selected_ids):
         )
 
     tested = 0
+    liked = 0
+    failed = 0
+    unknown = 0
 
     for post_id in selected_ids:
         post = tracker.get_post(post_id)
 
         if not post:
-            print(f"Like test skipped: post not found ({post_id})")
+            print(f"Like skipped: post not found ({post_id})")
             continue
 
         like_action = post.get("actions", {}).get("like", {})
-        status = like_action.get("status")
+        current_status = like_action.get("status")
 
-        if status != "drafted":
+        if current_status != "drafted":
             print(
-                f"Like test skipped for {post_id}: "
-                f"status is {status}"
+                f"Like skipped for {post_id}: "
+                f"status is {current_status}"
             )
             continue
 
         request = {"post_id": str(post_id)}
 
-        print(f"\nTesting like for post {post_id}...")
+        print(f"\nProcessing like for post {post_id}...")
 
-        # DRY RUN: no tracker state transition is necessary.
-        if not enabled:
-            result = subprocess.run(
-                ["node", str(LIKE_ACTION_SCRIPT)],
-                input=json.dumps(request),
-                capture_output=True,
-                text=True,
-                check=False
+        if live_enabled:
+            allowed, reason = tracker.can_perform_action_today(
+                "like",
+                get_action_limit("like")
             )
 
-            if result.stderr:
-                print(result.stderr.strip())
+            if not allowed:
+                print(f"Like blocked for {post_id}: {reason}")
+                break
 
-            if result.returncode != 0:
-                raise RuntimeError(
-                    f"Node.js like dry run failed for {post_id}: "
-                    f"{result.stdout.strip()}"
-                )
-
-            try:
-                action_result = json.loads(result.stdout.strip())
-            except json.JSONDecodeError as error:
-                raise RuntimeError(
-                    f"Invalid JSON returned by Node.js for like "
-                    f"{post_id}: {result.stdout.strip()}"
-                ) from error
-
-            expected = {
-                "success": True,
-                "dry_run": True,
-                "liked": False,
-                "original_post_id": str(post_id)
-            }
-
-            for field, value in expected.items():
-                if action_result.get(field) != value:
-                    raise RuntimeError(
-                        f"Unexpected like result for {post_id}: "
-                        f"{field} expected {value!r}, "
-                        f"got {action_result.get(field)!r}"
-                    )
-
-            updated_post = tracker.get_post(post_id)
-            updated_status = (
-                updated_post["actions"]["like"]["status"]
+            tracker.mark_action_started(
+                post_id,
+                "like",
+                {
+                    "post_id": str(post_id),
+                    "mode": "live",
+                    "stage": "sending"
+                }
             )
-
-            if updated_status != "drafted":
-                raise RuntimeError(
-                    f"Unexpected tracker state after Like dry run: "
-                    f"{updated_status}"
-                )
-
-            print(
-                "Validated: success=True, dry_run=True, "
-                "liked=False, tracker_status=drafted"
-            )
-
-            tested += 1
-            continue
-
-        # LIVE EXECUTION:
-        # Check the daily quota before persisting processing or calling Node.js.
-        allowed, reason = tracker.can_perform_action_today(
-            "like",
-            get_action_limit("like")
-        )
-
-        if not allowed:
-            print(f"Like blocked for {post_id}: {reason}")
-            break
-
-        # Persist processing BEFORE calling Node.js.
-        tracker.mark_action_started(
-            post_id,
-            "like",
-            {
-                "post_id": str(post_id),
-                "mode": "controlled_live_test",
-                "stage": "sending"
-            }
-        )
 
         try:
             result = subprocess.run(
                 ["node", str(LIKE_ACTION_SCRIPT)],
-                input=json.dumps(request),
+                input=json.dumps(request, ensure_ascii=False),
                 capture_output=True,
                 text=True,
-                check=False
+                check=False,
+                timeout=120
             )
 
             if result.stderr:
                 print(result.stderr.strip())
 
-            if result.returncode != 0:
-                raise RuntimeError(
-                    f"Node.js Like action failed. "
-                    f"Exit code: {result.returncode}. "
-                    f"Output: {result.stdout.strip()}"
-                )
-
             try:
                 action_result = json.loads(result.stdout.strip())
-            except json.JSONDecodeError as error:
+            except (json.JSONDecodeError, TypeError):
                 raise RuntimeError(
-                    f"Invalid JSON returned by Node.js: "
-                    f"{result.stdout.strip()}"
-                ) from error
+                    "Node.js did not return valid structured JSON. "
+                    f"Exit code: {result.returncode}. "
+                    f"Output: {result.stdout.strip()[:1000]}"
+                )
 
-            expected = {
-                "success": True,
-                "dry_run": False,
-                "liked": True,
-                "original_post_id": str(post_id)
-            }
+            if not isinstance(action_result, dict):
+                raise RuntimeError(
+                    "Node.js returned an invalid result structure"
+                )
 
-            for field, value in expected.items():
-                if action_result.get(field) != value:
+            if action_result.get("original_post_id") != str(post_id):
+                raise RuntimeError(
+                    "Node.js returned a mismatched original_post_id"
+                )
+
+            result_status = action_result.get("status")
+
+            if not live_enabled:
+                expected = {
+                    "status": "dry_run",
+                    "success": True,
+                    "dry_run": True,
+                    "liked": False,
+                    "original_post_id": str(post_id)
+                }
+
+                for field, value in expected.items():
+                    if action_result.get(field) != value:
+                        raise RuntimeError(
+                            f"Invalid Like dry-run result: {field} "
+                            f"expected {value!r}, "
+                            f"got {action_result.get(field)!r}"
+                        )
+
+                updated_post = tracker.get_post(post_id)
+                updated_status = (
+                    updated_post.get("actions", {})
+                    .get("like", {})
+                    .get("status")
+                ) if updated_post else None
+
+                if updated_status != "drafted":
                     raise RuntimeError(
-                        f"Unexpected live Like result: "
-                        f"{field} expected {value!r}, "
-                        f"got {action_result.get(field)!r}"
+                        "Dry-run unexpectedly modified tracker status: "
+                        f"{updated_status}"
                     )
 
-            # Rettiwt confirms the Like, but does not return
-            # a separate Like ID. The original post ID is used
-            # as the external reference for this action.
-            tracker.mark_action_result(
-                post_id,
-                "like",
-                "completed",
-                external_id=str(post_id)
-            )
+                print(
+                    f"DRY RUN CONFIRMED: {post_id}. "
+                    "No like was sent to X."
+                )
 
-            print(
-                "LIVE LIKE CONFIRMED: "
-                f"post={post_id}, tracker_status=completed"
-            )
+                tested += 1
+                continue
 
-            tested += 1
+            if result_status == "completed":
+                if (
+                    action_result.get("success") is not True
+                    or action_result.get("dry_run") is not False
+                    or action_result.get("liked") is not True
+                ):
+                    raise RuntimeError(
+                        "Incomplete Like confirmation from Node.js"
+                    )
 
-        except Exception as error:
-            # We cannot safely know whether X received the request.
-            # Never retry automatically in this situation.
-            current_post = tracker.get_post(post_id)
-            current_status = (
-                current_post.get("actions", {})
-                .get("like", {})
-                .get("status")
-            )
+                tracker.mark_action_result(
+                    post_id,
+                    "like",
+                    "completed",
+                    external_id=str(post_id)
+                )
 
-            if current_status == "processing":
+                liked += 1
+                tested += 1
+
+                print(
+                    f"LIKE CONFIRMED: post={post_id}, "
+                    "status=completed"
+                )
+
+            elif result_status == "failed":
+                error_message = str(
+                    action_result.get("error")
+                    or "Like failed before reaching X"
+                )
+
+                tracker.mark_action_result(
+                    post_id,
+                    "like",
+                    "failed",
+                    error=error_message
+                )
+
+                failed += 1
+
+                print(
+                    f"LIKE FAILED: post={post_id}. "
+                    f"Reason: {error_message}"
+                )
+
+            elif result_status == "unknown":
+                error_message = str(
+                    action_result.get("error")
+                    or "Like result could not be determined"
+                )
+
                 tracker.mark_action_result(
                     post_id,
                     "like",
                     "unknown",
-                    error=str(error)
+                    error=error_message
                 )
 
-            print(
-                f"Like result is uncertain for {post_id}. "
-                "Tracker status set to unknown. "
-                "Manual verification is required."
-            )
+                unknown += 1
 
-            raise
+                print(
+                    f"LIKE UNKNOWN: post={post_id}. "
+                    "Manual verification required. No automatic retry."
+                )
 
-    if enabled:
-        print(f"\nLive Likes confirmed: {tested}")
-        print(f"Maximum likes per day: {get_action_limit('like')}")
-    else:
-        print(f"\nLike drafts tested successfully: {tested}")
+            else:
+                raise RuntimeError(
+                    f"Unrecognized Node.js result status: {result_status!r}"
+                )
+
+        except Exception as error:
+            if live_enabled:
+                updated_post = tracker.get_post(post_id)
+                current_status = (
+                    updated_post.get("actions", {})
+                    .get("like", {})
+                    .get("status")
+                ) if updated_post else None
+
+                if current_status == "processing":
+                    tracker.mark_action_result(
+                        post_id,
+                        "like",
+                        "unknown",
+                        error=(
+                            "Like execution result is uncertain: "
+                            f"{error}. Manual verification required."
+                        )
+                    )
+
+                    unknown += 1
+
+                    print(
+                        f"LIKE UNKNOWN: post={post_id}. "
+                        "Tracker locked against automatic retry."
+                    )
+                else:
+                    print(
+                        f"Like processing error for {post_id}: {error}"
+                    )
+
+            else:
+                print(
+                    f"Like dry-run failed for {post_id}: {error}"
+                )
+
+            continue
+
+    print("\nLike execution summary:")
+    print(f"Results processed: {tested}")
+    print(f"Likes confirmed: {liked}")
+    print(f"Confirmed failures: {failed}")
+    print(f"Uncertain results: {unknown}")
+
+    if not live_enabled:
         print("DRY RUN: no likes were sent to X.")
 
 
@@ -1574,7 +1639,6 @@ def main():
 
     print("Starting X Agent")
 
-    # Load and validate the centralized configuration once.
     ACTION_SETTINGS = load_action_settings()
     settings = ACTION_SETTINGS
 
@@ -1606,14 +1670,10 @@ def main():
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-    # 1. Load posts retrieved by Rettiwt.
     posts = load_rettiwt_posts()
 
     print(f"Loaded {len(posts)} posts from Rettiwt")
 
-    # Rettiwt fetches the configured number of latest posts for each enabled
-    # monitored account and merges duplicate IDs. Therefore this list is
-    # the union of all current per-account windows; do not slice it globally.
     active_post_ids = list(dict.fromkeys(
         str(post["id"])
         for post in posts
@@ -1625,7 +1685,6 @@ def main():
         f"{len(active_post_ids)}"
     )
 
-    # 2. Save latest scraped posts.
     save_json(POSTS_FILE, {
         "account": USERNAME,
         "updated_at": datetime.now(timezone.utc).isoformat(),
@@ -1633,13 +1692,10 @@ def main():
         "posts": posts
     })
 
-    # 3. Load persistent tracker.
     tracker = PostTracker()
 
-    # 4. Migrate existing drafts before recovery.
     migrate_existing_reply_drafts(tracker)
 
-    # 5. Recover interrupted sending operations.
     recover_interrupted_replies(tracker)
 
     print("\nRecovering interrupted likes...")
@@ -1650,14 +1706,10 @@ def main():
     recovered_reposts = tracker.recover_interrupted_actions("repost")
     print(f"Interrupted reposts recovered: {recovered_reposts}")
 
-    # 6. Register new posts.
     new_ids = tracker.register_posts(posts)
 
     print(f"New posts registered: {len(new_ids)}")
 
-    # 7. Analyze only current posts that still need analysis.
-    # Historical pending posts outside the current timeline windows remain
-    # in the tracker but are not analyzed until they re-enter an active window.
     pending_ids = []
 
     for post_id in active_post_ids:
@@ -1720,9 +1772,6 @@ def main():
     else:
         print("No posts require analysis. Skipping Gemini.")
 
-    # 8. Build the ranking exclusively from active/current posts.
-    # The tracker keeps full history, but old posts outside the latest
-    # per-account windows must not enter today's action candidates.
     all_rankings = []
 
     for post_id in active_post_ids:
@@ -1757,45 +1806,37 @@ def main():
         f"from {len(active_post_ids)} active posts"
     )
 
-    # 9. Evaluate reply eligibility.
     eligible, blocked = evaluate_reply_eligibility(
         tracker,
         all_rankings
     )
 
-    # 10. Generate and persist reply drafts.
     generate_reply_drafts(
         tracker,
         eligible,
         all_rankings
     )
 
-    # 11. Test reply drafts through Node.js.
     test_reply_drafts(
         tracker,
         eligible
     )
 
-    # 12. Generate and persist repost drafts.
     generate_repost_drafts(
         tracker,
         all_rankings
     )
 
-    # 13. Test repost drafts through Node.js.
     test_repost_drafts(
         tracker,
         all_rankings
     )
 
-    # 14. Evaluate posts for Likes with the dedicated Gemini prompt.
     like_evaluations = evaluate_like_candidates(
         tracker,
         active_post_ids
     )
 
-    # 15. Generate and test Like drafts only for current active posts.
-    # The evaluation cache itself remains historical and is not deleted.
     like_ids = generate_like_drafts(
         tracker,
         like_evaluations,
