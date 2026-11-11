@@ -1,3 +1,9 @@
 {
-  "accounts": []
+  "accounts": [
+    {
+      "username_encrypted": "fm6makR4sHvUPiV2Qj2L4+VClmA89XSPakwbvTXCU1czW+qdSvBuJsorig==",
+      "type": "server",
+      "enabled": true
+    }
+  ]
 }
