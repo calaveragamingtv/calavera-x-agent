@@ -1,6 +1,7 @@
-
 import process from 'node:process';
 import { isActionEnabled } from './action_config.mjs';
+
+const ACTION = 'repost';
 
 async function readInput() {
     let input = '';
@@ -17,7 +18,7 @@ async function readInput() {
 }
 
 function validateRequest(request) {
-    if (!request || typeof request !== 'object') {
+    if (!request || typeof request !== 'object' || Array.isArray(request)) {
         throw new Error('Invalid request: expected an object');
     }
 
@@ -31,13 +32,11 @@ function validateRequest(request) {
 }
 
 function outputResult(result) {
-    process.stdout.write(`${JSON.stringify(result)}\n`);
+    process.stdout.write(`${JSON.stringify({ action: ACTION, ...result })}\n`);
 }
 
 function getErrorMessage(error) {
-    return error instanceof Error
-        ? error.message
-        : String(error);
+    return error instanceof Error ? error.message : String(error);
 }
 
 async function main() {
@@ -45,17 +44,13 @@ async function main() {
     let requestMayHaveReachedX = false;
 
     try {
-        const request = await readInput();
-        ({ postId } = validateRequest(request));
+        ({ postId } = validateRequest(await readInput()));
 
         console.error('X Repost Action initialized');
         console.error(`Original post ID: ${postId}`);
 
-        const enabled = await isActionEnabled('repost');
-
-        if (!enabled) {
+        if (!(await isActionEnabled(ACTION))) {
             console.error('DRY RUN: no request was sent to X.');
-
             outputResult({
                 status: 'dry_run',
                 success: true,
@@ -64,26 +59,18 @@ async function main() {
                 original_post_id: postId,
                 error: null
             });
-
             return;
         }
 
         const apiKey = process.env.RETTIWT_API_KEY;
-
         if (!apiKey) {
             throw new Error('Missing RETTIWT_API_KEY');
         }
 
         const { Rettiwt } = await import('rettiwt-api');
+        const rettiwt = new Rettiwt({ apiKey, logging: false });
 
-        const rettiwt = new Rettiwt({
-            apiKey,
-            logging: false
-        });
-
-        // From this point, the request may reach X.
         requestMayHaveReachedX = true;
-
         const result = await rettiwt.tweet.retweet(postId);
 
         if (result !== true) {
@@ -95,7 +82,6 @@ async function main() {
                 original_post_id: postId,
                 error: 'Rettiwt did not confirm the repost'
             });
-
             return;
         }
 
@@ -107,16 +93,11 @@ async function main() {
             original_post_id: postId,
             error: null
         });
-
     } catch (error) {
         const errorMessage = getErrorMessage(error);
-
         console.error(`X Repost Action error: ${errorMessage}`);
 
-        const status = requestMayHaveReachedX
-            ? 'unknown'
-            : 'failed';
-
+        const status = requestMayHaveReachedX ? 'unknown' : 'failed';
         outputResult({
             status,
             success: false,
@@ -129,14 +110,14 @@ async function main() {
 }
 
 main().catch((error) => {
-    console.error(`Unexpected X Repost error: ${getErrorMessage(error)}`);
-
+    const errorMessage = getErrorMessage(error);
+    console.error(`Unexpected X Repost error: ${errorMessage}`);
     outputResult({
         status: 'unknown',
         success: false,
         dry_run: false,
         reposted: null,
         original_post_id: null,
-        error: getErrorMessage(error)
+        error: errorMessage
     });
 });
