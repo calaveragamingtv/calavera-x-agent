@@ -1224,13 +1224,21 @@
       },
       "actions": {
         "like": {
-          "status": "not_started",
+          "status": "drafted",
           "attempts": 0,
           "last_attempt_at": null,
           "completed_at": null,
           "error": null,
           "external_id": null,
-          "payload": null
+          "payload": {
+            "post_id": "2119625078648513018",
+            "reason": "platform_link",
+            "score": 95,
+            "category": "youtube",
+            "evaluation_reason": "La publicación incluye un enlace válido a YouTube Shorts (youtube.com), aplicando la prioridad de plataformas de contenido.",
+            "generated_at": "2026-11-11T05:56:58.201812+00:00",
+            "stage": "drafted"
+          }
         },
         "reply": {
           "status": "not_started",
@@ -1421,6 +1429,62 @@
             "generated_at": "2026-11-10T23:09:00.128732+00:00",
             "stage": "drafted"
           }
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      }
+    },
+    "2120379179002646710": {
+      "id": "2120379179002646710",
+      "author_id": "815409347689934848",
+      "text": "RT @TRYTUMASK: El día que me den la oportunidad se darán cuenta al nivel que estoy en este momento.",
+      "url": "https://x.com/CalaveraGaming/status/2120379179002646710",
+      "created_at": "2026-11-11T04:52:45.000Z",
+      "expanded_urls": [],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-11T05:56:54.947272+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2120379179002646710",
+          "score": 5,
+          "category": "other",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "La publicación es un RT de un mensaje personal sin mención a Rust, actualizaciones ni contenido relevante para la comunidad del juego."
+        },
+        "completed_at": "2026-11-11T05:56:56.027247+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
         },
         "repost": {
           "status": "not_started",
