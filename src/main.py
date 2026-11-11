@@ -1162,7 +1162,14 @@ def generate_like_drafts(tracker, evaluations, active_post_ids):
     ]
 
 
-def load_like_action_config():
+def load_action_enabled(action):
+    """Read an action's enabled flag from the centralized config.
+
+    The canonical structure is:
+        {"actions": {"like": {"enabled": false}, ...}}
+
+    A legacy top-level action structure is also accepted for compatibility.
+    """
     if not ACTION_CONFIG_FILE.exists():
         raise FileNotFoundError(
             f"Action config not found: {ACTION_CONFIG_FILE}"
@@ -1174,67 +1181,34 @@ def load_like_action_config():
     if not isinstance(config, dict):
         raise ValueError("Invalid action config")
 
-    like_config = config.get("like")
+    actions = config.get("actions", config)
 
-    if not isinstance(like_config, dict):
-        raise ValueError("Missing Like configuration")
+    if not isinstance(actions, dict):
+        raise ValueError("Invalid actions configuration")
 
-    enabled = like_config.get("enabled")
+    action_config = actions.get(action)
+
+    if not isinstance(action_config, dict):
+        raise ValueError(f"Missing {action.title()} configuration")
+
+    enabled = action_config.get("enabled")
 
     if not isinstance(enabled, bool):
-        raise ValueError("Invalid Like enabled setting")
+        raise ValueError(f"Invalid {action.title()} enabled setting")
 
     return enabled
+
+
+def load_like_action_config():
+    return load_action_enabled("like")
 
 
 def load_reply_action_config():
-    if not ACTION_CONFIG_FILE.exists():
-        raise FileNotFoundError(
-            f"Action config not found: {ACTION_CONFIG_FILE}"
-        )
-
-    with ACTION_CONFIG_FILE.open("r", encoding="utf-8") as file:
-        config = json.load(file)
-
-    if not isinstance(config, dict):
-        raise ValueError("Invalid action config")
-
-    reply_config = config.get("reply")
-
-    if not isinstance(reply_config, dict):
-        raise ValueError("Missing Reply configuration")
-
-    enabled = reply_config.get("enabled")
-
-    if not isinstance(enabled, bool):
-        raise ValueError("Invalid Reply enabled setting")
-
-    return enabled
+    return load_action_enabled("reply")
 
 
 def load_repost_action_config():
-    if not ACTION_CONFIG_FILE.exists():
-        raise FileNotFoundError(
-            f"Action config not found: {ACTION_CONFIG_FILE}"
-        )
-
-    with ACTION_CONFIG_FILE.open("r", encoding="utf-8") as file:
-        config = json.load(file)
-
-    if not isinstance(config, dict):
-        raise ValueError("Invalid action config")
-
-    repost_config = config.get("repost")
-
-    if not isinstance(repost_config, dict):
-        raise ValueError("Missing Repost configuration")
-
-    enabled = repost_config.get("enabled")
-
-    if not isinstance(enabled, bool):
-        raise ValueError("Invalid Repost enabled setting")
-
-    return enabled
+    return load_action_enabled("repost")
 
 
 def test_like_drafts(tracker, selected_ids):
