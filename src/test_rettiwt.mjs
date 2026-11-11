@@ -11,9 +11,7 @@ const expandedUrlCache = new Map();
 
 function loadScrapingConfig() {
     if (!fs.existsSync(ACTION_CONFIG_FILE)) {
-        throw new Error(
-            `Action config not found: ${ACTION_CONFIG_FILE}`
-        );
+        throw new Error(`Action config not found: ${ACTION_CONFIG_FILE}`);
     }
 
     const config = JSON.parse(
@@ -26,10 +24,7 @@ function loadScrapingConfig() {
 
     const limit = config.scraping?.posts_per_account;
 
-    if (
-        !Number.isInteger(limit) ||
-        limit <= 0
-    ) {
+    if (!Number.isInteger(limit) || limit <= 0) {
         throw new Error(
             'Invalid scraping.posts_per_account configuration'
         );
@@ -80,6 +75,10 @@ function decryptUsername(encryptedUsername, key) {
 }
 
 function loadAccounts() {
+    if (!fs.existsSync(ACCOUNTS_FILE)) {
+        throw new Error(`Accounts file not found: ${ACCOUNTS_FILE}`);
+    }
+
     const data = JSON.parse(
         fs.readFileSync(ACCOUNTS_FILE, 'utf8')
     );
@@ -88,17 +87,31 @@ function loadAccounts() {
         throw new Error('Invalid monitored accounts structure');
     }
 
+    const enabledAccounts = data.accounts.filter(
+        account => account.enabled === true
+    );
+
+    if (enabledAccounts.length === 0) {
+        throw new Error('No enabled monitored accounts');
+    }
+
     const key = loadEncryptionKey();
 
-    return data.accounts
-        .filter(account => account.enabled === true)
-        .map(account => ({
+    return enabledAccounts.map((account, index) => {
+        if (!account.username_encrypted) {
+            throw new Error(
+                `Missing encrypted username for account ${index + 1}`
+            );
+        }
+
+        return {
             username: decryptUsername(
                 account.username_encrypted,
                 key
             ),
-            type: account.type
-        }));
+            type: account.type || 'unknown'
+        };
+    });
 }
 
 async function expandShortUrl(shortUrl) {
@@ -159,16 +172,8 @@ async function getExpandedUrls(text) {
     return results.filter(Boolean);
 }
 
-/**
- * Temporary diagnostic.
- *
- * We intentionally do not assume that tweetBy.id is the author ID.
- * The returned structure will help us identify the correct field.
- */
 function logAuthorDiagnostic(data, postId) {
-    console.log(
-        `\nAUTHOR DIAGNOSTIC FOR POST ${postId}:`
-    );
+    console.log(`\nAUTHOR DIAGNOSTIC FOR POST ${postId}:`);
 
     console.log(
         JSON.stringify({
@@ -182,6 +187,18 @@ function logAuthorDiagnostic(data, postId) {
     );
 }
 
+function extractTweets(result) {
+    if (Array.isArray(result)) {
+        return result;
+    }
+
+    if (Array.isArray(result?.list)) {
+        return result.list;
+    }
+
+    return [];
+}
+
 async function main() {
     const apiKey = process.env.RETTIWT_API_KEY;
 
@@ -192,17 +209,9 @@ async function main() {
     const limit = loadScrapingConfig();
     const accounts = loadAccounts();
 
-    if (accounts.length === 0) {
-        throw new Error('No enabled monitored accounts');
-    }
-
-    console.log(
-        `Starting X scraper: ${accounts.length} accounts`
-    );
-
-    console.log(
-        `Posts per account configured: ${limit}`
-    );
+    console.log(`Starting X scraper: ${accounts.length} accounts`);
+    console.log(`Posts per account configured: ${limit}`);
+    console.log(`Maximum posts before deduplication: ${accounts.length * limit}`);
 
     const rettiwt = new Rettiwt({
         apiKey,
@@ -212,6 +221,8 @@ async function main() {
     const postsById = new Map();
 
     let authorDiagnosticDone = false;
+    let totalReturned = 0;
+    let totalProcessed = 0;
 
     for (let index = 0; index < accounts.length; index++) {
         const account = accounts[index];
@@ -234,13 +245,25 @@ async function main() {
                 limit
             );
 
-            const tweets = Array.isArray(result)
-                ? result
-                : Array.isArray(result?.list)
-                    ? result.list
-                    : [];
+            const tweets = extractTweets(result);
 
-            for (const tweet of tweets) {
+            totalReturned += tweets.length;
+
+            console.log(
+                `Account ${index + 1}: Rettiwt returned ${tweets.length} posts`
+            );
+
+            // Enforce the configured limit even if Rettiwt
+            // returns more posts than requested.
+            const limitedTweets = tweets.slice(0, limit);
+
+            totalProcessed += limitedTweets.length;
+
+            console.log(
+                `Account ${index + 1}: processing ${limitedTweets.length} posts (limit: ${limit})`
+            );
+
+            for (const tweet of limitedTweets) {
                 const data = typeof tweet.toJSON === 'function'
                     ? tweet.toJSON()
                     : tweet;
@@ -251,8 +274,6 @@ async function main() {
 
                 const postId = String(data.id);
 
-                // Inspect one real tweet to identify Rettiwt's
-                // actual author structure.
                 if (!authorDiagnosticDone) {
                     logAuthorDiagnostic(data, postId);
                     authorDiagnosticDone = true;
@@ -260,9 +281,7 @@ async function main() {
 
                 const postText = data.fullText ?? '';
 
-                const expandedUrls = await getExpandedUrls(
-                    postText
-                );
+                const expandedUrls = await getExpandedUrls(postText);
 
                 const monitoredBy = {
                     account_id: String(user.id),
@@ -274,8 +293,7 @@ async function main() {
 
                     const alreadyRegistered =
                         existing.monitored_by.some(
-                            item =>
-                                item.account_id === monitoredBy.account_id
+                            item => item.account_id === monitoredBy.account_id
                         );
 
                     if (!alreadyRegistered) {
@@ -295,8 +313,6 @@ async function main() {
                 postsById.set(postId, {
                     id: postId,
 
-                    // Kept unchanged temporarily until we confirm
-                    // the correct Rettiwt author field.
                     author_id: data.tweetBy?.id
                         ? String(data.tweetBy.id)
                         : null,
@@ -316,7 +332,7 @@ async function main() {
             }
 
             console.log(
-                `Account ${index + 1}: timeline processed`
+                `Account ${index + 1}: completed successfully`
             );
 
         } catch (error) {
@@ -326,7 +342,7 @@ async function main() {
             );
 
             throw new Error(
-                `Failed to process monitored account ${index + 1}`
+                `Failed to process monitored account ${index + 1}: ${error.message}`
             );
         }
     }
@@ -334,8 +350,14 @@ async function main() {
     const posts = Array.from(postsById.values());
 
     if (posts.length === 0) {
+        throw new Error('No posts retrieved from monitored accounts');
+    }
+
+    const maximumExpected = accounts.length * limit;
+
+    if (posts.length > maximumExpected) {
         throw new Error(
-            'No posts retrieved from monitored accounts'
+            `Unexpected post count: ${posts.length}. Maximum expected: ${maximumExpected}`
         );
     }
 
@@ -343,6 +365,7 @@ async function main() {
         recursive: true
     });
 
+    // Replaces the previous scraper output on every execution.
     fs.writeFileSync(
         OUTPUT_FILE,
         JSON.stringify(posts, null, 2),
@@ -359,14 +382,21 @@ async function main() {
             .filter(Boolean)
     );
 
-    console.log(`Total unique posts retrieved: ${posts.length}`);
+    console.log('========== SCRAPING SUMMARY ==========');
+    console.log(`Enabled accounts: ${accounts.length}`);
+    console.log(`Configured limit per account: ${limit}`);
+    console.log(`Maximum expected before deduplication: ${maximumExpected}`);
+    console.log(`Total posts returned by Rettiwt: ${totalReturned}`);
+    console.log(`Total posts processed before deduplication: ${totalProcessed}`);
+    console.log(`Total unique posts saved: ${posts.length}`);
     console.log(`Posts with expanded URLs: ${expandedCount}`);
     console.log(`Unique author IDs detected: ${authors.size}`);
     console.log(`Posts without author ID: ${posts.filter(post => !post.author_id).length}`);
     console.log(`Posts saved to ${OUTPUT_FILE}`);
+    console.log('======================================');
 }
 
 main().catch(error => {
-    console.error(error.message);
+    console.error('Scraper failed:', error);
     process.exit(1);
 });
