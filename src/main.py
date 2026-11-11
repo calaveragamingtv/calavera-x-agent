@@ -1,3 +1,4 @@
+
 import json
 import re
 import subprocess
@@ -22,6 +23,9 @@ REPLY_ACTION_SCRIPT = Path("src/actions/x_reply.mjs")
 REPOST_ACTION_SCRIPT = Path("src/actions/x_repost.mjs")
 LIKE_ACTION_SCRIPT = Path("src/actions/x_like.mjs")
 ACTION_CONFIG_FILE = Path("config/x_actions.json")
+
+# Configuration is loaded once per execution.
+ACTION_SETTINGS = None
 
 
 def load_action_settings():
@@ -51,17 +55,30 @@ def load_action_settings():
     for action in ("like", "reply", "repost"):
         action_config = actions.get(action)
         limit_config = limits.get(action)
+
         if not isinstance(action_config, dict) or not isinstance(
             action_config.get("enabled"), bool
         ):
             raise ValueError(f"Invalid actions.{action}.enabled setting")
+
         if not isinstance(limit_config, dict):
             raise ValueError(f"Missing limits.{action} configuration")
-        max_per_day = limit_config.get("max_per_day")
-        if not isinstance(max_per_day, int) or isinstance(max_per_day, bool) or max_per_day < 0:
-            raise ValueError(f"Invalid limits.{action}.max_per_day setting")
 
-    reply_author_limit = limits["reply"].get("max_per_author_per_day")
+        max_per_day = limit_config.get("max_per_day")
+
+        if (
+            not isinstance(max_per_day, int)
+            or isinstance(max_per_day, bool)
+            or max_per_day < 0
+        ):
+            raise ValueError(
+                f"Invalid limits.{action}.max_per_day setting"
+            )
+
+    reply_author_limit = limits["reply"].get(
+        "max_per_author_per_day"
+    )
+
     if (
         not isinstance(reply_author_limit, int)
         or isinstance(reply_author_limit, bool)
@@ -72,6 +89,7 @@ def load_action_settings():
         )
 
     min_like_score = limits["like"].get("min_score")
+
     if (
         not isinstance(min_like_score, int)
         or isinstance(min_like_score, bool)
@@ -80,19 +98,32 @@ def load_action_settings():
         raise ValueError("Invalid limits.like.min_score setting")
 
     posts_per_account = scraping.get("posts_per_account")
+
     if (
         not isinstance(posts_per_account, int)
         or isinstance(posts_per_account, bool)
         or posts_per_account < 1
     ):
-        raise ValueError("Invalid scraping.posts_per_account setting")
+        raise ValueError(
+            "Invalid scraping.posts_per_account setting"
+        )
 
     return config
 
 
 def get_action_limit(action, key="max_per_day"):
-    config = load_action_settings()
-    return config["limits"][action][key]
+    """Read a limit from the configuration loaded for this execution."""
+    global ACTION_SETTINGS
+
+    if ACTION_SETTINGS is None:
+        ACTION_SETTINGS = load_action_settings()
+
+    try:
+        return ACTION_SETTINGS["limits"][action][key]
+    except KeyError as error:
+        raise ValueError(
+            f"Missing configuration value: limits.{action}.{key}"
+        ) from error
 
 
 def save_json(file_path, data):
@@ -307,7 +338,7 @@ def test_reply_drafts(tracker, eligible_ids):
     if live_enabled:
         print("LIVE REPLY MODE ENABLED")
         print(
-            f"Maximum replies per day: {get_action_limit("reply")}"
+            f"Maximum replies per day: {get_action_limit('reply')}"
         )
     else:
         print("DRY RUN MODE: Reply is disabled.")
@@ -366,7 +397,7 @@ def test_reply_drafts(tracker, eligible_ids):
             if published >= get_action_limit("reply"):
                 print(
                     f"Maximum replies per day reached: "
-                    f"{get_action_limit("reply")}"
+                    f"{get_action_limit('reply')}"
                 )
                 break
 
@@ -539,7 +570,7 @@ def test_reply_drafts(tracker, eligible_ids):
     if live_enabled:
         print(f"Live Replies confirmed: {published}")
         print(
-            f"Maximum replies per day: {get_action_limit("reply")}"
+            f"Maximum replies per day: {get_action_limit('reply')}"
         )
     else:
         print("DRY RUN: no replies were published to X.")
@@ -615,7 +646,7 @@ def test_repost_drafts(tracker, rankings):
     if live_enabled:
         print("LIVE REPOST MODE ENABLED")
         print(
-            f"Maximum reposts per day: {get_action_limit("repost")}"
+            f"Maximum reposts per day: {get_action_limit('repost')}"
         )
     else:
         print("DRY RUN MODE: Repost is disabled.")
@@ -635,7 +666,7 @@ def test_repost_drafts(tracker, rankings):
     if remaining_reposts <= 0:
         print(
             f"Daily repost limit already reached: "
-            f"{get_action_limit("repost")}"
+            f"{get_action_limit('repost')}"
         )
         return
 
@@ -840,7 +871,7 @@ def test_repost_drafts(tracker, rankings):
     if live_enabled:
         print(f"Live Reposts confirmed: {published}")
         print(
-            f"Maximum reposts per day: {get_action_limit("repost")}"
+            f"Maximum reposts per day: {get_action_limit('repost')}"
         )
     else:
         print("DRY RUN: no reposts were published to X.")
@@ -925,6 +956,7 @@ def evaluate_like_candidates(tracker, active_post_ids):
         post_id = str(item["post_id"])
         evaluations[post_id] = item
         decision = "LIKE" if item["should_like"] else "SKIP"
+
         print(
             f"Like evaluation: {post_id} | {decision} | "
             f"score={item['score']} | category={item['category']}"
@@ -998,8 +1030,8 @@ def is_stream_announcement(post):
 def generate_like_drafts(tracker, evaluations, active_post_ids):
     print("\nGenerating like drafts...")
 
-    # The active set is the union of the latest 10 posts per monitored
-    # account, as supplied by the Rettiwt scraper.
+    # The active set is the union of the latest configured posts per
+    # monitored account, as supplied by the Rettiwt scraper.
     active_post_id_set = {str(post_id) for post_id in active_post_ids}
 
     # Normalize evaluation IDs without discarding the persistent cache.
@@ -1247,8 +1279,17 @@ def generate_like_drafts(tracker, evaluations, active_post_ids):
 
 def load_action_enabled(action):
     """Read the enabled flag from the centralized actions configuration."""
-    config = load_action_settings()
-    return config["actions"][action]["enabled"]
+    global ACTION_SETTINGS
+
+    if ACTION_SETTINGS is None:
+        ACTION_SETTINGS = load_action_settings()
+
+    try:
+        return ACTION_SETTINGS["actions"][action]["enabled"]
+    except KeyError as error:
+        raise ValueError(
+            f"Missing configuration value: actions.{action}.enabled"
+        ) from error
 
 
 def load_like_action_config():
@@ -1270,8 +1311,7 @@ def test_like_drafts(tracker, selected_ids):
 
     if enabled:
         print("LIVE LIKE MODE ENABLED")
-        print(f"Maximum likes per day: {get_action_limit("like")}")
-
+        print(f"Maximum likes per day: {get_action_limit('like')}")
     else:
         print("DRY RUN MODE: Like is disabled.")
 
@@ -1477,16 +1517,21 @@ def test_like_drafts(tracker, selected_ids):
 
     if enabled:
         print(f"\nLive Likes confirmed: {tested}")
-        print(f"Maximum likes per day: {get_action_limit("like")}")
+        print(f"Maximum likes per day: {get_action_limit('like')}")
     else:
         print(f"\nLike drafts tested successfully: {tested}")
         print("DRY RUN: no likes were sent to X.")
 
 
 def main():
+    global ACTION_SETTINGS
+
     print("Starting X Agent")
 
-    settings = load_action_settings()
+    # Load and validate the centralized configuration once.
+    ACTION_SETTINGS = load_action_settings()
+    settings = ACTION_SETTINGS
+
     print(
         "Configured daily limits: "
         f"Likes={settings['limits']['like']['max_per_day']}, "
@@ -1501,10 +1546,21 @@ def main():
         "Configured minimum Like score: "
         f"{settings['limits']['like']['min_score']}"
     )
+    print(
+        "Configured posts per monitored account: "
+        f"{settings['scraping']['posts_per_account']}"
+    )
+
+    print(
+        "Action modes: "
+        f"Like={'LIVE' if settings['actions']['like']['enabled'] else 'DRY RUN'}, "
+        f"Reply={'LIVE' if settings['actions']['reply']['enabled'] else 'DRY RUN'}, "
+        f"Repost={'LIVE' if settings['actions']['repost']['enabled'] else 'DRY RUN'}"
+    )
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-    # 1. Load posts retrieved by Rettiwt
+    # 1. Load posts retrieved by Rettiwt.
     posts = load_rettiwt_posts()
 
     print(f"Loaded {len(posts)} posts from Rettiwt")
@@ -1523,7 +1579,7 @@ def main():
         f"{len(active_post_ids)}"
     )
 
-    # 2. Save latest scraped posts
+    # 2. Save latest scraped posts.
     save_json(POSTS_FILE, {
         "account": USERNAME,
         "updated_at": datetime.now(timezone.utc).isoformat(),
@@ -1531,13 +1587,13 @@ def main():
         "posts": posts
     })
 
-    # 3. Load persistent tracker
+    # 3. Load persistent tracker.
     tracker = PostTracker()
 
-    # 4. Migrate existing drafts before recovery
+    # 4. Migrate existing drafts before recovery.
     migrate_existing_reply_drafts(tracker)
 
-    # 5. Recover interrupted sending operations
+    # 5. Recover interrupted sending operations.
     recover_interrupted_replies(tracker)
 
     print("\nRecovering interrupted likes...")
@@ -1548,7 +1604,7 @@ def main():
     recovered_reposts = tracker.recover_interrupted_actions("repost")
     print(f"Interrupted reposts recovered: {recovered_reposts}")
 
-    # 6. Register new posts
+    # 6. Register new posts.
     new_ids = tracker.register_posts(posts)
 
     print(f"New posts registered: {len(new_ids)}")
@@ -1655,38 +1711,38 @@ def main():
         f"from {len(active_post_ids)} active posts"
     )
 
-    # 9. Evaluate reply eligibility
+    # 9. Evaluate reply eligibility.
     eligible, blocked = evaluate_reply_eligibility(
         tracker,
         all_rankings
     )
 
-    # 10. Generate and persist reply drafts
+    # 10. Generate and persist reply drafts.
     generate_reply_drafts(
         tracker,
         eligible,
         all_rankings
     )
 
-    # 11. Test reply drafts through Node.js
+    # 11. Test reply drafts through Node.js.
     test_reply_drafts(
         tracker,
         eligible
     )
 
-    # 12. Generate and persist repost drafts
+    # 12. Generate and persist repost drafts.
     generate_repost_drafts(
         tracker,
         all_rankings
     )
 
-    # 13. Test repost drafts through Node.js
+    # 13. Test repost drafts through Node.js.
     test_repost_drafts(
         tracker,
         all_rankings
     )
 
-    # 14. Evaluate posts for Likes with the dedicated Gemini prompt
+    # 14. Evaluate posts for Likes with the dedicated Gemini prompt.
     like_evaluations = evaluate_like_candidates(
         tracker,
         active_post_ids
@@ -1706,7 +1762,10 @@ def main():
     )
 
     print(f"\nActive posts processed this run: {len(active_post_id_set)}")
-    print(f"Historical posts retained in tracker: {len(tracker.data['posts'])}")
+    print(
+        f"Historical posts retained in tracker: "
+        f"{len(tracker.data['posts'])}"
+    )
     print("\nX Agent completed successfully")
 
 
