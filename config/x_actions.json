@@ -12,7 +12,8 @@
   },
   "limits": {
     "like": {
-      "max_per_day": 2
+      "max_per_day": 2,
+      "min_score": 75
     },
     "reply": {
       "max_per_day": 2,
@@ -21,6 +22,9 @@
     "repost": {
       "max_per_day": 2
     }
+  },
+  "scraping": {
+    "posts_per_account": 10
   },
   "timezone": "America/Argentina/Buenos_Aires"
 }
