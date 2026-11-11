@@ -11,13 +11,6 @@ from src.post_tracker import PostTracker
 
 
 USERNAME = "monitored_accounts"
-LIMIT = 10
-MAX_TOTAL_REPLIES = 2
-
-MAX_REPOSTS_PER_RUN = 2
-
-MAX_LIKES_PER_RUN = 2
-MIN_LIKE_SCORE = 75
 
 DATA_DIR = Path("data")
 POSTS_FILE = DATA_DIR / "posts.json"
@@ -29,6 +22,77 @@ REPLY_ACTION_SCRIPT = Path("src/actions/x_reply.mjs")
 REPOST_ACTION_SCRIPT = Path("src/actions/x_repost.mjs")
 LIKE_ACTION_SCRIPT = Path("src/actions/x_like.mjs")
 ACTION_CONFIG_FILE = Path("config/x_actions.json")
+
+
+def load_action_settings():
+    """Load and validate the centralized X actions configuration."""
+    if not ACTION_CONFIG_FILE.exists():
+        raise FileNotFoundError(
+            f"Action config not found: {ACTION_CONFIG_FILE}"
+        )
+
+    with ACTION_CONFIG_FILE.open("r", encoding="utf-8") as file:
+        config = json.load(file)
+
+    if not isinstance(config, dict):
+        raise ValueError("Invalid action config: expected an object")
+
+    actions = config.get("actions")
+    limits = config.get("limits")
+    scraping = config.get("scraping")
+
+    if not isinstance(actions, dict):
+        raise ValueError("Missing or invalid 'actions' configuration")
+    if not isinstance(limits, dict):
+        raise ValueError("Missing or invalid 'limits' configuration")
+    if not isinstance(scraping, dict):
+        raise ValueError("Missing or invalid 'scraping' configuration")
+
+    for action in ("like", "reply", "repost"):
+        action_config = actions.get(action)
+        limit_config = limits.get(action)
+        if not isinstance(action_config, dict) or not isinstance(
+            action_config.get("enabled"), bool
+        ):
+            raise ValueError(f"Invalid actions.{action}.enabled setting")
+        if not isinstance(limit_config, dict):
+            raise ValueError(f"Missing limits.{action} configuration")
+        max_per_day = limit_config.get("max_per_day")
+        if not isinstance(max_per_day, int) or isinstance(max_per_day, bool) or max_per_day < 0:
+            raise ValueError(f"Invalid limits.{action}.max_per_day setting")
+
+    reply_author_limit = limits["reply"].get("max_per_author_per_day")
+    if (
+        not isinstance(reply_author_limit, int)
+        or isinstance(reply_author_limit, bool)
+        or reply_author_limit < 0
+    ):
+        raise ValueError(
+            "Invalid limits.reply.max_per_author_per_day setting"
+        )
+
+    min_like_score = limits["like"].get("min_score")
+    if (
+        not isinstance(min_like_score, int)
+        or isinstance(min_like_score, bool)
+        or not 0 <= min_like_score <= 100
+    ):
+        raise ValueError("Invalid limits.like.min_score setting")
+
+    posts_per_account = scraping.get("posts_per_account")
+    if (
+        not isinstance(posts_per_account, int)
+        or isinstance(posts_per_account, bool)
+        or posts_per_account < 1
+    ):
+        raise ValueError("Invalid scraping.posts_per_account setting")
+
+    return config
+
+
+def get_action_limit(action, key="max_per_day"):
+    config = load_action_settings()
+    return config["limits"][action][key]
 
 
 def save_json(file_path, data):
@@ -99,7 +163,7 @@ def evaluate_reply_eligibility(tracker, rankings):
     daily_usage = tracker.get_action_usage("reply")
     remaining_today = max(
         0,
-        MAX_TOTAL_REPLIES - daily_usage["total_today"]
+        get_action_limit("reply") - daily_usage["total_today"]
     )
 
     planned_total = 0
@@ -132,7 +196,7 @@ def evaluate_reply_eligibility(tracker, rankings):
         if (
             usage["author_replies_today"]
             + planned_by_author.get(author_id, 0)
-            >= 1
+            >= get_action_limit("reply", "max_per_author_per_day")
         ):
             blocked.append((post_id, "author_daily_limit_reached"))
             continue
@@ -243,7 +307,7 @@ def test_reply_drafts(tracker, eligible_ids):
     if live_enabled:
         print("LIVE REPLY MODE ENABLED")
         print(
-            f"Maximum replies per day: {MAX_TOTAL_REPLIES}"
+            f"Maximum replies per day: {get_action_limit("reply")}"
         )
     else:
         print("DRY RUN MODE: Reply is disabled.")
@@ -269,9 +333,28 @@ def test_reply_drafts(tracker, eligible_ids):
 
         if live_enabled:
             author_id = post.get("author_id")
+
+            if not author_id:
+                print(
+                    f"Reply blocked for {post_id}: missing author ID"
+                )
+                continue
+
+            author_usage = tracker.get_reply_usage(str(author_id))
+            author_limit = get_action_limit(
+                "reply", "max_per_author_per_day"
+            )
+
+            if author_usage["author_replies_today"] >= author_limit:
+                print(
+                    f"Reply blocked for {post_id}: "
+                    "author daily limit reached"
+                )
+                continue
+
             allowed, reason = tracker.can_reply_to_author_today(
-                str(author_id) if author_id else "",
-                MAX_TOTAL_REPLIES
+                str(author_id),
+                get_action_limit("reply")
             )
 
             if not allowed:
@@ -280,10 +363,10 @@ def test_reply_drafts(tracker, eligible_ids):
                 )
                 continue
 
-            if published >= MAX_TOTAL_REPLIES:
+            if published >= get_action_limit("reply"):
                 print(
                     f"Maximum replies per day reached: "
-                    f"{MAX_TOTAL_REPLIES}"
+                    f"{get_action_limit("reply")}"
                 )
                 break
 
@@ -456,7 +539,7 @@ def test_reply_drafts(tracker, eligible_ids):
     if live_enabled:
         print(f"Live Replies confirmed: {published}")
         print(
-            f"Maximum replies per day: {MAX_TOTAL_REPLIES}"
+            f"Maximum replies per day: {get_action_limit("reply")}"
         )
     else:
         print("DRY RUN: no replies were published to X.")
@@ -532,7 +615,7 @@ def test_repost_drafts(tracker, rankings):
     if live_enabled:
         print("LIVE REPOST MODE ENABLED")
         print(
-            f"Maximum reposts per day: {MAX_REPOSTS_PER_RUN}"
+            f"Maximum reposts per day: {get_action_limit("repost")}"
         )
     else:
         print("DRY RUN MODE: Repost is disabled.")
@@ -544,15 +627,15 @@ def test_repost_drafts(tracker, rankings):
         repost_usage = tracker.get_action_usage("repost")
         remaining_reposts = max(
             0,
-            MAX_REPOSTS_PER_RUN - repost_usage["total_today"]
+            get_action_limit("repost") - repost_usage["total_today"]
         )
     else:
-        remaining_reposts = MAX_REPOSTS_PER_RUN
+        remaining_reposts = get_action_limit("repost")
 
     if remaining_reposts <= 0:
         print(
             f"Daily repost limit already reached: "
-            f"{MAX_REPOSTS_PER_RUN}"
+            f"{get_action_limit("repost")}"
         )
         return
 
@@ -601,7 +684,7 @@ def test_repost_drafts(tracker, rankings):
         if live_enabled:
             allowed, reason = tracker.can_perform_action_today(
                 "repost",
-                MAX_REPOSTS_PER_RUN
+                get_action_limit("repost")
             )
 
             if not allowed:
@@ -757,7 +840,7 @@ def test_repost_drafts(tracker, rankings):
     if live_enabled:
         print(f"Live Reposts confirmed: {published}")
         print(
-            f"Maximum reposts per day: {MAX_REPOSTS_PER_RUN}"
+            f"Maximum reposts per day: {get_action_limit("repost")}"
         )
     else:
         print("DRY RUN: no reposts were published to X.")
@@ -947,7 +1030,7 @@ def generate_like_drafts(tracker, evaluations, active_post_ids):
 
         if (
             evaluation.get("should_like") is not True
-            or score < MIN_LIKE_SCORE
+            or score < get_action_limit("like", "min_score")
         ):
             if tracker.cancel_like_draft(
                 post_id,
@@ -974,7 +1057,7 @@ def generate_like_drafts(tracker, evaluations, active_post_ids):
         except (TypeError, ValueError):
             continue
 
-        if score < MIN_LIKE_SCORE:
+        if score < get_action_limit("like", "min_score"):
             continue
 
         post = tracker.get_post(post_id)
@@ -1063,7 +1146,7 @@ def generate_like_drafts(tracker, evaluations, active_post_ids):
     # First pass: balance relationship-building and genuine content.
     for candidate in candidates:
 
-        if len(selected) >= MAX_LIKES_PER_RUN:
+        if len(selected) >= get_action_limit("like"):
             break
 
         author_id = candidate["author_id"]
@@ -1088,11 +1171,11 @@ def generate_like_drafts(tracker, evaluations, active_post_ids):
 
     # Second pass: fill remaining slots if one category
     # had insufficient eligible candidates.
-    if len(selected) < MAX_LIKES_PER_RUN:
+    if len(selected) < get_action_limit("like"):
 
         for candidate in candidates:
 
-            if len(selected) >= MAX_LIKES_PER_RUN:
+            if len(selected) >= get_action_limit("like"):
                 break
 
             if candidate in selected:
@@ -1163,40 +1246,9 @@ def generate_like_drafts(tracker, evaluations, active_post_ids):
 
 
 def load_action_enabled(action):
-    """Read an action's enabled flag from the centralized config.
-
-    The canonical structure is:
-        {"actions": {"like": {"enabled": false}, ...}}
-
-    A legacy top-level action structure is also accepted for compatibility.
-    """
-    if not ACTION_CONFIG_FILE.exists():
-        raise FileNotFoundError(
-            f"Action config not found: {ACTION_CONFIG_FILE}"
-        )
-
-    with ACTION_CONFIG_FILE.open("r", encoding="utf-8") as file:
-        config = json.load(file)
-
-    if not isinstance(config, dict):
-        raise ValueError("Invalid action config")
-
-    actions = config.get("actions", config)
-
-    if not isinstance(actions, dict):
-        raise ValueError("Invalid actions configuration")
-
-    action_config = actions.get(action)
-
-    if not isinstance(action_config, dict):
-        raise ValueError(f"Missing {action.title()} configuration")
-
-    enabled = action_config.get("enabled")
-
-    if not isinstance(enabled, bool):
-        raise ValueError(f"Invalid {action.title()} enabled setting")
-
-    return enabled
+    """Read the enabled flag from the centralized actions configuration."""
+    config = load_action_settings()
+    return config["actions"][action]["enabled"]
 
 
 def load_like_action_config():
@@ -1218,7 +1270,7 @@ def test_like_drafts(tracker, selected_ids):
 
     if enabled:
         print("LIVE LIKE MODE ENABLED")
-        print(f"Maximum likes per day: {MAX_LIKES_PER_RUN}")
+        print(f"Maximum likes per day: {get_action_limit("like")}")
 
     else:
         print("DRY RUN MODE: Like is disabled.")
@@ -1320,7 +1372,7 @@ def test_like_drafts(tracker, selected_ids):
         # Check the daily quota before persisting processing or calling Node.js.
         allowed, reason = tracker.can_perform_action_today(
             "like",
-            MAX_LIKES_PER_RUN
+            get_action_limit("like")
         )
 
         if not allowed:
@@ -1425,7 +1477,7 @@ def test_like_drafts(tracker, selected_ids):
 
     if enabled:
         print(f"\nLive Likes confirmed: {tested}")
-        print(f"Maximum likes per day: {MAX_LIKES_PER_RUN}")
+        print(f"Maximum likes per day: {get_action_limit("like")}")
     else:
         print(f"\nLike drafts tested successfully: {tested}")
         print("DRY RUN: no likes were sent to X.")
@@ -1434,6 +1486,22 @@ def test_like_drafts(tracker, selected_ids):
 def main():
     print("Starting X Agent")
 
+    settings = load_action_settings()
+    print(
+        "Configured daily limits: "
+        f"Likes={settings['limits']['like']['max_per_day']}, "
+        f"Replies={settings['limits']['reply']['max_per_day']}, "
+        f"Reposts={settings['limits']['repost']['max_per_day']}"
+    )
+    print(
+        "Configured reply limit per author per day: "
+        f"{settings['limits']['reply']['max_per_author_per_day']}"
+    )
+    print(
+        "Configured minimum Like score: "
+        f"{settings['limits']['like']['min_score']}"
+    )
+
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 
     # 1. Load posts retrieved by Rettiwt
@@ -1441,7 +1509,7 @@ def main():
 
     print(f"Loaded {len(posts)} posts from Rettiwt")
 
-    # Rettiwt already fetches the latest LIMIT posts for each enabled
+    # Rettiwt fetches the configured number of latest posts for each enabled
     # monitored account and merges duplicate IDs. Therefore this list is
     # the union of all current per-account windows; do not slice it globally.
     active_post_ids = list(dict.fromkeys(
