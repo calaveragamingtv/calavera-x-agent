@@ -401,6 +401,44 @@ class PostTracker:
     def _save(self) -> None:
         self._save_data(self.data)
 
+    @staticmethod
+    def _post_metadata(post: dict) -> dict:
+        """
+        Extract optional metadata used by action evaluators.
+
+        Different sources may expose counters under different names.
+        Missing values are omitted so existing useful metadata is not erased.
+        """
+        aliases = {
+            "author": ("author", "username", "author_username"),
+            "likes": ("likes", "like_count", "likeCount"),
+            "views": ("views", "view_count", "viewCount"),
+            "replies": ("replies", "reply_count", "replyCount"),
+            "reposts": ("reposts", "retweets", "repost_count", "retweetCount"),
+            "content_type": ("content_type", "contentType"),
+        }
+
+        metadata = {}
+
+        for target, candidates in aliases.items():
+            for candidate in candidates:
+                if candidate in post and post[candidate] is not None:
+                    metadata[target] = post[candidate]
+                    break
+
+        return metadata
+
+    @staticmethod
+    def _has_metadata_value(value) -> bool:
+        """Return whether a metadata value is useful and safe to persist."""
+        if value is None:
+            return False
+
+        if isinstance(value, str):
+            return bool(value.strip())
+
+        return True
+
     def register_posts(self, posts: list[dict]) -> list[str]:
         new_ids = []
         changed = False
@@ -425,31 +463,43 @@ class PostTracker:
             if not isinstance(monitored_by, list):
                 monitored_by = []
 
+            text = post.get("text") or post.get("fullText") or ""
+            url = post.get("url")
+            created_at = post.get("created_at") or post.get("createdAt")
+            metadata = self._post_metadata(post)
+
             if post_id in self.data["posts"]:
                 tracked_post = self.data["posts"][post_id]
 
-                if author_id and not tracked_post.get("author_id"):
-                    tracked_post["author_id"] = author_id
-                    changed = True
+                # Refresh source metadata without touching analysis or action
+                # state. This keeps the tracker useful when a post re-enters
+                # the active scraping window.
+                refresh_values = {
+                    "author_id": author_id,
+                    "text": text,
+                    "url": url,
+                    "created_at": created_at,
+                    "expanded_urls": expanded_urls,
+                    "monitored_by": monitored_by,
+                    **metadata,
+                }
 
-                for field, value in (
-                    ("expanded_urls", expanded_urls),
-                    ("monitored_by", monitored_by),
-                ):
+                for field, value in refresh_values.items():
+                    if not self._has_metadata_value(value):
+                        continue
+
                     if tracked_post.get(field) != value:
                         tracked_post[field] = value
                         changed = True
 
                 continue
 
-            text = post.get("text") or post.get("fullText") or ""
-
-            self.data["posts"][post_id] = {
+            tracked_post = {
                 "id": post_id,
                 "author_id": author_id,
                 "text": text,
-                "url": post.get("url"),
-                "created_at": post.get("created_at") or post.get("createdAt"),
+                "url": url,
+                "created_at": created_at,
                 "expanded_urls": expanded_urls,
                 "monitored_by": monitored_by,
                 "first_seen_at": self._now(),
@@ -470,6 +520,9 @@ class PostTracker:
                     for action in self.ACTIONS
                 },
             }
+
+            tracked_post.update(metadata)
+            self.data["posts"][post_id] = tracked_post
 
             new_ids.append(post_id)
             changed = True
@@ -822,8 +875,7 @@ class PostTracker:
 
             timestamp = (
                 action_data.get("completed_at")
-                if status == "completed"
-                else action_data.get("last_attempt_at")
+                or action_data.get("last_attempt_at")
             )
 
             if self._local_date(timestamp) == today:
@@ -873,8 +925,7 @@ class PostTracker:
 
             timestamp = (
                 action.get("completed_at")
-                if status == "completed"
-                else action.get("last_attempt_at")
+                or action.get("last_attempt_at")
             )
 
             if self._local_date(timestamp) != today:
@@ -934,8 +985,7 @@ class PostTracker:
 
             timestamp = (
                 action.get("completed_at")
-                if status == "completed"
-                else action.get("last_attempt_at")
+                or action.get("last_attempt_at")
             )
 
             if self._local_date(timestamp) != today:
