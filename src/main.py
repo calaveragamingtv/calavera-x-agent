@@ -87,6 +87,19 @@ def load_action_settings():
             "Invalid limits.reply.max_per_author_per_day setting"
         )
 
+    like_author_limit = limits["like"].get(
+        "max_per_author_per_day"
+    )
+
+    if (
+        not isinstance(like_author_limit, int)
+        or isinstance(like_author_limit, bool)
+        or like_author_limit < 0
+    ):
+        raise ValueError(
+            "Invalid limits.like.max_per_author_per_day setting"
+        )
+
     min_like_score = limits["like"].get("min_score")
 
     if (
@@ -1093,6 +1106,7 @@ def has_platform_link(post, platforms=None):
     searchable_content = " ".join(
         part for part in searchable_parts if isinstance(part, str)
     )
+
     domains = "|".join(platforms)
     pattern = (
         r"(?:https?://)?(?:www\.)?(?:"
@@ -1100,7 +1114,9 @@ def has_platform_link(post, platforms=None):
         + r")(?:[/:?#]|$)"
     )
 
-    return bool(re.search(pattern, searchable_content, re.IGNORECASE))
+    return bool(
+        re.search(pattern, searchable_content, re.IGNORECASE)
+    )
 
 
 def is_stream_announcement(post):
@@ -1121,6 +1137,23 @@ def is_stream_announcement(post):
     if not is_streamer:
         return False
 
+    has_live_phrase = bool(
+        re.search(
+            r"\b("
+            r"en vivo|estoy en vivo|estamos en vivo|"
+            r"ya estoy en vivo|ya estamos en vivo|"
+            r"live now|i am live|i'm live|"
+            r"going live|streaming now|"
+            r"estoy on|estamos on"
+            r")\b",
+            str(post.get("text", "")),
+            re.IGNORECASE
+        )
+    )
+
+    if not has_live_phrase:
+        return False
+
     return has_platform_link(
         post,
         platforms=(r"twitch\.tv", r"kick\.com")
@@ -1130,25 +1163,35 @@ def is_stream_announcement(post):
 def generate_like_drafts(tracker, evaluations, active_post_ids):
     print("\nGenerating like drafts...")
 
-    active_post_id_set = {str(post_id) for post_id in active_post_ids}
+    active_post_id_set = {
+        str(post_id) for post_id in active_post_ids
+    }
 
     evaluations = {
         str(post_id): evaluation
         for post_id, evaluation in evaluations.items()
     }
 
+    global_limit = get_action_limit("like")
+    author_limit = get_action_limit(
+        "like",
+        "max_per_author_per_day"
+    )
+    min_score = get_action_limit("like", "min_score")
+
     outdated_drafts = 0
 
+    # Cancel drafts that are no longer approved by Gemini.
     for post_id in tracker.get_drafted_action_ids("like"):
         post_id = str(post_id)
 
         if post_id not in active_post_id_set:
             continue
 
-        if post_id not in evaluations:
-            continue
+        evaluation = evaluations.get(post_id)
 
-        evaluation = evaluations[post_id]
+        if not isinstance(evaluation, dict):
+            continue
 
         try:
             score = int(evaluation.get("score", 0))
@@ -1157,7 +1200,7 @@ def generate_like_drafts(tracker, evaluations, active_post_ids):
 
         if (
             evaluation.get("should_like") is not True
-            or score < get_action_limit("like", "min_score")
+            or score < min_score
         ):
             if tracker.cancel_like_draft(
                 post_id,
@@ -1184,7 +1227,7 @@ def generate_like_drafts(tracker, evaluations, active_post_ids):
         except (TypeError, ValueError):
             continue
 
-        if score < get_action_limit("like", "min_score"):
+        if score < min_score:
             continue
 
         post = tracker.get_post(post_id)
@@ -1201,6 +1244,16 @@ def generate_like_drafts(tracker, evaluations, active_post_ids):
         if status not in ("not_started", "failed", "drafted"):
             continue
 
+        author_id = post.get("author_id")
+
+        if not author_id:
+            print(
+                f"Like candidate skipped: missing author ID ({post_id})"
+            )
+            continue
+
+        author_id = str(author_id)
+
         platform_link = has_platform_link(post)
         stream_announcement = is_stream_announcement(post)
 
@@ -1215,10 +1268,6 @@ def generate_like_drafts(tracker, evaluations, active_post_ids):
         else:
             priority = 0
             reason = "interesting_post"
-
-        author_id = str(
-            post.get("author_id") or f"unknown_{post_id}"
-        )
 
         candidates.append({
             "post_id": post_id,
@@ -1251,73 +1300,97 @@ def generate_like_drafts(tracker, evaluations, active_post_ids):
 
     for candidate in candidates:
         print(
-            f"Like candidate author: "
+            f"Like candidate: "
             f"post={candidate['post_id']} "
             f"author={candidate['author_id']} "
             f"relationship={candidate['relationship']} "
             f"score={candidate['score']}"
         )
 
-    selected = []
-    selected_authors = set()
+    daily_usage = tracker.get_action_usage("like")
 
-    relationship_selected = False
-    genuine_selected = False
+    already_used_today = daily_usage["total_today"]
+    remaining_today = max(
+        0,
+        global_limit - already_used_today
+    )
+
+    print(f"Likes already used today: {already_used_today}")
+    print(f"Remaining daily Like allowance: {remaining_today}")
+    print(f"Configured maximum Likes per author: {author_limit}")
+
+    selected = []
+    planned_by_author = {}
+    planned_total = 0
+    blocked = []
 
     for candidate in candidates:
-        if len(selected) >= get_action_limit("like"):
-            break
+        if planned_total >= remaining_today:
+            blocked.append((
+                candidate["post_id"],
+                "daily_like_limit_reached"
+            ))
+            continue
 
         author_id = candidate["author_id"]
 
-        if author_id in selected_authors:
+        author_usage = tracker.get_like_usage(author_id)
+        already_liked_by_author = author_usage[
+            "author_likes_today"
+        ]
+
+        planned_for_author = planned_by_author.get(
+            author_id,
+            0
+        )
+
+        if (
+            already_liked_by_author + planned_for_author
+            >= author_limit
+        ):
+            blocked.append((
+                candidate["post_id"],
+                "author_daily_like_limit_reached"
+            ))
             continue
 
-        if candidate["relationship"]:
-            if relationship_selected:
-                continue
-            relationship_selected = True
-        else:
-            if genuine_selected:
-                continue
-            genuine_selected = True
-
         selected.append(candidate)
-        selected_authors.add(author_id)
+        planned_total += 1
 
-    if len(selected) < get_action_limit("like"):
-        for candidate in candidates:
-            if len(selected) >= get_action_limit("like"):
-                break
-
-            if candidate in selected:
-                continue
-
-            author_id = candidate["author_id"]
-
-            if author_id in selected_authors:
-                continue
-
-            selected.append(candidate)
-            selected_authors.add(author_id)
+        planned_by_author[author_id] = (
+            planned_for_author + 1
+        )
 
     print(f"Like candidates approved by Gemini: {len(candidates)}")
     print(
-        f"Relationship candidates: "
+        "Relationship candidates: "
         f"{sum(1 for item in candidates if item['relationship'])}"
     )
     print(
-        f"Genuine content candidates: "
+        "Genuine content candidates: "
         f"{sum(1 for item in candidates if not item['relationship'])}"
     )
     print(f"Selected this execution: {len(selected)}")
 
+    for post_id, reason in blocked:
+        print(f"Like candidate blocked: {post_id} ({reason})")
+
+    for author_id, count in planned_by_author.items():
+        print(
+            f"Likes reserved for author {author_id}: "
+            f"{count}/{author_limit}"
+        )
+
     for candidate in selected:
         post_id = candidate["post_id"]
         post = tracker.get_post(post_id)
-        like_action = post["actions"]["like"]
 
-        if like_action["status"] == "drafted":
+        if not post:
+            continue
+
+        like_action = post.get("actions", {}).get("like", {})
+
+        if like_action.get("status") == "drafted":
             print(
                 f"Existing like draft preserved: {post_id} "
                 f"(reason={candidate['reason']})"
@@ -1386,6 +1459,10 @@ def test_like_drafts(tracker, selected_ids):
     if live_enabled:
         print("LIVE LIKE MODE ENABLED")
         print(f"Maximum likes per day: {get_action_limit('like')}")
+        print(
+            "Maximum likes per author per day: "
+            f"{get_action_limit('like', 'max_per_author_per_day')}"
+        )
     else:
         print("DRY RUN MODE: Like is disabled.")
 
@@ -1420,11 +1497,15 @@ def test_like_drafts(tracker, selected_ids):
             )
             continue
 
-        request = {"post_id": str(post_id)}
-
-        print(f"\nProcessing like for post {post_id}...")
+        author_id = post.get("author_id")
 
         if live_enabled:
+            if not author_id:
+                print(
+                    f"Like blocked for {post_id}: missing author ID"
+                )
+                continue
+
             allowed, reason = tracker.can_perform_action_today(
                 "like",
                 get_action_limit("like")
@@ -1434,6 +1515,19 @@ def test_like_drafts(tracker, selected_ids):
                 print(f"Like blocked for {post_id}: {reason}")
                 break
 
+            allowed, reason = tracker.can_like_to_author_today(
+                str(author_id)
+            )
+
+            if not allowed:
+                print(f"Like blocked for {post_id}: {reason}")
+                continue
+
+        request = {"post_id": str(post_id)}
+
+        print(f"\nProcessing like for post {post_id}...")
+
+        if live_enabled:
             tracker.mark_action_started(
                 post_id,
                 "like",
@@ -1648,14 +1742,22 @@ def main():
         f"Replies={settings['limits']['reply']['max_per_day']}, "
         f"Reposts={settings['limits']['repost']['max_per_day']}"
     )
+
     print(
         "Configured reply limit per author per day: "
         f"{settings['limits']['reply']['max_per_author_per_day']}"
     )
+
+    print(
+        "Configured Like limit per author per day: "
+        f"{settings['limits']['like']['max_per_author_per_day']}"
+    )
+
     print(
         "Configured minimum Like score: "
         f"{settings['limits']['like']['min_score']}"
     )
+
     print(
         "Configured posts per monitored account: "
         f"{settings['scraping']['posts_per_account']}"
@@ -1678,6 +1780,7 @@ def main():
         str(post["id"])
         for post in posts
     ))
+
     active_post_id_set = set(active_post_ids)
 
     print(
