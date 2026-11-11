@@ -13,6 +13,7 @@
   "limits": {
     "like": {
       "max_per_day": 2,
+      "max_per_author_per_day": 1,
       "min_score": 75
     },
     "reply": {
