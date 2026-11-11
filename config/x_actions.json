@@ -2,13 +2,13 @@
 {
   "actions": {
     "like": {
-      "enabled": false
+      "enabled": true
     },
     "reply": {
-      "enabled": false
+      "enabled": true
     },
     "repost": {
-      "enabled": false
+      "enabled": true
     }
   },
   "limits": {
