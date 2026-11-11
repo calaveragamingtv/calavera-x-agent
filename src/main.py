@@ -1,8 +1,6 @@
-
 import json
 import re
 import subprocess
-import traceback
 from pathlib import Path
 from datetime import datetime, timezone
 
@@ -14,6 +12,11 @@ from src.post_tracker import PostTracker
 
 USERNAME = "monitored_accounts"
 LIMIT = 10
+MAX_TOTAL_REPLIES = 2
+
+MAX_REPOSTS_PER_RUN = 2
+
+MAX_LIKES_PER_RUN = 2
 MIN_LIKE_SCORE = 75
 
 DATA_DIR = Path("data")
@@ -57,43 +60,6 @@ def load_rettiwt_posts():
     return posts
 
 
-def load_action_config(action):
-    if action not in ("like", "reply", "repost"):
-        raise ValueError(f"Unsupported action: {action}")
-
-    if not ACTION_CONFIG_FILE.exists():
-        raise FileNotFoundError(
-            f"Action config not found: {ACTION_CONFIG_FILE}"
-        )
-
-    with ACTION_CONFIG_FILE.open("r", encoding="utf-8") as file:
-        config = json.load(file)
-
-    if not isinstance(config, dict):
-        raise ValueError("Invalid action config")
-
-    actions = config.get("actions")
-
-    if not isinstance(actions, dict):
-        raise ValueError("Missing actions configuration")
-
-    action_config = actions.get(action)
-
-    if not isinstance(action_config, dict):
-        raise ValueError(
-            f"Missing configuration for action: {action}"
-        )
-
-    enabled = action_config.get("enabled")
-
-    if not isinstance(enabled, bool):
-        raise ValueError(
-            f"Invalid enabled setting for action: {action}"
-        )
-
-    return enabled
-
-
 def recover_interrupted_replies(tracker):
     print("\nRecovering interrupted replies...")
 
@@ -128,14 +94,12 @@ def evaluate_reply_eligibility(tracker, rankings):
         reverse=True
     )
 
-    daily_limit = tracker.get_action_limit("reply")
-    author_limit = tracker.get_reply_author_limit()
-
+    # The tracker counts attempts already made today (Argentina time).
+    # Drafts selected in this pass are added to that daily usage.
     daily_usage = tracker.get_action_usage("reply")
-
     remaining_today = max(
         0,
-        daily_limit - daily_usage["total_today"]
+        MAX_TOTAL_REPLIES - daily_usage["total_today"]
     )
 
     planned_total = 0
@@ -168,7 +132,7 @@ def evaluate_reply_eligibility(tracker, rankings):
         if (
             usage["author_replies_today"]
             + planned_by_author.get(author_id, 0)
-            >= author_limit
+            >= 1
         ):
             blocked.append((post_id, "author_daily_limit_reached"))
             continue
@@ -181,9 +145,6 @@ def evaluate_reply_eligibility(tracker, rankings):
         )
 
     print(f"Reply candidates from Gemini: {len(candidates)}")
-    print(f"Daily reply limit: {daily_limit}")
-    print(f"Daily replies already used: {daily_usage['total_today']}")
-    print(f"Maximum replies per author: {author_limit}")
     print(f"Eligible replies: {len(eligible)}")
     print(f"Blocked replies: {len(blocked)}")
 
@@ -260,8 +221,7 @@ def generate_reply_drafts(tracker, eligible_ids, rankings):
 
         except Exception as error:
             print(f"Reply generation failed for {post_id}: {error}")
-            traceback.print_exc()
-            continue
+            raise
 
     print("\nReply drafts generated or preserved.")
 
@@ -278,12 +238,13 @@ def test_reply_drafts(tracker, eligible_ids):
             f"Reply action script not found: {REPLY_ACTION_SCRIPT}"
         )
 
-    live_enabled = load_action_config("reply")
-    daily_limit = tracker.get_action_limit("reply")
+    live_enabled = load_reply_action_config()
 
     if live_enabled:
         print("LIVE REPLY MODE ENABLED")
-        print(f"Maximum replies per day: {daily_limit}")
+        print(
+            f"Maximum replies per day: {MAX_TOTAL_REPLIES}"
+        )
     else:
         print("DRY RUN MODE: Reply is disabled.")
 
@@ -308,14 +269,23 @@ def test_reply_drafts(tracker, eligible_ids):
 
         if live_enabled:
             author_id = post.get("author_id")
-
             allowed, reason = tracker.can_reply_to_author_today(
-                str(author_id) if author_id else ""
+                str(author_id) if author_id else "",
+                MAX_TOTAL_REPLIES
             )
 
             if not allowed:
-                print(f"Reply blocked for {post_id}: {reason}")
+                print(
+                    f"Reply blocked for {post_id}: {reason}"
+                )
                 continue
+
+            if published >= MAX_TOTAL_REPLIES:
+                print(
+                    f"Maximum replies per day reached: "
+                    f"{MAX_TOTAL_REPLIES}"
+                )
+                break
 
         payload = reply_action.get("payload") or {}
         reply_text = payload.get("reply_text")
@@ -485,7 +455,9 @@ def test_reply_drafts(tracker, eligible_ids):
 
     if live_enabled:
         print(f"Live Replies confirmed: {published}")
-        print(f"Maximum replies per day: {daily_limit}")
+        print(
+            f"Maximum replies per day: {MAX_TOTAL_REPLIES}"
+        )
     else:
         print("DRY RUN: no replies were published to X.")
         print("All tested replies remain in drafted state.")
@@ -555,33 +527,37 @@ def test_repost_drafts(tracker, rankings):
             f"Repost action script not found: {REPOST_ACTION_SCRIPT}"
         )
 
-    live_enabled = load_action_config("repost")
-    repost_limit = tracker.get_action_limit("repost")
+    live_enabled = load_repost_action_config()
 
     if live_enabled:
         print("LIVE REPOST MODE ENABLED")
-        print(f"Maximum reposts per day: {repost_limit}")
+        print(
+            f"Maximum reposts per day: {MAX_REPOSTS_PER_RUN}"
+        )
     else:
         print("DRY RUN MODE: Repost is disabled.")
 
-    # The tracker is the source of truth for daily usage.
+    # The external scheduler runs this workflow once per day. Use the
+    # tracker's Argentina-day usage as the source of truth so an accidental
+    # second execution cannot exceed the daily limit.
     if live_enabled:
         repost_usage = tracker.get_action_usage("repost")
         remaining_reposts = max(
             0,
-            repost_limit - repost_usage["total_today"]
+            MAX_REPOSTS_PER_RUN - repost_usage["total_today"]
         )
     else:
-        remaining_reposts = repost_limit
+        remaining_reposts = MAX_REPOSTS_PER_RUN
 
     if remaining_reposts <= 0:
         print(
-            f"Daily repost limit already reached: {repost_limit}"
+            f"Daily repost limit already reached: "
+            f"{MAX_REPOSTS_PER_RUN}"
         )
         return
 
-    # Preserve ranking order and select only pending drafts
-    # within the remaining daily allowance.
+    # Preserve ranking order and select only pending drafts within
+    # the remaining daily allowance.
     candidates = []
 
     for item in rankings:
@@ -624,7 +600,8 @@ def test_repost_drafts(tracker, rankings):
 
         if live_enabled:
             allowed, reason = tracker.can_perform_action_today(
-                "repost"
+                "repost",
+                MAX_REPOSTS_PER_RUN
             )
 
             if not allowed:
@@ -691,6 +668,9 @@ def test_repost_drafts(tracker, rankings):
                             f"got {actual!r}"
                         )
 
+                # Rettiwt confirms the repost but does not return
+                # a separate repost ID. Keep the original post ID
+                # as the external reference for this action.
                 tracker.mark_action_result(
                     post_id,
                     "repost",
@@ -776,7 +756,9 @@ def test_repost_drafts(tracker, rankings):
 
     if live_enabled:
         print(f"Live Reposts confirmed: {published}")
-        print(f"Maximum reposts per day: {repost_limit}")
+        print(
+            f"Maximum reposts per day: {MAX_REPOSTS_PER_RUN}"
+        )
     else:
         print("DRY RUN: no reposts were published to X.")
         print("All tested reposts remain in drafted state.")
@@ -804,13 +786,20 @@ def load_like_evaluations():
     }
 
 
-def evaluate_like_candidates(tracker):
-    print("\nEvaluating posts for Likes with Gemini...")
+def evaluate_like_candidates(tracker, active_post_ids):
+    print("\nEvaluating current posts for Likes with Gemini...")
 
     evaluations = load_like_evaluations()
     pending_posts = []
 
-    for post_id, post in tracker.data["posts"].items():
+    # Only evaluate posts in the latest timeline window. Cached evaluations
+    # remain available and are reused if a post leaves and later re-enters it.
+    for post_id in active_post_ids:
+        post = tracker.get_post(post_id)
+
+        if not post:
+            continue
+
         like_action = post.get("actions", {}).get("like", {})
         status = like_action.get("status", "not_started")
 
@@ -847,21 +836,12 @@ def evaluate_like_candidates(tracker):
 
     evaluator = GeminiLikeEvaluator()
     result = evaluator.evaluate_posts(pending_posts)
-
-    if result is None:
-        print(
-            "Like evaluation unavailable. "
-            "Posts will remain pending for the next execution."
-        )
-        return None
-
     new_evaluations = result["evaluations"]
 
     for item in new_evaluations:
         post_id = str(item["post_id"])
         evaluations[post_id] = item
         decision = "LIKE" if item["should_like"] else "SKIP"
-
         print(
             f"Like evaluation: {post_id} | {decision} | "
             f"score={item['score']} | category={item['category']}"
@@ -902,17 +882,10 @@ def has_platform_link(post, platforms=None):
     searchable_content = " ".join(
         part for part in searchable_parts if isinstance(part, str)
     )
-
     domains = "|".join(platforms)
-    pattern = (
-        r"(?:https?://)?(?:www\.)?(?:"
-        + domains
-        + r")(?:[/:?#]|$)"
-    )
+    pattern = r"(?:https?://)?(?:www\.)?(?:" + domains + r")(?:[/:?#]|$)"
 
-    return bool(
-        re.search(pattern, searchable_content, re.IGNORECASE)
-    )
+    return bool(re.search(pattern, searchable_content, re.IGNORECASE))
 
 
 def is_stream_announcement(post):
@@ -939,11 +912,14 @@ def is_stream_announcement(post):
     )
 
 
-def generate_like_drafts(tracker, evaluations):
+def generate_like_drafts(tracker, evaluations, active_post_ids):
     print("\nGenerating like drafts...")
 
-    like_limit = tracker.get_action_limit("like")
+    # The active set is the union of the latest 10 posts per monitored
+    # account, as supplied by the Rettiwt scraper.
+    active_post_id_set = {str(post_id) for post_id in active_post_ids}
 
+    # Normalize evaluation IDs without discarding the persistent cache.
     evaluations = {
         str(post_id): evaluation
         for post_id, evaluation in evaluations.items()
@@ -955,6 +931,9 @@ def generate_like_drafts(tracker, evaluations):
 
     for post_id in tracker.get_drafted_action_ids("like"):
         post_id = str(post_id)
+
+        if post_id not in active_post_id_set:
+            continue
 
         if post_id not in evaluations:
             continue
@@ -980,7 +959,12 @@ def generate_like_drafts(tracker, evaluations):
 
     candidates = []
 
-    for post_id, evaluation in evaluations.items():
+    for post_id in active_post_ids:
+        post_id = str(post_id)
+        evaluation = evaluations.get(post_id)
+
+        if not isinstance(evaluation, dict):
+            continue
 
         if evaluation.get("should_like") is not True:
             continue
@@ -1001,6 +985,8 @@ def generate_like_drafts(tracker, evaluations):
         like_action = post.get("actions", {}).get("like", {})
         status = like_action.get("status", "not_started")
 
+        # Never select actions that are already completed,
+        # processing, or have an unknown result.
         if status in ("completed", "unknown", "processing"):
             continue
 
@@ -1018,6 +1004,7 @@ def generate_like_drafts(tracker, evaluations):
                 else "platform_link"
             )
 
+            # Platform links retain their special priority.
             score = max(score, 90)
 
         else:
@@ -1047,6 +1034,7 @@ def generate_like_drafts(tracker, evaluations):
         reverse=True
     )
 
+    # Diagnostic: inspect author diversity.
     unique_authors = {
         candidate["author_id"]
         for candidate in candidates
@@ -1075,7 +1063,7 @@ def generate_like_drafts(tracker, evaluations):
     # First pass: balance relationship-building and genuine content.
     for candidate in candidates:
 
-        if len(selected) >= like_limit:
+        if len(selected) >= MAX_LIKES_PER_RUN:
             break
 
         author_id = candidate["author_id"]
@@ -1100,11 +1088,11 @@ def generate_like_drafts(tracker, evaluations):
 
     # Second pass: fill remaining slots if one category
     # had insufficient eligible candidates.
-    if len(selected) < like_limit:
+    if len(selected) < MAX_LIKES_PER_RUN:
 
         for candidate in candidates:
 
-            if len(selected) >= like_limit:
+            if len(selected) >= MAX_LIKES_PER_RUN:
                 break
 
             if candidate in selected:
@@ -1130,14 +1118,16 @@ def generate_like_drafts(tracker, evaluations):
         f"{sum(1 for item in candidates if not item['relationship'])}"
     )
 
-    print(f"Configured Like limit per day: {like_limit}")
     print(f"Selected this execution: {len(selected)}")
 
+    # Save selected drafts.
     for candidate in selected:
+
         post_id = candidate["post_id"]
         post = tracker.get_post(post_id)
         like_action = post["actions"]["like"]
 
+        # Preserve existing drafts.
         if like_action["status"] == "drafted":
             print(
                 f"Existing like draft preserved: {post_id} "
@@ -1172,15 +1162,90 @@ def generate_like_drafts(tracker, evaluations):
     ]
 
 
+def load_like_action_config():
+    if not ACTION_CONFIG_FILE.exists():
+        raise FileNotFoundError(
+            f"Action config not found: {ACTION_CONFIG_FILE}"
+        )
+
+    with ACTION_CONFIG_FILE.open("r", encoding="utf-8") as file:
+        config = json.load(file)
+
+    if not isinstance(config, dict):
+        raise ValueError("Invalid action config")
+
+    like_config = config.get("like")
+
+    if not isinstance(like_config, dict):
+        raise ValueError("Missing Like configuration")
+
+    enabled = like_config.get("enabled")
+
+    if not isinstance(enabled, bool):
+        raise ValueError("Invalid Like enabled setting")
+
+    return enabled
+
+
+def load_reply_action_config():
+    if not ACTION_CONFIG_FILE.exists():
+        raise FileNotFoundError(
+            f"Action config not found: {ACTION_CONFIG_FILE}"
+        )
+
+    with ACTION_CONFIG_FILE.open("r", encoding="utf-8") as file:
+        config = json.load(file)
+
+    if not isinstance(config, dict):
+        raise ValueError("Invalid action config")
+
+    reply_config = config.get("reply")
+
+    if not isinstance(reply_config, dict):
+        raise ValueError("Missing Reply configuration")
+
+    enabled = reply_config.get("enabled")
+
+    if not isinstance(enabled, bool):
+        raise ValueError("Invalid Reply enabled setting")
+
+    return enabled
+
+
+def load_repost_action_config():
+    if not ACTION_CONFIG_FILE.exists():
+        raise FileNotFoundError(
+            f"Action config not found: {ACTION_CONFIG_FILE}"
+        )
+
+    with ACTION_CONFIG_FILE.open("r", encoding="utf-8") as file:
+        config = json.load(file)
+
+    if not isinstance(config, dict):
+        raise ValueError("Invalid action config")
+
+    repost_config = config.get("repost")
+
+    if not isinstance(repost_config, dict):
+        raise ValueError("Missing Repost configuration")
+
+    enabled = repost_config.get("enabled")
+
+    if not isinstance(enabled, bool):
+        raise ValueError("Invalid Repost enabled setting")
+
+    return enabled
+
+
 def test_like_drafts(tracker, selected_ids):
     print("\nTesting like drafts with Node.js...")
 
-    enabled = load_action_config("like")
-    like_limit = tracker.get_action_limit("like")
+    enabled = load_like_action_config()
 
     if enabled:
         print("LIVE LIKE MODE ENABLED")
-        print(f"Maximum likes per day: {like_limit}")
+        print(f"Maximum likes per day: {MAX_LIKES_PER_RUN}")
+
     else:
         print("DRY RUN MODE: Like is disabled.")
 
@@ -1278,15 +1343,17 @@ def test_like_drafts(tracker, selected_ids):
             continue
 
         # LIVE EXECUTION:
-        # Check the daily quota before persisting processing.
+        # Check the daily quota before persisting processing or calling Node.js.
         allowed, reason = tracker.can_perform_action_today(
-            "like"
+            "like",
+            MAX_LIKES_PER_RUN
         )
 
         if not allowed:
             print(f"Like blocked for {post_id}: {reason}")
             break
 
+        # Persist processing BEFORE calling Node.js.
         tracker.mark_action_started(
             post_id,
             "like",
@@ -1339,6 +1406,9 @@ def test_like_drafts(tracker, selected_ids):
                         f"got {action_result.get(field)!r}"
                     )
 
+            # Rettiwt confirms the Like, but does not return
+            # a separate Like ID. The original post ID is used
+            # as the external reference for this action.
             tracker.mark_action_result(
                 post_id,
                 "like",
@@ -1354,12 +1424,14 @@ def test_like_drafts(tracker, selected_ids):
             tested += 1
 
         except Exception as error:
+            # We cannot safely know whether X received the request.
+            # Never retry automatically in this situation.
             current_post = tracker.get_post(post_id)
             current_status = (
                 current_post.get("actions", {})
                 .get("like", {})
                 .get("status")
-            ) if current_post else None
+            )
 
             if current_status == "processing":
                 tracker.mark_action_result(
@@ -1379,7 +1451,7 @@ def test_like_drafts(tracker, selected_ids):
 
     if enabled:
         print(f"\nLive Likes confirmed: {tested}")
-        print(f"Maximum likes per day: {like_limit}")
+        print(f"Maximum likes per day: {MAX_LIKES_PER_RUN}")
     else:
         print(f"\nLike drafts tested successfully: {tested}")
         print("DRY RUN: no likes were sent to X.")
@@ -1394,6 +1466,20 @@ def main():
     posts = load_rettiwt_posts()
 
     print(f"Loaded {len(posts)} posts from Rettiwt")
+
+    # Rettiwt already fetches the latest LIMIT posts for each enabled
+    # monitored account and merges duplicate IDs. Therefore this list is
+    # the union of all current per-account windows; do not slice it globally.
+    active_post_ids = list(dict.fromkeys(
+        str(post["id"])
+        for post in posts
+    ))
+    active_post_id_set = set(active_post_ids)
+
+    print(
+        f"Active posts in current per-account windows: "
+        f"{len(active_post_ids)}"
+    )
 
     # 2. Save latest scraped posts
     save_json(POSTS_FILE, {
@@ -1425,10 +1511,23 @@ def main():
 
     print(f"New posts registered: {len(new_ids)}")
 
-    # 7. Analyze posts that need analysis
-    pending_ids = tracker.get_unanalyzed_ids()
+    # 7. Analyze only current posts that still need analysis.
+    # Historical pending posts outside the current timeline windows remain
+    # in the tracker but are not analyzed until they re-enter an active window.
+    pending_ids = []
 
-    print(f"Posts pending analysis: {len(pending_ids)}")
+    for post_id in active_post_ids:
+        tracked_post = tracker.get_post(post_id)
+
+        if not tracked_post:
+            continue
+
+        analysis_status = tracked_post.get("analysis", {}).get("status")
+
+        if analysis_status in ("pending", "failed"):
+            pending_ids.append(post_id)
+
+    print(f"Current posts pending analysis: {len(pending_ids)}")
 
     analyzer = None
 
@@ -1447,14 +1546,9 @@ def main():
 
         analyzer = GeminiAnalyzer()
 
-        result = analyzer.analyze_posts(pending_posts)
+        try:
+            result = analyzer.analyze_posts(pending_posts)
 
-        if result is None:
-            print(
-                "Gemini analysis unavailable. "
-                "Posts will remain pending for the next execution."
-            )
-        else:
             ranking_by_id = {
                 str(item["post_id"]): item
                 for item in result["ranking"]
@@ -1468,13 +1562,31 @@ def main():
 
             print(f"Successfully analyzed {len(pending_ids)} posts")
 
+        except Exception as error:
+            print(f"Gemini analysis failed: {error}")
+
+            for post_id in pending_ids:
+                tracker.mark_analysis_failed(
+                    post_id,
+                    str(error)
+                )
+
+            raise
+
     else:
         print("No posts require analysis. Skipping Gemini.")
 
-    # 8. Generate ranking from completed analyses
+    # 8. Build the ranking exclusively from active/current posts.
+    # The tracker keeps full history, but old posts outside the latest
+    # per-account windows must not enter today's action candidates.
     all_rankings = []
 
-    for post_id, post in tracker.data["posts"].items():
+    for post_id in active_post_ids:
+        post = tracker.get_post(post_id)
+
+        if not post:
+            continue
+
         analysis = post.get("analysis", {})
 
         if analysis.get("status") == "completed":
@@ -1484,7 +1596,7 @@ def main():
                 all_rankings.append(ranking_item)
 
     all_rankings.sort(
-        key=lambda item: item["score"],
+        key=lambda item: item.get("score", 0),
         reverse=True
     )
 
@@ -1496,7 +1608,10 @@ def main():
         "ranking": all_rankings
     })
 
-    print(f"Ranking saved: {len(all_rankings)} analyzed posts")
+    print(
+        f"Ranking saved: {len(all_rankings)} analyzed posts "
+        f"from {len(active_post_ids)} active posts"
+    )
 
     # 9. Evaluate reply eligibility
     eligible, blocked = evaluate_reply_eligibility(
@@ -1530,26 +1645,26 @@ def main():
     )
 
     # 14. Evaluate posts for Likes with the dedicated Gemini prompt
-    like_evaluations = evaluate_like_candidates(tracker)
+    like_evaluations = evaluate_like_candidates(
+        tracker,
+        active_post_ids
+    )
 
-    if like_evaluations is None:
-        print(
-            "Like processing skipped because Gemini evaluation failed. "
-            "Pending posts will be retried in the next execution."
-        )
-    else:
-        # 15. Generate and test like drafts
-        like_ids = generate_like_drafts(
-            tracker,
-            like_evaluations
-        )
+    # 15. Generate and test Like drafts only for current active posts.
+    # The evaluation cache itself remains historical and is not deleted.
+    like_ids = generate_like_drafts(
+        tracker,
+        like_evaluations,
+        active_post_ids
+    )
 
-        test_like_drafts(
-            tracker,
-            like_ids
-        )
+    test_like_drafts(
+        tracker,
+        like_ids
+    )
 
-    print(f"\nTracker contains {len(tracker.data['posts'])} posts")
+    print(f"\nActive posts processed this run: {len(active_post_id_set)}")
+    print(f"Historical posts retained in tracker: {len(tracker.data['posts'])}")
     print("\nX Agent completed successfully")
 
 
