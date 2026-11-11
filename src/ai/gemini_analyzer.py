@@ -40,9 +40,8 @@ ALLOWED_ACTIONS = {
     "ignore"
 }
 
-RETRYABLE_STATUS_CODES = {429, 500, 502, 503, 504}
-MAX_ATTEMPTS = 3
-RETRY_DELAYS = (10, 20)
+MAX_RETRIES = 3
+RETRY_DELAY = 30
 
 
 class GeminiAnalysisError(RuntimeError):
@@ -72,17 +71,6 @@ class GeminiAnalyzer:
 
         return PROMPT_FILE.read_text(encoding="utf-8")
 
-    def _get_status_code(self, error):
-        status_code = (
-            getattr(error, "status_code", None)
-            or getattr(error, "code", None)
-        )
-
-        try:
-            return int(status_code)
-        except (TypeError, ValueError):
-            return None
-
     def analyze_posts(self, posts):
         if not posts:
             return {"ranking": []}
@@ -103,14 +91,15 @@ PUBLICACIONES A ANALIZAR:
 {posts_json}
 """
 
-        response = None
+        last_error = None
 
-        for attempt in range(1, MAX_ATTEMPTS + 1):
+        for attempt in range(MAX_RETRIES + 1):
             try:
                 logger.info(
-                    "Gemini analysis attempt %s/%s. Model: %s. Posts: %s",
-                    attempt,
-                    MAX_ATTEMPTS,
+                    "[X ANALYZER] Calling Gemini. "
+                    "Attempt: %s/%s. Model: %s. Posts: %s",
+                    attempt + 1,
+                    MAX_RETRIES + 1,
                     self.model,
                     len(posts)
                 )
@@ -124,58 +113,63 @@ PUBLICACIONES A ANALIZAR:
                     )
                 )
 
-                break
-
-            except Exception as error:
-                status_code = self._get_status_code(error)
-
-                retryable = status_code in RETRYABLE_STATUS_CODES
-
-                if not retryable or attempt >= MAX_ATTEMPTS:
-                    logger.exception(
-                        "Gemini API request failed. "
-                        "Model: %s. Status: %s. Attempt: %s/%s",
-                        self.model,
-                        status_code,
-                        attempt,
-                        MAX_ATTEMPTS
+                if response is None or not response.text:
+                    raise GeminiAnalysisError(
+                        "Gemini returned an empty response"
                     )
 
+                try:
+                    result = json.loads(response.text)
+                except json.JSONDecodeError as error:
                     raise GeminiAnalysisError(
-                        f"Gemini API failed after {attempt} attempt(s). "
-                        f"Status: {status_code}. "
-                        "No ranking was generated."
+                        "Gemini returned invalid JSON"
                     ) from error
 
-                delay = RETRY_DELAYS[attempt - 1]
+                try:
+                    validated_result = self._validate_result(
+                        result,
+                        posts
+                    )
+                except (ValueError, TypeError, KeyError) as error:
+                    raise GeminiAnalysisError(
+                        f"Gemini returned an invalid ranking: {error}"
+                    ) from error
 
-                logger.warning(
-                    "Gemini returned status %s. "
-                    "Retrying in %s seconds.",
-                    status_code,
-                    delay
+                logger.info(
+                    "[X ANALYZER] Analysis completed successfully. "
+                    "Posts: %s",
+                    len(posts)
                 )
 
-                time.sleep(delay)
+                return validated_result
 
-        if response is None or not response.text:
-            raise GeminiAnalysisError(
-                "Gemini returned an empty response"
-            )
+            except Exception as error:
+                last_error = error
 
-        try:
-            result = json.loads(response.text)
-        except json.JSONDecodeError as error:
-            raise GeminiAnalysisError(
-                "Gemini returned invalid JSON"
-            ) from error
+                if attempt < MAX_RETRIES:
+                    retry_number = attempt + 1
 
-        try:
-            return self._validate_result(result, posts)
-        except (ValueError, TypeError, KeyError) as error:
-            raise GeminiAnalysisError(
-                f"Gemini returned an invalid ranking: {error}"
-            ) from error
+                    logger.warning(
+                        "[X ANALYZER] Reintento %s/%s. "
+                        "Waiting %s seconds. Error: %s",
+                        retry_number,
+                        MAX_RETRIES,
+                        RETRY_DELAY,
+                        error,
+                        exc_info=True
+                    )
+
+                    time.sleep(RETRY_DELAY)
+
+                else:
+                    logger.exception(
+                        "[X ANALYZER] Fallaron los %s reintentos. "
+                        "Error final: %s",
+                        MAX_RETRIES,
+                        error
+                    )
+
+        raise last_error
 
     def _validate_result(self, result, posts):
         if not isinstance(result, dict):
