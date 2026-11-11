@@ -54,18 +54,16 @@ class ExecutionController:
         if not isinstance(self.enabled, bool):
             raise ValueError("execution.enabled must be boolean")
 
-        for name, value in (
-            ("calls_per_day", self.calls_per_day),
-            ("max_runs_per_day", self.max_runs_per_day),
-            ("random_delay_minutes", self.random_delay_minutes),
-            ("reservation_timeout_minutes",
-             self.reservation_timeout_minutes),
-        ):
-            minimum = 0 if name in (
-                "random_delay_minutes",
-                "reservation_timeout_minutes",
-            ) else 1
+        settings = {
+            "calls_per_day": (self.calls_per_day, 1),
+            "max_runs_per_day": (self.max_runs_per_day, 1),
+            "random_delay_minutes": (self.random_delay_minutes, 0),
+            "reservation_timeout_minutes": (
+                self.reservation_timeout_minutes, 1
+            ),
+        }
 
+        for name, (value, minimum) in settings.items():
             if (
                 not isinstance(value, int)
                 or isinstance(value, bool)
@@ -189,6 +187,10 @@ class ExecutionController:
                         tzinfo=self.timezone
                     )
             except (TypeError, ValueError):
+                print(
+                    "[EXECUTION] Invalid reservation timestamp. "
+                    "Removing reservation."
+                )
                 continue
 
             age = now - reserved_time
@@ -266,29 +268,25 @@ class ExecutionController:
 
         state = self._get_today_state()
 
-        # Avoid duplicate reservations for the same workflow run.
         existing_run = self._find_run(state)
 
         if existing_run:
-            if existing_run.get("status") in (
-                "reserved",
-                "started",
-                "completed",
-            ):
+            status = existing_run.get("status")
+
+            if status in ("reserved", "started"):
                 print(
-                    "[EXECUTION] This workflow run already has "
-                    "an execution record."
+                    "[EXECUTION] Workflow run already registered: "
+                    f"{status}"
                 )
-                self._write_github_output(
-                    existing_run.get("status") in (
-                        "reserved",
-                        "started",
-                    )
-                )
-                return existing_run.get("status") in (
-                    "reserved",
-                    "started",
-                )
+                self._write_github_output(True)
+                return True
+
+            print(
+                "[EXECUTION] Workflow run already finalized: "
+                f"{status}"
+            )
+            self._write_github_output(False)
+            return False
 
         self._clean_abandoned_reservations(state)
 
@@ -303,6 +301,7 @@ class ExecutionController:
         if not should_run:
             self._record_call(state, "skipped", reason)
             self._save_state(state)
+
             print(f"[EXECUTION] Skipping: {reason}")
             self._write_github_output(False)
             return False
@@ -315,18 +314,21 @@ class ExecutionController:
                 0,
                 self.random_delay_minutes * 60
             )
+
             print(f"[EXECUTION] Random delay: {delay} seconds.")
             time.sleep(delay)
 
-        # Reload the original day's state. A delay may cross midnight.
+        # Reload the same day's state after the delay.
         state = self._load_state()
 
         existing_run = self._find_run(state)
 
         if existing_run:
-            print("[EXECUTION] Reservation already exists.")
-            self._write_github_output(True)
-            return True
+            status = existing_run.get("status")
+            self._write_github_output(
+                status in ("reserved", "started")
+            )
+            return status in ("reserved", "started")
 
         current_runs = self._count_started_runs(state)
         active_reservations = self._count_active_reservations(state)
@@ -389,8 +391,9 @@ class ExecutionController:
         run = self._find_run(state)
 
         if not run:
-            print("[EXECUTION] No execution record to complete.")
-            return
+            raise RuntimeError(
+                "No execution record found to complete"
+            )
 
         if run.get("status") == "completed":
             print("[EXECUTION] Execution already completed.")
@@ -408,6 +411,37 @@ class ExecutionController:
 
         print("[EXECUTION] Execution completed.")
 
+    def fail(self):
+        if not self.enabled:
+            return
+
+        state = self._load_state()
+        run = self._find_run(state)
+
+        if not run:
+            raise RuntimeError(
+                "No execution record found to mark as failed"
+            )
+
+        if run.get("status") in ("completed", "failed"):
+            print(
+                f"[EXECUTION] Execution already finalized: "
+                f"{run.get('status')}"
+            )
+            return
+
+        if run.get("status") != "started":
+            raise RuntimeError(
+                "Cannot mark as failed an execution that was not started"
+            )
+
+        run["status"] = "failed"
+        run["failed_at"] = self._now().isoformat()
+
+        self._save_state(state)
+
+        print("[EXECUTION] Execution marked as failed.")
+
     def cancel(self):
         if not self.enabled:
             return
@@ -422,7 +456,9 @@ class ExecutionController:
         if run.get("status") == "reserved":
             run["status"] = "cancelled"
             run["cancelled_at"] = self._now().isoformat()
+
             self._save_state(state)
+
             print("[EXECUTION] Reservation cancelled.")
             return
 
@@ -444,12 +480,14 @@ def main():
             controller.start()
         elif command == "complete":
             controller.complete()
+        elif command == "fail":
+            controller.fail()
         elif command == "cancel":
             controller.cancel()
         else:
             raise ValueError(
                 f"Unknown command: {command}. "
-                "Use prepare, start, complete or cancel."
+                "Use prepare, start, complete, fail or cancel."
             )
 
     except Exception as error:
