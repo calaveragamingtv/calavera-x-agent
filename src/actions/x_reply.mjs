@@ -1,3 +1,4 @@
+
 import process from 'node:process';
 import { isActionEnabled } from './action_config.mjs';
 
@@ -8,10 +9,18 @@ async function readInput() {
         input += chunk;
     }
 
+    if (!input.trim()) {
+        throw new Error('Empty input');
+    }
+
     return JSON.parse(input);
 }
 
 function validateRequest(request) {
+    if (!request || typeof request !== 'object') {
+        throw new Error('Invalid request: expected an object');
+    }
+
     const postId = String(request.post_id ?? '').trim();
     const replyText = String(request.reply_text ?? '').trim();
 
@@ -24,20 +33,36 @@ function validateRequest(request) {
     }
 
     if (replyText.length > 280) {
-        throw new Error(`Reply exceeds 280 characters: ${replyText.length}`);
+        throw new Error(
+            `Reply exceeds 280 characters: ${replyText.length}`
+        );
     }
 
     return { postId, replyText };
 }
 
 function outputResult(result) {
-    process.stdout.write(JSON.stringify(result) + '\n');
+    process.stdout.write(`${JSON.stringify(result)}\n`);
+}
+
+function getErrorMessage(error) {
+    if (error instanceof Error) {
+        return error.message;
+    }
+
+    return String(error);
 }
 
 async function main() {
+    let postId = null;
+    let requestMayHaveReachedX = false;
+
     try {
         const request = await readInput();
-        const { postId, replyText } = validateRequest(request);
+        const validated = validateRequest(request);
+
+        postId = validated.postId;
+        const { replyText } = validated;
 
         console.error('X Reply Action initialized');
         console.error(`Original post ID: ${postId}`);
@@ -49,28 +74,36 @@ async function main() {
             console.error('DRY RUN: no request was sent to X.');
 
             outputResult({
+                status: 'dry_run',
                 success: true,
                 dry_run: true,
                 published: false,
                 original_post_id: postId,
                 reply_text: replyText,
-                reply_length: replyText.length
+                reply_length: replyText.length,
+                reply_id: null,
+                error: null
             });
 
             return;
         }
 
-        const { Rettiwt } = await import('rettiwt-api');
         const apiKey = process.env.RETTIWT_API_KEY;
 
         if (!apiKey) {
             throw new Error('Missing RETTIWT_API_KEY');
         }
 
+        const { Rettiwt } = await import('rettiwt-api');
+
         const rettiwt = new Rettiwt({
             apiKey,
             logging: false
         });
+
+        // From this point onward, a thrown error may mean X received
+        // the request even if Rettiwt did not return a response.
+        requestMayHaveReachedX = true;
 
         const result = await rettiwt.tweet.post({
             text: replyText,
@@ -85,31 +118,70 @@ async function main() {
             ? tweet
             : tweet?.id;
 
-        if (!replyId) {
-            throw new Error(
-                'Rettiwt did not return a reply ID. Publication status must be verified.'
-            );
+        if (
+            replyId === undefined ||
+            replyId === null ||
+            String(replyId).trim() === ''
+        ) {
+            outputResult({
+                status: 'unknown',
+                success: false,
+                dry_run: false,
+                published: null,
+                original_post_id: postId,
+                reply_id: null,
+                error: 'X request returned without a verifiable reply ID'
+            });
+
+            return;
         }
 
+        const normalizedReplyId = String(replyId);
+
         outputResult({
+            status: 'completed',
             success: true,
             dry_run: false,
             published: true,
             original_post_id: postId,
-            reply_id: String(replyId),
-            reply_url: tweet?.url ?? `https://x.com/i/status/${replyId}`
+            reply_id: normalizedReplyId,
+            reply_url: `https://x.com/i/status/${normalizedReplyId}`,
+            error: null
         });
 
     } catch (error) {
-        console.error(`X Reply Action error: ${error.message}`);
+        const errorMessage = getErrorMessage(error);
+
+        console.error(`X Reply Action error: ${errorMessage}`);
+
+        const status = requestMayHaveReachedX
+            ? 'unknown'
+            : 'failed';
 
         outputResult({
+            status,
             success: false,
-            error: error.message
+            dry_run: false,
+            published: status === 'failed' ? false : null,
+            original_post_id: postId,
+            reply_id: null,
+            error: errorMessage
         });
-
-        process.exitCode = 1;
     }
 }
 
-main();
+main().catch((error) => {
+    // Last-resort handler. If main unexpectedly rejects, do not
+    // pretend that publication definitely failed.
+    console.error(`Unexpected X Reply Action error: ${getErrorMessage(error)}`);
+
+    outputResult({
+        status: 'unknown',
+        success: false,
+        dry_run: false,
+        published: null,
+        original_post_id: null,
+        reply_id: null,
+        error: getErrorMessage(error)
+    });
+});
