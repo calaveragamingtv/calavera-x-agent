@@ -1,3 +1,4 @@
+
 {
   "actions": {
     "like": {
@@ -26,6 +27,11 @@
   },
   "scraping": {
     "posts_per_account": 10
+  },
+  "execution": {
+    "enabled": true,
+    "max_runs_per_day": 2,
+    "random_delay_minutes": 15
   },
   "timezone": "America/Argentina/Buenos_Aires"
 }
