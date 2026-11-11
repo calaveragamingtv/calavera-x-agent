@@ -20,30 +20,26 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 1. Set up Python for the execution controller.
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      # 2. Check whether an execution is needed.
+      # Register every incoming call and decide whether to execute.
       - name: Prepare execution
         id: execution
         run: python -m src.execution_controller prepare
 
-      # 3. Set up Node.js only when authorized.
       - name: Set up Node.js
         if: steps.execution.outputs.should_run == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: "20"
 
-      # 4. Install Rettiwt.
       - name: Install Rettiwt
         if: steps.execution.outputs.should_run == 'true'
         run: npm install --no-save --no-package-lock rettiwt-api@7.1.4
 
-      # 5. Retrieve X posts.
       - name: Scrape X with Rettiwt
         id: scrape
         if: steps.execution.outputs.should_run == 'true'
@@ -52,33 +48,32 @@ jobs:
           ACCOUNTS_ENCRYPTION_KEY: ${{ secrets.ACCOUNTS_ENCRYPTION_KEY }}
         run: node src/test_rettiwt.mjs
 
-      # 6. Release the reservation if scraping failed.
-      - name: Cancel execution reservation
-        if: always() && steps.execution.outputs.should_run == 'true' && steps.scrape.outcome == 'failure'
-        run: python -m src.execution_controller cancel
-
-      # 7. Install Python dependencies.
       - name: Install Python dependencies
         if: steps.execution.outputs.should_run == 'true' && steps.scrape.outcome == 'success'
         run: |
           python -m pip install --upgrade pip
           pip install -r src/requirements.txt
 
-      # 8. Count the execution immediately before starting the agent.
+      # Consume the execution quota immediately before main starts.
       - name: Start execution
+        id: start
         if: steps.execution.outputs.should_run == 'true' && steps.scrape.outcome == 'success'
         run: python -m src.execution_controller start
 
-      # 9. Analyze posts.
       - name: Run X Agent
-        if: steps.execution.outputs.should_run == 'true' && steps.scrape.outcome == 'success'
+        if: steps.execution.outputs.should_run == 'true' && steps.start.outcome == 'success'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: gemini-3.5-flash-lite
           RETTIWT_API_KEY: ${{ secrets.RETTIWT_API_KEY }}
         run: python -m src.main
 
-      # 10. Persist execution state and generated data.
+      # Release the reservation if main was never started.
+      - name: Cancel execution reservation
+        if: always() && steps.execution.outputs.should_run == 'true' && steps.start.outcome != 'success'
+        run: python -m src.execution_controller cancel
+
+      # Persist call counters, execution records and generated data.
       - name: Commit generated data
         if: always()
         run: |
