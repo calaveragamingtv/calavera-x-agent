@@ -1,6 +1,7 @@
 
 import json
 import os
+import time
 
 from pathlib import Path
 from google import genai
@@ -12,6 +13,9 @@ PROMPT_FILE = (
     / "prompts"
     / "x_reply.txt"
 )
+
+MAX_RETRIES = 3
+RETRY_DELAY_SECONDS = 30
 
 
 class GeminiReplyGenerator:
@@ -37,35 +41,7 @@ class GeminiReplyGenerator:
 
         return PROMPT_FILE.read_text(encoding="utf-8")
 
-    def generate_reply(self, post, ranking_item=None):
-        if not isinstance(post, dict):
-            raise ValueError("Invalid post")
-
-        post_id = str(post.get("id", "")).strip()
-        post_text = post.get("text", "").strip()
-
-        if not post_id:
-            raise ValueError("Post ID is missing")
-
-        if not post_text:
-            raise ValueError("Post text is empty")
-
-        context = {
-            "post_id": post_id,
-            "text": post_text,
-            "url": post.get("url"),
-            "created_at": post.get("created_at"),
-            "analysis": ranking_item or {}
-        }
-
-        contents = f"""
-{self._load_prompt()}
-
-PUBLICACIÓN A RESPONDER:
-
-{json.dumps(context, ensure_ascii=False, indent=2)}
-"""
-
+    def _generate_reply_once(self, contents):
         response = self.client.models.generate_content(
             model=self.model,
             contents=contents,
@@ -111,3 +87,77 @@ PUBLICACIÓN A RESPONDER:
             )
 
         return reply
+
+    def generate_reply(self, post, ranking_item=None):
+        if not isinstance(post, dict):
+            raise ValueError("Invalid post")
+
+        post_id = str(post.get("id", "")).strip()
+        post_text = post.get("text", "").strip()
+
+        if not post_id:
+            raise ValueError("Post ID is missing")
+
+        if not post_text:
+            raise ValueError("Post text is empty")
+
+        context = {
+            "post_id": post_id,
+            "text": post_text,
+            "url": post.get("url"),
+            "created_at": post.get("created_at"),
+            "analysis": ranking_item or {}
+        }
+
+        contents = f"""
+{self._load_prompt()}
+
+PUBLICACIÓN A RESPONDER:
+
+{json.dumps(context, ensure_ascii=False, indent=2)}
+"""
+
+        total_attempts = MAX_RETRIES + 1
+        last_error = None
+
+        for attempt in range(1, total_attempts + 1):
+            print(
+                f"[X REPLY] Calling Gemini. "
+                f"Attempt: {attempt}/{total_attempts}. "
+                f"Post ID: {post_id}"
+            )
+
+            try:
+                reply = self._generate_reply_once(contents)
+
+                print(
+                    f"[X REPLY] Gemini reply generated successfully. "
+                    f"Post ID: {post_id}"
+                )
+
+                return reply
+
+            except Exception as error:
+                last_error = error
+
+                if attempt <= MAX_RETRIES:
+                    retry_number = attempt
+
+                    print(
+                        f"[X REPLY] Reintento {retry_number}/{MAX_RETRIES}. "
+                        f"Post ID: {post_id}. "
+                        f"Error: {type(error).__name__}: {error}. "
+                        f"Esperando {RETRY_DELAY_SECONDS} segundos."
+                    )
+
+                    time.sleep(RETRY_DELAY_SECONDS)
+
+                else:
+                    print(
+                        f"[X REPLY] ERROR FINAL. "
+                        f"Post ID: {post_id}. "
+                        f"Se agotaron los {MAX_RETRIES} reintentos. "
+                        f"Último error: {type(error).__name__}: {error}"
+                    )
+
+        raise last_error
