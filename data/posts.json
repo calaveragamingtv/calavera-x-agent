@@ -1,6 +1,6 @@
 {
   "account": "monitored_accounts",
-  "updated_at": "2026-11-11T20:18:01.225911+00:00",
+  "updated_at": "2026-11-11T22:38:27.923604+00:00",
   "total": 39,
   "posts": [
     {
@@ -15,7 +15,7 @@
       "replies": 76,
       "reposts": 123,
       "likes": 1237,
-      "views": 374304,
+      "views": 374333,
       "monitored_by": [
         {
           "account_id": "742290493292285952",
@@ -35,7 +35,7 @@
       "replies": 5,
       "reposts": 8,
       "likes": 119,
-      "views": 23657,
+      "views": 23659,
       "monitored_by": [
         {
           "account_id": "742290493292285952",
@@ -207,7 +207,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 4,
-      "views": 1881,
+      "views": 1883,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -227,7 +227,7 @@
       "replies": 0,
       "reposts": 1,
       "likes": 6,
-      "views": 1516,
+      "views": 1517,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -245,7 +245,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 3,
-      "views": 1540,
+      "views": 1541,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -493,7 +493,7 @@
       "replies": 1,
       "reposts": 0,
       "likes": 8,
-      "views": 2174,
+      "views": 2178,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -511,7 +511,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 8,
-      "views": 677,
+      "views": 678,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -549,7 +549,7 @@
       "replies": 0,
       "reposts": 1,
       "likes": 16,
-      "views": 1634,
+      "views": 1637,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -566,10 +566,10 @@
         "https://twitter.com/playrust/status/2120532238576046362"
       ],
       "created_at": "2026-11-11T15:00:57.000Z",
-      "replies": 12,
-      "reposts": 23,
-      "likes": 304,
-      "views": 16841,
+      "replies": 17,
+      "reposts": 25,
+      "likes": 347,
+      "views": 19604,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -590,7 +590,7 @@
       "replies": 3,
       "reposts": 6,
       "likes": 77,
-      "views": 12366,
+      "views": 12561,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -610,8 +610,8 @@
       "created_at": "2026-11-09T14:59:41.000Z",
       "replies": 15,
       "reposts": 4,
-      "likes": 108,
-      "views": 13527,
+      "likes": 109,
+      "views": 13597,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -632,7 +632,7 @@
       "replies": 10,
       "reposts": 16,
       "likes": 213,
-      "views": 21821,
+      "views": 21870,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -653,7 +653,7 @@
       "replies": 37,
       "reposts": 21,
       "likes": 466,
-      "views": 46892,
+      "views": 46944,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -674,7 +674,7 @@
       "replies": 6,
       "reposts": 7,
       "likes": 71,
-      "views": 14099,
+      "views": 14120,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -693,8 +693,8 @@
       "created_at": "2026-11-05T18:30:08.000Z",
       "replies": 22,
       "reposts": 26,
-      "likes": 228,
-      "views": 30057,
+      "likes": 227,
+      "views": 30088,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -714,7 +714,7 @@
       "replies": 3,
       "reposts": 3,
       "likes": 73,
-      "views": 14204,
+      "views": 14212,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -732,7 +732,7 @@
       "replies": 50,
       "reposts": 64,
       "likes": 632,
-      "views": 68228,
+      "views": 68247,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -753,7 +753,7 @@
       "replies": 2,
       "reposts": 3,
       "likes": 67,
-      "views": 16540,
+      "views": 16548,
       "monitored_by": [
         {
           "account_id": "1542707718",

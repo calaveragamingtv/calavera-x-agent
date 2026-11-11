@@ -59,7 +59,7 @@
         }
       },
       "likes": 1237,
-      "views": 374304,
+      "views": 374333,
       "replies": 76,
       "reposts": 123
     },
@@ -102,17 +102,17 @@
           "payload": null
         },
         "reply": {
-          "status": "drafted",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-11T22:38:36.869823+00:00",
+          "completed_at": "2026-11-11T22:38:37.535413+00:00",
           "error": null,
-          "external_id": null,
+          "external_id": "2120647411978928349",
           "payload": {
             "post_id": "2115490600191688909",
             "reply_text": "f还是要看腰射准不准，不过能折叠库存的设计挺有意思的",
-            "generated_at": "2026-11-11T20:18:19.350206+00:00",
-            "stage": "drafted"
+            "mode": "live",
+            "stage": "completed"
           }
         },
         "repost": {
@@ -126,7 +126,7 @@
         }
       },
       "likes": 119,
-      "views": 23657,
+      "views": 23659,
       "replies": 5,
       "reposts": 8
     },
@@ -342,13 +342,17 @@
       },
       "actions": {
         "like": {
-          "status": "not_started",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-11T22:38:39.119034+00:00",
+          "completed_at": "2026-11-11T22:38:40.007107+00:00",
           "error": null,
-          "external_id": null,
-          "payload": null
+          "external_id": "2102836927523061895",
+          "payload": {
+            "post_id": "2102836927523061895",
+            "mode": "live",
+            "stage": "completed"
+          }
         },
         "reply": {
           "status": "not_started",
@@ -676,7 +680,7 @@
         }
       },
       "likes": 4,
-      "views": 1881,
+      "views": 1883,
       "replies": 0,
       "reposts": 0
     },
@@ -738,7 +742,7 @@
         }
       },
       "likes": 6,
-      "views": 1516,
+      "views": 1517,
       "replies": 0,
       "reposts": 1
     },
@@ -798,7 +802,7 @@
         }
       },
       "likes": 3,
-      "views": 1540,
+      "views": 1541,
       "replies": 0,
       "reposts": 0
     },
@@ -833,13 +837,17 @@
       },
       "actions": {
         "like": {
-          "status": "not_started",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-11T22:38:38.128975+00:00",
+          "completed_at": "2026-11-11T22:38:39.116687+00:00",
           "error": null,
-          "external_id": null,
-          "payload": null
+          "external_id": "2118402970886836645",
+          "payload": {
+            "post_id": "2118402970886836645",
+            "mode": "live",
+            "stage": "completed"
+          }
         },
         "reply": {
           "status": "not_started",
@@ -1592,7 +1600,7 @@
         }
       },
       "likes": 8,
-      "views": 2174,
+      "views": 2178,
       "replies": 1,
       "reposts": 0
     },
@@ -1652,7 +1660,7 @@
         }
       },
       "likes": 8,
-      "views": 677,
+      "views": 678,
       "replies": 0,
       "reposts": 0
     },
@@ -1774,7 +1782,7 @@
         }
       },
       "likes": 16,
-      "views": 1634,
+      "views": 1637,
       "replies": 0,
       "reposts": 1
     },
@@ -1835,10 +1843,10 @@
           "payload": null
         }
       },
-      "likes": 304,
-      "views": 16841,
-      "replies": 12,
-      "reposts": 23
+      "likes": 347,
+      "views": 19604,
+      "replies": 17,
+      "reposts": 25
     },
     "2120169659345358986": {
       "id": "2120169659345358986",
@@ -1899,7 +1907,7 @@
         }
       },
       "likes": 77,
-      "views": 12366,
+      "views": 12561,
       "replies": 3,
       "reposts": 6
     },
@@ -1961,8 +1969,8 @@
           "payload": null
         }
       },
-      "likes": 108,
-      "views": 13527,
+      "likes": 109,
+      "views": 13597,
       "replies": 15,
       "reposts": 4
     },
@@ -2025,7 +2033,7 @@
         }
       },
       "likes": 213,
-      "views": 21821,
+      "views": 21870,
       "replies": 10,
       "reposts": 16
     },
@@ -2088,7 +2096,7 @@
         }
       },
       "likes": 466,
-      "views": 46892,
+      "views": 46944,
       "replies": 37,
       "reposts": 21
     },
@@ -2151,7 +2159,7 @@
         }
       },
       "likes": 71,
-      "views": 14099,
+      "views": 14120,
       "replies": 6,
       "reposts": 7
     },
@@ -2194,17 +2202,17 @@
           "payload": null
         },
         "reply": {
-          "status": "drafted",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-11T22:38:36.149674+00:00",
+          "completed_at": "2026-11-11T22:38:36.867597+00:00",
           "error": null,
-          "external_id": null,
+          "external_id": "2120647409076437069",
           "payload": {
             "post_id": "2118410551541801096",
             "reply_text": "Por fin se siente bien ese rendimiento, ya era hora. La Uzi mete lindo también",
-            "generated_at": "2026-11-11T20:18:18.497680+00:00",
-            "stage": "drafted"
+            "mode": "live",
+            "stage": "completed"
           }
         },
         "repost": {
@@ -2217,8 +2225,8 @@
           "payload": null
         }
       },
-      "likes": 228,
-      "views": 30057,
+      "likes": 227,
+      "views": 30088,
       "replies": 22,
       "reposts": 26
     },
@@ -2280,7 +2288,7 @@
         }
       },
       "likes": 73,
-      "views": 14204,
+      "views": 14212,
       "replies": 3,
       "reposts": 3
     },
@@ -2330,21 +2338,21 @@
           "payload": null
         },
         "repost": {
-          "status": "drafted",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-11T22:38:37.537754+00:00",
+          "completed_at": "2026-11-11T22:38:38.126638+00:00",
           "error": null,
-          "external_id": null,
+          "external_id": "2117633077820240298",
           "payload": {
             "post_id": "2117633077820240298",
-            "generated_at": "2026-11-11T20:18:19.355869+00:00",
-            "stage": "drafted"
+            "mode": "live",
+            "stage": "completed"
           }
         }
       },
       "likes": 632,
-      "views": 68228,
+      "views": 68247,
       "replies": 50,
       "reposts": 64
     },
@@ -2407,7 +2415,7 @@
         }
       },
       "likes": 67,
-      "views": 16540,
+      "views": 16548,
       "replies": 2,
       "reposts": 3
     }
