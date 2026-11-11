@@ -1,4 +1,3 @@
-
 import json
 import re
 import subprocess
@@ -352,7 +351,7 @@ def test_reply_drafts(tracker, eligible_ids):
 
     if not eligible_ids:
         print("No eligible replies to test.")
-        return
+        return True
 
     if not REPLY_ACTION_SCRIPT.exists():
         raise FileNotFoundError(
@@ -583,6 +582,7 @@ def test_reply_drafts(tracker, eligible_ids):
                     f"REPLY UNKNOWN: post={post_id}. "
                     "Manual verification required. No automatic retry."
                 )
+                break
 
             else:
                 raise RuntimeError(
@@ -615,10 +615,19 @@ def test_reply_drafts(tracker, eligible_ids):
                         f"REPLY UNKNOWN: post={post_id}. "
                         "Tracker locked against automatic retry."
                     )
-                else:
+                    break
+
+                if current_status == "unknown":
+                    unknown += 1
                     print(
-                        f"Reply processing error for {post_id}: {error}"
+                        f"REPLY UNKNOWN: post={post_id}. "
+                        "Manual verification required."
                     )
+                    break
+
+                print(
+                    f"Reply processing error for {post_id}: {error}"
+                )
 
             else:
                 print(
@@ -635,6 +644,8 @@ def test_reply_drafts(tracker, eligible_ids):
 
     if not live_enabled:
         print("DRY RUN: no replies were published to X.")
+
+    return unknown == 0
 
 
 def generate_repost_drafts(tracker, rankings):
@@ -725,7 +736,7 @@ def test_repost_drafts(tracker, rankings):
             f"Daily repost limit already reached: "
             f"{get_action_limit('repost')}"
         )
-        return
+        return True
 
     candidates = []
 
@@ -757,7 +768,7 @@ def test_repost_drafts(tracker, rankings):
 
     if not candidates:
         print("No pending repost drafts to test.")
-        return
+        return True
 
     tested = 0
     published = 0
@@ -944,6 +955,7 @@ def test_repost_drafts(tracker, rankings):
                     f"REPOST UNKNOWN: post={post_id}. "
                     "Manual verification required. No automatic retry."
                 )
+                break
 
             else:
                 raise RuntimeError(
@@ -976,10 +988,19 @@ def test_repost_drafts(tracker, rankings):
                         f"REPOST UNKNOWN: post={post_id}. "
                         "Tracker locked against automatic retry."
                     )
-                else:
+                    break
+
+                if current_status == "unknown":
+                    unknown += 1
                     print(
-                        f"Repost processing error for {post_id}: {error}"
+                        f"REPOST UNKNOWN: post={post_id}. "
+                        "Manual verification required."
                     )
+                    break
+
+                print(
+                    f"Repost processing error for {post_id}: {error}"
+                )
 
             else:
                 print(
@@ -996,6 +1017,8 @@ def test_repost_drafts(tracker, rankings):
 
     if not live_enabled:
         print("DRY RUN: no reposts were published to X.")
+
+    return unknown == 0
 
 
 def load_like_evaluations():
@@ -1489,7 +1512,7 @@ def test_like_drafts(tracker, selected_ids):
 
     if not selected_ids:
         print("No eligible likes to test.")
-        return
+        return True
 
     if not LIKE_ACTION_SCRIPT.exists():
         raise FileNotFoundError(
@@ -1695,6 +1718,7 @@ def test_like_drafts(tracker, selected_ids):
                     f"LIKE UNKNOWN: post={post_id}. "
                     "Manual verification required. No automatic retry."
                 )
+                break
 
             else:
                 raise RuntimeError(
@@ -1727,10 +1751,19 @@ def test_like_drafts(tracker, selected_ids):
                         f"LIKE UNKNOWN: post={post_id}. "
                         "Tracker locked against automatic retry."
                     )
-                else:
+                    break
+
+                if current_status == "unknown":
+                    unknown += 1
                     print(
-                        f"Like processing error for {post_id}: {error}"
+                        f"LIKE UNKNOWN: post={post_id}. "
+                        "Manual verification required."
                     )
+                    break
+
+                print(
+                    f"Like processing error for {post_id}: {error}"
+                )
 
             else:
                 print(
@@ -1748,6 +1781,7 @@ def test_like_drafts(tracker, selected_ids):
     if not live_enabled:
         print("DRY RUN: no likes were sent to X.")
 
+    return unknown == 0
 
 
 def main():
@@ -2050,24 +2084,30 @@ def main():
 
     # ---------------------------------------------------------
     # PHASE 4: Execute actions only after all AI work succeeds.
+    # Stop subsequent action types after any uncertain result.
     # ---------------------------------------------------------
 
     print("\nStarting X action execution...")
 
-    test_reply_drafts(
-        tracker,
-        eligible
-    )
+    if not test_reply_drafts(tracker, eligible):
+        print(
+            "\nSTOPPED: Reply returned an uncertain result. "
+            "Repost and Like will NOT be executed."
+        )
+        return
 
-    test_repost_drafts(
-        tracker,
-        all_rankings
-    )
+    if not test_repost_drafts(tracker, all_rankings):
+        print(
+            "\nSTOPPED: Repost returned an uncertain result. "
+            "Like will NOT be executed."
+        )
+        return
 
-    test_like_drafts(
-        tracker,
-        like_ids
-    )
+    if not test_like_drafts(tracker, like_ids):
+        print(
+            "\nSTOPPED: Like returned an uncertain result."
+        )
+        return
 
     print(f"\nActive posts processed this run: {len(active_post_id_set)}")
     print(
