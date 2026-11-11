@@ -1,10 +1,9 @@
-
 import json
 import os
 
-from zoneinfo import ZoneInfo
-from pathlib import Path
 from datetime import datetime, timezone
+from pathlib import Path
+from zoneinfo import ZoneInfo
 
 
 class PostTracker:
@@ -26,14 +25,14 @@ class PostTracker:
     def __init__(
         self,
         file_path: str | Path = "data/processed_posts.json",
-        config_path: str | Path = "config/x_actions.json"
+        config_path: str | Path = "config/x_actions.json",
     ):
         self.file_path = Path(file_path)
         self.config_path = Path(config_path)
 
         self.file_path.parent.mkdir(parents=True, exist_ok=True)
 
-        # Load centralized action limits and timezone.
+        # Load and validate the centralized configuration once.
         self.config = self._load_config()
         self.timezone = ZoneInfo(self.config["timezone"])
 
@@ -50,7 +49,6 @@ class PostTracker:
         try:
             with self.config_path.open("r", encoding="utf-8") as file:
                 config = json.load(file)
-
         except json.JSONDecodeError as exc:
             raise RuntimeError(
                 f"Invalid X actions configuration: {self.config_path}"
@@ -61,6 +59,7 @@ class PostTracker:
 
         actions = config.get("actions")
         limits = config.get("limits")
+        scraping = config.get("scraping")
         timezone_name = config.get("timezone")
 
         if not isinstance(actions, dict):
@@ -73,6 +72,11 @@ class PostTracker:
                 "Missing or invalid 'limits' configuration"
             )
 
+        if not isinstance(scraping, dict):
+            raise RuntimeError(
+                "Missing or invalid 'scraping' configuration"
+            )
+
         if (
             not isinstance(timezone_name, str)
             or not timezone_name.strip()
@@ -83,11 +87,24 @@ class PostTracker:
 
         try:
             ZoneInfo(timezone_name)
-
         except Exception as exc:
             raise RuntimeError(
                 f"Invalid timezone in x_actions.json: {timezone_name}"
             ) from exc
+
+        # Validate action enabled flags.
+        for action in self.ACTIONS:
+            action_config = actions.get(action)
+
+            if not isinstance(action_config, dict):
+                raise RuntimeError(
+                    f"Missing actions configuration for: {action}"
+                )
+
+            if not isinstance(action_config.get("enabled"), bool):
+                raise RuntimeError(
+                    f"Invalid {action}.enabled configuration"
+                )
 
         # Validate daily limits for every action.
         for action in self.ACTIONS:
@@ -109,7 +126,19 @@ class PostTracker:
                     f"Invalid max_per_day for action: {action}"
                 )
 
-        # Validate the per-author Reply limit.
+        # Validate Like minimum score.
+        min_like_score = limits["like"].get("min_score")
+
+        if (
+            not isinstance(min_like_score, int)
+            or isinstance(min_like_score, bool)
+            or not 0 <= min_like_score <= 100
+        ):
+            raise RuntimeError(
+                "Invalid like.min_score configuration (expected 0-100)"
+            )
+
+        # Validate Reply per-author limit.
         max_replies_per_author = limits["reply"].get(
             "max_per_author_per_day"
         )
@@ -123,21 +152,37 @@ class PostTracker:
                 "Invalid reply.max_per_author_per_day configuration"
             )
 
-        config["timezone"] = timezone_name
+        # Validate scraping limit.
+        posts_per_account = scraping.get("posts_per_account")
+
+        if (
+            not isinstance(posts_per_account, int)
+            or isinstance(posts_per_account, bool)
+            or posts_per_account <= 0
+        ):
+            raise RuntimeError(
+                "Invalid scraping.posts_per_account configuration"
+            )
 
         print("X actions configuration loaded successfully")
         print(f"Configured timezone: {timezone_name}")
 
         for action in self.ACTIONS:
             print(
+                f"{action.capitalize()} enabled: "
+                f"{actions[action]['enabled']}"
+            )
+            print(
                 f"{action.capitalize()} daily limit: "
                 f"{limits[action]['max_per_day']}"
             )
 
+        print(f"Like minimum score: {min_like_score}")
         print(
             "Reply per-author daily limit: "
             f"{max_replies_per_author}"
         )
+        print(f"Posts per account: {posts_per_account}")
 
         return config
 
@@ -145,13 +190,28 @@ class PostTracker:
         """Return the configured daily limit for an action."""
 
         self._validate_action(action)
-
         return self.config["limits"][action]["max_per_day"]
 
     def get_reply_author_limit(self) -> int:
         """Return the configured daily Reply limit per author."""
 
         return self.config["limits"]["reply"]["max_per_author_per_day"]
+
+    def get_like_min_score(self) -> int:
+        """Return the configured minimum score required for a Like."""
+
+        return self.config["limits"]["like"]["min_score"]
+
+    def get_posts_per_account(self) -> int:
+        """Return the configured number of posts per monitored account."""
+
+        return self.config["scraping"]["posts_per_account"]
+
+    def is_action_enabled(self, action: str) -> bool:
+        """Return whether an action is enabled in the centralized config."""
+
+        self._validate_action(action)
+        return self.config["actions"][action]["enabled"]
 
     @staticmethod
     def _now() -> str:
@@ -161,13 +221,12 @@ class PostTracker:
         if not self.file_path.exists():
             return {
                 "schema_version": 1,
-                "posts": {}
+                "posts": {},
             }
 
         try:
             with self.file_path.open("r", encoding="utf-8") as file:
                 data = json.load(file)
-
         except json.JSONDecodeError as exc:
             raise RuntimeError(
                 f"Invalid tracker JSON: {self.file_path}"
@@ -205,7 +264,7 @@ class PostTracker:
                         "completed_at": None,
                         "error": None,
                         "external_id": None,
-                        "payload": None
+                        "payload": None,
                     }
 
                     for key, value in defaults.items():
@@ -215,8 +274,7 @@ class PostTracker:
 
                     if action_data["status"] not in self.ACTION_STATUSES:
                         raise RuntimeError(
-                            f"Invalid action status: "
-                            f"{action_data['status']}"
+                            f"Invalid action status: {action_data['status']}"
                         )
 
             if changed:
@@ -250,21 +308,29 @@ class PostTracker:
                 if not isinstance(old_action, dict):
                     old_action = {}
 
+                status = old_action.get("status", "not_started")
+
+                if status not in self.ACTION_STATUSES:
+                    raise RuntimeError(
+                        f"Invalid legacy {action} status for post {post_id}: "
+                        f"{status}"
+                    )
+
                 migrated_actions[action] = {
-                    "status": old_action.get("status", "not_started"),
+                    "status": status,
                     "attempts": old_action.get("attempts", 0),
                     "last_attempt_at": old_action.get("last_attempt_at"),
                     "completed_at": old_action.get("completed_at"),
                     "error": old_action.get("error"),
                     "external_id": old_action.get("external_id"),
-                    "payload": old_action.get("payload")
+                    "payload": old_action.get("payload"),
                 }
 
             analysis_status = old_analysis.get("status", "pending")
 
             migrated_analysis = {
                 "status": analysis_status,
-                "result": old_analysis.get("result")
+                "result": old_analysis.get("result"),
             }
 
             if (
@@ -285,12 +351,12 @@ class PostTracker:
                 "created_at": old_post.get("created_at"),
                 "first_seen_at": old_post.get("first_seen_at", self._now()),
                 "analysis": migrated_analysis,
-                "actions": migrated_actions
+                "actions": migrated_actions,
             }
 
         migrated_data = {
             "schema_version": 1,
-            "posts": migrated_posts
+            "posts": migrated_posts,
         }
 
         print(
@@ -299,7 +365,6 @@ class PostTracker:
         )
 
         self._save_data(migrated_data)
-
         return migrated_data
 
     def _save_data(self, data: dict) -> None:
@@ -310,7 +375,7 @@ class PostTracker:
                 data,
                 file,
                 ensure_ascii=False,
-                indent=2
+                indent=2,
             )
             file.flush()
             os.fsync(file.fileno())
@@ -375,7 +440,7 @@ class PostTracker:
                 "first_seen_at": self._now(),
                 "analysis": {
                     "status": "pending",
-                    "result": None
+                    "result": None,
                 },
                 "actions": {
                     action: {
@@ -385,10 +450,10 @@ class PostTracker:
                         "completed_at": None,
                         "error": None,
                         "external_id": None,
-                        "payload": None
+                        "payload": None,
                     }
                     for action in self.ACTIONS
-                }
+                },
             }
 
             new_ids.append(post_id)
@@ -402,14 +467,14 @@ class PostTracker:
     def mark_analysis_completed(
         self,
         post_id: str,
-        result: dict
+        result: dict,
     ) -> None:
         post = self._get_post(post_id)
 
         post["analysis"] = {
             "status": "completed",
             "result": result,
-            "completed_at": self._now()
+            "completed_at": self._now(),
         }
 
         self._save()
@@ -417,14 +482,14 @@ class PostTracker:
     def mark_analysis_failed(
         self,
         post_id: str,
-        error: str
+        error: str,
     ) -> None:
         post = self._get_post(post_id)
 
         post["analysis"] = {
             "status": "failed",
             "error": error,
-            "last_attempt_at": self._now()
+            "last_attempt_at": self._now(),
         }
 
         self._save()
@@ -470,7 +535,7 @@ class PostTracker:
         self,
         post_id: str,
         action: str,
-        payload: dict
+        payload: dict,
     ) -> None:
         self._validate_action(action)
 
@@ -498,7 +563,7 @@ class PostTracker:
     def cancel_like_draft(
         self,
         post_id: str,
-        reason: str = "No longer approved by current evaluation"
+        reason: str = "No longer approved by current evaluation",
     ) -> bool:
         """
         Cancels an outdated Like draft.
@@ -523,14 +588,13 @@ class PostTracker:
         like_action["completed_at"] = None
 
         self._save()
-
         return True
 
     def mark_action_started(
         self,
         post_id: str,
         action: str,
-        payload: dict | None = None
+        payload: dict | None = None,
     ) -> None:
         self._validate_action(action)
 
@@ -540,7 +604,7 @@ class PostTracker:
         if action_data["status"] not in (
             "not_started",
             "drafted",
-            "failed"
+            "failed",
         ):
             raise RuntimeError(
                 f"Cannot start {action} for {post_id}: "
@@ -552,7 +616,6 @@ class PostTracker:
                 raise ValueError("Action payload must be a dictionary")
 
             saved_payload = dict(payload)
-
         else:
             saved_payload = action_data.get("payload")
 
@@ -574,7 +637,7 @@ class PostTracker:
         action: str,
         status: str,
         error: str | None = None,
-        external_id: str | None = None
+        external_id: str | None = None,
     ) -> None:
         self._validate_action(action)
 
@@ -613,7 +676,7 @@ class PostTracker:
 
     def recover_interrupted_actions(
         self,
-        action: str | None = None
+        action: str | None = None,
     ) -> int:
         """
         Marks interrupted sending actions as unknown.
@@ -720,7 +783,6 @@ class PostTracker:
                 parsed = parsed.replace(tzinfo=timezone.utc)
 
             return parsed.astimezone(self.timezone).date()
-
         except (ValueError, TypeError):
             return None
 
@@ -755,19 +817,19 @@ class PostTracker:
 
         return {
             "total_today": total_today,
-            "today": today.isoformat()
+            "today": today.isoformat(),
         }
 
     def can_perform_action_today(
         self,
         action: str,
-        max_per_day: int | None = None
+        max_per_day: int | None = None,
     ) -> tuple[bool, str]:
         """
         Check whether an action can be performed today.
 
         max_per_day is retained for compatibility with older callers.
-        The configured value in x_actions.json is always authoritative.
+        The configured value in x_actions.json is authoritative.
         """
 
         self._validate_action(action)
@@ -814,13 +876,13 @@ class PostTracker:
             "total_replies": total_replies_today,
             "total_replies_today": total_replies_today,
             "author_replies_today": author_replies_today,
-            "today": today.isoformat()
+            "today": today.isoformat(),
         }
 
     def can_reply_to_author_today(
         self,
         author_id: str,
-        max_total_replies: int | None = None
+        max_total_replies: int | None = None,
     ) -> tuple[bool, str]:
         """
         Check both the global daily Reply limit and the per-author limit.
@@ -834,13 +896,13 @@ class PostTracker:
 
         usage = self.get_reply_usage(author_id)
 
-        max_total_replies = self.get_action_limit("reply")
-        max_replies_per_author = self.get_reply_author_limit()
+        configured_total_limit = self.get_action_limit("reply")
+        configured_author_limit = self.get_reply_author_limit()
 
-        if usage["total_replies_today"] >= max_total_replies:
+        if usage["total_replies_today"] >= configured_total_limit:
             return False, "daily_reply_limit_reached"
 
-        if usage["author_replies_today"] >= max_replies_per_author:
+        if usage["author_replies_today"] >= configured_author_limit:
             return False, "author_daily_limit_reached"
 
         return True, "allowed"
