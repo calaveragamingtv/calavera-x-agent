@@ -1749,6 +1749,7 @@ def test_like_drafts(tracker, selected_ids):
         print("DRY RUN: no likes were sent to X.")
 
 
+
 def main():
     global ACTION_SETTINGS
 
@@ -1834,6 +1835,11 @@ def main():
 
     print(f"New posts registered: {len(new_ids)}")
 
+    # ---------------------------------------------------------
+    # PHASE 1: Complete and validate all pending post analysis.
+    # No X actions are executed in this phase.
+    # ---------------------------------------------------------
+
     pending_ids = []
 
     for post_id in active_post_ids:
@@ -1857,8 +1863,13 @@ def main():
         for post_id in pending_ids:
             tracked_post = tracker.get_post(post_id)
 
+            if not tracked_post:
+                raise RuntimeError(
+                    f"Post disappeared before analysis: {post_id}"
+                )
+
             pending_posts.append({
-                "id": tracked_post["id"],
+                "id": str(tracked_post["id"]),
                 "text": tracked_post["text"],
                 "url": tracked_post.get("url"),
                 "created_at": tracked_post.get("created_at")
@@ -1869,11 +1880,59 @@ def main():
         try:
             result = analyzer.analyze_posts(pending_posts)
 
-            ranking_by_id = {
-                str(item["post_id"]): item
-                for item in result["ranking"]
-            }
+            if not isinstance(result, dict):
+                raise RuntimeError(
+                    "Gemini analysis returned an invalid result: "
+                    "expected an object"
+                )
 
+            ranking = result.get("ranking")
+
+            if not isinstance(ranking, list):
+                raise RuntimeError(
+                    "Gemini analysis returned an invalid result: "
+                    "ranking must be a list"
+                )
+
+            expected_ids = set(pending_ids)
+            ranking_by_id = {}
+
+            for item in ranking:
+                if not isinstance(item, dict):
+                    raise RuntimeError(
+                        "Gemini analysis returned an invalid ranking item"
+                    )
+
+                post_id = str(item.get("post_id", "")).strip()
+
+                if not post_id:
+                    raise RuntimeError(
+                        "Gemini analysis returned an item without post_id"
+                    )
+
+                if post_id not in expected_ids:
+                    raise RuntimeError(
+                        f"Gemini returned an unexpected post ID: {post_id}"
+                    )
+
+                if post_id in ranking_by_id:
+                    raise RuntimeError(
+                        f"Gemini returned a duplicate post ID: {post_id}"
+                    )
+
+                ranking_by_id[post_id] = item
+
+            received_ids = set(ranking_by_id)
+
+            if received_ids != expected_ids:
+                missing = expected_ids - received_ids
+
+                raise RuntimeError(
+                    "Gemini analysis omitted posts: "
+                    f"{sorted(missing)}"
+                )
+
+            # All results have been validated before updating the tracker.
             for post_id in pending_ids:
                 tracker.mark_analysis_completed(
                     post_id,
@@ -1885,16 +1944,31 @@ def main():
         except Exception as error:
             print(f"Gemini analysis failed: {error}")
 
+            # Never overwrite an analysis that was already completed.
             for post_id in pending_ids:
-                tracker.mark_analysis_failed(
-                    post_id,
-                    str(error)
+                tracked_post = tracker.get_post(post_id)
+
+                if not tracked_post:
+                    continue
+
+                current_status = (
+                    tracked_post.get("analysis", {}).get("status")
                 )
+
+                if current_status != "completed":
+                    tracker.mark_analysis_failed(
+                        post_id,
+                        str(error)
+                    )
 
             raise
 
     else:
         print("No posts require analysis. Skipping Gemini.")
+
+    # ---------------------------------------------------------
+    # PHASE 2: Build the current ranking.
+    # ---------------------------------------------------------
 
     all_rankings = []
 
@@ -1909,7 +1983,7 @@ def main():
         if analysis.get("status") == "completed":
             ranking_item = analysis.get("result")
 
-            if ranking_item:
+            if isinstance(ranking_item, dict):
                 all_rankings.append(ranking_item)
 
     all_rankings.sort(
@@ -1930,6 +2004,11 @@ def main():
         f"from {len(active_post_ids)} active posts"
     )
 
+    # ---------------------------------------------------------
+    # PHASE 3: Generate ALL drafts and complete ALL Gemini work.
+    # No X actions are executed in this phase.
+    # ---------------------------------------------------------
+
     eligible, blocked = evaluate_reply_eligibility(
         tracker,
         all_rankings
@@ -1941,17 +2020,7 @@ def main():
         all_rankings
     )
 
-    test_reply_drafts(
-        tracker,
-        eligible
-    )
-
     generate_repost_drafts(
-        tracker,
-        all_rankings
-    )
-
-    test_repost_drafts(
         tracker,
         all_rankings
     )
@@ -1961,10 +2030,38 @@ def main():
         active_post_ids
     )
 
+    if not isinstance(like_evaluations, dict):
+        raise RuntimeError(
+            "Like evaluation returned an invalid result"
+        )
+
     like_ids = generate_like_drafts(
         tracker,
         like_evaluations,
         active_post_ids
+    )
+
+    if not isinstance(like_ids, list):
+        raise RuntimeError(
+            "Like draft generation returned an invalid result"
+        )
+
+    print("\nAll analysis and draft generation completed successfully.")
+
+    # ---------------------------------------------------------
+    # PHASE 4: Execute actions only after all AI work succeeds.
+    # ---------------------------------------------------------
+
+    print("\nStarting X action execution...")
+
+    test_reply_drafts(
+        tracker,
+        eligible
+    )
+
+    test_repost_drafts(
+        tracker,
+        all_rankings
     )
 
     test_like_drafts(
@@ -1977,6 +2074,7 @@ def main():
         f"Historical posts retained in tracker: "
         f"{len(tracker.data['posts'])}"
     )
+
     print("\nX Agent completed successfully")
 
 
