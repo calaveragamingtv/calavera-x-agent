@@ -3,11 +3,40 @@ import { Rettiwt } from 'rettiwt-api';
 import { createDecipheriv } from 'node:crypto';
 import fs from 'node:fs';
 
-const LIMIT = 10;
+const ACTION_CONFIG_FILE = 'config/x_actions.json';
 const ACCOUNTS_FILE = 'config/monitored_accounts.json';
 const OUTPUT_FILE = 'data/rettiwt_posts.json';
 
 const expandedUrlCache = new Map();
+
+function loadScrapingConfig() {
+    if (!fs.existsSync(ACTION_CONFIG_FILE)) {
+        throw new Error(
+            `Action config not found: ${ACTION_CONFIG_FILE}`
+        );
+    }
+
+    const config = JSON.parse(
+        fs.readFileSync(ACTION_CONFIG_FILE, 'utf8')
+    );
+
+    if (!config || typeof config !== 'object') {
+        throw new Error('Invalid action config structure');
+    }
+
+    const limit = config.scraping?.posts_per_account;
+
+    if (
+        !Number.isInteger(limit) ||
+        limit <= 0
+    ) {
+        throw new Error(
+            'Invalid scraping.posts_per_account configuration'
+        );
+    }
+
+    return limit;
+}
 
 function loadEncryptionKey() {
     const encodedKey = process.env.ACCOUNTS_ENCRYPTION_KEY;
@@ -160,6 +189,7 @@ async function main() {
         throw new Error('Missing RETTIWT_API_KEY');
     }
 
+    const limit = loadScrapingConfig();
     const accounts = loadAccounts();
 
     if (accounts.length === 0) {
@@ -168,6 +198,10 @@ async function main() {
 
     console.log(
         `Starting X scraper: ${accounts.length} accounts`
+    );
+
+    console.log(
+        `Posts per account configured: ${limit}`
     );
 
     const rettiwt = new Rettiwt({
@@ -197,7 +231,7 @@ async function main() {
 
             const result = await rettiwt.user.timeline(
                 user.id,
-                LIMIT
+                limit
             );
 
             const tweets = Array.isArray(result)
