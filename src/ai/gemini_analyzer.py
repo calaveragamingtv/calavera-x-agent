@@ -2,6 +2,7 @@
 import json
 import os
 import logging
+import time
 
 from pathlib import Path
 from google import genai
@@ -9,7 +10,6 @@ from google.genai import types
 
 
 logger = logging.getLogger(__name__)
-
 
 PROMPT_FILE = (
     Path(__file__).resolve().parents[2]
@@ -40,6 +40,14 @@ ALLOWED_ACTIONS = {
     "ignore"
 }
 
+RETRYABLE_STATUS_CODES = {429, 500, 502, 503, 504}
+MAX_ATTEMPTS = 3
+RETRY_DELAYS = (10, 20)
+
+
+class GeminiAnalysisError(RuntimeError):
+    pass
+
 
 class GeminiAnalyzer:
 
@@ -64,20 +72,30 @@ class GeminiAnalyzer:
 
         return PROMPT_FILE.read_text(encoding="utf-8")
 
+    def _get_status_code(self, error):
+        status_code = (
+            getattr(error, "status_code", None)
+            or getattr(error, "code", None)
+        )
+
+        try:
+            return int(status_code)
+        except (TypeError, ValueError):
+            return None
+
     def analyze_posts(self, posts):
         if not posts:
             return {"ranking": []}
 
-        try:
-            prompt = self._load_prompt()
+        prompt = self._load_prompt()
 
-            posts_json = json.dumps(
-                posts,
-                ensure_ascii=False,
-                indent=2
-            )
+        posts_json = json.dumps(
+            posts,
+            ensure_ascii=False,
+            indent=2
+        )
 
-            contents = f"""
+        contents = f"""
 {prompt}
 
 PUBLICACIONES A ANALIZAR:
@@ -85,38 +103,79 @@ PUBLICACIONES A ANALIZAR:
 {posts_json}
 """
 
-            response = self.client.models.generate_content(
-                model=self.model,
-                contents=contents,
-                config=types.GenerateContentConfig(
-                    temperature=0.2,
-                    response_mime_type="application/json"
-                )
-            )
+        response = None
 
-            if not response.text:
-                raise RuntimeError(
-                    "Gemini returned an empty response"
-                )
-
+        for attempt in range(1, MAX_ATTEMPTS + 1):
             try:
-                result = json.loads(response.text)
-            except json.JSONDecodeError as error:
-                raise ValueError(
-                    "Gemini returned invalid JSON"
-                ) from error
+                logger.info(
+                    "Gemini analysis attempt %s/%s. Model: %s. Posts: %s",
+                    attempt,
+                    MAX_ATTEMPTS,
+                    self.model,
+                    len(posts)
+                )
 
-            return self._validate_result(result, posts)
+                response = self.client.models.generate_content(
+                    model=self.model,
+                    contents=contents,
+                    config=types.GenerateContentConfig(
+                        temperature=0.2,
+                        response_mime_type="application/json"
+                    )
+                )
 
-        except Exception:
-            logger.exception(
-                "Gemini analysis failed. "
-                "Model: %s. Posts: %s",
-                self.model,
-                len(posts)
+                break
+
+            except Exception as error:
+                status_code = self._get_status_code(error)
+
+                retryable = status_code in RETRYABLE_STATUS_CODES
+
+                if not retryable or attempt >= MAX_ATTEMPTS:
+                    logger.exception(
+                        "Gemini API request failed. "
+                        "Model: %s. Status: %s. Attempt: %s/%s",
+                        self.model,
+                        status_code,
+                        attempt,
+                        MAX_ATTEMPTS
+                    )
+
+                    raise GeminiAnalysisError(
+                        f"Gemini API failed after {attempt} attempt(s). "
+                        f"Status: {status_code}. "
+                        "No ranking was generated."
+                    ) from error
+
+                delay = RETRY_DELAYS[attempt - 1]
+
+                logger.warning(
+                    "Gemini returned status %s. "
+                    "Retrying in %s seconds.",
+                    status_code,
+                    delay
+                )
+
+                time.sleep(delay)
+
+        if response is None or not response.text:
+            raise GeminiAnalysisError(
+                "Gemini returned an empty response"
             )
 
-            return None
+        try:
+            result = json.loads(response.text)
+        except json.JSONDecodeError as error:
+            raise GeminiAnalysisError(
+                "Gemini returned invalid JSON"
+            ) from error
+
+        try:
+            return self._validate_result(result, posts)
+        except (ValueError, TypeError, KeyError) as error:
+            raise GeminiAnalysisError(
+                f"Gemini returned an invalid ranking: {error}"
+            ) from error
 
     def _validate_result(self, result, posts):
         if not isinstance(result, dict):
