@@ -4,13 +4,10 @@ name: Scrape and Analyze X Posts
 on:
   workflow_dispatch:
 
-  schedule:
-    - cron: "*/30 * * * *"
-
 permissions:
   contents: write
 
-# Prevent two executions from modifying the tracker simultaneously.
+# Serialize executions to protect shared repository state.
 concurrency:
   group: x-agent-scrape
   cancel-in-progress: false
@@ -23,25 +20,34 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 1. Install Node.js
+      # 1. Check whether another execution is needed.
+      - name: Check execution eligibility
+        id: execution
+        run: python -m src.execution_controller
+
+      # 2. Install Node.js only when execution is authorized.
       - name: Set up Node.js
+        if: steps.execution.outputs.should_run == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: "20"
 
-      # 2. Install Rettiwt without requiring package.json
+      # 3. Install Rettiwt.
       - name: Install Rettiwt
+        if: steps.execution.outputs.should_run == 'true'
         run: npm install --no-save --no-package-lock rettiwt-api@7.1.4
 
-      # 3. Retrieve X posts
+      # 4. Retrieve X posts.
       - name: Scrape X with Rettiwt
+        if: steps.execution.outputs.should_run == 'true'
         env:
           RETTIWT_API_KEY: ${{ secrets.RETTIWT_API_KEY }}
           ACCOUNTS_ENCRYPTION_KEY: ${{ secrets.ACCOUNTS_ENCRYPTION_KEY }}
         run: node src/test_rettiwt.mjs
 
-      # 4. Install Python
+      # 5. Install Python.
       - name: Set up Python
+        if: steps.execution.outputs.should_run == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -49,19 +55,21 @@ jobs:
           cache-dependency-path: src/requirements.txt
 
       - name: Install Python dependencies
+        if: steps.execution.outputs.should_run == 'true'
         run: |
           python -m pip install --upgrade pip
           pip install -r src/requirements.txt
 
-      # 5. Analyze new posts
+      # 6. Analyze posts.
       - name: Run X Agent
+        if: steps.execution.outputs.should_run == 'true'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: gemini-3.5-flash-lite
           RETTIWT_API_KEY: ${{ secrets.RETTIWT_API_KEY }}
         run: python -m src.main
 
-      # 6. Persist tracker and generated data
+      # 7. Persist execution state and generated data.
       - name: Commit generated data
         if: always()
         run: |
