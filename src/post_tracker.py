@@ -32,7 +32,6 @@ class PostTracker:
 
         self.file_path.parent.mkdir(parents=True, exist_ok=True)
 
-        # Load and validate the centralized configuration once.
         self.config = self._load_config()
         self.timezone = ZoneInfo(self.config["timezone"])
 
@@ -92,7 +91,6 @@ class PostTracker:
                 f"Invalid timezone in x_actions.json: {timezone_name}"
             ) from exc
 
-        # Validate action enabled flags.
         for action in self.ACTIONS:
             action_config = actions.get(action)
 
@@ -106,7 +104,6 @@ class PostTracker:
                     f"Invalid {action}.enabled configuration"
                 )
 
-        # Validate daily limits for every action.
         for action in self.ACTIONS:
             action_limits = limits.get(action)
 
@@ -126,7 +123,6 @@ class PostTracker:
                     f"Invalid max_per_day for action: {action}"
                 )
 
-        # Validate Like minimum score.
         min_like_score = limits["like"].get("min_score")
 
         if (
@@ -138,7 +134,20 @@ class PostTracker:
                 "Invalid like.min_score configuration (expected 0-100)"
             )
 
-        # Validate Reply per-author limit.
+        # Validate Like per-author limit.
+        max_likes_per_author = limits["like"].get(
+            "max_per_author_per_day"
+        )
+
+        if (
+            not isinstance(max_likes_per_author, int)
+            or isinstance(max_likes_per_author, bool)
+            or max_likes_per_author < 0
+        ):
+            raise RuntimeError(
+                "Invalid like.max_per_author_per_day configuration"
+            )
+
         max_replies_per_author = limits["reply"].get(
             "max_per_author_per_day"
         )
@@ -152,7 +161,6 @@ class PostTracker:
                 "Invalid reply.max_per_author_per_day configuration"
             )
 
-        # Validate scraping limit.
         posts_per_account = scraping.get("posts_per_account")
 
         if (
@@ -179,6 +187,10 @@ class PostTracker:
 
         print(f"Like minimum score: {min_like_score}")
         print(
+            "Like per-author daily limit: "
+            f"{max_likes_per_author}"
+        )
+        print(
             "Reply per-author daily limit: "
             f"{max_replies_per_author}"
         )
@@ -196,6 +208,11 @@ class PostTracker:
         """Return the configured daily Reply limit per author."""
 
         return self.config["limits"]["reply"]["max_per_author_per_day"]
+
+    def get_like_author_limit(self) -> int:
+        """Return the configured daily Like limit per author."""
+
+        return self.config["limits"]["like"]["max_per_author_per_day"]
 
     def get_like_min_score(self) -> int:
         """Return the configured minimum score required for a Like."""
@@ -282,7 +299,6 @@ class PostTracker:
 
             return data
 
-        # Migrate legacy structure.
         migrated_posts = {}
 
         for post_id, old_post in data.items():
@@ -416,7 +432,6 @@ class PostTracker:
                     tracked_post["author_id"] = author_id
                     changed = True
 
-                # Refresh metadata without modifying existing action states.
                 for field, value in (
                     ("expanded_urls", expanded_urls),
                     ("monitored_by", monitored_by),
@@ -793,7 +808,6 @@ class PostTracker:
         Processing and unknown attempts consume quota.
         Completed actions use their completion timestamp.
         """
-
         self._validate_action(action)
 
         today = datetime.now(self.timezone).date()
@@ -831,7 +845,6 @@ class PostTracker:
         max_per_day is retained for compatibility with older callers.
         The configured value in x_actions.json is authoritative.
         """
-
         self._validate_action(action)
 
         configured_limit = self.get_action_limit(action)
@@ -839,6 +852,67 @@ class PostTracker:
 
         if usage["total_today"] >= configured_limit:
             return False, "daily_action_limit_reached"
+
+        return True, "allowed"
+
+    def get_like_usage(self, author_id: str) -> dict:
+        """Return today's total Like usage and usage for a specific author."""
+
+        today = datetime.now(self.timezone).date()
+
+        author_id = str(author_id)
+        total_likes_today = 0
+        author_likes_today = 0
+
+        for post in self.data["posts"].values():
+            action = post.get("actions", {}).get("like", {})
+            status = action.get("status")
+
+            if status not in self.CONSUMING_STATUSES:
+                continue
+
+            timestamp = (
+                action.get("completed_at")
+                if status == "completed"
+                else action.get("last_attempt_at")
+            )
+
+            if self._local_date(timestamp) != today:
+                continue
+
+            total_likes_today += 1
+
+            if str(post.get("author_id") or "") == author_id:
+                author_likes_today += 1
+
+        return {
+            "total_likes": total_likes_today,
+            "total_likes_today": total_likes_today,
+            "author_likes_today": author_likes_today,
+            "today": today.isoformat(),
+        }
+
+    def can_like_to_author_today(
+        self,
+        author_id: str,
+    ) -> tuple[bool, str]:
+        """
+        Check both the global daily Like limit and the per-author limit.
+        Both configured values in x_actions.json are authoritative.
+        """
+        if not author_id:
+            return False, "missing_author_id"
+
+        usage = self.get_like_usage(author_id)
+
+        configured_total_limit = self.get_action_limit("like")
+        configured_author_limit = self.get_like_author_limit()
+
+        if usage["total_likes_today"] >= configured_total_limit:
+            return False, "daily_like_limit_reached"
+
+        if usage["author_likes_today"] >= configured_author_limit:
+            return False, "author_daily_like_limit_reached"
 
         return True, "allowed"
 
@@ -890,7 +964,6 @@ class PostTracker:
         max_total_replies is retained for compatibility with older callers.
         Both configured values in x_actions.json are authoritative.
         """
-
         if not author_id:
             return False, "missing_author_id"
 
