@@ -1,12 +1,14 @@
 
 import json
 import os
-import traceback
+import logging
 
 from pathlib import Path
 from google import genai
 from google.genai import types
 
+
+logger = logging.getLogger(__name__)
 
 PROMPT_FILE = (
     Path(__file__).resolve().parents[2]
@@ -67,18 +69,17 @@ class GeminiLikeEvaluator:
         if not posts:
             return {"evaluations": []}
 
-        try:
-            self._validate_input_posts(posts)
+        self._validate_input_posts(posts)
 
-            prompt = self._load_prompt()
+        prompt = self._load_prompt()
 
-            posts_json = json.dumps(
-                posts,
-                ensure_ascii=False,
-                indent=2
-            )
+        posts_json = json.dumps(
+            posts,
+            ensure_ascii=False,
+            indent=2
+        )
 
-            contents = f"""
+        contents = f"""
 {prompt}
 
 PUBLICACIONES A EVALUAR:
@@ -86,6 +87,7 @@ PUBLICACIONES A EVALUAR:
 {posts_json}
 """
 
+        try:
             response = self.client.models.generate_content(
                 model=self.model,
                 contents=contents,
@@ -109,17 +111,14 @@ PUBLICACIONES A EVALUAR:
 
             return self._validate_result(result, posts)
 
-        except Exception as error:
-            print(
-                f"Gemini Like evaluation failed. "
-                f"Model: {self.model}. Posts: {len(posts)}. "
-                f"Error: {error}",
-                flush=True
+        except Exception:
+            logger.exception(
+                "Gemini Like evaluation failed. "
+                "Model: %s. Posts: %s.",
+                self.model,
+                len(posts)
             )
-
-            traceback.print_exc()
-
-            return None
+            raise
 
     def _validate_input_posts(self, posts):
         if not isinstance(posts, list):
