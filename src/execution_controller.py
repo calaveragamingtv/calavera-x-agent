@@ -28,6 +28,10 @@ class ExecutionController:
             "random_delay_minutes", 15
         )
 
+        self.run_id = os.getenv(
+            "GITHUB_RUN_ID", f"local-{os.getpid()}"
+        )
+
         self._validate_config()
 
     def _load_config(self):
@@ -80,6 +84,9 @@ class ExecutionController:
         ):
             raise ValueError("Invalid execution_state.json structure")
 
+        if not all(isinstance(run, dict) for run in state["runs"]):
+            raise ValueError("Invalid execution entry in state file")
+
         return state
 
     def _save_state(self, state):
@@ -103,6 +110,16 @@ class ExecutionController:
 
         return state
 
+    def _count_started_runs(self, state):
+        # Entries from the previous controller version had no status.
+        # They are treated as started to preserve the existing count.
+        return sum(
+            1
+            for run in state["runs"]
+            if run.get("status") in ("started", "completed")
+            or "status" not in run
+        )
+
     def _write_github_output(self, should_run):
         output_file = os.getenv("GITHUB_OUTPUT")
 
@@ -112,26 +129,37 @@ class ExecutionController:
                     f"should_run={'true' if should_run else 'false'}\n"
                 )
 
-    def prepare_execution(self):
+    def prepare(self):
         if not self.enabled:
             print("[EXECUTION] Controller disabled. Continuing.")
             self._write_github_output(True)
             return True
 
-        # First check: determine whether an execution is still needed.
         state = self._get_today_state()
 
-        if len(state["runs"]) >= self.max_runs_per_day:
-            print("[EXECUTION] Daily target already reached.")
+        # A previous workflow may have stopped before starting the agent.
+        # The workflow concurrency group ensures no previous run is active.
+        state["runs"] = [
+            run for run in state["runs"]
+            if run.get("status") != "reserved"
+        ]
+
+        current_count = self._count_started_runs(state)
+
+        if current_count >= self.max_runs_per_day:
+            print(
+                f"[EXECUTION] Daily target reached: "
+                f"{current_count}/{self.max_runs_per_day}"
+            )
+            self._save_state(state)
             self._write_github_output(False)
             return False
 
         print(
-            f"[EXECUTION] Current executions: "
-            f"{len(state['runs'])}/{self.max_runs_per_day}"
+            f"[EXECUTION] Execution needed: "
+            f"{current_count}/{self.max_runs_per_day}"
         )
 
-        # Random delay is applied only when an execution is needed.
         if self.random_delay_minutes > 0:
             max_seconds = self.random_delay_minutes * 60
             delay = random.randint(0, max_seconds)
@@ -139,38 +167,106 @@ class ExecutionController:
             print(f"[EXECUTION] Random delay: {delay} seconds.")
             time.sleep(delay)
 
-        # Second check: another run may have completed the daily target.
+        # Check again after sleeping.
         state = self._get_today_state()
 
-        if len(state["runs"]) >= self.max_runs_per_day:
-            print("[EXECUTION] Daily target reached during delay.")
+        state["runs"] = [
+            run for run in state["runs"]
+            if run.get("status") != "reserved"
+        ]
+
+        current_count = self._count_started_runs(state)
+
+        if current_count >= self.max_runs_per_day:
+            print(
+                "[EXECUTION] Daily target reached during delay. "
+                "Skipping."
+            )
+            self._save_state(state)
             self._write_github_output(False)
             return False
 
-        # Reserve the execution before scraping or analyzing posts.
-        execution_time = self._now().isoformat()
-
         state["runs"].append({
-            "started_at": execution_time
+            "run_id": self.run_id,
+            "status": "reserved",
+            "reserved_at": self._now().isoformat()
         })
 
         self._save_state(state)
 
-        print(
-            f"[EXECUTION] Execution authorized: "
-            f"{len(state['runs'])}/{self.max_runs_per_day}"
-        )
-
+        print("[EXECUTION] Execution slot reserved.")
         self._write_github_output(True)
         return True
 
+    def start(self):
+        if not self.enabled:
+            print("[EXECUTION] Controller disabled. Nothing to register.")
+            return
+
+        state = self._get_today_state()
+
+        for run in state["runs"]:
+            if (
+                run.get("run_id") == self.run_id
+                and run.get("status") == "reserved"
+            ):
+                run["status"] = "started"
+                run["started_at"] = self._now().isoformat()
+                self._save_state(state)
+
+                print(
+                    f"[EXECUTION] Execution started: "
+                    f"{self._count_started_runs(state)}/"
+                    f"{self.max_runs_per_day}"
+                )
+                return
+
+        raise RuntimeError(
+            "No execution reservation found for this workflow run"
+        )
+
+    def cancel(self):
+        if not self.enabled:
+            return
+
+        state = self._get_today_state()
+        original_count = len(state["runs"])
+
+        state["runs"] = [
+            run for run in state["runs"]
+            if not (
+                run.get("run_id") == self.run_id
+                and run.get("status") == "reserved"
+            )
+        ]
+
+        if len(state["runs"]) != original_count:
+            self._save_state(state)
+            print("[EXECUTION] Unstarted reservation released.")
+        else:
+            print("[EXECUTION] No reservation to release.")
+
 
 def main():
+    command = sys.argv[1] if len(sys.argv) > 1 else "prepare"
+
     try:
         controller = ExecutionController()
-        controller.prepare_execution()
+
+        if command == "prepare":
+            controller.prepare()
+        elif command == "start":
+            controller.start()
+        elif command == "cancel":
+            controller.cancel()
+        else:
+            raise ValueError(
+                f"Unknown command: {command}. "
+                "Use prepare, start or cancel."
+            )
+
     except Exception as error:
-        print(f"[EXECUTION] Controller error: {error}")
+        print(f"[EXECUTION] Error: {error}")
         sys.exit(1)
 
 
