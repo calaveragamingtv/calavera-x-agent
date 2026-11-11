@@ -221,6 +221,15 @@ def evaluate_reply_eligibility(tracker, rankings):
             blocked.append((post_id, "post_not_found"))
             continue
 
+        reply_action = post.get("actions", {}).get("reply", {})
+        action_status = reply_action.get("status", "not_started")
+
+        # Only actionable states participate in quota planning. Completed,
+        # processing and unknown actions must not reserve capacity.
+        if action_status not in ("not_started", "drafted", "failed"):
+            blocked.append((post_id, f"reply_status_{action_status}"))
+            continue
+
         author_id = post.get("author_id")
 
         if not author_id:
@@ -295,7 +304,7 @@ def generate_reply_drafts(tracker, eligible_ids, rankings):
             print(f"Existing reply draft preserved: {post_id}")
             continue
 
-        if reply_action["status"] != "not_started":
+        if reply_action["status"] not in ("not_started", "failed"):
             print(
                 f"Reply generation skipped for {post_id}: "
                 f"status is {reply_action['status']}"
@@ -1193,6 +1202,14 @@ def generate_like_drafts(tracker, evaluations, active_post_ids):
         if not isinstance(evaluation, dict):
             continue
 
+        post = tracker.get_post(post_id)
+
+        # Stream announcements from monitored streamer accounts are an
+        # explicit Like exception: a Twitch/Kick link plus a live phrase
+        # takes priority even if Gemini does not recommend the Like.
+        if post and is_stream_announcement(post):
+            continue
+
         try:
             score = int(evaluation.get("score", 0))
         except (TypeError, ValueError):
@@ -1219,17 +1236,6 @@ def generate_like_drafts(tracker, evaluations, active_post_ids):
         if not isinstance(evaluation, dict):
             continue
 
-        if evaluation.get("should_like") is not True:
-            continue
-
-        try:
-            score = int(evaluation.get("score", 0))
-        except (TypeError, ValueError):
-            continue
-
-        if score < min_score:
-            continue
-
         post = tracker.get_post(post_id)
 
         if not post:
@@ -1244,6 +1250,23 @@ def generate_like_drafts(tracker, evaluations, active_post_ids):
         if status not in ("not_started", "failed", "drafted"):
             continue
 
+        stream_announcement = is_stream_announcement(post)
+
+        try:
+            score = int(evaluation.get("score", 0))
+        except (TypeError, ValueError):
+            score = 0
+
+        # Regular Likes require Gemini approval and the configured score.
+        # A monitored streamer's Twitch/Kick live announcement is the
+        # explicit exception and is always prioritized, subject to quotas.
+        if not stream_announcement:
+            if evaluation.get("should_like") is not True:
+                continue
+
+            if score < min_score:
+                continue
+
         author_id = post.get("author_id")
 
         if not author_id:
@@ -1253,17 +1276,15 @@ def generate_like_drafts(tracker, evaluations, active_post_ids):
             continue
 
         author_id = str(author_id)
-
         platform_link = has_platform_link(post)
-        stream_announcement = is_stream_announcement(post)
 
-        if platform_link:
-            priority = 2 if stream_announcement else 1
-            reason = (
-                "stream_announcement"
-                if stream_announcement
-                else "platform_link"
-            )
+        if stream_announcement:
+            priority = 2
+            reason = "stream_announcement"
+            score = 101
+        elif platform_link:
+            priority = 1
+            reason = "platform_link"
             score = max(score, 90)
         else:
             priority = 0
