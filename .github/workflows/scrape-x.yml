@@ -61,12 +61,23 @@ jobs:
         run: python -m src.execution_controller start
 
       - name: Run X Agent
+        id: agent
         if: steps.execution.outputs.should_run == 'true' && steps.start.outcome == 'success'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: gemini-3.5-flash-lite
           RETTIWT_API_KEY: ${{ secrets.RETTIWT_API_KEY }}
         run: python -m src.main
+
+      # Mark successful execution.
+      - name: Complete execution
+        if: always() && steps.start.outcome == 'success' && steps.agent.outcome == 'success'
+        run: python -m src.execution_controller complete
+
+      # Preserve the consumed quota if main fails.
+      - name: Mark execution as failed
+        if: always() && steps.start.outcome == 'success' && steps.agent.outcome == 'failure'
+        run: python -m src.execution_controller fail
 
       # Release the reservation if main was never started.
       - name: Cancel execution reservation
