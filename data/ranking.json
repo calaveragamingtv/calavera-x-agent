@@ -1,17 +1,9 @@
 {
   "account": "monitored_accounts",
-  "analyzed_at": "2026-11-10T23:58:04.666564+00:00",
+  "analyzed_at": "2026-11-11T01:06:30.610349+00:00",
   "model": null,
-  "total": 24,
+  "total": 20,
   "ranking": [
-    {
-      "post_id": "2118878190437273865",
-      "score": 95,
-      "category": "official_news",
-      "priority": "high",
-      "recommended_action": "repost",
-      "reason": "Noticia oficial clave sobre el parche Printed and Polished, cambios importantes en blueprints y anti-cheat."
-    },
     {
       "post_id": "2120200207635714171",
       "score": 95,
@@ -21,20 +13,20 @@
       "reason": "Trata sobre una optimización de rendimiento muy esperada en Rust (rendimiento al entrar a bases gigantes y reducción de lag spikes), lo cual tiene un impacto directo y masivo en la comunidad y experiencia de juego, ideal para aportar la perspectiva del creador."
     },
     {
+      "post_id": "2118878190437273865",
+      "score": 95,
+      "category": "official_news",
+      "priority": "high",
+      "recommended_action": "repost",
+      "reason": "Noticia oficial clave sobre el parche Printed and Polished, cambios importantes en blueprints y anti-cheat."
+    },
+    {
       "post_id": "2115440881591349591",
       "score": 92,
       "category": "official_news",
       "priority": "high",
       "recommended_action": "repost",
       "reason": "Detalles completos del parche de Halloween 2026, evento Candy Hunt y novedades del juego."
-    },
-    {
-      "post_id": "2114764536515317983",
-      "score": 88,
-      "category": "official_news",
-      "priority": "high",
-      "recommended_action": "repost",
-      "reason": "Anuncio oficial sobre el inicio del evento de Halloween y mecánicas de los monstruos de Frankenstein."
     },
     {
       "post_id": "2119113024111812800",
@@ -59,14 +51,6 @@
       "priority": "high",
       "recommended_action": "reply",
       "reason": "Información sobre los nuevos portales de cultistas en el mapa que generan gran misterio y discusión."
-    },
-    {
-      "post_id": "2119609015844123082",
-      "score": 75,
-      "category": "update",
-      "priority": "high",
-      "recommended_action": "repost",
-      "reason": "Es un repost de la propia cuenta enfocado en el parche de Halloween 2026 y el evento Candy Hunt, lo cual es altamente relevante para la comunidad de Rust y el posicionamiento del creador."
     },
     {
       "post_id": "2115851580268237173",
@@ -125,14 +109,6 @@
       "reason": "Pregunta estándar para interactuar con el chat sobre la defensa de bases."
     },
     {
-      "post_id": "2115911921840918913",
-      "score": 50,
-      "category": "discussion",
-      "priority": "medium",
-      "recommended_action": "ignore",
-      "reason": "Llamado a la comunidad para discutir estrategias de inicio de wipe."
-    },
-    {
       "post_id": "2119625078648513018",
       "score": 50,
       "category": "gameplay",
@@ -141,20 +117,12 @@
       "reason": "Publicación propia de la cuenta sobre la dinámica de juego, útil para mantener actividad pero sin información nueva u oportunidad de interacción externa relevante."
     },
     {
-      "post_id": "2114118753566720304",
-      "score": 48,
+      "post_id": "2115911921840918913",
+      "score": 50,
       "category": "discussion",
       "priority": "medium",
       "recommended_action": "ignore",
-      "reason": "Pregunta orientada a la interacción con seguidores sobre planes de base."
-    },
-    {
-      "post_id": "2116651789558714850",
-      "score": 45,
-      "category": "discussion",
-      "priority": "medium",
-      "recommended_action": "ignore",
-      "reason": "Interacción típica de directo sobre jugadas en la playa."
+      "reason": "Llamado a la comunidad para discutir estrategias de inicio de wipe."
     },
     {
       "post_id": "2119837852515111122",
@@ -165,12 +133,12 @@
       "reason": "Es una publicación propia sobre la mecánica de agricultura y animales en Rust, útil para mantener actividad pero no requiere respuesta ni repost al ser del propio creador."
     },
     {
-      "post_id": "2113745127453659270",
-      "score": 42,
+      "post_id": "2116651789558714850",
+      "score": 45,
       "category": "discussion",
       "priority": "medium",
       "recommended_action": "ignore",
-      "reason": "Consulta sobre entrar tarde a un servidor."
+      "reason": "Interacción típica de directo sobre jugadas en la playa."
     },
     {
       "post_id": "2115549586970259890",
