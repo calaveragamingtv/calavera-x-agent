@@ -1576,6 +1576,72 @@
       "views": 0,
       "replies": 0,
       "reposts": 2
+    },
+    "2120562560621523001": {
+      "id": "2120562560621523001",
+      "author_id": "815409347689934848",
+      "text": "Diez minutos de espera para que arranque el server ya era una tortura. Bajarlo a dos minutos cambia por completo el dolor de cabeza de cada parche. https://t.co/6ZpfwHqcWu",
+      "url": "https://x.com/CalaveraGaming/status/2120562560621523001",
+      "created_at": "2026-11-11T17:01:27.000Z",
+      "expanded_urls": [
+        "https://twitter.com/CalaveraGaming/status/2120562560621523001"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "815409347689934848",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-11T17:05:57.567750+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2120562560621523001",
+          "score": 65,
+          "category": "gameplay",
+          "priority": "medium",
+          "recommended_action": "repost",
+          "reason": "Aborda un problema técnico común y frustrante en Rust como los tiempos de carga de los servidores tras los parches, generando identificación en la comunidad."
+        },
+        "completed_at": "2026-11-11T17:05:58.477770+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "drafted",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": {
+            "post_id": "2120562560621523001",
+            "generated_at": "2026-11-11T17:05:58.542915+00:00",
+            "stage": "drafted"
+          }
+        }
+      },
+      "likes": 0,
+      "views": 1,
+      "replies": 0,
+      "reposts": 0
     }
   }
 }
