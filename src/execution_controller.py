@@ -23,6 +23,7 @@ class ExecutionController:
 
         self.timezone = ZoneInfo(self.config["timezone"])
         self.enabled = execution.get("enabled", True)
+        self.calls_per_day = execution.get("calls_per_day", 1)
         self.max_runs_per_day = execution.get("max_runs_per_day", 1)
         self.random_delay_minutes = execution.get(
             "random_delay_minutes", 15
@@ -51,12 +52,26 @@ class ExecutionController:
             raise ValueError("execution.enabled must be boolean")
 
         if (
+            not isinstance(self.calls_per_day, int)
+            or isinstance(self.calls_per_day, bool)
+            or self.calls_per_day < 1
+        ):
+            raise ValueError(
+                "execution.calls_per_day must be an integer >= 1"
+            )
+
+        if (
             not isinstance(self.max_runs_per_day, int)
             or isinstance(self.max_runs_per_day, bool)
             or self.max_runs_per_day < 1
         ):
             raise ValueError(
                 "execution.max_runs_per_day must be an integer >= 1"
+            )
+
+        if self.max_runs_per_day > self.calls_per_day:
+            raise ValueError(
+                "max_runs_per_day cannot exceed calls_per_day"
             )
 
         if (
@@ -73,7 +88,11 @@ class ExecutionController:
 
     def _load_state(self):
         if not STATE_FILE.exists():
-            return {"date": "", "runs": []}
+            return {
+                "date": "",
+                "calls": 0,
+                "runs": []
+            }
 
         with STATE_FILE.open("r", encoding="utf-8") as file:
             state = json.load(file)
@@ -86,6 +105,16 @@ class ExecutionController:
 
         if not all(isinstance(run, dict) for run in state["runs"]):
             raise ValueError("Invalid execution entry in state file")
+
+        # Migration from the previous state format.
+        state.setdefault("calls", 0)
+
+        if (
+            not isinstance(state["calls"], int)
+            or isinstance(state["calls"], bool)
+            or state["calls"] < 0
+        ):
+            raise ValueError("Invalid calls counter in execution state")
 
         return state
 
@@ -106,13 +135,15 @@ class ExecutionController:
         state = self._load_state()
 
         if state.get("date") != today:
-            state = {"date": today, "runs": []}
+            state = {
+                "date": today,
+                "calls": 0,
+                "runs": []
+            }
 
         return state
 
     def _count_started_runs(self, state):
-        # Entries from the previous controller version had no status.
-        # They are treated as started to preserve the existing count.
         return sum(
             1
             for run in state["runs"]
@@ -137,29 +168,77 @@ class ExecutionController:
 
         state = self._get_today_state()
 
-        # A previous workflow may have stopped before starting the agent.
-        # The workflow concurrency group ensures no previous run is active.
+        # Remove abandoned reservations from previous workflow runs.
         state["runs"] = [
             run for run in state["runs"]
             if run.get("status") != "reserved"
         ]
 
-        current_count = self._count_started_runs(state)
+        # Every invocation consumes one daily opportunity.
+        state["calls"] += 1
+        current_call = state["calls"]
 
-        if current_count >= self.max_runs_per_day:
-            print(
-                f"[EXECUTION] Daily target reached: "
-                f"{current_count}/{self.max_runs_per_day}"
-            )
+        current_runs = self._count_started_runs(state)
+        remaining_runs = self.max_runs_per_day - current_runs
+
+        print(
+            f"[EXECUTION] Call {current_call}/{self.calls_per_day}"
+        )
+        print(
+            f"[EXECUTION] Executions completed/started: "
+            f"{current_runs}/{self.max_runs_per_day}"
+        )
+        print(
+            f"[EXECUTION] Executions still needed: {remaining_runs}"
+        )
+
+        if remaining_runs <= 0:
+            print("[EXECUTION] Daily execution target already reached.")
             self._save_state(state)
             self._write_github_output(False)
             return False
 
+        # No more configured opportunities remain.
+        if current_call > self.calls_per_day:
+            print("[EXECUTION] Daily call allowance exhausted.")
+            self._save_state(state)
+            self._write_github_output(False)
+            return False
+
+        # Opportunities include the current call.
+        remaining_calls = self.calls_per_day - current_call + 1
+
         print(
-            f"[EXECUTION] Execution needed: "
-            f"{current_count}/{self.max_runs_per_day}"
+            f"[EXECUTION] Opportunities remaining: {remaining_calls}"
         )
 
+        # If every remaining opportunity is needed, execution is mandatory.
+        if remaining_calls <= remaining_runs:
+            should_run = True
+            print(
+                "[EXECUTION] Mandatory execution: "
+                "remaining opportunities equal executions needed."
+            )
+        else:
+            probability = remaining_runs / remaining_calls
+            random_value = random.random()
+
+            should_run = random_value < probability
+
+            print(
+                f"[EXECUTION] Random decision: "
+                f"{random_value:.4f} < {probability:.4f}"
+            )
+
+        # Persist the call even when the agent will not run.
+        self._save_state(state)
+
+        if not should_run:
+            print("[EXECUTION] This call will not run the agent.")
+            self._write_github_output(False)
+            return False
+
+        # Random delay only applies to calls selected for execution.
         if self.random_delay_minutes > 0:
             max_seconds = self.random_delay_minutes * 60
             delay = random.randint(0, max_seconds)
@@ -167,7 +246,7 @@ class ExecutionController:
             print(f"[EXECUTION] Random delay: {delay} seconds.")
             time.sleep(delay)
 
-        # Check again after sleeping.
+        # Reload state before reserving the execution.
         state = self._get_today_state()
 
         state["runs"] = [
@@ -175,9 +254,9 @@ class ExecutionController:
             if run.get("status") != "reserved"
         ]
 
-        current_count = self._count_started_runs(state)
+        current_runs = self._count_started_runs(state)
 
-        if current_count >= self.max_runs_per_day:
+        if current_runs >= self.max_runs_per_day:
             print(
                 "[EXECUTION] Daily target reached during delay. "
                 "Skipping."
