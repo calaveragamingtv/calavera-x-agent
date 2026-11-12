@@ -1,0 +1,279 @@
+{
+  "updated_at": "2026-11-12T03:09:45.312083+00:00",
+  "total": 39,
+  "evaluations": {
+    "2118402970886836645": {
+      "post_id": "2118402970886836645",
+      "should_like": true,
+      "score": 95,
+      "category": "twitch",
+      "reason": "La publicación incluye un enlace válido a Twitch (twitch.tv), activando la prioridad de plataforma."
+    },
+    "2102836927523061895": {
+      "post_id": "2102836927523061895",
+      "should_like": true,
+      "score": 90,
+      "category": "youtube",
+      "reason": "La publicación incluye un enlace válido a YouTube (youtu.be), cumpliendo con la prioridad de plataformas de contenido."
+    },
+    "2115490600191688909": {
+      "post_id": "2115490600191688909",
+      "should_like": true,
+      "score": 88,
+      "category": "rust",
+      "reason": "Anuncio relevante sobre una nueva arma (UZI) y características de jugabilidad en Rust."
+    },
+    "2098518527690875041": {
+      "post_id": "2098518527690875041",
+      "should_like": true,
+      "score": 88,
+      "category": "rust",
+      "reason": "Información detallada y entretenida sobre la llegada de nuevas mecánicas de ganadería a Rust."
+    },
+    "2118410551541801096": {
+      "post_id": "2118410551541801096",
+      "should_like": true,
+      "score": 88,
+      "category": "rust",
+      "reason": "Anuncio oficial directo y completo del lanzamiento de la importante actualización 'Printed and Polished'."
+    },
+    "2117633077820240298": {
+      "post_id": "2117633077820240298",
+      "should_like": true,
+      "score": 88,
+      "category": "rust",
+      "reason": "Desglose oficial previo y muy informativo de los contenidos principales que traerá la nueva actualización."
+    },
+    "2102836402421387646": {
+      "post_id": "2102836402421387646",
+      "should_like": true,
+      "score": 85,
+      "category": "rust",
+      "reason": "Contenido muy interesante sobre un proyecto ambicioso para el evento Rust Isles."
+    },
+    "2119807143444361382": {
+      "post_id": "2119807143444361382",
+      "should_like": true,
+      "score": 85,
+      "category": "rust",
+      "reason": "Resumen completo y oficial de las novedades clave introducidas en la actualización de noviembre."
+    },
+    "2119067731810992433": {
+      "post_id": "2119067731810992433",
+      "should_like": true,
+      "score": 85,
+      "category": "rust",
+      "reason": "Información oficial valiosa centrada en las optimizaciones y mejoras de rendimiento de la actualización mensual."
+    },
+    "2119460464748859401": {
+      "post_id": "2119460464748859401",
+      "should_like": true,
+      "score": 82,
+      "category": "rust",
+      "reason": "Anuncio creativo y detallado sobre una nueva skin oficial para la estructura de metal en Rust."
+    },
+    "2109216353228083538": {
+      "post_id": "2109216353228083538",
+      "should_like": true,
+      "score": 80,
+      "category": "rust",
+      "reason": "Anuncio útil sobre un nuevo sistema de clanes y estadísticas en la web de la comunidad."
+    },
+    "2118436798816743831": {
+      "post_id": "2118436798816743831",
+      "should_like": true,
+      "score": 80,
+      "category": "rust",
+      "reason": "Destaca de forma positiva y concreta las mejoras de rendimiento de la nueva actualización de Rust."
+    },
+    "2120169659345358986": {
+      "post_id": "2120169659345358986",
+      "should_like": true,
+      "score": 80,
+      "category": "rust",
+      "reason": "Información interesante sobre merchandising oficial y archivos STL para impresión 3D de ítems del juego."
+    },
+    "2118412551943831955": {
+      "post_id": "2118412551943831955",
+      "should_like": true,
+      "score": 78,
+      "category": "rust",
+      "reason": "Información útil y directa sobre la disponibilidad del devblog de Rust."
+    },
+    "2118374336767865220": {
+      "post_id": "2118374336767865220",
+      "should_like": true,
+      "score": 78,
+      "category": "rust",
+      "reason": "Anuncio anticipado y relevante sobre la llegada de la actualización de noviembre."
+    },
+    "2118742687658434807": {
+      "post_id": "2118742687658434807",
+      "should_like": true,
+      "score": 78,
+      "category": "rust",
+      "reason": "Presentación semanal de los nuevos aspectos creados por la comunidad en la tienda de Steam."
+    },
+    "2117270399532638389": {
+      "post_id": "2117270399532638389",
+      "should_like": true,
+      "score": 78,
+      "category": "rust",
+      "reason": "Promoción oficial de un artículo exclusivo de merchandising en colaboración con Discord."
+    },
+    "2120532238576046362": {
+      "post_id": "2120532238576046362",
+      "should_like": true,
+      "score": 77,
+      "category": "gaming",
+      "reason": "Contenido visual original y entretenido compartido por la cuenta oficial de Rust."
+    },
+    "2102841631237939264": {
+      "post_id": "2102841631237939264",
+      "should_like": true,
+      "score": 76,
+      "category": "community",
+      "reason": "Reconocimiento valioso al equipo de creadores y colaboradores detrás de un proyecto de Rust."
+    },
+    "2119692976557617423": {
+      "post_id": "2119692976557617423",
+      "should_like": true,
+      "score": 76,
+      "category": "rust",
+      "reason": "Presentación de contenido original de un servidor con captura de un nuevo Outpost, fomentando la opinión de la comunidad."
+    },
+    "2119150031315829193": {
+      "post_id": "2119150031315829193",
+      "should_like": true,
+      "score": 76,
+      "category": "rust",
+      "reason": "Pregunta abierta orientada a generar una conversación genuina en la comunidad sobre las impresiones de la última actualización."
+    },
+    "2118739869937668346": {
+      "post_id": "2118739869937668346",
+      "should_like": true,
+      "score": 76,
+      "category": "rust",
+      "reason": "Comentario positivo sobre la efectividad de las medidas antitrampas recientes en el juego."
+    },
+    "2117995233560400245": {
+      "post_id": "2117995233560400245",
+      "should_like": true,
+      "score": 76,
+      "category": "rust",
+      "reason": "Recordatorio oportuno sobre el cierre del evento de temporada de Halloween."
+    },
+    "2118414022915555626": {
+      "post_id": "2118414022915555626",
+      "should_like": false,
+      "score": 70,
+      "category": "rust",
+      "reason": "Aviso breve sobre una actualización, pero con escaso desarrollo o valor adicional."
+    },
+    "2107596052765299159": {
+      "post_id": "2107596052765299159",
+      "should_like": false,
+      "score": 65,
+      "category": "rust",
+      "reason": "Es un repost de contenido interesante, pero al ser un retweet sin suficiente valor propio independiente, no alcanza el umbral."
+    },
+    "2118410685184950683": {
+      "post_id": "2118410685184950683",
+      "should_like": false,
+      "score": 65,
+      "category": "rust",
+      "reason": "Actualización rutinaria de estado de servidores con bajo nivel de contenido informativo detallado."
+    },
+    "2101073086129070228": {
+      "post_id": "2101073086129070228",
+      "should_like": false,
+      "score": 60,
+      "category": "rust",
+      "reason": "Es un retweet sobre Twitch Drops que, aunque relacionado con un evento, carece de originalidad al ser una publicación repetida."
+    },
+    "2098818288541176102": {
+      "post_id": "2098818288541176102",
+      "should_like": false,
+      "score": 60,
+      "category": "rust",
+      "reason": "Retweet de un anuncio de fecha de evento, insuficiente por sí mismo al ser un repost."
+    },
+    "2117751710269505604": {
+      "post_id": "2117751710269505604",
+      "should_like": false,
+      "score": 60,
+      "category": "rust",
+      "reason": "Retweet de un anuncio oficial de la actualización, pero el post propio no aporta valor adicional."
+    },
+    "2115837772183257460": {
+      "post_id": "2115837772183257460",
+      "should_like": false,
+      "score": 60,
+      "category": "rust",
+      "reason": "Retweet sobre el reinicio de la rama de pruebas de Rust."
+    },
+    "2115499447794700762": {
+      "post_id": "2115499447794700762",
+      "should_like": false,
+      "score": 60,
+      "category": "rust",
+      "reason": "Retweet de aviso sobre servidores de prueba y el sistema de blueprints."
+    },
+    "2118010731270414680": {
+      "post_id": "2118010731270414680",
+      "should_like": false,
+      "score": 55,
+      "category": "rust",
+      "reason": "Retweet con un recordatorio técnico menor sobre la compatibilidad de versiones."
+    },
+    "2119865879487750243": {
+      "post_id": "2119865879487750243",
+      "should_like": false,
+      "score": 55,
+      "category": "rust",
+      "reason": "Retweet promocional de la actualización ya anunciada por otras cuentas oficiales."
+    },
+    "2118440494820655500": {
+      "post_id": "2118440494820655500",
+      "should_like": false,
+      "score": 55,
+      "category": "rust",
+      "reason": "Retweet del lanzamiento de la actualización oficial de Rust."
+    },
+    "2106695712423788928": {
+      "post_id": "2106695712423788928",
+      "should_like": false,
+      "score": 50,
+      "category": "other",
+      "reason": "Publicación genérica de tipo repost sin suficiente contexto o valor genuino."
+    },
+    "2119206284591591697": {
+      "post_id": "2119206284591591697",
+      "should_like": false,
+      "score": 50,
+      "category": "rust",
+      "reason": "Retweet de resultados sin suficiente contexto informativo en la publicación principal."
+    },
+    "2119865637485101206": {
+      "post_id": "2119865637485101206",
+      "should_like": false,
+      "score": 50,
+      "category": "rust",
+      "reason": "Retweet con información superpuesta sobre mapas personalizados."
+    },
+    "2118725860467339533": {
+      "post_id": "2118725860467339533",
+      "should_like": false,
+      "score": 45,
+      "category": "rust",
+      "reason": "Mensaje extremadamente ambiguo y descontextualizado."
+    },
+    "2119692982513537273": {
+      "post_id": "2119692982513537273",
+      "should_like": false,
+      "score": 30,
+      "category": "other",
+      "reason": "Publicación vacía compuesta únicamente por un enlace sin texto descriptivo ni valor contextual."
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "account": "monitored_accounts",
-  "updated_at": "2026-11-12T02:26:30.927380+00:00",
+  "updated_at": "2026-11-12T03:08:50.790968+00:00",
   "total": 39,
   "posts": [
     {
@@ -15,7 +15,7 @@
       "replies": 76,
       "reposts": 123,
       "likes": 1237,
-      "views": 374421,
+      "views": 374448,
       "monitored_by": [
         {
           "account_id": "742290493292285952",
@@ -35,7 +35,7 @@
       "replies": 5,
       "reposts": 8,
       "likes": 119,
-      "views": 23668,
+      "views": 23669,
       "monitored_by": [
         {
           "account_id": "742290493292285952",
@@ -169,7 +169,7 @@
       "replies": 30,
       "reposts": 17,
       "likes": 287,
-      "views": 58048,
+      "views": 58050,
       "monitored_by": [
         {
           "account_id": "742290493292285952",
@@ -207,7 +207,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 4,
-      "views": 1886,
+      "views": 1887,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -549,7 +549,7 @@
       "replies": 0,
       "reposts": 1,
       "likes": 16,
-      "views": 1639,
+      "views": 1640,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -568,8 +568,8 @@
       "created_at": "2026-11-11T15:00:57.000Z",
       "replies": 18,
       "reposts": 31,
-      "likes": 406,
-      "views": 22578,
+      "likes": 414,
+      "views": 23277,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -590,7 +590,7 @@
       "replies": 3,
       "reposts": 6,
       "likes": 78,
-      "views": 12832,
+      "views": 12886,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -611,7 +611,7 @@
       "replies": 15,
       "reposts": 4,
       "likes": 109,
-      "views": 13688,
+      "views": 13704,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -632,7 +632,7 @@
       "replies": 10,
       "reposts": 16,
       "likes": 214,
-      "views": 21940,
+      "views": 21950,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -653,7 +653,7 @@
       "replies": 37,
       "reposts": 21,
       "likes": 466,
-      "views": 47008,
+      "views": 47022,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -674,7 +674,7 @@
       "replies": 6,
       "reposts": 7,
       "likes": 71,
-      "views": 14160,
+      "views": 14167,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -694,7 +694,7 @@
       "replies": 22,
       "reposts": 26,
       "likes": 228,
-      "views": 30119,
+      "views": 30129,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -714,7 +714,7 @@
       "replies": 3,
       "reposts": 3,
       "likes": 73,
-      "views": 14222,
+      "views": 14224,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -732,7 +732,7 @@
       "replies": 50,
       "reposts": 64,
       "likes": 632,
-      "views": 68282,
+      "views": 68287,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -753,7 +753,7 @@
       "replies": 2,
       "reposts": 3,
       "likes": 67,
-      "views": 16554,
+      "views": 16558,
       "monitored_by": [
         {
           "account_id": "1542707718",
