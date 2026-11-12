@@ -8,6 +8,7 @@ from src.ai.gemini_analyzer import GeminiAnalyzer
 from src.ai.gemini_reply_generator import GeminiReplyGenerator
 from src.ai.gemini_like_evaluator import GeminiLikeEvaluator
 from src.post_tracker import PostTracker
+from src.execution_summary import register_execution_summary
 
 
 USERNAME = "monitored_accounts"
@@ -1786,8 +1787,8 @@ def test_like_drafts(tracker, selected_ids):
 
 def main():
     global ACTION_SETTINGS
-
     print("Starting X Agent")
+    run_started_at = datetime.now(timezone.utc)
 
     ACTION_SETTINGS = load_action_settings()
     settings = ACTION_SETTINGS
@@ -1852,6 +1853,12 @@ def main():
     })
 
     tracker = PostTracker()
+    register_execution_summary(
+        tracker=tracker,
+        active_post_ids=active_post_ids,
+        run_started_at=run_started_at,
+        action_settings=ACTION_SETTINGS,
+    )
 
     migrate_existing_reply_drafts(tracker)
 
