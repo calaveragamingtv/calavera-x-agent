@@ -1,6 +1,7 @@
 
 import json
 import os
+import re
 import time
 
 from pathlib import Path
@@ -16,6 +17,8 @@ PROMPT_FILE = (
 
 MAX_RETRIES = 3
 RETRY_DELAY_SECONDS = 30
+
+LANGUAGE_CODE_PATTERN = re.compile(r"^[a-z]{2,3}$")
 
 
 class GeminiReplyGenerator:
@@ -51,7 +54,7 @@ class GeminiReplyGenerator:
             )
         )
 
-        if not response.text:
+        if not response or not response.text:
             raise RuntimeError(
                 "Gemini returned an empty response"
             )
@@ -84,6 +87,39 @@ class GeminiReplyGenerator:
         if len(reply) > 280:
             raise ValueError(
                 f"Reply exceeds 280 characters: {len(reply)}"
+            )
+
+        source_language = result.get("source_language")
+        reply_language = result.get("reply_language")
+
+        if not isinstance(source_language, str):
+            raise ValueError(
+                "Gemini did not return the detected source language"
+            )
+
+        if not isinstance(reply_language, str):
+            raise ValueError(
+                "Gemini did not return the reply language"
+            )
+
+        source_language = source_language.strip().lower()
+        reply_language = reply_language.strip().lower()
+
+        if not LANGUAGE_CODE_PATTERN.fullmatch(source_language):
+            raise ValueError(
+                f"Invalid source language code: {source_language}"
+            )
+
+        if not LANGUAGE_CODE_PATTERN.fullmatch(reply_language):
+            raise ValueError(
+                f"Invalid reply language code: {reply_language}"
+            )
+
+        if source_language != reply_language:
+            raise ValueError(
+                "Reply language mismatch: "
+                f"source={source_language}, "
+                f"reply={reply_language}"
             )
 
         return reply
@@ -129,6 +165,13 @@ PUBLICACIÓN A RESPONDER:
 
             try:
                 reply = self._generate_reply_once(contents)
+
+                if not reply:
+                    print(
+                        f"[X REPLY] Gemini decided not to reply. "
+                        f"Post ID: {post_id}"
+                    )
+                    return ""
 
                 print(
                     f"[X REPLY] Gemini reply generated successfully. "
