@@ -59,7 +59,7 @@
         }
       },
       "likes": 1237,
-      "views": 374629,
+      "views": 375624,
       "replies": 76,
       "reposts": 123
     },
@@ -93,13 +93,21 @@
       },
       "actions": {
         "like": {
-          "status": "not_started",
+          "status": "drafted",
           "attempts": 0,
           "last_attempt_at": null,
           "completed_at": null,
           "error": null,
           "external_id": null,
-          "payload": null
+          "payload": {
+            "post_id": "2115490600191688909",
+            "reason": "interesting_post",
+            "score": 88,
+            "category": "rust",
+            "evaluation_reason": "Anuncio relevante sobre una nueva arma (UZI) y características de jugabilidad en Rust.",
+            "generated_at": "2026-11-13T14:04:55.727880+00:00",
+            "stage": "drafted"
+          }
         },
         "reply": {
           "status": "completed",
@@ -126,7 +134,7 @@
         }
       },
       "likes": 119,
-      "views": 23677,
+      "views": 23698,
       "replies": 6,
       "reposts": 8
     },
@@ -308,7 +316,7 @@
         }
       },
       "likes": 52,
-      "views": 6014,
+      "views": 6017,
       "replies": 1,
       "reposts": 0
     },
@@ -374,7 +382,7 @@
         }
       },
       "likes": 20,
-      "views": 12178,
+      "views": 12179,
       "replies": 0,
       "reposts": 1
     },
@@ -562,7 +570,7 @@
         }
       },
       "likes": 287,
-      "views": 58054,
+      "views": 58063,
       "replies": 30,
       "reposts": 17
     },
@@ -624,7 +632,7 @@
         }
       },
       "likes": 0,
-      "views": 303,
+      "views": 307,
       "replies": 0,
       "reposts": 3
     },
@@ -684,7 +692,7 @@
         }
       },
       "likes": 4,
-      "views": 1889,
+      "views": 1900,
       "replies": 0,
       "reposts": 0
     },
@@ -746,7 +754,7 @@
         }
       },
       "likes": 6,
-      "views": 1520,
+      "views": 1530,
       "replies": 0,
       "reposts": 1
     },
@@ -806,7 +814,7 @@
         }
       },
       "likes": 3,
-      "views": 1543,
+      "views": 1551,
       "replies": 0,
       "reposts": 0
     },
@@ -873,7 +881,7 @@
         }
       },
       "likes": 1,
-      "views": 1235,
+      "views": 1244,
       "replies": 0,
       "reposts": 0
     },
@@ -936,7 +944,7 @@
         }
       },
       "likes": 17,
-      "views": 2610,
+      "views": 2616,
       "replies": 1,
       "reposts": 1
     },
@@ -1238,7 +1246,7 @@
         }
       },
       "likes": 12,
-      "views": 1276,
+      "views": 1281,
       "replies": 1,
       "reposts": 2
     },
@@ -1420,7 +1428,7 @@
         }
       },
       "likes": 7,
-      "views": 915,
+      "views": 924,
       "replies": 2,
       "reposts": 1
     },
@@ -1482,7 +1490,7 @@
         }
       },
       "likes": 0,
-      "views": 115,
+      "views": 123,
       "replies": 0,
       "reposts": 0
     },
@@ -1523,13 +1531,18 @@
           "payload": null
         },
         "reply": {
-          "status": "not_started",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-13T14:04:55.730729+00:00",
+          "completed_at": "2026-11-13T14:04:56.910358+00:00",
           "error": null,
-          "external_id": null,
-          "payload": null
+          "external_id": "2121242916316430605",
+          "payload": {
+            "post_id": "2119150031315829193",
+            "reply_text": "El rendimiento se nota un poco más estable, pero lo de volver a farmear componentes para los BPs cambia totalmente el ritmo del early. A mí me gusta, le da más sentido a salir a reciclar.",
+            "mode": "live",
+            "stage": "completed"
+          }
         },
         "repost": {
           "status": "not_started",
@@ -1542,7 +1555,7 @@
         }
       },
       "likes": 4,
-      "views": 706,
+      "views": 711,
       "replies": 0,
       "reposts": 0
     },
@@ -1847,10 +1860,10 @@
           "payload": null
         }
       },
-      "likes": 515,
-      "views": 28571,
+      "likes": 621,
+      "views": 36384,
       "replies": 20,
-      "reposts": 35
+      "reposts": 43
     },
     "2120169659345358986": {
       "id": "2120169659345358986",
@@ -1910,8 +1923,8 @@
           "payload": null
         }
       },
-      "likes": 81,
-      "views": 13267,
+      "likes": 83,
+      "views": 14073,
       "replies": 3,
       "reposts": 7
     },
@@ -1974,7 +1987,7 @@
         }
       },
       "likes": 109,
-      "views": 13837,
+      "views": 14221,
       "replies": 15,
       "reposts": 4
     },
@@ -2037,7 +2050,7 @@
         }
       },
       "likes": 214,
-      "views": 22080,
+      "views": 22403,
       "replies": 10,
       "reposts": 16
     },
@@ -2103,10 +2116,10 @@
           }
         }
       },
-      "likes": 466,
-      "views": 47169,
-      "replies": 37,
-      "reposts": 22
+      "likes": 469,
+      "views": 47719,
+      "replies": 38,
+      "reposts": 23
     },
     "2118742687658434807": {
       "id": "2118742687658434807",
@@ -2167,7 +2180,7 @@
         }
       },
       "likes": 71,
-      "views": 14231,
+      "views": 14410,
       "replies": 6,
       "reposts": 7
     },
@@ -2233,7 +2246,7 @@
         }
       },
       "likes": 228,
-      "views": 30187,
+      "views": 30346,
       "replies": 22,
       "reposts": 27
     },
@@ -2295,7 +2308,7 @@
         }
       },
       "likes": 73,
-      "views": 14241,
+      "views": 14299,
       "replies": 3,
       "reposts": 3
     },
@@ -2360,7 +2373,7 @@
         }
       },
       "likes": 632,
-      "views": 68320,
+      "views": 68443,
       "replies": 51,
       "reposts": 64
     },
@@ -2426,6 +2439,327 @@
       "views": 16568,
       "replies": 2,
       "reposts": 3
+    },
+    "2120921072530767979": {
+      "id": "2120921072530767979",
+      "author_id": "779120759000137728",
+      "text": "RT @playrust: This month's update brought a massive amount of optimisations and performance improvements to Rust! ⚙️⏱️🏁\n\nRead all about the…",
+      "url": "https://x.com/RustSpain_com/status/2120921072530767979",
+      "created_at": "2026-11-12T16:46:03.000Z",
+      "expanded_urls": [],
+      "monitored_by": [
+        {
+          "account_id": "779120759000137728",
+          "account_type": "server"
+        }
+      ],
+      "first_seen_at": "2026-11-13T14:02:44.866492+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2120921072530767979",
+          "score": 90,
+          "category": "update",
+          "priority": "high",
+          "recommended_action": "repost",
+          "reason": "Retuitea información oficial sobre las optimizaciones masivas y mejoras de rendimiento de la actualización mensual de Rust."
+        },
+        "completed_at": "2026-11-13T14:03:32.946111+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "unknown",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-13T14:04:58.130157+00:00",
+          "completed_at": null,
+          "error": "Unknown error",
+          "external_id": null,
+          "payload": {
+            "post_id": "2120921072530767979",
+            "mode": "live",
+            "stage": "unknown"
+          }
+        }
+      },
+      "likes": 0,
+      "views": 12,
+      "replies": 0,
+      "reposts": 23
+    },
+    "2120916426760524182": {
+      "id": "2120916426760524182",
+      "author_id": "779120759000137728",
+      "text": "Rust convertido en StarWars de aquí a 2 meses...\nhttps://t.co/oWwltYU8qr",
+      "url": "https://x.com/RustSpain_com/status/2120916426760524182",
+      "created_at": "2026-11-12T16:27:35.000Z",
+      "expanded_urls": [
+        "https://www.youtube.com/watch?v=HFHzp_tH-mk"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "779120759000137728",
+          "account_type": "server"
+        }
+      ],
+      "first_seen_at": "2026-11-13T14:02:44.866502+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2120916426760524182",
+          "score": 75,
+          "category": "discussion",
+          "priority": "high",
+          "recommended_action": "reply",
+          "reason": "Comentario especulativo sobre el rumbo del juego que genera debate y permite aportar una opinión propia como creador de contenido."
+        },
+        "completed_at": "2026-11-13T14:03:32.952381+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "drafted",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": {
+            "post_id": "2120916426760524182",
+            "reason": "platform_link",
+            "score": 90,
+            "category": "youtube",
+            "evaluation_reason": "La publicación incluye un enlace válido a YouTube (youtube.com) relacionado con la temática de Rust.",
+            "generated_at": "2026-11-13T14:04:55.724752+00:00",
+            "stage": "drafted"
+          }
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 3,
+      "views": 252,
+      "replies": 0,
+      "reposts": 0
+    },
+    "2120896845391987027": {
+      "id": "2120896845391987027",
+      "author_id": "779120759000137728",
+      "text": "¡Ya wipeado nuestro Vanilla Main, Vanilla Solo Only y Modded x5! ¡Te esperamos!",
+      "url": "https://x.com/RustSpain_com/status/2120896845391987027",
+      "created_at": "2026-11-12T15:09:46.000Z",
+      "expanded_urls": [],
+      "monitored_by": [
+        {
+          "account_id": "779120759000137728",
+          "account_type": "server"
+        }
+      ],
+      "first_seen_at": "2026-11-13T14:02:44.866508+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2120896845391987027",
+          "score": 60,
+          "category": "community",
+          "priority": "medium",
+          "recommended_action": "ignore",
+          "reason": "Anuncio de servidor sobre el estado de los wipes, relevante a nivel de comunidad local pero bajo potencial de interacción general."
+        },
+        "completed_at": "2026-11-13T14:03:32.970236+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 0,
+      "views": 262,
+      "replies": 0,
+      "reposts": 0
+    },
+    "2120843950692970563": {
+      "id": "2120843950692970563",
+      "author_id": "779120759000137728",
+      "text": "Pequeño recordatorio para decirte que hoy tenemos Wipe en Vanilla Main, Vanilla Solo Only y X5 a las 16h.\n\nY a principios de mes estrenaremos nuestro primer Vanilla Mensual.",
+      "url": "https://x.com/RustSpain_com/status/2120843950692970563",
+      "created_at": "2026-11-12T11:39:35.000Z",
+      "expanded_urls": [],
+      "monitored_by": [
+        {
+          "account_id": "779120759000137728",
+          "account_type": "server"
+        }
+      ],
+      "first_seen_at": "2026-11-13T14:02:44.866513+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2120843950692970563",
+          "score": 65,
+          "category": "community",
+          "priority": "medium",
+          "recommended_action": "ignore",
+          "reason": "Aviso sobre wipes de servidores específicos. Útil para jugadores pero con poco margen para que un creador de contenido aporte valor o debate general."
+        },
+        "completed_at": "2026-11-13T14:03:32.986776+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 5,
+      "views": 367,
+      "replies": 0,
+      "reposts": 0
+    },
+    "2120894373671870797": {
+      "id": "2120894373671870797",
+      "author_id": "1542707718",
+      "text": "This month, we introduced the iconic new UZI 9mm Submachine Gun.\n🔫☢️🎯\n\nComplete with a folding stock. Offering two different ways to use the weapon.\n\nRead more about this month's additions on our DevBlog: https://t.co/h9bGJRqWUi https://t.co/oM8MiQ8SbH",
+      "url": "https://x.com/playrust/status/2120894373671870797",
+      "created_at": "2026-11-12T14:59:57.000Z",
+      "expanded_urls": [
+        "https://rust.facepunch.com/news/printed_and_polished",
+        "https://twitter.com/playrust/status/2120894373671870797"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "1542707718",
+          "account_type": "official"
+        }
+      ],
+      "first_seen_at": "2026-11-13T14:02:44.866536+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2120894373671870797",
+          "score": 95,
+          "category": "official_news",
+          "priority": "high",
+          "recommended_action": "repost",
+          "reason": "Es una noticia oficial directa de @playrust sobre la nueva UZI 9mm, un contenido crucial para la comunidad y para un creador especializado en Rust."
+        },
+        "completed_at": "2026-11-13T14:03:33.004808+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-13T14:04:56.913827+00:00",
+          "completed_at": "2026-11-13T14:04:58.022260+00:00",
+          "error": null,
+          "external_id": "2120894373671870797",
+          "payload": {
+            "post_id": "2120894373671870797",
+            "mode": "live",
+            "stage": "completed"
+          }
+        }
+      },
+      "likes": 125,
+      "views": 11595,
+      "replies": 9,
+      "reposts": 5
     }
   }
 }

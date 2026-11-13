@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-12T03:09:45.312083+00:00",
-  "total": 39,
+  "updated_at": "2026-11-13T14:04:55.721616+00:00",
+  "total": 44,
   "evaluations": {
     "2118402970886836645": {
       "post_id": "2118402970886836645",
@@ -274,6 +274,41 @@
       "score": 30,
       "category": "other",
       "reason": "Publicación vacía compuesta únicamente por un enlace sin texto descriptivo ni valor contextual."
+    },
+    "2120916426760524182": {
+      "post_id": "2120916426760524182",
+      "should_like": true,
+      "score": 90,
+      "category": "youtube",
+      "reason": "La publicación incluye un enlace válido a YouTube (youtube.com) relacionado con la temática de Rust."
+    },
+    "2120921072530767979": {
+      "post_id": "2120921072530767979",
+      "should_like": true,
+      "score": 85,
+      "category": "rust",
+      "reason": "La publicación comparte información oficial relevante sobre las últimas optimizaciones y mejoras de rendimiento en Rust."
+    },
+    "2120894373671870797": {
+      "post_id": "2120894373671870797",
+      "should_like": true,
+      "score": 85,
+      "category": "rust",
+      "reason": "Contenido oficial de gran valor para la comunidad sobre la introducción de la nueva UZI 9mm y actualizaciones del DevBlog."
+    },
+    "2120896845391987027": {
+      "post_id": "2120896845391987027",
+      "should_like": true,
+      "score": 78,
+      "category": "rust",
+      "reason": "Anuncio útil y directo sobre el reseteo de servidores (wipe) dirigido a la comunidad de jugadores."
+    },
+    "2120843950692970563": {
+      "post_id": "2120843950692970563",
+      "should_like": true,
+      "score": 78,
+      "category": "rust",
+      "reason": "Recordatorio oportuno sobre los horarios de wipe de los servidores para mantener informada a la comunidad."
     }
   }
 }

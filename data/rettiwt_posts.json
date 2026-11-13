@@ -11,7 +11,7 @@
     "replies": 76,
     "reposts": 123,
     "likes": 1237,
-    "views": 374629,
+    "views": 375624,
     "monitored_by": [
       {
         "account_id": "742290493292285952",
@@ -31,7 +31,7 @@
     "replies": 6,
     "reposts": 8,
     "likes": 119,
-    "views": 23677,
+    "views": 23698,
     "monitored_by": [
       {
         "account_id": "742290493292285952",
@@ -87,7 +87,7 @@
     "replies": 1,
     "reposts": 0,
     "likes": 52,
-    "views": 6014,
+    "views": 6017,
     "monitored_by": [
       {
         "account_id": "742290493292285952",
@@ -107,7 +107,7 @@
     "replies": 0,
     "reposts": 1,
     "likes": 20,
-    "views": 12178,
+    "views": 12179,
     "monitored_by": [
       {
         "account_id": "742290493292285952",
@@ -165,7 +165,7 @@
     "replies": 30,
     "reposts": 17,
     "likes": 287,
-    "views": 58054,
+    "views": 58063,
     "monitored_by": [
       {
         "account_id": "742290493292285952",
@@ -185,7 +185,7 @@
     "replies": 0,
     "reposts": 3,
     "likes": 0,
-    "views": 303,
+    "views": 307,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -203,7 +203,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 4,
-    "views": 1889,
+    "views": 1900,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -223,7 +223,7 @@
     "replies": 0,
     "reposts": 1,
     "likes": 6,
-    "views": 1520,
+    "views": 1530,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -241,7 +241,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 3,
-    "views": 1543,
+    "views": 1551,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -262,7 +262,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 1,
-    "views": 1235,
+    "views": 1244,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -283,7 +283,7 @@
     "replies": 1,
     "reposts": 1,
     "likes": 17,
-    "views": 2610,
+    "views": 2616,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -375,7 +375,81 @@
     "replies": 1,
     "reposts": 2,
     "likes": 12,
-    "views": 1276,
+    "views": 1281,
+    "monitored_by": [
+      {
+        "account_id": "779120759000137728",
+        "account_type": "server"
+      }
+    ]
+  },
+  {
+    "id": "2120921072530767979",
+    "author_id": "779120759000137728",
+    "text": "RT @playrust: This month's update brought a massive amount of optimisations and performance improvements to Rust! ⚙️⏱️🏁\n\nRead all about the…",
+    "url": "https://x.com/RustSpain_com/status/2120921072530767979",
+    "expanded_urls": [],
+    "created_at": "2026-11-12T16:46:03.000Z",
+    "replies": 0,
+    "reposts": 23,
+    "likes": 0,
+    "views": 12,
+    "monitored_by": [
+      {
+        "account_id": "779120759000137728",
+        "account_type": "server"
+      }
+    ]
+  },
+  {
+    "id": "2120916426760524182",
+    "author_id": "779120759000137728",
+    "text": "Rust convertido en StarWars de aquí a 2 meses...\nhttps://t.co/oWwltYU8qr",
+    "url": "https://x.com/RustSpain_com/status/2120916426760524182",
+    "expanded_urls": [
+      "https://www.youtube.com/watch?v=HFHzp_tH-mk"
+    ],
+    "created_at": "2026-11-12T16:27:35.000Z",
+    "replies": 0,
+    "reposts": 0,
+    "likes": 3,
+    "views": 252,
+    "monitored_by": [
+      {
+        "account_id": "779120759000137728",
+        "account_type": "server"
+      }
+    ]
+  },
+  {
+    "id": "2120896845391987027",
+    "author_id": "779120759000137728",
+    "text": "¡Ya wipeado nuestro Vanilla Main, Vanilla Solo Only y Modded x5! ¡Te esperamos!",
+    "url": "https://x.com/RustSpain_com/status/2120896845391987027",
+    "expanded_urls": [],
+    "created_at": "2026-11-12T15:09:46.000Z",
+    "replies": 0,
+    "reposts": 0,
+    "likes": 0,
+    "views": 262,
+    "monitored_by": [
+      {
+        "account_id": "779120759000137728",
+        "account_type": "server"
+      }
+    ]
+  },
+  {
+    "id": "2120843950692970563",
+    "author_id": "779120759000137728",
+    "text": "Pequeño recordatorio para decirte que hoy tenemos Wipe en Vanilla Main, Vanilla Solo Only y X5 a las 16h.\n\nY a principios de mes estrenaremos nuestro primer Vanilla Mensual.",
+    "url": "https://x.com/RustSpain_com/status/2120843950692970563",
+    "expanded_urls": [],
+    "created_at": "2026-11-12T11:39:35.000Z",
+    "replies": 0,
+    "reposts": 0,
+    "likes": 5,
+    "views": 367,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -431,7 +505,7 @@
     "replies": 2,
     "reposts": 1,
     "likes": 7,
-    "views": 915,
+    "views": 924,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -451,7 +525,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 0,
-    "views": 115,
+    "views": 123,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -469,7 +543,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 4,
-    "views": 706,
+    "views": 711,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -478,78 +552,23 @@
     ]
   },
   {
-    "id": "2118739869937668346",
-    "author_id": "779120759000137728",
-    "text": "Pues si que han caído baneos en las últimas 24h... GG @playrust 🦾 https://t.co/25fmC0fNAM",
-    "url": "https://x.com/RustSpain_com/status/2118739869937668346",
+    "id": "2120894373671870797",
+    "author_id": "1542707718",
+    "text": "This month, we introduced the iconic new UZI 9mm Submachine Gun.\n🔫☢️🎯\n\nComplete with a folding stock. Offering two different ways to use the weapon.\n\nRead more about this month's additions on our DevBlog: https://t.co/h9bGJRqWUi https://t.co/oM8MiQ8SbH",
+    "url": "https://x.com/playrust/status/2120894373671870797",
     "expanded_urls": [
-      "https://twitter.com/RustSpain_com/status/2118739869937668346"
+      "https://rust.facepunch.com/news/printed_and_polished",
+      "https://twitter.com/playrust/status/2120894373671870797"
     ],
-    "created_at": "2026-11-06T16:18:43.000Z",
-    "replies": 1,
-    "reposts": 0,
-    "likes": 8,
-    "views": 2181,
+    "created_at": "2026-11-12T14:59:57.000Z",
+    "replies": 9,
+    "reposts": 5,
+    "likes": 125,
+    "views": 11595,
     "monitored_by": [
       {
-        "account_id": "779120759000137728",
-        "account_type": "server"
-      }
-    ]
-  },
-  {
-    "id": "2118725860467339533",
-    "author_id": "779120759000137728",
-    "text": "También es válido para Rust.",
-    "url": "https://x.com/RustSpain_com/status/2118725860467339533",
-    "expanded_urls": [],
-    "created_at": "2026-11-06T15:23:03.000Z",
-    "replies": 0,
-    "reposts": 0,
-    "likes": 8,
-    "views": 680,
-    "monitored_by": [
-      {
-        "account_id": "779120759000137728",
-        "account_type": "server"
-      }
-    ]
-  },
-  {
-    "id": "2118440494820655500",
-    "author_id": "779120759000137728",
-    "text": "RT @playrust: The 'Printed and Polished' update is live! 🖨️☢️💅\n\nThis month's update brings you a Blueprint Rework, the new Uzi 9mm, and our…",
-    "url": "https://x.com/RustSpain_com/status/2118440494820655500",
-    "expanded_urls": [],
-    "created_at": "2026-11-05T20:29:07.000Z",
-    "replies": 0,
-    "reposts": 27,
-    "likes": 0,
-    "views": 11,
-    "monitored_by": [
-      {
-        "account_id": "779120759000137728",
-        "account_type": "server"
-      }
-    ]
-  },
-  {
-    "id": "2118436798816743831",
-    "author_id": "779120759000137728",
-    "text": "La mejor update de Rendimiento de @playrust\nEsto es sólo un ejemplo. https://t.co/xeCpWgK4Ce",
-    "url": "https://x.com/RustSpain_com/status/2118436798816743831",
-    "expanded_urls": [
-      "https://twitter.com/RustSpain_com/status/2118436798816743831"
-    ],
-    "created_at": "2026-11-05T20:14:26.000Z",
-    "replies": 0,
-    "reposts": 1,
-    "likes": 16,
-    "views": 1644,
-    "monitored_by": [
-      {
-        "account_id": "779120759000137728",
-        "account_type": "server"
+        "account_id": "1542707718",
+        "account_type": "official"
       }
     ]
   },
@@ -563,9 +582,9 @@
     ],
     "created_at": "2026-11-11T15:00:57.000Z",
     "replies": 20,
-    "reposts": 35,
-    "likes": 515,
-    "views": 28571,
+    "reposts": 43,
+    "likes": 621,
+    "views": 36384,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -585,8 +604,8 @@
     "created_at": "2026-11-10T15:00:12.000Z",
     "replies": 3,
     "reposts": 7,
-    "likes": 81,
-    "views": 13267,
+    "likes": 83,
+    "views": 14073,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -607,7 +626,7 @@
     "replies": 15,
     "reposts": 4,
     "likes": 109,
-    "views": 13837,
+    "views": 14221,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -628,7 +647,7 @@
     "replies": 10,
     "reposts": 16,
     "likes": 214,
-    "views": 22080,
+    "views": 22403,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -646,10 +665,10 @@
       "https://twitter.com/playrust/status/2119067731810992433"
     ],
     "created_at": "2026-11-07T14:01:32.000Z",
-    "replies": 37,
-    "reposts": 22,
-    "likes": 466,
-    "views": 47169,
+    "replies": 38,
+    "reposts": 23,
+    "likes": 469,
+    "views": 47719,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -670,7 +689,7 @@
     "replies": 6,
     "reposts": 7,
     "likes": 71,
-    "views": 14231,
+    "views": 14410,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -690,7 +709,7 @@
     "replies": 22,
     "reposts": 27,
     "likes": 228,
-    "views": 30187,
+    "views": 30346,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -710,7 +729,7 @@
     "replies": 3,
     "reposts": 3,
     "likes": 73,
-    "views": 14241,
+    "views": 14299,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -728,28 +747,7 @@
     "replies": 51,
     "reposts": 64,
     "likes": 632,
-    "views": 68320,
-    "monitored_by": [
-      {
-        "account_id": "1542707718",
-        "account_type": "official"
-      }
-    ]
-  },
-  {
-    "id": "2117270399532638389",
-    "author_id": "1542707718",
-    "text": "Last chance to grab the Rust X Discord Zombie Wumpus Plush! ☢️🧟‍♂️🧸\n\nAvailable exclusively on the Rust Shop on @discord!\n\nGet yours here: https://t.co/vjPFAQp59y https://t.co/aFhJ9HocLz",
-    "url": "https://x.com/playrust/status/2117270399532638389",
-    "expanded_urls": [
-      "https://rust.facepunch.com/news/halloween-2026",
-      "https://twitter.com/playrust/status/2117270399532638389"
-    ],
-    "created_at": "2026-11-02T14:59:34.000Z",
-    "replies": 2,
-    "reposts": 3,
-    "likes": 67,
-    "views": 16568,
+    "views": 68443,
     "monitored_by": [
       {
         "account_id": "1542707718",

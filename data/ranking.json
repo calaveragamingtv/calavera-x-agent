@@ -1,7 +1,7 @@
 {
   "account": "monitored_accounts",
-  "analyzed_at": "2026-11-12T10:10:57.781533+00:00",
-  "model": null,
+  "analyzed_at": "2026-11-13T14:03:33.022825+00:00",
+  "model": "gemini-3.5-flash-lite",
   "total": 39,
   "ranking": [
     {
@@ -11,6 +11,14 @@
       "priority": "high",
       "recommended_action": "repost",
       "reason": "Anuncio oficial del lanzamiento de la actualización 'Printed and Polished', clave para la comunidad de Rust por incluir el rework de blueprints, la Uzi y mejoras de rendimiento."
+    },
+    {
+      "post_id": "2120894373671870797",
+      "score": 95,
+      "category": "official_news",
+      "priority": "high",
+      "recommended_action": "repost",
+      "reason": "Es una noticia oficial directa de @playrust sobre la nueva UZI 9mm, un contenido crucial para la comunidad y para un creador especializado en Rust."
     },
     {
       "post_id": "2117633077820240298",
@@ -27,6 +35,14 @@
       "priority": "high",
       "recommended_action": "reply",
       "reason": "Presentación de la nueva arma Uzi con una mecánica única de culata. Excelente oportunidad para opinar sobre el meta de armas en Rust."
+    },
+    {
+      "post_id": "2120921072530767979",
+      "score": 90,
+      "category": "update",
+      "priority": "high",
+      "recommended_action": "repost",
+      "reason": "Retuitea información oficial sobre las optimizaciones masivas y mejoras de rendimiento de la actualización mensual de Rust."
     },
     {
       "post_id": "2119807143444361382",
@@ -61,20 +77,20 @@
       "reason": "Pregunta directa de RustSpain sobre las sensaciones de la nueva update y los blueprints. Alta oportunidad de interacción y de aportar experiencia propia."
     },
     {
-      "post_id": "2118436798816743831",
-      "score": 80,
-      "category": "community",
-      "priority": "high",
-      "recommended_action": "reply",
-      "reason": "RustSpain destacando las mejoras de rendimiento del parche actual. Excelente para debatir sobre la optimización del juego."
-    },
-    {
       "post_id": "2109216353228083538",
       "score": 78,
       "category": "community",
       "priority": "high",
       "recommended_action": "reply",
       "reason": "Anuncio de un nuevo sistema de clanes en la web hispana de Rust. Útil para la comunidad hispanohablante."
+    },
+    {
+      "post_id": "2120916426760524182",
+      "score": 75,
+      "category": "discussion",
+      "priority": "high",
+      "recommended_action": "reply",
+      "reason": "Comentario especulativo sobre el rumbo del juego que genera debate y permite aportar una opinión propia como creador de contenido."
     },
     {
       "post_id": "2119692976557617423",
@@ -117,6 +133,14 @@
       "reason": "Aviso simple de actualización de cliente por parte de Rustafied."
     },
     {
+      "post_id": "2120843950692970563",
+      "score": 65,
+      "category": "community",
+      "priority": "medium",
+      "recommended_action": "ignore",
+      "reason": "Aviso sobre wipes de servidores específicos. Útil para jugadores pero con poco margen para que un creador de contenido aporte valor o debate general."
+    },
+    {
       "post_id": "2118410685184950683",
       "score": 64,
       "category": "update",
@@ -131,6 +155,14 @@
       "priority": "medium",
       "recommended_action": "ignore",
       "reason": "Lanzamiento semanal de skins en la tienda de Steam. Contenido estándar de rutina."
+    },
+    {
+      "post_id": "2120896845391987027",
+      "score": 60,
+      "category": "community",
+      "priority": "medium",
+      "recommended_action": "ignore",
+      "reason": "Anuncio de servidor sobre el estado de los wipes, relevante a nivel de comunidad local pero bajo potencial de interacción general."
     },
     {
       "post_id": "2119460464748859401",
@@ -155,14 +187,6 @@
       "priority": "medium",
       "recommended_action": "ignore",
       "reason": "Recordatorio sobre compatibilidad con la rama principal."
-    },
-    {
-      "post_id": "2118739869937668346",
-      "score": 52,
-      "category": "community",
-      "priority": "medium",
-      "recommended_action": "ignore",
-      "reason": "Comentario sobre baneos recientes contra tramposos."
     },
     {
       "post_id": "2120169659345358986",
@@ -221,14 +245,6 @@
       "reason": "Retweet redundante sobre el Outpost de RustSpain."
     },
     {
-      "post_id": "2118440494820655500",
-      "score": 32,
-      "category": "other",
-      "priority": "low",
-      "recommended_action": "ignore",
-      "reason": "Retweet de RustSpain sobre el parche oficial en vivo."
-    },
-    {
       "post_id": "2102836402421387646",
       "score": 30,
       "category": "event",
@@ -243,14 +259,6 @@
       "priority": "low",
       "recommended_action": "ignore",
       "reason": "Retweet genérico sin contexto claro en el texto."
-    },
-    {
-      "post_id": "2117270399532638389",
-      "score": 25,
-      "category": "official_news",
-      "priority": "low",
-      "recommended_action": "ignore",
-      "reason": "Promoción de peluche oficial de Discord."
     },
     {
       "post_id": "2101073086129070228",
@@ -291,14 +299,6 @@
       "priority": "low",
       "recommended_action": "ignore",
       "reason": "Retweet de contenido exterior o ambiguo."
-    },
-    {
-      "post_id": "2118725860467339533",
-      "score": 10,
-      "category": "other",
-      "priority": "low",
-      "recommended_action": "ignore",
-      "reason": "Frase suelta sin contexto claro sobre Rust."
     },
     {
       "post_id": "2120532238576046362",
