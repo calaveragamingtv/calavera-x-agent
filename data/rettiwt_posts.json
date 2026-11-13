@@ -11,7 +11,7 @@
     "replies": 76,
     "reposts": 123,
     "likes": 1237,
-    "views": 375624,
+    "views": 375741,
     "monitored_by": [
       {
         "account_id": "742290493292285952",
@@ -31,7 +31,7 @@
     "replies": 6,
     "reposts": 8,
     "likes": 119,
-    "views": 23698,
+    "views": 23701,
     "monitored_by": [
       {
         "account_id": "742290493292285952",
@@ -413,7 +413,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 3,
-    "views": 252,
+    "views": 266,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -431,7 +431,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 0,
-    "views": 262,
+    "views": 265,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -448,8 +448,8 @@
     "created_at": "2026-11-12T11:39:35.000Z",
     "replies": 0,
     "reposts": 0,
-    "likes": 5,
-    "views": 367,
+    "likes": 6,
+    "views": 374,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -540,14 +540,35 @@
     "url": "https://x.com/RustSpain_com/status/2119150031315829193",
     "expanded_urls": [],
     "created_at": "2026-11-07T19:28:34.000Z",
-    "replies": 0,
+    "replies": 1,
     "reposts": 0,
     "likes": 4,
-    "views": 711,
+    "views": 714,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
         "account_type": "server"
+      }
+    ]
+  },
+  {
+    "id": "2121294566078742754",
+    "author_id": "1542707718",
+    "text": "This week's community skins are now live on the Steam Item Store!\n🔫☢️☠️\n\nAvailable for a limited time only.\n\nView the full collection here: https://t.co/7wvbuwM45L https://t.co/INun4tVDfk",
+    "url": "https://x.com/playrust/status/2121294566078742754",
+    "expanded_urls": [
+      "https://store.steampowered.com/itemstore/252490/",
+      "https://twitter.com/playrust/status/2121294566078742754"
+    ],
+    "created_at": "2026-11-13T17:30:10.000Z",
+    "replies": 3,
+    "reposts": 1,
+    "likes": 23,
+    "views": 3132,
+    "monitored_by": [
+      {
+        "account_id": "1542707718",
+        "account_type": "official"
       }
     ]
   },
@@ -562,9 +583,9 @@
     ],
     "created_at": "2026-11-12T14:59:57.000Z",
     "replies": 9,
-    "reposts": 5,
-    "likes": 125,
-    "views": 11595,
+    "reposts": 8,
+    "likes": 131,
+    "views": 12232,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -582,9 +603,9 @@
     ],
     "created_at": "2026-11-11T15:00:57.000Z",
     "replies": 20,
-    "reposts": 43,
-    "likes": 621,
-    "views": 36384,
+    "reposts": 44,
+    "likes": 624,
+    "views": 36711,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -605,7 +626,7 @@
     "replies": 3,
     "reposts": 7,
     "likes": 83,
-    "views": 14073,
+    "views": 14146,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -626,7 +647,7 @@
     "replies": 15,
     "reposts": 4,
     "likes": 109,
-    "views": 14221,
+    "views": 14273,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -647,7 +668,7 @@
     "replies": 10,
     "reposts": 16,
     "likes": 214,
-    "views": 22403,
+    "views": 22450,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -668,7 +689,7 @@
     "replies": 38,
     "reposts": 23,
     "likes": 469,
-    "views": 47719,
+    "views": 47790,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -689,7 +710,7 @@
     "replies": 6,
     "reposts": 7,
     "likes": 71,
-    "views": 14410,
+    "views": 14427,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -709,7 +730,7 @@
     "replies": 22,
     "reposts": 27,
     "likes": 228,
-    "views": 30346,
+    "views": 30372,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -729,25 +750,7 @@
     "replies": 3,
     "reposts": 3,
     "likes": 73,
-    "views": 14299,
-    "monitored_by": [
-      {
-        "account_id": "1542707718",
-        "account_type": "official"
-      }
-    ]
-  },
-  {
-    "id": "2117633077820240298",
-    "author_id": "1542707718",
-    "text": "Brace yourselves, the 'Printed and Polished' update becomes available to all players this Thursday at 19:00 GMT / 14:00 EST! 🖨️☢️💅\n\nThe patch features:\n-Blueprint Fragment System Rework\n-The new Uzi 9mm submachine gun.\n-Fresh updates to the recently added Livestock features\n-And an unprecedented amount of Performance and Optimisation changes",
-    "url": "https://x.com/playrust/status/2117633077820240298",
-    "expanded_urls": [],
-    "created_at": "2026-11-03T15:00:44.000Z",
-    "replies": 51,
-    "reposts": 64,
-    "likes": 632,
-    "views": 68443,
+    "views": 14304,
     "monitored_by": [
       {
         "account_id": "1542707718",

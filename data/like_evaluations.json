@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-13T14:04:55.721616+00:00",
-  "total": 44,
+  "updated_at": "2026-11-13T18:07:02.644965+00:00",
+  "total": 45,
   "evaluations": {
     "2118402970886836645": {
       "post_id": "2118402970886836645",
@@ -309,6 +309,13 @@
       "score": 78,
       "category": "rust",
       "reason": "Recordatorio oportuno sobre los horarios de wipe de los servidores para mantener informada a la comunidad."
+    },
+    "2121294566078742754": {
+      "post_id": "2121294566078742754",
+      "should_like": true,
+      "score": 85,
+      "category": "rust",
+      "reason": "La publicación oficial del juego anuncia las nuevas skins semanales de la comunidad, aportando información relevante y útil para los jugadores y la comunidad de Rust."
     }
   }
 }

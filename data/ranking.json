@@ -1,6 +1,6 @@
 {
   "account": "monitored_accounts",
-  "analyzed_at": "2026-11-13T14:03:33.022825+00:00",
+  "analyzed_at": "2026-11-13T18:07:01.803010+00:00",
   "model": "gemini-3.5-flash-lite",
   "total": 39,
   "ranking": [
@@ -19,14 +19,6 @@
       "priority": "high",
       "recommended_action": "repost",
       "reason": "Es una noticia oficial directa de @playrust sobre la nueva UZI 9mm, un contenido crucial para la comunidad y para un creador especializado en Rust."
-    },
-    {
-      "post_id": "2117633077820240298",
-      "score": 95,
-      "category": "update",
-      "priority": "high",
-      "recommended_action": "reply",
-      "reason": "Detalles oficiales previos al parche de noviembre con información muy esperada sobre el sistema de blueprints y optimización, ideal para generar expectativa respondiendo."
     },
     {
       "post_id": "2115490600191688909",
@@ -67,6 +59,14 @@
       "priority": "high",
       "recommended_action": "ignore",
       "reason": "Enlace directo al Devblog de Rustafied. Información crucial pero poco propicia para un debate directo en este tweet específico."
+    },
+    {
+      "post_id": "2121294566078742754",
+      "score": 85,
+      "category": "official_news",
+      "priority": "high",
+      "recommended_action": "repost",
+      "reason": "Es una publicación oficial de Facepunch sobre las nuevas skins semanales de Rust, contenido de interés directo para la comunidad y seguidores de CalaveraGaming."
     },
     {
       "post_id": "2119150031315829193",

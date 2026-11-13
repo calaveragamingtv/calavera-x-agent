@@ -59,7 +59,7 @@
         }
       },
       "likes": 1237,
-      "views": 375624,
+      "views": 375741,
       "replies": 76,
       "reposts": 123
     },
@@ -93,20 +93,16 @@
       },
       "actions": {
         "like": {
-          "status": "drafted",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-13T18:07:03.690594+00:00",
+          "completed_at": "2026-11-13T18:07:04.997076+00:00",
           "error": null,
-          "external_id": null,
+          "external_id": "2115490600191688909",
           "payload": {
             "post_id": "2115490600191688909",
-            "reason": "interesting_post",
-            "score": 88,
-            "category": "rust",
-            "evaluation_reason": "Anuncio relevante sobre una nueva arma (UZI) y características de jugabilidad en Rust.",
-            "generated_at": "2026-11-13T14:04:55.727880+00:00",
-            "stage": "drafted"
+            "mode": "live",
+            "stage": "completed"
           }
         },
         "reply": {
@@ -134,7 +130,7 @@
         }
       },
       "likes": 119,
-      "views": 23698,
+      "views": 23701,
       "replies": 6,
       "reposts": 8
     },
@@ -1555,8 +1551,8 @@
         }
       },
       "likes": 4,
-      "views": 711,
-      "replies": 0,
+      "views": 714,
+      "replies": 1,
       "reposts": 0
     },
     "2118739869937668346": {
@@ -1860,10 +1856,10 @@
           "payload": null
         }
       },
-      "likes": 621,
-      "views": 36384,
+      "likes": 624,
+      "views": 36711,
       "replies": 20,
-      "reposts": 43
+      "reposts": 44
     },
     "2120169659345358986": {
       "id": "2120169659345358986",
@@ -1924,7 +1920,7 @@
         }
       },
       "likes": 83,
-      "views": 14073,
+      "views": 14146,
       "replies": 3,
       "reposts": 7
     },
@@ -1987,7 +1983,7 @@
         }
       },
       "likes": 109,
-      "views": 14221,
+      "views": 14273,
       "replies": 15,
       "reposts": 4
     },
@@ -2050,7 +2046,7 @@
         }
       },
       "likes": 214,
-      "views": 22403,
+      "views": 22450,
       "replies": 10,
       "reposts": 16
     },
@@ -2117,7 +2113,7 @@
         }
       },
       "likes": 469,
-      "views": 47719,
+      "views": 47790,
       "replies": 38,
       "reposts": 23
     },
@@ -2180,7 +2176,7 @@
         }
       },
       "likes": 71,
-      "views": 14410,
+      "views": 14427,
       "replies": 6,
       "reposts": 7
     },
@@ -2246,7 +2242,7 @@
         }
       },
       "likes": 228,
-      "views": 30346,
+      "views": 30372,
       "replies": 22,
       "reposts": 27
     },
@@ -2308,7 +2304,7 @@
         }
       },
       "likes": 73,
-      "views": 14299,
+      "views": 14304,
       "replies": 3,
       "reposts": 3
     },
@@ -2534,20 +2530,16 @@
       },
       "actions": {
         "like": {
-          "status": "drafted",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-13T18:07:02.648695+00:00",
+          "completed_at": "2026-11-13T18:07:03.686689+00:00",
           "error": null,
-          "external_id": null,
+          "external_id": "2120916426760524182",
           "payload": {
             "post_id": "2120916426760524182",
-            "reason": "platform_link",
-            "score": 90,
-            "category": "youtube",
-            "evaluation_reason": "La publicación incluye un enlace válido a YouTube (youtube.com) relacionado con la temática de Rust.",
-            "generated_at": "2026-11-13T14:04:55.724752+00:00",
-            "stage": "drafted"
+            "mode": "live",
+            "stage": "completed"
           }
         },
         "reply": {
@@ -2570,7 +2562,7 @@
         }
       },
       "likes": 3,
-      "views": 252,
+      "views": 266,
       "replies": 0,
       "reposts": 0
     },
@@ -2630,7 +2622,7 @@
         }
       },
       "likes": 0,
-      "views": 262,
+      "views": 265,
       "replies": 0,
       "reposts": 0
     },
@@ -2689,8 +2681,8 @@
           "payload": null
         }
       },
-      "likes": 5,
-      "views": 367,
+      "likes": 6,
+      "views": 374,
       "replies": 0,
       "reposts": 0
     },
@@ -2756,10 +2748,77 @@
           }
         }
       },
-      "likes": 125,
-      "views": 11595,
+      "likes": 131,
+      "views": 12232,
       "replies": 9,
-      "reposts": 5
+      "reposts": 8
+    },
+    "2121294566078742754": {
+      "id": "2121294566078742754",
+      "author_id": "1542707718",
+      "text": "This week's community skins are now live on the Steam Item Store!\n🔫☢️☠️\n\nAvailable for a limited time only.\n\nView the full collection here: https://t.co/7wvbuwM45L https://t.co/INun4tVDfk",
+      "url": "https://x.com/playrust/status/2121294566078742754",
+      "created_at": "2026-11-13T17:30:10.000Z",
+      "expanded_urls": [
+        "https://store.steampowered.com/itemstore/252490/",
+        "https://twitter.com/playrust/status/2121294566078742754"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "1542707718",
+          "account_type": "official"
+        }
+      ],
+      "first_seen_at": "2026-11-13T18:07:00.909091+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2121294566078742754",
+          "score": 85,
+          "category": "official_news",
+          "priority": "high",
+          "recommended_action": "repost",
+          "reason": "Es una publicación oficial de Facepunch sobre las nuevas skins semanales de Rust, contenido de interés directo para la comunidad y seguidores de CalaveraGaming."
+        },
+        "completed_at": "2026-11-13T18:07:01.796924+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "drafted",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": {
+            "post_id": "2121294566078742754",
+            "generated_at": "2026-11-13T18:07:01.803738+00:00",
+            "stage": "drafted"
+          }
+        }
+      },
+      "likes": 23,
+      "views": 3132,
+      "replies": 3,
+      "reposts": 1
     }
   }
 }
