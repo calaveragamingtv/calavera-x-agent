@@ -13,20 +13,20 @@
   },
   "limits": {
     "like": {
-      "max_per_day": 2,
+      "max_per_day": 3,
       "max_per_author_per_day": 1,
       "min_score": 75
     },
     "reply": {
-      "max_per_day": 2,
+      "max_per_day": 3,
       "max_per_author_per_day": 1
     },
     "repost": {
-      "max_per_day": 2
+      "max_per_day": 3
     }
   },
   "scraping": {
-    "posts_per_account": 10
+    "posts_per_account": 5
   },
   "execution": {
     "enabled": true,
