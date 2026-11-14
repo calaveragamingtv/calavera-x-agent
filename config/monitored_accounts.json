@@ -24,6 +24,11 @@
       "username_encrypted": "dPQJyCbYbOTeaGtMsSFpCi1GQGKq7Cn5prFmKUDZSLkDiAg=",
       "type": "streamer",
       "enabled": true
+    },
+    {
+      "username_encrypted": "Knhwx84P5jV4VZBBSCGUeqqfizdi5g7YC/heyOQnrWqWYY3eqg==",
+      "type": "streamer",
+      "enabled": true
     }
   ]
 }
