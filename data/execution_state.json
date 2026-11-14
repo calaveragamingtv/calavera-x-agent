@@ -1,6 +1,6 @@
 {
   "date": "2026-11-14",
-  "calls": 2,
+  "calls": 3,
   "runs": [
     {
       "run_id": "43564266834",
@@ -33,6 +33,13 @@
       "status": "selected",
       "reason": "random_selection",
       "timestamp": "2026-11-14T07:01:19.908734-03:00"
+    },
+    {
+      "run_id": "43602655499",
+      "call": 3,
+      "status": "skipped",
+      "reason": "daily_execution_target_reached",
+      "timestamp": "2026-11-14T11:01:19.653565-03:00"
     }
   ]
 }
