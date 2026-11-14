@@ -1,6 +1,6 @@
 {
   "account": "monitored_accounts",
-  "updated_at": "2026-11-13T18:07:00.906340+00:00",
+  "updated_at": "2026-11-14T06:14:57.904088+00:00",
   "total": 39,
   "posts": [
     {
@@ -15,7 +15,7 @@
       "replies": 76,
       "reposts": 123,
       "likes": 1237,
-      "views": 375741,
+      "views": 376009,
       "monitored_by": [
         {
           "account_id": "742290493292285952",
@@ -34,8 +34,8 @@
       "created_at": "2026-10-28T17:07:17.000Z",
       "replies": 6,
       "reposts": 8,
-      "likes": 119,
-      "views": 23701,
+      "likes": 120,
+      "views": 23708,
       "monitored_by": [
         {
           "account_id": "742290493292285952",
@@ -169,7 +169,7 @@
       "replies": 30,
       "reposts": 17,
       "likes": 287,
-      "views": 58063,
+      "views": 58067,
       "monitored_by": [
         {
           "account_id": "742290493292285952",
@@ -207,7 +207,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 4,
-      "views": 1900,
+      "views": 1906,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -227,7 +227,7 @@
       "replies": 0,
       "reposts": 1,
       "likes": 6,
-      "views": 1530,
+      "views": 1535,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -245,7 +245,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 3,
-      "views": 1551,
+      "views": 1554,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -266,7 +266,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 1,
-      "views": 1244,
+      "views": 1248,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -287,7 +287,7 @@
       "replies": 1,
       "reposts": 1,
       "likes": 17,
-      "views": 2616,
+      "views": 2619,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -397,7 +397,7 @@
       "replies": 0,
       "reposts": 23,
       "likes": 0,
-      "views": 12,
+      "views": 14,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -416,8 +416,8 @@
       "created_at": "2026-11-12T16:27:35.000Z",
       "replies": 0,
       "reposts": 0,
-      "likes": 3,
-      "views": 266,
+      "likes": 4,
+      "views": 276,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -434,8 +434,8 @@
       "created_at": "2026-11-12T15:09:46.000Z",
       "replies": 0,
       "reposts": 0,
-      "likes": 0,
-      "views": 265,
+      "likes": 1,
+      "views": 276,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -453,7 +453,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 6,
-      "views": 374,
+      "views": 381,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -565,10 +565,10 @@
         "https://twitter.com/playrust/status/2121294566078742754"
       ],
       "created_at": "2026-11-13T17:30:10.000Z",
-      "replies": 3,
-      "reposts": 1,
-      "likes": 23,
-      "views": 3132,
+      "replies": 4,
+      "reposts": 4,
+      "likes": 70,
+      "views": 9197,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -586,10 +586,10 @@
         "https://twitter.com/playrust/status/2120894373671870797"
       ],
       "created_at": "2026-11-12T14:59:57.000Z",
-      "replies": 9,
-      "reposts": 8,
-      "likes": 131,
-      "views": 12232,
+      "replies": 10,
+      "reposts": 9,
+      "likes": 136,
+      "views": 12896,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -608,8 +608,8 @@
       "created_at": "2026-11-11T15:00:57.000Z",
       "replies": 20,
       "reposts": 44,
-      "likes": 624,
-      "views": 36711,
+      "likes": 625,
+      "views": 37003,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -630,7 +630,7 @@
       "replies": 3,
       "reposts": 7,
       "likes": 83,
-      "views": 14146,
+      "views": 14304,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -651,7 +651,7 @@
       "replies": 15,
       "reposts": 4,
       "likes": 109,
-      "views": 14273,
+      "views": 14362,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -672,7 +672,7 @@
       "replies": 10,
       "reposts": 16,
       "likes": 214,
-      "views": 22450,
+      "views": 22536,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -690,10 +690,10 @@
         "https://twitter.com/playrust/status/2119067731810992433"
       ],
       "created_at": "2026-11-07T14:01:32.000Z",
-      "replies": 38,
+      "replies": 37,
       "reposts": 23,
       "likes": 469,
-      "views": 47790,
+      "views": 47916,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -714,7 +714,7 @@
       "replies": 6,
       "reposts": 7,
       "likes": 71,
-      "views": 14427,
+      "views": 14461,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -734,7 +734,7 @@
       "replies": 22,
       "reposts": 27,
       "likes": 228,
-      "views": 30372,
+      "views": 30406,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -754,7 +754,7 @@
       "replies": 3,
       "reposts": 3,
       "likes": 73,
-      "views": 14304,
+      "views": 14317,
       "monitored_by": [
         {
           "account_id": "1542707718",
