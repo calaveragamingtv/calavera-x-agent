@@ -59,7 +59,7 @@
         }
       },
       "likes": 1237,
-      "views": 376009,
+      "views": 376057,
       "replies": 76,
       "reposts": 123
     },
@@ -130,7 +130,7 @@
         }
       },
       "likes": 120,
-      "views": 23708,
+      "views": 23711,
       "replies": 6,
       "reposts": 8
     },
@@ -569,10 +569,10 @@
           }
         }
       },
-      "likes": 287,
-      "views": 58067,
+      "likes": 288,
+      "views": 58068,
       "replies": 30,
-      "reposts": 17
+      "reposts": 18
     },
     "2119206284591591697": {
       "id": "2119206284591591697",
@@ -632,7 +632,7 @@
         }
       },
       "likes": 0,
-      "views": 307,
+      "views": 308,
       "replies": 0,
       "reposts": 3
     },
@@ -944,7 +944,7 @@
         }
       },
       "likes": 17,
-      "views": 2619,
+      "views": 2620,
       "replies": 1,
       "reposts": 1
     },
@@ -1252,7 +1252,7 @@
       },
       "likes": 12,
       "views": 1281,
-      "replies": 1,
+      "replies": 2,
       "reposts": 2
     },
     "2119865879487750243": {
@@ -1433,7 +1433,7 @@
         }
       },
       "likes": 7,
-      "views": 924,
+      "views": 925,
       "replies": 2,
       "reposts": 1
     },
@@ -1866,7 +1866,7 @@
         }
       },
       "likes": 625,
-      "views": 37003,
+      "views": 37064,
       "replies": 20,
       "reposts": 44
     },
@@ -1929,7 +1929,7 @@
         }
       },
       "likes": 83,
-      "views": 14304,
+      "views": 14339,
       "replies": 3,
       "reposts": 7
     },
@@ -1992,7 +1992,7 @@
         }
       },
       "likes": 109,
-      "views": 14362,
+      "views": 14389,
       "replies": 15,
       "reposts": 4
     },
@@ -2055,7 +2055,7 @@
         }
       },
       "likes": 214,
-      "views": 22536,
+      "views": 22554,
       "replies": 10,
       "reposts": 16
     },
@@ -2122,7 +2122,7 @@
         }
       },
       "likes": 469,
-      "views": 47916,
+      "views": 47960,
       "replies": 37,
       "reposts": 23
     },
@@ -2185,7 +2185,7 @@
         }
       },
       "likes": 71,
-      "views": 14461,
+      "views": 14468,
       "replies": 6,
       "reposts": 7
     },
@@ -2254,8 +2254,8 @@
           }
         }
       },
-      "likes": 228,
-      "views": 30406,
+      "likes": 229,
+      "views": 30418,
       "replies": 22,
       "reposts": 27
     },
@@ -2317,7 +2317,7 @@
         }
       },
       "likes": 73,
-      "views": 14317,
+      "views": 14323,
       "replies": 3,
       "reposts": 3
     },
@@ -2635,7 +2635,7 @@
         }
       },
       "likes": 1,
-      "views": 276,
+      "views": 278,
       "replies": 0,
       "reposts": 0
     },
@@ -2695,7 +2695,7 @@
         }
       },
       "likes": 6,
-      "views": 381,
+      "views": 382,
       "replies": 0,
       "reposts": 0
     },
@@ -2762,7 +2762,7 @@
         }
       },
       "likes": 136,
-      "views": 12896,
+      "views": 13038,
       "replies": 10,
       "reposts": 9
     },
@@ -2828,10 +2828,10 @@
           }
         }
       },
-      "likes": 70,
-      "views": 9197,
+      "likes": 76,
+      "views": 10032,
       "replies": 4,
-      "reposts": 4
+      "reposts": 6
     }
   }
 }
