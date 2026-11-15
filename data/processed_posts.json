@@ -31,13 +31,17 @@
       },
       "actions": {
         "like": {
-          "status": "not_started",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-15T06:14:46.810054+00:00",
+          "completed_at": "2026-11-15T06:14:47.895222+00:00",
           "error": null,
-          "external_id": null,
-          "payload": null
+          "external_id": "2102836402421387646",
+          "payload": {
+            "post_id": "2102836402421387646",
+            "mode": "live",
+            "stage": "completed"
+          }
         },
         "reply": {
           "status": "not_started",
@@ -58,8 +62,8 @@
           "payload": null
         }
       },
-      "likes": 1237,
-      "views": 376057,
+      "likes": 1236,
+      "views": 376286,
       "replies": 76,
       "reposts": 123
     },
@@ -130,8 +134,8 @@
         }
       },
       "likes": 120,
-      "views": 23711,
-      "replies": 6,
+      "views": 23716,
+      "replies": 5,
       "reposts": 8
     },
     "2107596052765299159": {
@@ -632,7 +636,7 @@
         }
       },
       "likes": 0,
-      "views": 308,
+      "views": 310,
       "replies": 0,
       "reposts": 3
     },
@@ -692,7 +696,7 @@
         }
       },
       "likes": 4,
-      "views": 1906,
+      "views": 1910,
       "replies": 0,
       "reposts": 0
     },
@@ -754,7 +758,7 @@
         }
       },
       "likes": 6,
-      "views": 1535,
+      "views": 1539,
       "replies": 0,
       "reposts": 1
     },
@@ -814,7 +818,7 @@
         }
       },
       "likes": 3,
-      "views": 1554,
+      "views": 1557,
       "replies": 0,
       "reposts": 0
     },
@@ -881,7 +885,7 @@
         }
       },
       "likes": 1,
-      "views": 1248,
+      "views": 1250,
       "replies": 0,
       "reposts": 0
     },
@@ -1251,7 +1255,7 @@
         }
       },
       "likes": 12,
-      "views": 1281,
+      "views": 1284,
       "replies": 2,
       "reposts": 2
     },
@@ -1865,8 +1869,8 @@
           "payload": null
         }
       },
-      "likes": 625,
-      "views": 37064,
+      "likes": 627,
+      "views": 37377,
       "replies": 20,
       "reposts": 44
     },
@@ -1929,7 +1933,7 @@
         }
       },
       "likes": 83,
-      "views": 14339,
+      "views": 14544,
       "replies": 3,
       "reposts": 7
     },
@@ -2509,7 +2513,7 @@
         }
       },
       "likes": 0,
-      "views": 14,
+      "views": 15,
       "replies": 0,
       "reposts": 23
     },
@@ -2556,13 +2560,18 @@
           }
         },
         "reply": {
-          "status": "not_started",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-15T06:14:41.289138+00:00",
+          "completed_at": "2026-11-15T06:14:42.096849+00:00",
           "error": null,
-          "external_id": null,
-          "payload": null
+          "external_id": "2121849350813032527",
+          "payload": {
+            "post_id": "2120916426760524182",
+            "reply_text": "Mal, entre los lanzamisiles y las luces ya parece una guerra galáctica. Faltan los sables láser nomás jajaja",
+            "mode": "live",
+            "stage": "completed"
+          }
         },
         "repost": {
           "status": "not_started",
@@ -2575,7 +2584,7 @@
         }
       },
       "likes": 4,
-      "views": 276,
+      "views": 287,
       "replies": 0,
       "reposts": 0
     },
@@ -2635,7 +2644,7 @@
         }
       },
       "likes": 1,
-      "views": 278,
+      "views": 281,
       "replies": 0,
       "reposts": 0
     },
@@ -2695,7 +2704,7 @@
         }
       },
       "likes": 6,
-      "views": 382,
+      "views": 389,
       "replies": 0,
       "reposts": 0
     },
@@ -2761,8 +2770,8 @@
           }
         }
       },
-      "likes": 136,
-      "views": 13038,
+      "likes": 138,
+      "views": 13572,
       "replies": 10,
       "reposts": 9
     },
@@ -2828,10 +2837,706 @@
           }
         }
       },
-      "likes": 76,
-      "views": 10032,
+      "likes": 87,
+      "views": 12576,
       "replies": 4,
-      "reposts": 6
+      "reposts": 8
+    },
+    "2121619198522622261": {
+      "id": "2121619198522622261",
+      "author_id": "1542707718",
+      "text": "Over $850k paid out! 💰☢️🐛\n\nSpot a bug? Find a vulnerability? Sniff out an exploit? Sign up for the Rust X HackerOne Program now!\n\nGet started here: https://t.co/KjmabieZmS https://t.co/WnhYOFlf36",
+      "url": "https://x.com/playrust/status/2121619198522622261",
+      "created_at": "2026-11-14T15:00:09.000Z",
+      "expanded_urls": [
+        "https://rust.facepunch.com/news/soft-refresh",
+        "https://twitter.com/playrust/status/2121619198522622261"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "1542707718",
+          "account_type": "official"
+        }
+      ],
+      "first_seen_at": "2026-11-15T06:13:19.949825+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2121619198522622261",
+          "score": 85,
+          "category": "official_news",
+          "priority": "high",
+          "recommended_action": "repost",
+          "reason": "Es un comunicado oficial de la cuenta de PlayRust sobre el programa de HackerOne y recompensas económicas, muy relevante para informar a la comunidad sobre seguridad y estado del juego."
+        },
+        "completed_at": "2026-11-15T06:14:09.829029+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-15T06:14:45.699862+00:00",
+          "completed_at": "2026-11-15T06:14:46.805244+00:00",
+          "error": null,
+          "external_id": "2121619198522622261",
+          "payload": {
+            "post_id": "2121619198522622261",
+            "mode": "live",
+            "stage": "completed"
+          }
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-15T06:14:43.129161+00:00",
+          "completed_at": "2026-11-15T06:14:43.804109+00:00",
+          "error": null,
+          "external_id": "2121619198522622261",
+          "payload": {
+            "post_id": "2121619198522622261",
+            "mode": "live",
+            "stage": "completed"
+          }
+        }
+      },
+      "likes": 65,
+      "views": 10508,
+      "replies": 1,
+      "reposts": 4
+    },
+    "2120727160608711000": {
+      "id": "2120727160608711000",
+      "author_id": "1262844103814983688",
+      "text": "67 BRO https://t.co/JtINmBEzXM",
+      "url": "https://x.com/deowasd/status/2120727160608711000",
+      "created_at": "2026-11-12T03:55:30.000Z",
+      "expanded_urls": [
+        "https://twitter.com/deowasd/status/2120727160608711000"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "1262844103814983688",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-15T06:13:19.949859+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2120727160608711000",
+          "score": 35,
+          "category": "gameplay",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "Publicación con un texto muy corto y poco contexto sobre Rust, dificulta aportar valor sin más información."
+        },
+        "completed_at": "2026-11-15T06:14:09.835152+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 16,
+      "views": 1052,
+      "replies": 1,
+      "reposts": 1
+    },
+    "2119590831476871268": {
+      "id": "2119590831476871268",
+      "author_id": "1262844103814983688",
+      "text": "4 Horitas de raid online y kitearon todos los defenders 💀 https://t.co/0BViy3Ik0I",
+      "url": "https://x.com/deowasd/status/2119590831476871268",
+      "created_at": "2026-11-09T00:40:08.000Z",
+      "expanded_urls": [
+        "https://twitter.com/deowasd/status/2119590831476871268"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "1262844103814983688",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-15T06:13:19.949867+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2119590831476871268",
+          "score": 55,
+          "category": "gameplay",
+          "priority": "medium",
+          "recommended_action": "reply",
+          "reason": "Comparte una situación típica de PvP y raids en Rust (cuando los defensores kittean), con la que CalaveraGaming puede identificarse y comentar."
+        },
+        "completed_at": "2026-11-15T06:14:09.839343+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 57,
+      "views": 4932,
+      "replies": 1,
+      "reposts": 0
+    },
+    "2119147506915565838": {
+      "id": "2119147506915565838",
+      "author_id": "1262844103814983688",
+      "text": "APARCAO @Sr_Naranjaa https://t.co/g4Umlxq8jq",
+      "url": "https://x.com/deowasd/status/2119147506915565838",
+      "created_at": "2026-11-07T19:18:32.000Z",
+      "expanded_urls": [
+        "https://twitter.com/deowasd/status/2119147506915565838"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "1262844103814983688",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-15T06:13:19.949873+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2119147506915565838",
+          "score": 30,
+          "category": "gameplay",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "Mención a otro usuario con contenido críptico o humor interno de gameplay, baja relevancia general."
+        },
+        "completed_at": "2026-11-15T06:14:09.843220+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 31,
+      "views": 1124,
+      "replies": 3,
+      "reposts": 0
+    },
+    "2118913849273524407": {
+      "id": "2118913849273524407",
+      "author_id": "1262844103814983688",
+      "text": "Vanila rust is dying? This update feels off, im so sad rn",
+      "url": "https://x.com/deowasd/status/2118913849273524407",
+      "created_at": "2026-11-07T03:50:03.000Z",
+      "expanded_urls": [],
+      "monitored_by": [
+        {
+          "account_id": "1262844103814983688",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-15T06:13:19.949878+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2118913849273524407",
+          "score": 65,
+          "category": "discussion",
+          "priority": "medium",
+          "recommended_action": "reply",
+          "reason": "Plantea un debate sobre el estado de Rust y las actualizaciones recientes, permitiendo al creador aportar su perspectiva y debatir con la comunidad."
+        },
+        "completed_at": "2026-11-15T06:14:09.846985+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-15T06:14:42.101441+00:00",
+          "completed_at": "2026-11-15T06:14:43.123948+00:00",
+          "error": null,
+          "external_id": "2121849355099594846",
+          "payload": {
+            "post_id": "2118913849273524407",
+            "reply_text": "Every update people say vanilla is dying, but then a force wipe drops and the servers are packed again. Might just need a break from the game",
+            "mode": "live",
+            "stage": "completed"
+          }
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 34,
+      "views": 8672,
+      "replies": 10,
+      "reposts": 3
+    },
+    "2117091918630780992": {
+      "id": "2117091918630780992",
+      "author_id": "1262844103814983688",
+      "text": "Me visito un amigo y mod del canal. Gracias por la sorpresa @Sinox2556 sos un tipazo https://t.co/4gEMm2CsQ3",
+      "url": "https://x.com/deowasd/status/2117091918630780992",
+      "created_at": "2026-11-02T03:10:21.000Z",
+      "expanded_urls": [
+        "https://twitter.com/deowasd/status/2117091918630780992"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "1262844103814983688",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-15T06:13:19.949941+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2117091918630780992",
+          "score": 25,
+          "category": "community",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "Agradecimiento personal a un moderador del canal, más enfocado en la relación personal que en el juego en sí."
+        },
+        "completed_at": "2026-11-15T06:14:09.850837+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 35,
+      "views": 1318,
+      "replies": 2,
+      "reposts": 0
+    },
+    "2121798654960812172": {
+      "id": "2121798654960812172",
+      "author_id": "3085086228",
+      "text": "RT @s3kox: ⚠️Se acerca la TWITCH RIVALS DE RUST 🏆 ⚠️\n\nEl equipo esta CASI cerrado pero… \n\npuede que haya alguna vacante aun , lo vuelvo a p…",
+      "url": "https://x.com/Karinios0/status/2121798654960812172",
+      "created_at": "2026-11-15T02:53:15.000Z",
+      "expanded_urls": [],
+      "monitored_by": [
+        {
+          "account_id": "3085086228",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-15T06:13:19.949948+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2121798654960812172",
+          "score": 80,
+          "category": "event",
+          "priority": "high",
+          "recommended_action": "repost",
+          "reason": "Anuncia la llegada de la Twitch Rivals de Rust, uno de los eventos más importantes de la comunidad hispanohablante y global, ideal para generar expectativa."
+        },
+        "completed_at": "2026-11-15T06:14:09.854654+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-15T06:14:43.808779+00:00",
+          "completed_at": "2026-11-15T06:14:44.475695+00:00",
+          "error": null,
+          "external_id": "2121798654960812172",
+          "payload": {
+            "post_id": "2121798654960812172",
+            "mode": "live",
+            "stage": "completed"
+          }
+        }
+      },
+      "likes": 0,
+      "views": 0,
+      "replies": 0,
+      "reposts": 4
+    },
+    "2120984198588575860": {
+      "id": "2120984198588575860",
+      "author_id": "3085086228",
+      "text": "https://t.co/HRijeIYvS3 SOLO PLAYER DESPUES DE MUCHO TIEMPO PASENSE A VERME SUFRIR",
+      "url": "https://x.com/Karinios0/status/2120984198588575860",
+      "created_at": "2026-11-12T20:56:53.000Z",
+      "expanded_urls": [
+        "https://kick.com/karinios0"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "3085086228",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-15T06:13:19.949954+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2120984198588575860",
+          "score": 50,
+          "category": "creator",
+          "priority": "medium",
+          "recommended_action": "ignore",
+          "reason": "Es un aviso de directo jugando como solo player. No aporta contenido analítico pero muestra actividad de creadores."
+        },
+        "completed_at": "2026-11-15T06:14:09.858541+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-15T06:14:44.480742+00:00",
+          "completed_at": "2026-11-15T06:14:45.695195+00:00",
+          "error": null,
+          "external_id": "2120984198588575860",
+          "payload": {
+            "post_id": "2120984198588575860",
+            "mode": "live",
+            "stage": "completed"
+          }
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 1,
+      "views": 64,
+      "replies": 0,
+      "reposts": 0
+    },
+    "2120981886621417960": {
+      "id": "2120981886621417960",
+      "author_id": "3085086228",
+      "text": "RT @0800PolyyyyS: yo y mi ñery @Karinios0 10 segundos despues de entrar a un voice",
+      "url": "https://x.com/Karinios0/status/2120981886621417960",
+      "created_at": "2026-11-12T20:47:42.000Z",
+      "expanded_urls": [],
+      "monitored_by": [
+        {
+          "account_id": "3085086228",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-15T06:13:19.949959+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2120981886621417960",
+          "score": 20,
+          "category": "community",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "Contenido humorístico interno entre creadores sin un foco claro en el juego."
+        },
+        "completed_at": "2026-11-15T06:14:09.862380+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 0,
+      "views": 0,
+      "replies": 0,
+      "reposts": 1
+    },
+    "2120593463968518585": {
+      "id": "2120593463968518585",
+      "author_id": "3085086228",
+      "text": "https://t.co/HRijeIZ3HB Snowball pipipiu pasense",
+      "url": "https://x.com/Karinios0/status/2120593463968518585",
+      "created_at": "2026-11-11T19:04:15.000Z",
+      "expanded_urls": [
+        "https://kick.com/karinios0"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "3085086228",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-15T06:13:19.949965+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2120593463968518585",
+          "score": 45,
+          "category": "creator",
+          "priority": "medium",
+          "recommended_action": "ignore",
+          "reason": "Promoción de directo enfocado en 'snowball'. Es relevante para la temática de Rust pero menor en cuanto a discusión profunda."
+        },
+        "completed_at": "2026-11-15T06:14:09.866265+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 0,
+      "views": 70,
+      "replies": 0,
+      "reposts": 0
+    },
+    "2120145341840261611": {
+      "id": "2120145341840261611",
+      "author_id": "3085086228",
+      "text": "RT @SafiroVT: RADIANT ONLY HUSH 37W - 15L (26 HORAS)\n\ncomo se hizo sufrir este por dios, chau peluca gracias por todo.\n\ngracias por el agua…",
+      "url": "https://x.com/Karinios0/status/2120145341840261611",
+      "created_at": "2026-11-10T13:23:34.000Z",
+      "expanded_urls": [],
+      "monitored_by": [
+        {
+          "account_id": "3085086228",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-15T06:13:19.949970+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2120145341840261611",
+          "score": 10,
+          "category": "other",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "Contenido centrado en estadísticas de otro videojuego o competitivo ajeno a Rust (Valorant/Hush)."
+        },
+        "completed_at": "2026-11-15T06:14:09.870222+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 0,
+      "views": 0,
+      "replies": 0,
+      "reposts": 22
     }
   }
 }

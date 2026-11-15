@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-13T18:07:02.644965+00:00",
-  "total": 45,
+  "updated_at": "2026-11-15T06:14:41.272830+00:00",
+  "total": 56,
   "evaluations": {
     "2118402970886836645": {
       "post_id": "2118402970886836645",
@@ -316,6 +316,83 @@
       "score": 85,
       "category": "rust",
       "reason": "La publicación oficial del juego anuncia las nuevas skins semanales de la comunidad, aportando información relevante y útil para los jugadores y la comunidad de Rust."
+    },
+    "2121619198522622261": {
+      "post_id": "2121619198522622261",
+      "should_like": true,
+      "score": 90,
+      "category": "rust",
+      "reason": "La publicación es un anuncio oficial de Facepunch sobre el programa de seguridad de Rust en HackerOne, aportando información muy relevante para la comunidad."
+    },
+    "2120984198588575860": {
+      "post_id": "2120984198588575860",
+      "should_like": true,
+      "score": 90,
+      "category": "kick",
+      "reason": "La publicación contiene un enlace válido a la plataforma Kick, cumpliendo con la prioridad de enlaces establecida."
+    },
+    "2120593463968518585": {
+      "post_id": "2120593463968518585",
+      "should_like": true,
+      "score": 90,
+      "category": "kick",
+      "reason": "La publicación contiene un enlace válido a la plataforma Kick, cumpliendo con la prioridad de enlaces establecida."
+    },
+    "2117091918630780992": {
+      "post_id": "2117091918630780992",
+      "should_like": true,
+      "score": 85,
+      "category": "community",
+      "reason": "Comparte un momento personal de agradecimiento hacia un miembro de su comunidad y moderador, fortaleciendo la relación con sus seguidores."
+    },
+    "2118913849273524407": {
+      "post_id": "2118913849273524407",
+      "should_like": true,
+      "score": 82,
+      "category": "rust",
+      "reason": "Plantea una opinión fundamentada y un debate constructivo sobre el estado actual de Rust y sus actualizaciones, generando conversación en la comunidad."
+    },
+    "2119590831476871268": {
+      "post_id": "2119590831476871268",
+      "should_like": true,
+      "score": 80,
+      "category": "rust",
+      "reason": "La publicación comparte una experiencia típica y entretenida de una raid de Rust, generando valor de entretenimiento genuino para la comunidad."
+    },
+    "2121798654960812172": {
+      "post_id": "2121798654960812172",
+      "should_like": true,
+      "score": 80,
+      "category": "rust",
+      "reason": "Anuncia novedades sobre la próxima Twitch Rivals de Rust, generando interés y oportunidad de conexión con creadores del evento."
+    },
+    "2119147506915565838": {
+      "post_id": "2119147506915565838",
+      "should_like": true,
+      "score": 78,
+      "category": "gaming",
+      "reason": "Muestra una situación divertida de juego dirigida a otro creador, facilitando una oportunidad natural de interacción."
+    },
+    "2120981886621417960": {
+      "post_id": "2120981886621417960",
+      "should_like": false,
+      "score": 60,
+      "category": "community",
+      "reason": "Es un repost de contenido humorístico de otro usuario con poca sustancia individual para justificar un Like directo."
+    },
+    "2120145341840261611": {
+      "post_id": "2120145341840261611",
+      "should_like": false,
+      "score": 55,
+      "category": "gaming",
+      "reason": "Es un repost promocional de los logros de otro creador sin aportar un valor directo o una oportunidad de interacción propia."
+    },
+    "2120727160608711000": {
+      "post_id": "2120727160608711000",
+      "should_like": false,
+      "score": 50,
+      "category": "gaming",
+      "reason": "El contenido es demasiado escueto y genérico, sin aportar suficiente contexto o valor genuino."
     }
   }
 }

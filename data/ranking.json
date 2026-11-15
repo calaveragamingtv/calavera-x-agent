@@ -1,17 +1,9 @@
 {
   "account": "monitored_accounts",
-  "analyzed_at": "2026-11-14T10:06:48.747086+00:00",
-  "model": null,
-  "total": 39,
+  "analyzed_at": "2026-11-15T06:14:09.874158+00:00",
+  "model": "gemini-3.5-flash-lite",
+  "total": 29,
   "ranking": [
-    {
-      "post_id": "2118410551541801096",
-      "score": 98,
-      "category": "official_news",
-      "priority": "high",
-      "recommended_action": "repost",
-      "reason": "Anuncio oficial del lanzamiento de la actualización 'Printed and Polished', clave para la comunidad de Rust por incluir el rework de blueprints, la Uzi y mejoras de rendimiento."
-    },
     {
       "post_id": "2120894373671870797",
       "score": 95,
@@ -37,28 +29,20 @@
       "reason": "Retuitea información oficial sobre las optimizaciones masivas y mejoras de rendimiento de la actualización mensual de Rust."
     },
     {
-      "post_id": "2119807143444361382",
-      "score": 90,
-      "category": "official_news",
-      "priority": "high",
-      "recommended_action": "ignore",
-      "reason": "Recordatorio oficial del DevBlog de noviembre. Muy relevante pero redundante si ya se interactuó con el post principal del parche."
-    },
-    {
-      "post_id": "2119067731810992433",
-      "score": 88,
-      "category": "official_news",
-      "priority": "high",
-      "recommended_action": "repost",
-      "reason": "Enfoque oficial en las optimizaciones de rendimiento de la última update, un tema sumamente sensible y discutido por la comunidad."
-    },
-    {
       "post_id": "2118412551943831955",
       "score": 85,
       "category": "official_news",
       "priority": "high",
       "recommended_action": "ignore",
       "reason": "Enlace directo al Devblog de Rustafied. Información crucial pero poco propicia para un debate directo en este tweet específico."
+    },
+    {
+      "post_id": "2121619198522622261",
+      "score": 85,
+      "category": "official_news",
+      "priority": "high",
+      "recommended_action": "repost",
+      "reason": "Es un comunicado oficial de la cuenta de PlayRust sobre el programa de HackerOne y recompensas económicas, muy relevante para informar a la comunidad sobre seguridad y estado del juego."
     },
     {
       "post_id": "2121294566078742754",
@@ -69,12 +53,12 @@
       "reason": "Es una publicación oficial de Facepunch sobre las nuevas skins semanales de Rust, contenido de interés directo para la comunidad y seguidores de CalaveraGaming."
     },
     {
-      "post_id": "2119150031315829193",
-      "score": 82,
-      "category": "discussion",
+      "post_id": "2121798654960812172",
+      "score": 80,
+      "category": "event",
       "priority": "high",
-      "recommended_action": "reply",
-      "reason": "Pregunta directa de RustSpain sobre las sensaciones de la nueva update y los blueprints. Alta oportunidad de interacción y de aportar experiencia propia."
+      "recommended_action": "repost",
+      "reason": "Anuncia la llegada de la Twitch Rivals de Rust, uno de los eventos más importantes de la comunidad hispanohablante y global, ideal para generar expectativa."
     },
     {
       "post_id": "2109216353228083538",
@@ -91,30 +75,6 @@
       "priority": "high",
       "recommended_action": "reply",
       "reason": "Comentario especulativo sobre el rumbo del juego que genera debate y permite aportar una opinión propia como creador de contenido."
-    },
-    {
-      "post_id": "2119692976557617423",
-      "score": 75,
-      "category": "community",
-      "priority": "high",
-      "recommended_action": "reply",
-      "reason": "Pregunta de RustSpain sobre el nuevo Outpost personalizado. Muy bueno para interactuar con la comunidad hispana."
-    },
-    {
-      "post_id": "2115837772183257460",
-      "score": 72,
-      "category": "update",
-      "priority": "high",
-      "recommended_action": "ignore",
-      "reason": "Wipe de la rama Staging para probar la Uzi y los blueprints. Información previa ya superada por el lanzamiento oficial."
-    },
-    {
-      "post_id": "2098518527690875041",
-      "score": 70,
-      "category": "official_news",
-      "priority": "high",
-      "recommended_action": "repost",
-      "reason": "Anuncio oficial de la incorporación de ganadería a Rust. Contenido importante aunque temporalmente anterior."
     },
     {
       "post_id": "2118402970886836645",
@@ -141,20 +101,20 @@
       "reason": "Aviso sobre wipes de servidores específicos. Útil para jugadores pero con poco margen para que un creador de contenido aporte valor o debate general."
     },
     {
+      "post_id": "2118913849273524407",
+      "score": 65,
+      "category": "discussion",
+      "priority": "medium",
+      "recommended_action": "reply",
+      "reason": "Plantea un debate sobre el estado de Rust y las actualizaciones recientes, permitiendo al creador aportar su perspectiva y debatir con la comunidad."
+    },
+    {
       "post_id": "2118410685184950683",
       "score": 64,
       "category": "update",
       "priority": "medium",
       "recommended_action": "ignore",
       "reason": "Aviso de actualización de servidores por Rustafied."
-    },
-    {
-      "post_id": "2118742687658434807",
-      "score": 62,
-      "category": "official_news",
-      "priority": "medium",
-      "recommended_action": "ignore",
-      "reason": "Lanzamiento semanal de skins en la tienda de Steam. Contenido estándar de rutina."
     },
     {
       "post_id": "2120896845391987027",
@@ -165,28 +125,12 @@
       "reason": "Anuncio de servidor sobre el estado de los wipes, relevante a nivel de comunidad local pero bajo potencial de interacción general."
     },
     {
-      "post_id": "2119460464748859401",
-      "score": 60,
-      "category": "official_news",
-      "priority": "medium",
-      "recommended_action": "ignore",
-      "reason": "Presentación de nuevo skin para el nivel de chapa. Relevancia menor centrada en cosméticos."
-    },
-    {
-      "post_id": "2115499447794700762",
-      "score": 58,
-      "category": "update",
-      "priority": "medium",
-      "recommended_action": "ignore",
-      "reason": "Aviso previo al wipe de Staging sobre blueprints."
-    },
-    {
-      "post_id": "2118010731270414680",
+      "post_id": "2119590831476871268",
       "score": 55,
-      "category": "update",
+      "category": "gameplay",
       "priority": "medium",
-      "recommended_action": "ignore",
-      "reason": "Recordatorio sobre compatibilidad con la rama principal."
+      "recommended_action": "reply",
+      "reason": "Comparte una situación típica de PvP y raids en Rust (cuando los defensores kittean), con la que CalaveraGaming puede identificarse y comentar."
     },
     {
       "post_id": "2120169659345358986",
@@ -197,28 +141,20 @@
       "reason": "Merchandising físico e impresión 3D de objetos de Rust."
     },
     {
-      "post_id": "2117751710269505604",
-      "score": 48,
-      "category": "update",
+      "post_id": "2120984198588575860",
+      "score": 50,
+      "category": "creator",
       "priority": "medium",
       "recommended_action": "ignore",
-      "reason": "Anuncio previo del parche impreso y pulido."
+      "reason": "Es un aviso de directo jugando como solo player. No aporta contenido analítico pero muestra actividad de creadores."
     },
     {
-      "post_id": "2117995233560400245",
+      "post_id": "2120593463968518585",
       "score": 45,
-      "category": "event",
+      "category": "creator",
       "priority": "medium",
       "recommended_action": "ignore",
-      "reason": "Cierre del evento de Halloween. Evento pasado."
-    },
-    {
-      "post_id": "2118374336767865220",
-      "score": 44,
-      "category": "update",
-      "priority": "medium",
-      "recommended_action": "ignore",
-      "reason": "Anuncio anticipado de la actualización de noviembre."
+      "reason": "Promoción de directo enfocado en 'snowball'. Es relevante para la temática de Rust pero menor en cuanto a discusión profunda."
     },
     {
       "post_id": "2107596052765299159",
@@ -229,20 +165,12 @@
       "reason": "Creación ingeniosa dentro del juego por parte de un creador."
     },
     {
-      "post_id": "2119865879487750243",
-      "score": 38,
-      "category": "other",
-      "priority": "low",
-      "recommended_action": "ignore",
-      "reason": "Retweet de un anuncio de actualización ya cubierto por fuentes oficiales."
-    },
-    {
-      "post_id": "2119865637485101206",
+      "post_id": "2120727160608711000",
       "score": 35,
-      "category": "other",
+      "category": "gameplay",
       "priority": "low",
       "recommended_action": "ignore",
-      "reason": "Retweet redundante sobre el Outpost de RustSpain."
+      "reason": "Publicación con un texto muy corto y poco contexto sobre Rust, dificulta aportar valor sin más información."
     },
     {
       "post_id": "2102836402421387646",
@@ -253,6 +181,14 @@
       "reason": "Anuncio del evento Rust Isles por Abe."
     },
     {
+      "post_id": "2119147506915565838",
+      "score": 30,
+      "category": "gameplay",
+      "priority": "low",
+      "recommended_action": "ignore",
+      "reason": "Mención a otro usuario con contenido críptico o humor interno de gameplay, baja relevancia general."
+    },
+    {
       "post_id": "2119206284591591697",
       "score": 28,
       "category": "other",
@@ -261,36 +197,20 @@
       "reason": "Retweet genérico sin contexto claro en el texto."
     },
     {
-      "post_id": "2101073086129070228",
-      "score": 22,
-      "category": "event",
+      "post_id": "2117091918630780992",
+      "score": 25,
+      "category": "community",
       "priority": "low",
       "recommended_action": "ignore",
-      "reason": "Twitch drops para el evento Rust Isles (fechas pasadas)."
+      "reason": "Agradecimiento personal a un moderador del canal, más enfocado en la relación personal que en el juego en sí."
     },
     {
-      "post_id": "2098818288541176102",
+      "post_id": "2120981886621417960",
       "score": 20,
-      "category": "event",
+      "category": "community",
       "priority": "low",
       "recommended_action": "ignore",
-      "reason": "Anuncio de fecha de Rust Isles (septiembre)."
-    },
-    {
-      "post_id": "2102841631237939264",
-      "score": 18,
-      "category": "creator",
-      "priority": "low",
-      "recommended_action": "ignore",
-      "reason": "Agradecimientos a colaboradores de un proyecto pasado."
-    },
-    {
-      "post_id": "2102836927523061895",
-      "score": 15,
-      "category": "creator",
-      "priority": "low",
-      "recommended_action": "ignore",
-      "reason": "Enlace a video en YouTube sin contexto adicional."
+      "reason": "Contenido humorístico interno entre creadores sin un foco claro en el juego."
     },
     {
       "post_id": "2106695712423788928",
@@ -301,20 +221,20 @@
       "reason": "Retweet de contenido exterior o ambiguo."
     },
     {
+      "post_id": "2120145341840261611",
+      "score": 10,
+      "category": "other",
+      "priority": "low",
+      "recommended_action": "ignore",
+      "reason": "Contenido centrado en estadísticas de otro videojuego o competitivo ajeno a Rust (Valorant/Hush)."
+    },
+    {
       "post_id": "2120532238576046362",
       "score": 8,
       "category": "other",
       "priority": "low",
       "recommended_action": "ignore",
       "reason": "Tweet minimalista con emojis sin información sustancial."
-    },
-    {
-      "post_id": "2119692982513537273",
-      "score": 5,
-      "category": "other",
-      "priority": "low",
-      "recommended_action": "ignore",
-      "reason": "Enlace aislado sin texto descriptivo."
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "account": "monitored_accounts",
-  "updated_at": "2026-11-14T10:06:48.739955+00:00",
-  "total": 39,
+  "updated_at": "2026-11-15T06:13:19.947591+00:00",
+  "total": 29,
   "posts": [
     {
       "id": "2102836402421387646",
@@ -14,8 +14,8 @@
       "created_at": "2026-09-23T19:04:01.000Z",
       "replies": 76,
       "reposts": 123,
-      "likes": 1237,
-      "views": 376057,
+      "likes": 1236,
+      "views": 376286,
       "monitored_by": [
         {
           "account_id": "742290493292285952",
@@ -32,10 +32,10 @@
         "https://twitter.com/RustoriaServers/status/2115490600191688909"
       ],
       "created_at": "2026-10-28T17:07:17.000Z",
-      "replies": 6,
+      "replies": 5,
       "reposts": 8,
       "likes": 120,
-      "views": 23711,
+      "views": 23716,
       "monitored_by": [
         {
           "account_id": "742290493292285952",
@@ -82,102 +82,6 @@
       ]
     },
     {
-      "id": "2102841631237939264",
-      "author_id": "742290493292285952",
-      "text": "This wouldn’t have been possible without the incredibly talented team behind it: @CollapsedOrange @ItsMrBlueIO @ctv_nz @Sven_YT @monsterarust @wheatleymf",
-      "url": "https://x.com/RustoriaServers/status/2102841631237939264",
-      "expanded_urls": [],
-      "created_at": "2026-09-23T19:24:48.000Z",
-      "replies": 1,
-      "reposts": 0,
-      "likes": 52,
-      "views": 6017,
-      "monitored_by": [
-        {
-          "account_id": "742290493292285952",
-          "account_type": "server"
-        }
-      ]
-    },
-    {
-      "id": "2102836927523061895",
-      "author_id": "742290493292285952",
-      "text": "For the full 4K experience on YT: https://t.co/lPjRNtJ3vx",
-      "url": "https://x.com/RustoriaServers/status/2102836927523061895",
-      "expanded_urls": [
-        "https://www.youtube.com/watch?v=4gvp8bwrexA&feature=youtu.be"
-      ],
-      "created_at": "2026-09-23T19:06:06.000Z",
-      "replies": 0,
-      "reposts": 1,
-      "likes": 20,
-      "views": 12179,
-      "monitored_by": [
-        {
-          "account_id": "742290493292285952",
-          "account_type": "server"
-        }
-      ]
-    },
-    {
-      "id": "2101073086129070228",
-      "author_id": "742290493292285952",
-      "text": "RT @BaboAbe: 🏴‍☠️Rust Isles | Twitch Drops🏴‍☠️\n\nWanted to try doing a full event-specific set this time around and I have to say... very ha…",
-      "url": "https://x.com/RustoriaServers/status/2101073086129070228",
-      "expanded_urls": [],
-      "created_at": "2026-09-18T22:17:14.000Z",
-      "replies": 0,
-      "reposts": 104,
-      "likes": 0,
-      "views": 2581,
-      "monitored_by": [
-        {
-          "account_id": "742290493292285952",
-          "account_type": "server"
-        }
-      ]
-    },
-    {
-      "id": "2098818288541176102",
-      "author_id": "742290493292285952",
-      "text": "RT @BaboAbe: Rust Isles 1 - September 24th 2026 https://t.co/eBIqspDLN7",
-      "url": "https://x.com/RustoriaServers/status/2098818288541176102",
-      "expanded_urls": [
-        "https://twitter.com/BaboAbe/status/2098809184078963005"
-      ],
-      "created_at": "2026-09-12T16:57:28.000Z",
-      "replies": 0,
-      "reposts": 158,
-      "likes": 0,
-      "views": 2608,
-      "monitored_by": [
-        {
-          "account_id": "742290493292285952",
-          "account_type": "server"
-        }
-      ]
-    },
-    {
-      "id": "2098518527690875041",
-      "author_id": "742290493292285952",
-      "text": "Rust livestock is here! 🐄🐑\n\n- Cows, Sheep, Bulls, calves &amp; lambs\n- Crossbreeding &amp; genetics\n- New milk item &amp; meat types\n- Sell &amp; buy livestock at Large Barn\n\nReady to play farmville in Rust?👇 https://t.co/5KFNuPr3T5",
-      "url": "https://x.com/RustoriaServers/status/2098518527690875041",
-      "expanded_urls": [
-        "https://twitter.com/RustoriaServers/status/2098518527690875041"
-      ],
-      "created_at": "2026-09-11T21:06:20.000Z",
-      "replies": 30,
-      "reposts": 18,
-      "likes": 288,
-      "views": 58068,
-      "monitored_by": [
-        {
-          "account_id": "742290493292285952",
-          "account_type": "server"
-        }
-      ]
-    },
-    {
       "id": "2119206284591591697",
       "author_id": "2508236846",
       "text": "RT @TheNotoriousRIN: Results are in and it's looking very good! https://t.co/2OTxHP9dAV",
@@ -189,7 +93,7 @@
       "replies": 0,
       "reposts": 3,
       "likes": 0,
-      "views": 308,
+      "views": 310,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -207,7 +111,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 4,
-      "views": 1906,
+      "views": 1910,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -227,7 +131,7 @@
       "replies": 0,
       "reposts": 1,
       "likes": 6,
-      "views": 1535,
+      "views": 1539,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -245,7 +149,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 3,
-      "views": 1554,
+      "views": 1557,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -266,100 +170,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 1,
-      "views": 1248,
-      "monitored_by": [
-        {
-          "account_id": "2508236846",
-          "account_type": "server"
-        }
-      ]
-    },
-    {
-      "id": "2118374336767865220",
-      "author_id": "2508236846",
-      "text": "November Update Incoming! https://t.co/sCe5tWEhoF https://t.co/lkfwRyA9Q7",
-      "url": "https://x.com/Rustafied/status/2118374336767865220",
-      "expanded_urls": [
-        "https://www.rustafied.com/updates/2026/11/5/november-update-incoming",
-        "https://twitter.com/Rustafied/status/2118374336767865220"
-      ],
-      "created_at": "2026-11-05T16:06:14.000Z",
-      "replies": 1,
-      "reposts": 1,
-      "likes": 17,
-      "views": 2620,
-      "monitored_by": [
-        {
-          "account_id": "2508236846",
-          "account_type": "server"
-        }
-      ]
-    },
-    {
-      "id": "2118010731270414680",
-      "author_id": "2508236846",
-      "text": "RT @TheNotoriousRIN: Reminder that you'll need to join with 'Rust' on Thursday. Rust Staging isn't compatible anymore. https://t.co/dAjjihr…",
-      "url": "https://x.com/Rustafied/status/2118010731270414680",
-      "expanded_urls": [],
-      "created_at": "2026-11-04T16:01:23.000Z",
-      "replies": 0,
-      "reposts": 14,
-      "likes": 0,
-      "views": 312,
-      "monitored_by": [
-        {
-          "account_id": "2508236846",
-          "account_type": "server"
-        }
-      ]
-    },
-    {
-      "id": "2117751710269505604",
-      "author_id": "2508236846",
-      "text": "RT @playrust: Brace yourselves, the 'Printed and Polished' update becomes available to all players this Thursday at 19:00 GMT / 14:00 EST!…",
-      "url": "https://x.com/Rustafied/status/2117751710269505604",
-      "expanded_urls": [],
-      "created_at": "2026-11-03T22:52:08.000Z",
-      "replies": 0,
-      "reposts": 64,
-      "likes": 0,
-      "views": 176,
-      "monitored_by": [
-        {
-          "account_id": "2508236846",
-          "account_type": "server"
-        }
-      ]
-    },
-    {
-      "id": "2115837772183257460",
-      "author_id": "2508236846",
-      "text": "RT @playrust: The Staging Branch has now been wiped. 🧹🧼🧽\n\nJump on to test the new Uzi, Blueprint Fragment progression changes, optimisation…",
-      "url": "https://x.com/Rustafied/status/2115837772183257460",
-      "expanded_urls": [],
-      "created_at": "2026-10-29T16:06:49.000Z",
-      "replies": 0,
-      "reposts": 11,
-      "likes": 0,
-      "views": 174,
-      "monitored_by": [
-        {
-          "account_id": "2508236846",
-          "account_type": "server"
-        }
-      ]
-    },
-    {
-      "id": "2115499447794700762",
-      "author_id": "2508236846",
-      "text": "RT @TheNotoriousRIN: In approximately 24 hours, Staging servers will be wiping where you can get early access to the Blueprint rework.\n\nWha…",
-      "url": "https://x.com/Rustafied/status/2115499447794700762",
-      "expanded_urls": [],
-      "created_at": "2026-10-28T17:42:27.000Z",
-      "replies": 0,
-      "reposts": 7,
-      "likes": 0,
-      "views": 315,
+      "views": 1250,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -379,7 +190,7 @@
       "replies": 2,
       "reposts": 2,
       "likes": 12,
-      "views": 1281,
+      "views": 1284,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -397,7 +208,7 @@
       "replies": 0,
       "reposts": 23,
       "likes": 0,
-      "views": 14,
+      "views": 15,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -417,7 +228,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 4,
-      "views": 276,
+      "views": 287,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -435,7 +246,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 1,
-      "views": 278,
+      "views": 281,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -453,7 +264,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 6,
-      "views": 382,
+      "views": 389,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -462,96 +273,23 @@
       ]
     },
     {
-      "id": "2119865879487750243",
-      "author_id": "779120759000137728",
-      "text": "RT @FcpnchStds: The Rust 'Printed and Polished' update is live! 🖨️☢️💅\n\nThis month's update brings you a Blueprint Rework, the new Uzi 9mm,…",
-      "url": "https://x.com/RustSpain_com/status/2119865879487750243",
-      "expanded_urls": [],
-      "created_at": "2026-11-09T18:53:05.000Z",
-      "replies": 0,
-      "reposts": 2,
-      "likes": 0,
-      "views": 18,
-      "monitored_by": [
-        {
-          "account_id": "779120759000137728",
-          "account_type": "server"
-        }
-      ]
-    },
-    {
-      "id": "2119865637485101206",
-      "author_id": "779120759000137728",
-      "text": "RT @RustSpain_com: Terminamos el nuevo Outpost de CobaltMaps, disponible próximamente en nuestro Server x5 y Vanilla Mensual (a partir del…",
-      "url": "https://x.com/RustSpain_com/status/2119865637485101206",
-      "expanded_urls": [],
-      "created_at": "2026-11-09T18:52:07.000Z",
-      "replies": 0,
-      "reposts": 1,
-      "likes": 0,
-      "views": 0,
-      "monitored_by": [
-        {
-          "account_id": "779120759000137728",
-          "account_type": "server"
-        }
-      ]
-    },
-    {
-      "id": "2119692976557617423",
-      "author_id": "779120759000137728",
-      "text": "Terminamos el nuevo Outpost de CobaltMaps, disponible próximamente en nuestro Server x5 y Vanilla Mensual (a partir del próximo forzado).\n\n¿Qué os parecen las tiendas? 🤔 https://t.co/kANOTbjRDR",
-      "url": "https://x.com/RustSpain_com/status/2119692976557617423",
+      "id": "2121619198522622261",
+      "author_id": "1542707718",
+      "text": "Over $850k paid out! 💰☢️🐛\n\nSpot a bug? Find a vulnerability? Sniff out an exploit? Sign up for the Rust X HackerOne Program now!\n\nGet started here: https://t.co/KjmabieZmS https://t.co/WnhYOFlf36",
+      "url": "https://x.com/playrust/status/2121619198522622261",
       "expanded_urls": [
-        "https://twitter.com/RustSpain_com/status/2119692976557617423"
+        "https://rust.facepunch.com/news/soft-refresh",
+        "https://twitter.com/playrust/status/2121619198522622261"
       ],
-      "created_at": "2026-11-09T07:26:02.000Z",
-      "replies": 2,
-      "reposts": 1,
-      "likes": 7,
-      "views": 925,
-      "monitored_by": [
-        {
-          "account_id": "779120759000137728",
-          "account_type": "server"
-        }
-      ]
-    },
-    {
-      "id": "2119692982513537273",
-      "author_id": "779120759000137728",
-      "text": "https://t.co/WIEepM9MFi",
-      "url": "https://x.com/RustSpain_com/status/2119692982513537273",
-      "expanded_urls": [
-        "https://twitter.com/RustSpain_com/status/2119692982513537273"
-      ],
-      "created_at": "2026-11-09T07:26:03.000Z",
-      "replies": 0,
-      "reposts": 0,
-      "likes": 0,
-      "views": 123,
-      "monitored_by": [
-        {
-          "account_id": "779120759000137728",
-          "account_type": "server"
-        }
-      ]
-    },
-    {
-      "id": "2119150031315829193",
-      "author_id": "779120759000137728",
-      "text": "¿Qué os está pareciendo la Update? ¿Mejor rendimiento? ¿Vuelve la necesidad de buscar los objetos para aprenderlos?",
-      "url": "https://x.com/RustSpain_com/status/2119150031315829193",
-      "expanded_urls": [],
-      "created_at": "2026-11-07T19:28:34.000Z",
+      "created_at": "2026-11-14T15:00:09.000Z",
       "replies": 1,
-      "reposts": 0,
-      "likes": 4,
-      "views": 714,
+      "reposts": 4,
+      "likes": 65,
+      "views": 10508,
       "monitored_by": [
         {
-          "account_id": "779120759000137728",
-          "account_type": "server"
+          "account_id": "1542707718",
+          "account_type": "official"
         }
       ]
     },
@@ -566,9 +304,9 @@
       ],
       "created_at": "2026-11-13T17:30:10.000Z",
       "replies": 4,
-      "reposts": 6,
-      "likes": 76,
-      "views": 10032,
+      "reposts": 8,
+      "likes": 87,
+      "views": 12576,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -588,8 +326,8 @@
       "created_at": "2026-11-12T14:59:57.000Z",
       "replies": 10,
       "reposts": 9,
-      "likes": 136,
-      "views": 13038,
+      "likes": 138,
+      "views": 13572,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -608,8 +346,8 @@
       "created_at": "2026-11-11T15:00:57.000Z",
       "replies": 20,
       "reposts": 44,
-      "likes": 625,
-      "views": 37064,
+      "likes": 627,
+      "views": 37377,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -630,7 +368,7 @@
       "replies": 3,
       "reposts": 7,
       "likes": 83,
-      "views": 14339,
+      "views": 14544,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -639,126 +377,194 @@
       ]
     },
     {
-      "id": "2119807143444361382",
-      "author_id": "1542707718",
-      "text": "In case you missed it, November's update brings a Blueprint Rework, the new Uzi 9mm, and our biggest performance-focused updates yet! Plus more bug fixes, refreshes, reworks, and lots of quality-of-life improvements. 🗺️☢️🔁\n\nRead more on our DevBlog: https://t.co/h9bGJRqWUi https://t.co/b3zNCSQB5F",
-      "url": "https://x.com/playrust/status/2119807143444361382",
+      "id": "2120727160608711000",
+      "author_id": "1262844103814983688",
+      "text": "67 BRO https://t.co/JtINmBEzXM",
+      "url": "https://x.com/deowasd/status/2120727160608711000",
       "expanded_urls": [
-        "https://rust.facepunch.com/news/printed_and_polished",
-        "https://twitter.com/playrust/status/2119807143444361382"
+        "https://twitter.com/deowasd/status/2120727160608711000"
       ],
-      "created_at": "2026-11-09T14:59:41.000Z",
-      "replies": 15,
-      "reposts": 4,
-      "likes": 109,
-      "views": 14389,
+      "created_at": "2026-11-12T03:55:30.000Z",
+      "replies": 1,
+      "reposts": 1,
+      "likes": 16,
+      "views": 1052,
       "monitored_by": [
         {
-          "account_id": "1542707718",
-          "account_type": "official"
+          "account_id": "1262844103814983688",
+          "account_type": "streamer"
         }
       ]
     },
     {
-      "id": "2119460464748859401",
-      "author_id": "1542707718",
-      "text": "Become king of the scrap heap with this latest skin for the Sheet Metal building tier. 👑☢️🏠\n\nConstructed from the wrecks of endless battles. Bolt on a door, weld the walls shut and take up the throne as the Scrap King.\n\nGet yours: https://t.co/aatQDl2fyu https://t.co/xvaJpPD51n",
-      "url": "https://x.com/playrust/status/2119460464748859401",
+      "id": "2119590831476871268",
+      "author_id": "1262844103814983688",
+      "text": "4 Horitas de raid online y kitearon todos los defenders 💀 https://t.co/0BViy3Ik0I",
+      "url": "https://x.com/deowasd/status/2119590831476871268",
       "expanded_urls": [
-        "https://rust.facepunch.com/store/building/scrapking",
-        "https://twitter.com/playrust/status/2119460464748859401"
+        "https://twitter.com/deowasd/status/2119590831476871268"
       ],
-      "created_at": "2026-11-08T16:02:07.000Z",
-      "replies": 10,
-      "reposts": 16,
-      "likes": 214,
-      "views": 22554,
+      "created_at": "2026-11-09T00:40:08.000Z",
+      "replies": 1,
+      "reposts": 0,
+      "likes": 57,
+      "views": 4932,
       "monitored_by": [
         {
-          "account_id": "1542707718",
-          "account_type": "official"
+          "account_id": "1262844103814983688",
+          "account_type": "streamer"
         }
       ]
     },
     {
-      "id": "2119067731810992433",
-      "author_id": "1542707718",
-      "text": "This month's update brought a massive amount of optimisations and performance improvements to Rust! ⚙️⏱️🏁\n\nRead all about them on Devblog:\nhttps://t.co/Ee2GDVBTaz https://t.co/Joxoe8ONrG",
-      "url": "https://x.com/playrust/status/2119067731810992433",
+      "id": "2119147506915565838",
+      "author_id": "1262844103814983688",
+      "text": "APARCAO @Sr_Naranjaa https://t.co/g4Umlxq8jq",
+      "url": "https://x.com/deowasd/status/2119147506915565838",
       "expanded_urls": [
-        "https://rust.facepunch.com/news/printed_and_polished",
-        "https://twitter.com/playrust/status/2119067731810992433"
+        "https://twitter.com/deowasd/status/2119147506915565838"
       ],
-      "created_at": "2026-11-07T14:01:32.000Z",
-      "replies": 37,
-      "reposts": 23,
-      "likes": 469,
-      "views": 47960,
-      "monitored_by": [
-        {
-          "account_id": "1542707718",
-          "account_type": "official"
-        }
-      ]
-    },
-    {
-      "id": "2118742687658434807",
-      "author_id": "1542707718",
-      "text": "This week's community skins have just dropped on the Steam Item Store! 🏡☢️🔫\n\nView the full collection here: https://t.co/7wvbuwM45L https://t.co/3iXH165a92",
-      "url": "https://x.com/playrust/status/2118742687658434807",
-      "expanded_urls": [
-        "https://store.steampowered.com/itemstore/252490/",
-        "https://twitter.com/playrust/status/2118742687658434807"
-      ],
-      "created_at": "2026-11-06T16:29:55.000Z",
-      "replies": 6,
-      "reposts": 7,
-      "likes": 71,
-      "views": 14468,
-      "monitored_by": [
-        {
-          "account_id": "1542707718",
-          "account_type": "official"
-        }
-      ]
-    },
-    {
-      "id": "2118410551541801096",
-      "author_id": "1542707718",
-      "text": "The 'Printed and Polished' update is live! 🖨️☢️💅\n\nThis month's update brings you a Blueprint Rework, the new Uzi 9mm, and our biggest performance-focused updates yet! Plus many more bug fixes, refreshes, reworks, and quality-of-life improvements.\n\nRead more on our DevBlog: https://t.co/MF9kei76SG",
-      "url": "https://x.com/playrust/status/2118410551541801096",
-      "expanded_urls": [
-        "https://rust.facepunch.com/news/printed_and_polished"
-      ],
-      "created_at": "2026-11-05T18:30:08.000Z",
-      "replies": 22,
-      "reposts": 27,
-      "likes": 229,
-      "views": 30418,
-      "monitored_by": [
-        {
-          "account_id": "1542707718",
-          "account_type": "official"
-        }
-      ]
-    },
-    {
-      "id": "2117995233560400245",
-      "author_id": "1542707718",
-      "text": "Just 24 hours remain in the Darkness Falls Halloween event. 🧟‍♂️☢️🎃\n\nLast chance to get your spooky treats before they're all gone! https://t.co/coIF49oD1I",
-      "url": "https://x.com/playrust/status/2117995233560400245",
-      "expanded_urls": [
-        "https://twitter.com/playrust/status/2117995233560400245"
-      ],
-      "created_at": "2026-11-04T14:59:48.000Z",
+      "created_at": "2026-11-07T19:18:32.000Z",
       "replies": 3,
-      "reposts": 3,
-      "likes": 73,
-      "views": 14323,
+      "reposts": 0,
+      "likes": 31,
+      "views": 1124,
       "monitored_by": [
         {
-          "account_id": "1542707718",
-          "account_type": "official"
+          "account_id": "1262844103814983688",
+          "account_type": "streamer"
+        }
+      ]
+    },
+    {
+      "id": "2118913849273524407",
+      "author_id": "1262844103814983688",
+      "text": "Vanila rust is dying? This update feels off, im so sad rn",
+      "url": "https://x.com/deowasd/status/2118913849273524407",
+      "expanded_urls": [],
+      "created_at": "2026-11-07T03:50:03.000Z",
+      "replies": 10,
+      "reposts": 3,
+      "likes": 34,
+      "views": 8672,
+      "monitored_by": [
+        {
+          "account_id": "1262844103814983688",
+          "account_type": "streamer"
+        }
+      ]
+    },
+    {
+      "id": "2117091918630780992",
+      "author_id": "1262844103814983688",
+      "text": "Me visito un amigo y mod del canal. Gracias por la sorpresa @Sinox2556 sos un tipazo https://t.co/4gEMm2CsQ3",
+      "url": "https://x.com/deowasd/status/2117091918630780992",
+      "expanded_urls": [
+        "https://twitter.com/deowasd/status/2117091918630780992"
+      ],
+      "created_at": "2026-11-02T03:10:21.000Z",
+      "replies": 2,
+      "reposts": 0,
+      "likes": 35,
+      "views": 1318,
+      "monitored_by": [
+        {
+          "account_id": "1262844103814983688",
+          "account_type": "streamer"
+        }
+      ]
+    },
+    {
+      "id": "2121798654960812172",
+      "author_id": "3085086228",
+      "text": "RT @s3kox: ⚠️Se acerca la TWITCH RIVALS DE RUST 🏆 ⚠️\n\nEl equipo esta CASI cerrado pero… \n\npuede que haya alguna vacante aun , lo vuelvo a p…",
+      "url": "https://x.com/Karinios0/status/2121798654960812172",
+      "expanded_urls": [],
+      "created_at": "2026-11-15T02:53:15.000Z",
+      "replies": 0,
+      "reposts": 4,
+      "likes": 0,
+      "views": 0,
+      "monitored_by": [
+        {
+          "account_id": "3085086228",
+          "account_type": "streamer"
+        }
+      ]
+    },
+    {
+      "id": "2120984198588575860",
+      "author_id": "3085086228",
+      "text": "https://t.co/HRijeIYvS3 SOLO PLAYER DESPUES DE MUCHO TIEMPO PASENSE A VERME SUFRIR",
+      "url": "https://x.com/Karinios0/status/2120984198588575860",
+      "expanded_urls": [
+        "https://kick.com/karinios0"
+      ],
+      "created_at": "2026-11-12T20:56:53.000Z",
+      "replies": 0,
+      "reposts": 0,
+      "likes": 1,
+      "views": 64,
+      "monitored_by": [
+        {
+          "account_id": "3085086228",
+          "account_type": "streamer"
+        }
+      ]
+    },
+    {
+      "id": "2120981886621417960",
+      "author_id": "3085086228",
+      "text": "RT @0800PolyyyyS: yo y mi ñery @Karinios0 10 segundos despues de entrar a un voice",
+      "url": "https://x.com/Karinios0/status/2120981886621417960",
+      "expanded_urls": [],
+      "created_at": "2026-11-12T20:47:42.000Z",
+      "replies": 0,
+      "reposts": 1,
+      "likes": 0,
+      "views": 0,
+      "monitored_by": [
+        {
+          "account_id": "3085086228",
+          "account_type": "streamer"
+        }
+      ]
+    },
+    {
+      "id": "2120593463968518585",
+      "author_id": "3085086228",
+      "text": "https://t.co/HRijeIZ3HB Snowball pipipiu pasense",
+      "url": "https://x.com/Karinios0/status/2120593463968518585",
+      "expanded_urls": [
+        "https://kick.com/karinios0"
+      ],
+      "created_at": "2026-11-11T19:04:15.000Z",
+      "replies": 0,
+      "reposts": 0,
+      "likes": 0,
+      "views": 70,
+      "monitored_by": [
+        {
+          "account_id": "3085086228",
+          "account_type": "streamer"
+        }
+      ]
+    },
+    {
+      "id": "2120145341840261611",
+      "author_id": "3085086228",
+      "text": "RT @SafiroVT: RADIANT ONLY HUSH 37W - 15L (26 HORAS)\n\ncomo se hizo sufrir este por dios, chau peluca gracias por todo.\n\ngracias por el agua…",
+      "url": "https://x.com/Karinios0/status/2120145341840261611",
+      "expanded_urls": [],
+      "created_at": "2026-11-10T13:23:34.000Z",
+      "replies": 0,
+      "reposts": 22,
+      "likes": 0,
+      "views": 0,
+      "monitored_by": [
+        {
+          "account_id": "3085086228",
+          "account_type": "streamer"
         }
       ]
     }
