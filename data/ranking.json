@@ -1,6 +1,6 @@
 {
   "account": "monitored_accounts",
-  "analyzed_at": "2026-11-16T10:16:20.917085+00:00",
+  "analyzed_at": "2026-11-16T14:13:43.871364+00:00",
   "model": "gemini-3.5-flash-lite",
   "total": 29,
   "ranking": [
@@ -101,14 +101,6 @@
       "reason": "Aviso sobre wipes de servidores específicos. Útil para jugadores pero con poco margen para que un creador de contenido aporte valor o debate general."
     },
     {
-      "post_id": "2118913849273524407",
-      "score": 65,
-      "category": "discussion",
-      "priority": "medium",
-      "recommended_action": "reply",
-      "reason": "Plantea un debate sobre el estado de Rust y las actualizaciones recientes, permitiendo al creador aportar su perspectiva y debatir con la comunidad."
-    },
-    {
       "post_id": "2118410685184950683",
       "score": 64,
       "category": "update",
@@ -203,6 +195,14 @@
       "priority": "low",
       "recommended_action": "ignore",
       "reason": "Contenido humorístico interno entre creadores sin un foco claro en el juego."
+    },
+    {
+      "post_id": "2122321197698265391",
+      "score": 15,
+      "category": "other",
+      "priority": "low",
+      "recommended_action": "ignore",
+      "reason": "La publicación no menciona el juego Rust ni aporta contenido relevante para la comunidad especializada, tratándose de una consulta genérica sobre una solicitud de amistad."
     },
     {
       "post_id": "2106695712423788928",

@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-16T10:16:23.107454+00:00",
-  "total": 57,
+  "updated_at": "2026-11-16T14:13:46.676150+00:00",
+  "total": 58,
   "evaluations": {
     "2118402970886836645": {
       "post_id": "2118402970886836645",
@@ -400,6 +400,13 @@
       "score": 70,
       "category": "streaming",
       "reason": "La publicación es de un streamer anunciando una maratón de juego, lo cual representa una buena oportunidad de relación, pero no alcanza el umbral de aprobación por carecer de un enlace directo a la plataforma de transmisión y no ofrecer aún contenido audiovisual o clip concreto para evaluar."
+    },
+    "2122321197698265391": {
+      "post_id": "2122321197698265391",
+      "should_like": false,
+      "score": 50,
+      "category": "other",
+      "reason": "La publicación es demasiado genérica e invita a una interacción superficial sin aportar contenido valioso, entretenimiento claro ni una oportunidad de relación significativa."
     }
   }
 }

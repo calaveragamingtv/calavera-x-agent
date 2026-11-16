@@ -1,6 +1,6 @@
 {
   "account": "monitored_accounts",
-  "updated_at": "2026-11-16T10:16:19.830097+00:00",
+  "updated_at": "2026-11-16T14:13:40.945261+00:00",
   "total": 29,
   "posts": [
     {
@@ -15,7 +15,7 @@
       "replies": 76,
       "reposts": 123,
       "likes": 1237,
-      "views": 376639,
+      "views": 376734,
       "monitored_by": [
         {
           "account_id": "742290493292285952",
@@ -35,7 +35,7 @@
       "replies": 5,
       "reposts": 8,
       "likes": 120,
-      "views": 23724,
+      "views": 23728,
       "monitored_by": [
         {
           "account_id": "742290493292285952",
@@ -111,7 +111,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 4,
-      "views": 1918,
+      "views": 1920,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -131,7 +131,7 @@
       "replies": 0,
       "reposts": 1,
       "likes": 6,
-      "views": 1549,
+      "views": 1551,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -149,7 +149,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 3,
-      "views": 1566,
+      "views": 1568,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -170,7 +170,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 1,
-      "views": 1255,
+      "views": 1256,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -284,8 +284,8 @@
       "created_at": "2026-11-14T15:00:09.000Z",
       "replies": 2,
       "reposts": 7,
-      "likes": 93,
-      "views": 15615,
+      "likes": 95,
+      "views": 15968,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -305,8 +305,8 @@
       "created_at": "2026-11-13T17:30:10.000Z",
       "replies": 4,
       "reposts": 8,
-      "likes": 93,
-      "views": 13675,
+      "likes": 94,
+      "views": 13745,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -327,7 +327,7 @@
       "replies": 11,
       "reposts": 9,
       "likes": 140,
-      "views": 13961,
+      "views": 13993,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -347,7 +347,7 @@
       "replies": 20,
       "reposts": 44,
       "likes": 632,
-      "views": 37762,
+      "views": 37799,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -368,11 +368,31 @@
       "replies": 3,
       "reposts": 7,
       "likes": 83,
-      "views": 14799,
+      "views": 14820,
       "monitored_by": [
         {
           "account_id": "1542707718",
           "account_type": "official"
+        }
+      ]
+    },
+    {
+      "id": "2122321197698265391",
+      "author_id": "1262844103814983688",
+      "text": "que dicen acepto la solicitud de amistad? https://t.co/JltLbRFd9b",
+      "url": "https://x.com/deowasd/status/2122321197698265391",
+      "expanded_urls": [
+        "https://twitter.com/deowasd/status/2122321197698265391"
+      ],
+      "created_at": "2026-11-16T13:29:39.000Z",
+      "replies": 1,
+      "reposts": 0,
+      "likes": 0,
+      "views": 128,
+      "monitored_by": [
+        {
+          "account_id": "1262844103814983688",
+          "account_type": "streamer"
         }
       ]
     },
@@ -384,9 +404,9 @@
       "expanded_urls": [],
       "created_at": "2026-11-16T02:06:17.000Z",
       "replies": 0,
-      "reposts": 0,
+      "reposts": 1,
       "likes": 8,
-      "views": 373,
+      "views": 477,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -406,7 +426,7 @@
       "replies": 1,
       "reposts": 1,
       "likes": 16,
-      "views": 1060,
+      "views": 1062,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -423,10 +443,10 @@
         "https://twitter.com/deowasd/status/2119590831476871268"
       ],
       "created_at": "2026-11-09T00:40:08.000Z",
-      "replies": 1,
+      "replies": 2,
       "reposts": 0,
       "likes": 57,
-      "views": 4938,
+      "views": 4941,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -455,24 +475,6 @@
       ]
     },
     {
-      "id": "2118913849273524407",
-      "author_id": "1262844103814983688",
-      "text": "Vanila rust is dying? This update feels off, im so sad rn",
-      "url": "https://x.com/deowasd/status/2118913849273524407",
-      "expanded_urls": [],
-      "created_at": "2026-11-07T03:50:03.000Z",
-      "replies": 11,
-      "reposts": 3,
-      "likes": 34,
-      "views": 8682,
-      "monitored_by": [
-        {
-          "account_id": "1262844103814983688",
-          "account_type": "streamer"
-        }
-      ]
-    },
-    {
       "id": "2121798654960812172",
       "author_id": "3085086228",
       "text": "RT @s3kox: ⚠️Se acerca la TWITCH RIVALS DE RUST 🏆 ⚠️\n\nEl equipo esta CASI cerrado pero… \n\npuede que haya alguna vacante aun , lo vuelvo a p…",
@@ -480,7 +482,7 @@
       "expanded_urls": [],
       "created_at": "2026-11-15T02:53:15.000Z",
       "replies": 0,
-      "reposts": 12,
+      "reposts": 13,
       "likes": 0,
       "views": 0,
       "monitored_by": [
@@ -539,8 +541,8 @@
       "created_at": "2026-11-11T19:04:15.000Z",
       "replies": 0,
       "reposts": 0,
-      "likes": 0,
-      "views": 71,
+      "likes": 1,
+      "views": 73,
       "monitored_by": [
         {
           "account_id": "3085086228",

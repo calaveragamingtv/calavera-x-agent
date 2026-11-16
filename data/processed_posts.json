@@ -63,7 +63,7 @@
         }
       },
       "likes": 1237,
-      "views": 376639,
+      "views": 376734,
       "replies": 76,
       "reposts": 123
     },
@@ -134,7 +134,7 @@
         }
       },
       "likes": 120,
-      "views": 23724,
+      "views": 23728,
       "replies": 5,
       "reposts": 8
     },
@@ -696,7 +696,7 @@
         }
       },
       "likes": 4,
-      "views": 1918,
+      "views": 1920,
       "replies": 0,
       "reposts": 0
     },
@@ -758,7 +758,7 @@
         }
       },
       "likes": 6,
-      "views": 1549,
+      "views": 1551,
       "replies": 0,
       "reposts": 1
     },
@@ -818,7 +818,7 @@
         }
       },
       "likes": 3,
-      "views": 1566,
+      "views": 1568,
       "replies": 0,
       "reposts": 0
     },
@@ -885,7 +885,7 @@
         }
       },
       "likes": 1,
-      "views": 1255,
+      "views": 1256,
       "replies": 0,
       "reposts": 0
     },
@@ -1870,7 +1870,7 @@
         }
       },
       "likes": 632,
-      "views": 37762,
+      "views": 37799,
       "replies": 20,
       "reposts": 44
     },
@@ -1933,7 +1933,7 @@
         }
       },
       "likes": 83,
-      "views": 14799,
+      "views": 14820,
       "replies": 3,
       "reposts": 7
     },
@@ -2775,7 +2775,7 @@
         }
       },
       "likes": 140,
-      "views": 13961,
+      "views": 13993,
       "replies": 11,
       "reposts": 9
     },
@@ -2845,8 +2845,8 @@
           }
         }
       },
-      "likes": 93,
-      "views": 13675,
+      "likes": 94,
+      "views": 13745,
       "replies": 4,
       "reposts": 8
     },
@@ -2916,8 +2916,8 @@
           }
         }
       },
-      "likes": 93,
-      "views": 15615,
+      "likes": 95,
+      "views": 15968,
       "replies": 2,
       "reposts": 7
     },
@@ -2979,7 +2979,7 @@
         }
       },
       "likes": 16,
-      "views": 1060,
+      "views": 1062,
       "replies": 1,
       "reposts": 1
     },
@@ -3046,8 +3046,8 @@
         }
       },
       "likes": 57,
-      "views": 4938,
-      "replies": 1,
+      "views": 4941,
+      "replies": 2,
       "reposts": 0
     },
     "2119147506915565838": {
@@ -3301,7 +3301,7 @@
       "likes": 0,
       "views": 0,
       "replies": 0,
-      "reposts": 12
+      "reposts": 13
     },
     "2120984198588575860": {
       "id": "2120984198588575860",
@@ -3490,8 +3490,8 @@
           "payload": null
         }
       },
-      "likes": 0,
-      "views": 71,
+      "likes": 1,
+      "views": 73,
       "replies": 0,
       "reposts": 0
     },
@@ -3611,8 +3611,70 @@
         }
       },
       "likes": 8,
-      "views": 373,
+      "views": 477,
       "replies": 0,
+      "reposts": 1
+    },
+    "2122321197698265391": {
+      "id": "2122321197698265391",
+      "author_id": "1262844103814983688",
+      "text": "que dicen acepto la solicitud de amistad? https://t.co/JltLbRFd9b",
+      "url": "https://x.com/deowasd/status/2122321197698265391",
+      "created_at": "2026-11-16T13:29:39.000Z",
+      "expanded_urls": [
+        "https://twitter.com/deowasd/status/2122321197698265391"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "1262844103814983688",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-16T14:13:41.088632+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2122321197698265391",
+          "score": 15,
+          "category": "other",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "La publicación no menciona el juego Rust ni aporta contenido relevante para la comunidad especializada, tratándose de una consulta genérica sobre una solicitud de amistad."
+        },
+        "completed_at": "2026-11-16T14:13:43.861657+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 0,
+      "views": 128,
+      "replies": 1,
       "reposts": 0
     }
   }
