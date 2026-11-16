@@ -62,8 +62,8 @@
           "payload": null
         }
       },
-      "likes": 1238,
-      "views": 376420,
+      "likes": 1237,
+      "views": 376639,
       "replies": 76,
       "reposts": 123
     },
@@ -134,7 +134,7 @@
         }
       },
       "likes": 120,
-      "views": 23721,
+      "views": 23724,
       "replies": 5,
       "reposts": 8
     },
@@ -696,7 +696,7 @@
         }
       },
       "likes": 4,
-      "views": 1913,
+      "views": 1918,
       "replies": 0,
       "reposts": 0
     },
@@ -758,7 +758,7 @@
         }
       },
       "likes": 6,
-      "views": 1542,
+      "views": 1549,
       "replies": 0,
       "reposts": 1
     },
@@ -818,7 +818,7 @@
         }
       },
       "likes": 3,
-      "views": 1560,
+      "views": 1566,
       "replies": 0,
       "reposts": 0
     },
@@ -885,7 +885,7 @@
         }
       },
       "likes": 1,
-      "views": 1250,
+      "views": 1255,
       "replies": 0,
       "reposts": 0
     },
@@ -1869,8 +1869,8 @@
           "payload": null
         }
       },
-      "likes": 628,
-      "views": 37545,
+      "likes": 632,
+      "views": 37762,
       "replies": 20,
       "reposts": 44
     },
@@ -1933,7 +1933,7 @@
         }
       },
       "likes": 83,
-      "views": 14659,
+      "views": 14799,
       "replies": 3,
       "reposts": 7
     },
@@ -2481,13 +2481,17 @@
       },
       "actions": {
         "like": {
-          "status": "not_started",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-16T10:16:25.165832+00:00",
+          "completed_at": "2026-11-16T10:16:26.358714+00:00",
           "error": null,
-          "external_id": null,
-          "payload": null
+          "external_id": "2120921072530767979",
+          "payload": {
+            "post_id": "2120921072530767979",
+            "mode": "live",
+            "stage": "completed"
+          }
         },
         "reply": {
           "status": "not_started",
@@ -2584,7 +2588,7 @@
         }
       },
       "likes": 4,
-      "views": 294,
+      "views": 296,
       "replies": 1,
       "reposts": 0
     },
@@ -2644,7 +2648,7 @@
         }
       },
       "likes": 1,
-      "views": 282,
+      "views": 283,
       "replies": 0,
       "reposts": 0
     },
@@ -2704,7 +2708,7 @@
         }
       },
       "likes": 6,
-      "views": 390,
+      "views": 391,
       "replies": 0,
       "reposts": 0
     },
@@ -2770,9 +2774,9 @@
           }
         }
       },
-      "likes": 138,
-      "views": 13739,
-      "replies": 10,
+      "likes": 140,
+      "views": 13961,
+      "replies": 11,
       "reposts": 9
     },
     "2121294566078742754": {
@@ -2806,13 +2810,17 @@
       },
       "actions": {
         "like": {
-          "status": "not_started",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-16T10:16:26.363505+00:00",
+          "completed_at": "2026-11-16T10:16:27.412033+00:00",
           "error": null,
-          "external_id": null,
-          "payload": null
+          "external_id": "2121294566078742754",
+          "payload": {
+            "post_id": "2121294566078742754",
+            "mode": "live",
+            "stage": "completed"
+          }
         },
         "reply": {
           "status": "not_started",
@@ -2837,8 +2845,8 @@
           }
         }
       },
-      "likes": 90,
-      "views": 13293,
+      "likes": 93,
+      "views": 13675,
       "replies": 4,
       "reposts": 8
     },
@@ -2908,8 +2916,8 @@
           }
         }
       },
-      "likes": 83,
-      "views": 13444,
+      "likes": 93,
+      "views": 15615,
       "replies": 2,
       "reposts": 7
     },
@@ -2971,7 +2979,7 @@
         }
       },
       "likes": 16,
-      "views": 1054,
+      "views": 1060,
       "replies": 1,
       "reposts": 1
     },
@@ -3014,13 +3022,18 @@
           "payload": null
         },
         "reply": {
-          "status": "not_started",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-16T10:16:23.123547+00:00",
+          "completed_at": "2026-11-16T10:16:23.846279+00:00",
           "error": null,
-          "external_id": null,
-          "payload": null
+          "external_id": "2122272563414065582",
+          "payload": {
+            "post_id": "2119590831476871268",
+            "reply_text": "Un clásico, gastas medio inventario de sulfuro y se van a dormir justo en el último piso jajaja",
+            "mode": "live",
+            "stage": "completed"
+          }
         },
         "repost": {
           "status": "not_started",
@@ -3033,7 +3046,7 @@
         }
       },
       "likes": 57,
-      "views": 4934,
+      "views": 4938,
       "replies": 1,
       "reposts": 0
     },
@@ -3095,7 +3108,7 @@
         }
       },
       "likes": 31,
-      "views": 1125,
+      "views": 1127,
       "replies": 3,
       "reposts": 0
     },
@@ -3160,7 +3173,7 @@
         }
       },
       "likes": 34,
-      "views": 8680,
+      "views": 8682,
       "replies": 11,
       "reposts": 3
     },
@@ -3288,7 +3301,7 @@
       "likes": 0,
       "views": 0,
       "replies": 0,
-      "reposts": 11
+      "reposts": 12
     },
     "2120984198588575860": {
       "id": "2120984198588575860",
@@ -3352,7 +3365,7 @@
         }
       },
       "likes": 2,
-      "views": 67,
+      "views": 68,
       "replies": 0,
       "reposts": 0
     },
@@ -3446,13 +3459,17 @@
       },
       "actions": {
         "like": {
-          "status": "not_started",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-16T10:16:23.851072+00:00",
+          "completed_at": "2026-11-16T10:16:25.161186+00:00",
           "error": null,
-          "external_id": null,
-          "payload": null
+          "external_id": "2120593463968518585",
+          "payload": {
+            "post_id": "2120593463968518585",
+            "mode": "live",
+            "stage": "completed"
+          }
         },
         "reply": {
           "status": "not_started",
@@ -3474,7 +3491,7 @@
         }
       },
       "likes": 0,
-      "views": 70,
+      "views": 71,
       "replies": 0,
       "reposts": 0
     },
@@ -3536,7 +3553,67 @@
       "likes": 0,
       "views": 0,
       "replies": 0,
-      "reposts": 22
+      "reposts": 23
+    },
+    "2122149223525232833": {
+      "id": "2122149223525232833",
+      "author_id": "1262844103814983688",
+      "text": "Amigos voy a stremear GTA VI 24/7 hasta pasarlo. Se viene",
+      "url": "https://x.com/deowasd/status/2122149223525232833",
+      "created_at": "2026-11-16T02:06:17.000Z",
+      "expanded_urls": [],
+      "monitored_by": [
+        {
+          "account_id": "1262844103814983688",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-16T10:16:19.832763+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2122149223525232833",
+          "score": 0,
+          "category": "other",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "La publicación trata sobre GTA VI y no tiene ninguna relación con Rust, juego en el que se especializa CalaveraGaming."
+        },
+        "completed_at": "2026-11-16T10:16:20.912060+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 8,
+      "views": 373,
+      "replies": 0,
+      "reposts": 0
     }
   }
 }

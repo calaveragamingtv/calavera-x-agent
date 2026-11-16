@@ -1,7 +1,7 @@
 {
   "account": "monitored_accounts",
-  "analyzed_at": "2026-11-15T18:05:12.725968+00:00",
-  "model": null,
+  "analyzed_at": "2026-11-16T10:16:20.917085+00:00",
+  "model": "gemini-3.5-flash-lite",
   "total": 29,
   "ranking": [
     {
@@ -197,14 +197,6 @@
       "reason": "Retweet genérico sin contexto claro en el texto."
     },
     {
-      "post_id": "2117091918630780992",
-      "score": 25,
-      "category": "community",
-      "priority": "low",
-      "recommended_action": "ignore",
-      "reason": "Agradecimiento personal a un moderador del canal, más enfocado en la relación personal que en el juego en sí."
-    },
-    {
       "post_id": "2120981886621417960",
       "score": 20,
       "category": "community",
@@ -235,6 +227,14 @@
       "priority": "low",
       "recommended_action": "ignore",
       "reason": "Tweet minimalista con emojis sin información sustancial."
+    },
+    {
+      "post_id": "2122149223525232833",
+      "score": 0,
+      "category": "other",
+      "priority": "low",
+      "recommended_action": "ignore",
+      "reason": "La publicación trata sobre GTA VI y no tiene ninguna relación con Rust, juego en el que se especializa CalaveraGaming."
     }
   ]
 }

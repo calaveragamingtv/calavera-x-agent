@@ -1,6 +1,6 @@
 {
   "account": "monitored_accounts",
-  "updated_at": "2026-11-15T18:05:12.718775+00:00",
+  "updated_at": "2026-11-16T10:16:19.830097+00:00",
   "total": 29,
   "posts": [
     {
@@ -14,8 +14,8 @@
       "created_at": "2026-09-23T19:04:01.000Z",
       "replies": 76,
       "reposts": 123,
-      "likes": 1238,
-      "views": 376420,
+      "likes": 1237,
+      "views": 376639,
       "monitored_by": [
         {
           "account_id": "742290493292285952",
@@ -35,7 +35,7 @@
       "replies": 5,
       "reposts": 8,
       "likes": 120,
-      "views": 23721,
+      "views": 23724,
       "monitored_by": [
         {
           "account_id": "742290493292285952",
@@ -111,7 +111,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 4,
-      "views": 1913,
+      "views": 1918,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -131,7 +131,7 @@
       "replies": 0,
       "reposts": 1,
       "likes": 6,
-      "views": 1542,
+      "views": 1549,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -149,7 +149,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 3,
-      "views": 1560,
+      "views": 1566,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -170,7 +170,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 1,
-      "views": 1250,
+      "views": 1255,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -228,7 +228,7 @@
       "replies": 1,
       "reposts": 0,
       "likes": 4,
-      "views": 294,
+      "views": 296,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -246,7 +246,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 1,
-      "views": 282,
+      "views": 283,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -264,7 +264,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 6,
-      "views": 390,
+      "views": 391,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -284,8 +284,8 @@
       "created_at": "2026-11-14T15:00:09.000Z",
       "replies": 2,
       "reposts": 7,
-      "likes": 83,
-      "views": 13444,
+      "likes": 93,
+      "views": 15615,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -305,8 +305,8 @@
       "created_at": "2026-11-13T17:30:10.000Z",
       "replies": 4,
       "reposts": 8,
-      "likes": 90,
-      "views": 13293,
+      "likes": 93,
+      "views": 13675,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -324,10 +324,10 @@
         "https://twitter.com/playrust/status/2120894373671870797"
       ],
       "created_at": "2026-11-12T14:59:57.000Z",
-      "replies": 10,
+      "replies": 11,
       "reposts": 9,
-      "likes": 138,
-      "views": 13739,
+      "likes": 140,
+      "views": 13961,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -346,8 +346,8 @@
       "created_at": "2026-11-11T15:00:57.000Z",
       "replies": 20,
       "reposts": 44,
-      "likes": 628,
-      "views": 37545,
+      "likes": 632,
+      "views": 37762,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -368,11 +368,29 @@
       "replies": 3,
       "reposts": 7,
       "likes": 83,
-      "views": 14659,
+      "views": 14799,
       "monitored_by": [
         {
           "account_id": "1542707718",
           "account_type": "official"
+        }
+      ]
+    },
+    {
+      "id": "2122149223525232833",
+      "author_id": "1262844103814983688",
+      "text": "Amigos voy a stremear GTA VI 24/7 hasta pasarlo. Se viene",
+      "url": "https://x.com/deowasd/status/2122149223525232833",
+      "expanded_urls": [],
+      "created_at": "2026-11-16T02:06:17.000Z",
+      "replies": 0,
+      "reposts": 0,
+      "likes": 8,
+      "views": 373,
+      "monitored_by": [
+        {
+          "account_id": "1262844103814983688",
+          "account_type": "streamer"
         }
       ]
     },
@@ -388,7 +406,7 @@
       "replies": 1,
       "reposts": 1,
       "likes": 16,
-      "views": 1054,
+      "views": 1060,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -408,7 +426,7 @@
       "replies": 1,
       "reposts": 0,
       "likes": 57,
-      "views": 4934,
+      "views": 4938,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -428,7 +446,7 @@
       "replies": 3,
       "reposts": 0,
       "likes": 31,
-      "views": 1125,
+      "views": 1127,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -446,27 +464,7 @@
       "replies": 11,
       "reposts": 3,
       "likes": 34,
-      "views": 8680,
-      "monitored_by": [
-        {
-          "account_id": "1262844103814983688",
-          "account_type": "streamer"
-        }
-      ]
-    },
-    {
-      "id": "2117091918630780992",
-      "author_id": "1262844103814983688",
-      "text": "Me visito un amigo y mod del canal. Gracias por la sorpresa @Sinox2556 sos un tipazo https://t.co/4gEMm2CsQ3",
-      "url": "https://x.com/deowasd/status/2117091918630780992",
-      "expanded_urls": [
-        "https://twitter.com/deowasd/status/2117091918630780992"
-      ],
-      "created_at": "2026-11-02T03:10:21.000Z",
-      "replies": 2,
-      "reposts": 0,
-      "likes": 35,
-      "views": 1318,
+      "views": 8682,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -482,7 +480,7 @@
       "expanded_urls": [],
       "created_at": "2026-11-15T02:53:15.000Z",
       "replies": 0,
-      "reposts": 11,
+      "reposts": 12,
       "likes": 0,
       "views": 0,
       "monitored_by": [
@@ -504,7 +502,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 2,
-      "views": 67,
+      "views": 68,
       "monitored_by": [
         {
           "account_id": "3085086228",
@@ -542,7 +540,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 0,
-      "views": 70,
+      "views": 71,
       "monitored_by": [
         {
           "account_id": "3085086228",
@@ -558,7 +556,7 @@
       "expanded_urls": [],
       "created_at": "2026-11-10T13:23:34.000Z",
       "replies": 0,
-      "reposts": 22,
+      "reposts": 23,
       "likes": 0,
       "views": 0,
       "monitored_by": [
