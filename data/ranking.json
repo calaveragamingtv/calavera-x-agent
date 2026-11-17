@@ -1,6 +1,6 @@
 {
   "account": "monitored_accounts",
-  "analyzed_at": "2026-11-17T10:11:46.434112+00:00",
+  "analyzed_at": "2026-11-17T18:02:41.573752+00:00",
   "model": "gemini-3.5-flash-lite",
   "total": 29,
   "ranking": [
@@ -45,6 +45,14 @@
       "reason": "Enlace directo al Devblog de Rustafied. Información crucial pero poco propicia para un debate directo en este tweet específico."
     },
     {
+      "post_id": "2122706708606615773",
+      "score": 85,
+      "category": "official_news",
+      "priority": "high",
+      "recommended_action": "repost",
+      "reason": "Anuncio oficial de la cuenta principal de Rust sobre 'The Art of Rust', un libro de arte físico del juego, ideal para compartir con la comunidad por su alta relevancia oficial."
+    },
+    {
       "post_id": "2121619198522622261",
       "score": 85,
       "category": "official_news",
@@ -77,6 +85,14 @@
       "reason": "Anuncio de un nuevo sistema de clanes en la web hispana de Rust. Útil para la comunidad hispanohablante."
     },
     {
+      "post_id": "2122707062371009017",
+      "score": 75,
+      "category": "community",
+      "priority": "high",
+      "recommended_action": "reply",
+      "reason": "Publicación de RustSpain sobre CobaltMaps y la generación de pasos ferroviarios, ofreciendo información útil y técnica sobre la creación de mapas y herramientas del juego."
+    },
+    {
       "post_id": "2120916426760524182",
       "score": 75,
       "category": "discussion",
@@ -107,14 +123,6 @@
       "priority": "medium",
       "recommended_action": "ignore",
       "reason": "Aviso simple de actualización de cliente por parte de Rustafied."
-    },
-    {
-      "post_id": "2120843950692970563",
-      "score": 65,
-      "category": "community",
-      "priority": "medium",
-      "recommended_action": "ignore",
-      "reason": "Aviso sobre wipes de servidores específicos. Útil para jugadores pero con poco margen para que un creador de contenido aporte valor o debate general."
     },
     {
       "post_id": "2118410685184950683",
@@ -219,14 +227,6 @@
       "priority": "low",
       "recommended_action": "ignore",
       "reason": "La publicación trata sobre el lanzamiento de GTA y la comunidad de consolas/PC. No tiene relación directa con Rust, por lo que no es relevante para el público objetivo de CalaveraGaming."
-    },
-    {
-      "post_id": "2120532238576046362",
-      "score": 8,
-      "category": "other",
-      "priority": "low",
-      "recommended_action": "ignore",
-      "reason": "Tweet minimalista con emojis sin información sustancial."
     },
     {
       "post_id": "2122149223525232833",

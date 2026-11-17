@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-17T10:11:49.894943+00:00",
-  "total": 62,
+  "updated_at": "2026-11-17T18:02:50.391566+00:00",
+  "total": 64,
   "evaluations": {
     "2118402970886836645": {
       "post_id": "2118402970886836645",
@@ -435,6 +435,20 @@
       "score": 40,
       "category": "rust",
       "reason": "Es una republicación automática de otro post sin aportar contenido original, valor adicional ni métricas relevantes."
+    },
+    "2122706708606615773": {
+      "post_id": "2122706708606615773",
+      "should_like": true,
+      "score": 90,
+      "category": "rust",
+      "reason": "Publicación oficial de la cuenta de Rust que anuncia un libro de arte físico, representando una novedad relevante y de alta calidad para la comunidad y los fanáticos del juego."
+    },
+    "2122707062371009017": {
+      "post_id": "2122707062371009017",
+      "should_like": true,
+      "score": 85,
+      "category": "rust",
+      "reason": "Aporta información técnica útil y original sobre herramientas y mapas en Rust, generando valor genuino para la comunidad de jugadores y desarrolladores de servidores."
     }
   }
 }

@@ -11,7 +11,7 @@
     "replies": 76,
     "reposts": 123,
     "likes": 1237,
-    "views": 377019,
+    "views": 377096,
     "monitored_by": [
       {
         "account_id": "742290493292285952",
@@ -107,7 +107,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 4,
-    "views": 1924,
+    "views": 1927,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -127,7 +127,7 @@
     "replies": 0,
     "reposts": 1,
     "likes": 6,
-    "views": 1555,
+    "views": 1558,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -145,7 +145,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 3,
-    "views": 1571,
+    "views": 1573,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -166,7 +166,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 1,
-    "views": 1260,
+    "views": 1262,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -185,8 +185,28 @@
     "created_at": "2026-10-11T09:35:40.000Z",
     "replies": 2,
     "reposts": 2,
-    "likes": 12,
-    "views": 1288,
+    "likes": 13,
+    "views": 1294,
+    "monitored_by": [
+      {
+        "account_id": "779120759000137728",
+        "account_type": "server"
+      }
+    ]
+  },
+  {
+    "id": "2122707062371009017",
+    "author_id": "779120759000137728",
+    "text": "El tren pasa por arriba. La carretera sigue su camino.\n\nCobaltMaps genera pasos ferroviarios sobre carreteras cuando el cruce permite una solución válida. https://t.co/CMNt6WoPbP",
+    "url": "https://x.com/RustSpain_com/status/2122707062371009017",
+    "expanded_urls": [
+      "https://twitter.com/RustSpain_com/status/2122707062371009017"
+    ],
+    "created_at": "2026-11-17T15:02:56.000Z",
+    "replies": 1,
+    "reposts": 3,
+    "likes": 14,
+    "views": 613,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -224,7 +244,7 @@
     "replies": 1,
     "reposts": 0,
     "likes": 4,
-    "views": 299,
+    "views": 302,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -242,7 +262,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 1,
-    "views": 284,
+    "views": 287,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -251,20 +271,23 @@
     ]
   },
   {
-    "id": "2120843950692970563",
-    "author_id": "779120759000137728",
-    "text": "Pequeño recordatorio para decirte que hoy tenemos Wipe en Vanilla Main, Vanilla Solo Only y X5 a las 16h.\n\nY a principios de mes estrenaremos nuestro primer Vanilla Mensual.",
-    "url": "https://x.com/RustSpain_com/status/2120843950692970563",
-    "expanded_urls": [],
-    "created_at": "2026-11-12T11:39:35.000Z",
-    "replies": 0,
-    "reposts": 0,
-    "likes": 6,
-    "views": 394,
+    "id": "2122706708606615773",
+    "author_id": "1542707718",
+    "text": "From initial concept to in-game reality, explore the artistic journey of Rust in The Art of Rust, a beautifully crafted, full-colour hardback book.\n🎨☢️📖\n\nGet yours here: https://t.co/sgXegXlAGE https://t.co/CD37pdM8O9",
+    "url": "https://x.com/playrust/status/2122706708606615773",
+    "expanded_urls": [
+      "https://www.darkhorse.com/books/3009-843/art-of-rust-hc/",
+      "https://twitter.com/playrust/status/2122706708606615773"
+    ],
+    "created_at": "2026-11-17T15:01:31.000Z",
+    "replies": 2,
+    "reposts": 3,
+    "likes": 42,
+    "views": 5482,
     "monitored_by": [
       {
-        "account_id": "779120759000137728",
-        "account_type": "server"
+        "account_id": "1542707718",
+        "account_type": "official"
       }
     ]
   },
@@ -277,10 +300,10 @@
       "https://rust.facepunch.com/news/printed_and_polished"
     ],
     "created_at": "2026-11-16T14:59:49.000Z",
-    "replies": 36,
-    "reposts": 6,
-    "likes": 171,
-    "views": 26946,
+    "replies": 43,
+    "reposts": 7,
+    "likes": 189,
+    "views": 31000,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -298,10 +321,10 @@
       "https://twitter.com/playrust/status/2121619198522622261"
     ],
     "created_at": "2026-11-14T15:00:09.000Z",
-    "replies": 3,
+    "replies": 5,
     "reposts": 7,
     "likes": 96,
-    "views": 16742,
+    "views": 16934,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -322,7 +345,7 @@
     "replies": 4,
     "reposts": 8,
     "likes": 95,
-    "views": 14056,
+    "views": 14172,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -343,27 +366,7 @@
     "replies": 11,
     "reposts": 9,
     "likes": 141,
-    "views": 14210,
-    "monitored_by": [
-      {
-        "account_id": "1542707718",
-        "account_type": "official"
-      }
-    ]
-  },
-  {
-    "id": "2120532238576046362",
-    "author_id": "1542707718",
-    "text": "🕺➡️🎯 https://t.co/phnSxCZEV0",
-    "url": "https://x.com/playrust/status/2120532238576046362",
-    "expanded_urls": [
-      "https://twitter.com/playrust/status/2120532238576046362"
-    ],
-    "created_at": "2026-11-11T15:00:57.000Z",
-    "replies": 20,
-    "reposts": 44,
-    "likes": 632,
-    "views": 38009,
+    "views": 14289,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -378,10 +381,10 @@
     "url": "https://x.com/deowasd/status/2122425875320774778",
     "expanded_urls": [],
     "created_at": "2026-11-16T20:25:36.000Z",
-    "replies": 19,
+    "replies": 28,
     "reposts": 4,
-    "likes": 56,
-    "views": 8112,
+    "likes": 69,
+    "views": 10345,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -401,7 +404,7 @@
     "replies": 8,
     "reposts": 0,
     "likes": 10,
-    "views": 1212,
+    "views": 1393,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -416,10 +419,10 @@
     "url": "https://x.com/deowasd/status/2122149223525232833",
     "expanded_urls": [],
     "created_at": "2026-11-16T02:06:17.000Z",
-    "replies": 0,
+    "replies": 1,
     "reposts": 1,
-    "likes": 17,
-    "views": 837,
+    "likes": 18,
+    "views": 919,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -439,7 +442,7 @@
     "replies": 1,
     "reposts": 1,
     "likes": 16,
-    "views": 1083,
+    "views": 1084,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -459,7 +462,7 @@
     "replies": 2,
     "reposts": 0,
     "likes": 57,
-    "views": 4952,
+    "views": 4953,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -495,7 +498,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 8,
-    "views": 533,
+    "views": 550,
     "monitored_by": [
       {
         "account_id": "3085086228",
