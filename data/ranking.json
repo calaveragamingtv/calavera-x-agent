@@ -1,9 +1,17 @@
 {
   "account": "monitored_accounts",
-  "analyzed_at": "2026-11-16T14:13:43.871364+00:00",
+  "analyzed_at": "2026-11-17T10:11:46.434112+00:00",
   "model": "gemini-3.5-flash-lite",
   "total": 29,
   "ranking": [
+    {
+      "post_id": "2122343890678095913",
+      "score": 95,
+      "category": "official_news",
+      "priority": "high",
+      "recommended_action": "repost",
+      "reason": "Es una noticia oficial de Facepunch sobre un cambio radical en el sistema de crafteo y tech trees de Rust (blueprints). Impacta directamente en la jugabilidad y es contenido esencial para la comunidad y para un creador enfocado en el juego."
+    },
     {
       "post_id": "2120894373671870797",
       "score": 95,
@@ -77,6 +85,14 @@
       "reason": "Comentario especulativo sobre el rumbo del juego que genera debate y permite aportar una opinión propia como creador de contenido."
     },
     {
+      "post_id": "2122425875320774778",
+      "score": 75,
+      "category": "discussion",
+      "priority": "high",
+      "recommended_action": "reply",
+      "reason": "Plantea un debate profundo sobre el estado actual de Rust, la experiencia de juego y la caída de jugadores. Como creador enfocado en Rust, CalaveraGaming tiene la oportunidad perfecta para aportar su propia perspectiva y generar conversación."
+    },
+    {
       "post_id": "2118402970886836645",
       "score": 68,
       "category": "creator",
@@ -125,14 +141,6 @@
       "reason": "Comparte una situación típica de PvP y raids en Rust (cuando los defensores kittean), con la que CalaveraGaming puede identificarse y comentar."
     },
     {
-      "post_id": "2120169659345358986",
-      "score": 50,
-      "category": "official_news",
-      "priority": "medium",
-      "recommended_action": "ignore",
-      "reason": "Merchandising físico e impresión 3D de objetos de Rust."
-    },
-    {
       "post_id": "2120984198588575860",
       "score": 50,
       "category": "creator",
@@ -141,12 +149,12 @@
       "reason": "Es un aviso de directo jugando como solo player. No aporta contenido analítico pero muestra actividad de creadores."
     },
     {
-      "post_id": "2120593463968518585",
+      "post_id": "2122430497468920267",
       "score": 45,
-      "category": "creator",
+      "category": "discussion",
       "priority": "medium",
       "recommended_action": "ignore",
-      "reason": "Promoción de directo enfocado en 'snowball'. Es relevante para la temática de Rust pero menor en cuanto a discusión profunda."
+      "reason": "Es un retweet del post de debate sobre el estado de Rust. Al ser una copia del mismo tema y con menor interacción original, no aporta valor adicional frente al tweet principal."
     },
     {
       "post_id": "2107596052765299159",
@@ -171,14 +179,6 @@
       "priority": "low",
       "recommended_action": "ignore",
       "reason": "Anuncio del evento Rust Isles por Abe."
-    },
-    {
-      "post_id": "2119147506915565838",
-      "score": 30,
-      "category": "gameplay",
-      "priority": "low",
-      "recommended_action": "ignore",
-      "reason": "Mención a otro usuario con contenido críptico o humor interno de gameplay, baja relevancia general."
     },
     {
       "post_id": "2119206284591591697",
@@ -213,12 +213,12 @@
       "reason": "Retweet de contenido exterior o ambiguo."
     },
     {
-      "post_id": "2120145341840261611",
+      "post_id": "2122346745656955188",
       "score": 10,
       "category": "other",
       "priority": "low",
       "recommended_action": "ignore",
-      "reason": "Contenido centrado en estadísticas de otro videojuego o competitivo ajeno a Rust (Valorant/Hush)."
+      "reason": "La publicación trata sobre el lanzamiento de GTA y la comunidad de consolas/PC. No tiene relación directa con Rust, por lo que no es relevante para el público objetivo de CalaveraGaming."
     },
     {
       "post_id": "2120532238576046362",

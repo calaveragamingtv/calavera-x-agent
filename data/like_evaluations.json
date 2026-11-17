@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-16T14:13:46.676150+00:00",
-  "total": 58,
+  "updated_at": "2026-11-17T10:11:49.894943+00:00",
+  "total": 62,
   "evaluations": {
     "2118402970886836645": {
       "post_id": "2118402970886836645",
@@ -407,6 +407,34 @@
       "score": 50,
       "category": "other",
       "reason": "La publicación es demasiado genérica e invita a una interacción superficial sin aportar contenido valioso, entretenimiento claro ni una oportunidad de relación significativa."
+    },
+    "2122343890678095913": {
+      "post_id": "2122343890678095913",
+      "should_like": true,
+      "score": 88,
+      "category": "rust",
+      "reason": "La publicación aporta información oficial y detallada sobre importantes cambios en las mecánicas y actualizaciones del juego Rust."
+    },
+    "2122425875320774778": {
+      "post_id": "2122425875320774778",
+      "should_like": true,
+      "score": 80,
+      "category": "rust",
+      "reason": "Plantea una opinión fundamentada sobre la evolución de la experiencia de juego y el estado actual de la comunidad de Rust, generando debate."
+    },
+    "2122346745656955188": {
+      "post_id": "2122346745656955188",
+      "should_like": false,
+      "score": 65,
+      "category": "gaming",
+      "reason": "Presenta una reflexión personal sobre la industria de los videojuegos y la doble moral, pero su impacto es moderado y no alcanza el umbral para un Like."
+    },
+    "2122430497468920267": {
+      "post_id": "2122430497468920267",
+      "should_like": false,
+      "score": 40,
+      "category": "rust",
+      "reason": "Es una republicación automática de otro post sin aportar contenido original, valor adicional ni métricas relevantes."
     }
   }
 }

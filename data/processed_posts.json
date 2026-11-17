@@ -63,7 +63,7 @@
         }
       },
       "likes": 1237,
-      "views": 376734,
+      "views": 377019,
       "replies": 76,
       "reposts": 123
     },
@@ -134,7 +134,7 @@
         }
       },
       "likes": 120,
-      "views": 23728,
+      "views": 23734,
       "replies": 5,
       "reposts": 8
     },
@@ -696,7 +696,7 @@
         }
       },
       "likes": 4,
-      "views": 1920,
+      "views": 1924,
       "replies": 0,
       "reposts": 0
     },
@@ -758,7 +758,7 @@
         }
       },
       "likes": 6,
-      "views": 1551,
+      "views": 1555,
       "replies": 0,
       "reposts": 1
     },
@@ -818,7 +818,7 @@
         }
       },
       "likes": 3,
-      "views": 1568,
+      "views": 1571,
       "replies": 0,
       "reposts": 0
     },
@@ -885,7 +885,7 @@
         }
       },
       "likes": 1,
-      "views": 1256,
+      "views": 1260,
       "replies": 0,
       "reposts": 0
     },
@@ -1222,13 +1222,17 @@
       },
       "actions": {
         "like": {
-          "status": "not_started",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-17T10:11:52.800035+00:00",
+          "completed_at": "2026-11-17T10:11:53.817088+00:00",
           "error": null,
-          "external_id": null,
-          "payload": null
+          "external_id": "2109216353228083538",
+          "payload": {
+            "post_id": "2109216353228083538",
+            "mode": "live",
+            "stage": "completed"
+          }
         },
         "reply": {
           "status": "completed",
@@ -1255,7 +1259,7 @@
         }
       },
       "likes": 12,
-      "views": 1284,
+      "views": 1288,
       "replies": 2,
       "reposts": 2
     },
@@ -1870,7 +1874,7 @@
         }
       },
       "likes": 632,
-      "views": 37799,
+      "views": 38009,
       "replies": 20,
       "reposts": 44
     },
@@ -2588,7 +2592,7 @@
         }
       },
       "likes": 4,
-      "views": 296,
+      "views": 299,
       "replies": 1,
       "reposts": 0
     },
@@ -2648,7 +2652,7 @@
         }
       },
       "likes": 1,
-      "views": 283,
+      "views": 284,
       "replies": 0,
       "reposts": 0
     },
@@ -2708,7 +2712,7 @@
         }
       },
       "likes": 6,
-      "views": 391,
+      "views": 394,
       "replies": 0,
       "reposts": 0
     },
@@ -2774,8 +2778,8 @@
           }
         }
       },
-      "likes": 140,
-      "views": 13993,
+      "likes": 141,
+      "views": 14210,
       "replies": 11,
       "reposts": 9
     },
@@ -2845,8 +2849,8 @@
           }
         }
       },
-      "likes": 94,
-      "views": 13745,
+      "likes": 95,
+      "views": 14056,
       "replies": 4,
       "reposts": 8
     },
@@ -2916,9 +2920,9 @@
           }
         }
       },
-      "likes": 95,
-      "views": 15968,
-      "replies": 2,
+      "likes": 96,
+      "views": 16742,
+      "replies": 3,
       "reposts": 7
     },
     "2120727160608711000": {
@@ -2979,7 +2983,7 @@
         }
       },
       "likes": 16,
-      "views": 1062,
+      "views": 1083,
       "replies": 1,
       "reposts": 1
     },
@@ -3046,7 +3050,7 @@
         }
       },
       "likes": 57,
-      "views": 4941,
+      "views": 4952,
       "replies": 2,
       "reposts": 0
     },
@@ -3365,7 +3369,7 @@
         }
       },
       "likes": 2,
-      "views": 68,
+      "views": 69,
       "replies": 0,
       "reposts": 0
     },
@@ -3610,8 +3614,8 @@
           "payload": null
         }
       },
-      "likes": 8,
-      "views": 477,
+      "likes": 17,
+      "views": 837,
       "replies": 0,
       "reposts": 1
     },
@@ -3672,9 +3676,268 @@
           "payload": null
         }
       },
+      "likes": 10,
+      "views": 1212,
+      "replies": 8,
+      "reposts": 0
+    },
+    "2122343890678095913": {
+      "id": "2122343890678095913",
+      "author_id": "1542707718",
+      "text": "Workbenches no longer require blueprint fragments to craft, and scrap isn’t used on the tech trees. 🛠️☢️🪾\n\nInstead, we’re introducing three tiers of blueprints: blueprint fragments, blueprint pages and blueprint books. These are the new currencies spent to progress tech trees, one for each tech tree level.\n\nRead more on our DevBlog: https://t.co/MF9kei76SG",
+      "url": "https://x.com/playrust/status/2122343890678095913",
+      "created_at": "2026-11-16T14:59:49.000Z",
+      "expanded_urls": [
+        "https://rust.facepunch.com/news/printed_and_polished"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "1542707718",
+          "account_type": "official"
+        }
+      ],
+      "first_seen_at": "2026-11-17T10:11:36.302296+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2122343890678095913",
+          "score": 95,
+          "category": "official_news",
+          "priority": "high",
+          "recommended_action": "repost",
+          "reason": "Es una noticia oficial de Facepunch sobre un cambio radical en el sistema de crafteo y tech trees de Rust (blueprints). Impacta directamente en la jugabilidad y es contenido esencial para la comunidad y para un creador enfocado en el juego."
+        },
+        "completed_at": "2026-11-17T10:11:46.410680+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-17T10:11:51.864298+00:00",
+          "completed_at": "2026-11-17T10:11:52.795719+00:00",
+          "error": null,
+          "external_id": "2122343890678095913",
+          "payload": {
+            "post_id": "2122343890678095913",
+            "mode": "live",
+            "stage": "completed"
+          }
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-17T10:11:50.930474+00:00",
+          "completed_at": "2026-11-17T10:11:51.860042+00:00",
+          "error": null,
+          "external_id": "2122343890678095913",
+          "payload": {
+            "post_id": "2122343890678095913",
+            "mode": "live",
+            "stage": "completed"
+          }
+        }
+      },
+      "likes": 171,
+      "views": 26946,
+      "replies": 36,
+      "reposts": 6
+    },
+    "2122425875320774778": {
+      "id": "2122425875320774778",
+      "author_id": "1262844103814983688",
+      "text": "El Rust esta cada vez mas complicado en cuanto a experiencia de juego, toda la gente con la que hablo concuerda en que no estan disfrutandolo y estan todos jugando RobRun, WoW forever y otros juegos. Eso sumado a todos los streamers que vienen quejandose del juego y de las updates. Muere el Rust? hoy 90k players y sigue bajando",
+      "url": "https://x.com/deowasd/status/2122425875320774778",
+      "created_at": "2026-11-16T20:25:36.000Z",
+      "expanded_urls": [],
+      "monitored_by": [
+        {
+          "account_id": "1262844103814983688",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-17T10:11:36.302321+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2122425875320774778",
+          "score": 75,
+          "category": "discussion",
+          "priority": "high",
+          "recommended_action": "reply",
+          "reason": "Plantea un debate profundo sobre el estado actual de Rust, la experiencia de juego y la caída de jugadores. Como creador enfocado en Rust, CalaveraGaming tiene la oportunidad perfecta para aportar su propia perspectiva y generar conversación."
+        },
+        "completed_at": "2026-11-17T10:11:46.422256+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-17T10:11:53.821266+00:00",
+          "completed_at": "2026-11-17T10:11:54.870548+00:00",
+          "error": null,
+          "external_id": "2122425875320774778",
+          "payload": {
+            "post_id": "2122425875320774778",
+            "mode": "live",
+            "stage": "completed"
+          }
+        },
+        "reply": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-17T10:11:49.909324+00:00",
+          "completed_at": "2026-11-17T10:11:50.926253+00:00",
+          "error": null,
+          "external_id": "2122633806322766126",
+          "payload": {
+            "post_id": "2122425875320774778",
+            "reply_text": "Pasa siempre que hay bache entre updates grandes o se aburren del meta actual. Con 90k sigue teniendo un piso tremendo, pero la opresión del Rust actual te quema la cabeza rápido si jugás solo.",
+            "mode": "live",
+            "stage": "completed"
+          }
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 56,
+      "views": 8112,
+      "replies": 19,
+      "reposts": 4
+    },
+    "2122430497468920267": {
+      "id": "2122430497468920267",
+      "author_id": "3085086228",
+      "text": "RT @deowasd: El Rust esta cada vez mas complicado en cuanto a experiencia de juego, toda la gente con la que hablo concuerda en que no esta…",
+      "url": "https://x.com/Karinios0/status/2122430497468920267",
+      "created_at": "2026-11-16T20:43:58.000Z",
+      "expanded_urls": [],
+      "monitored_by": [
+        {
+          "account_id": "3085086228",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-17T10:11:36.302341+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2122430497468920267",
+          "score": 45,
+          "category": "discussion",
+          "priority": "medium",
+          "recommended_action": "ignore",
+          "reason": "Es un retweet del post de debate sobre el estado de Rust. Al ser una copia del mismo tema y con menor interacción original, no aporta valor adicional frente al tweet principal."
+        },
+        "completed_at": "2026-11-17T10:11:46.426610+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
       "likes": 0,
-      "views": 128,
-      "replies": 1,
+      "views": 0,
+      "replies": 0,
+      "reposts": 4
+    },
+    "2122346745656955188": {
+      "id": "2122346745656955188",
+      "author_id": "3085086228",
+      "text": "Veo a muchos llorando pq el @GTAlphaintel @RockstarGames sale nose cuantas horas antes en Nueva Zelanda, diciendo que es injusto que nose que que nose cuanto, yo no vi a nadie quejarse de que salga nose cuanto tiempo despues en PC dejando a afuera a gran parte del publico que no puede comprarse una PS5 solo para jugarlo. Doble moral 4ever",
+      "url": "https://x.com/Karinios0/status/2122346745656955188",
+      "created_at": "2026-11-16T15:11:10.000Z",
+      "expanded_urls": [],
+      "monitored_by": [
+        {
+          "account_id": "3085086228",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-17T10:11:36.302345+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2122346745656955188",
+          "score": 10,
+          "category": "other",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "La publicación trata sobre el lanzamiento de GTA y la comunidad de consolas/PC. No tiene relación directa con Rust, por lo que no es relevante para el público objetivo de CalaveraGaming."
+        },
+        "completed_at": "2026-11-17T10:11:46.430586+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 8,
+      "views": 533,
+      "replies": 0,
       "reposts": 0
     }
   }

@@ -1,6 +1,6 @@
 {
   "account": "monitored_accounts",
-  "updated_at": "2026-11-16T14:13:40.945261+00:00",
+  "updated_at": "2026-11-17T10:11:36.300065+00:00",
   "total": 29,
   "posts": [
     {
@@ -15,7 +15,7 @@
       "replies": 76,
       "reposts": 123,
       "likes": 1237,
-      "views": 376734,
+      "views": 377019,
       "monitored_by": [
         {
           "account_id": "742290493292285952",
@@ -35,7 +35,7 @@
       "replies": 5,
       "reposts": 8,
       "likes": 120,
-      "views": 23728,
+      "views": 23734,
       "monitored_by": [
         {
           "account_id": "742290493292285952",
@@ -111,7 +111,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 4,
-      "views": 1920,
+      "views": 1924,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -131,7 +131,7 @@
       "replies": 0,
       "reposts": 1,
       "likes": 6,
-      "views": 1551,
+      "views": 1555,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -149,7 +149,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 3,
-      "views": 1568,
+      "views": 1571,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -170,7 +170,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 1,
-      "views": 1256,
+      "views": 1260,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -190,7 +190,7 @@
       "replies": 2,
       "reposts": 2,
       "likes": 12,
-      "views": 1284,
+      "views": 1288,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -228,7 +228,7 @@
       "replies": 1,
       "reposts": 0,
       "likes": 4,
-      "views": 296,
+      "views": 299,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -246,7 +246,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 1,
-      "views": 283,
+      "views": 284,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -264,11 +264,31 @@
       "replies": 0,
       "reposts": 0,
       "likes": 6,
-      "views": 391,
+      "views": 394,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
           "account_type": "server"
+        }
+      ]
+    },
+    {
+      "id": "2122343890678095913",
+      "author_id": "1542707718",
+      "text": "Workbenches no longer require blueprint fragments to craft, and scrap isn’t used on the tech trees. 🛠️☢️🪾\n\nInstead, we’re introducing three tiers of blueprints: blueprint fragments, blueprint pages and blueprint books. These are the new currencies spent to progress tech trees, one for each tech tree level.\n\nRead more on our DevBlog: https://t.co/MF9kei76SG",
+      "url": "https://x.com/playrust/status/2122343890678095913",
+      "expanded_urls": [
+        "https://rust.facepunch.com/news/printed_and_polished"
+      ],
+      "created_at": "2026-11-16T14:59:49.000Z",
+      "replies": 36,
+      "reposts": 6,
+      "likes": 171,
+      "views": 26946,
+      "monitored_by": [
+        {
+          "account_id": "1542707718",
+          "account_type": "official"
         }
       ]
     },
@@ -282,10 +302,10 @@
         "https://twitter.com/playrust/status/2121619198522622261"
       ],
       "created_at": "2026-11-14T15:00:09.000Z",
-      "replies": 2,
+      "replies": 3,
       "reposts": 7,
-      "likes": 95,
-      "views": 15968,
+      "likes": 96,
+      "views": 16742,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -305,8 +325,8 @@
       "created_at": "2026-11-13T17:30:10.000Z",
       "replies": 4,
       "reposts": 8,
-      "likes": 94,
-      "views": 13745,
+      "likes": 95,
+      "views": 14056,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -326,8 +346,8 @@
       "created_at": "2026-11-12T14:59:57.000Z",
       "replies": 11,
       "reposts": 9,
-      "likes": 140,
-      "views": 13993,
+      "likes": 141,
+      "views": 14210,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -347,7 +367,7 @@
       "replies": 20,
       "reposts": 44,
       "likes": 632,
-      "views": 37799,
+      "views": 38009,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -356,23 +376,20 @@
       ]
     },
     {
-      "id": "2120169659345358986",
-      "author_id": "1542707718",
-      "text": "The Rust X @lootroom  brings iconic in-game items straight to your home setup! ⚒️☢️🔫\n\nYou can also purchase STL files for your favourite items to 3D-print yourself.\n\nView the full collection here: https://t.co/RRleVQ19VD https://t.co/DprD0RKjkV",
-      "url": "https://x.com/playrust/status/2120169659345358986",
-      "expanded_urls": [
-        "https://lootroom.com/collections/rust",
-        "https://twitter.com/playrust/status/2120169659345358986"
-      ],
-      "created_at": "2026-11-10T15:00:12.000Z",
-      "replies": 3,
-      "reposts": 7,
-      "likes": 83,
-      "views": 14820,
+      "id": "2122425875320774778",
+      "author_id": "1262844103814983688",
+      "text": "El Rust esta cada vez mas complicado en cuanto a experiencia de juego, toda la gente con la que hablo concuerda en que no estan disfrutandolo y estan todos jugando RobRun, WoW forever y otros juegos. Eso sumado a todos los streamers que vienen quejandose del juego y de las updates. Muere el Rust? hoy 90k players y sigue bajando",
+      "url": "https://x.com/deowasd/status/2122425875320774778",
+      "expanded_urls": [],
+      "created_at": "2026-11-16T20:25:36.000Z",
+      "replies": 19,
+      "reposts": 4,
+      "likes": 56,
+      "views": 8112,
       "monitored_by": [
         {
-          "account_id": "1542707718",
-          "account_type": "official"
+          "account_id": "1262844103814983688",
+          "account_type": "streamer"
         }
       ]
     },
@@ -385,10 +402,10 @@
         "https://twitter.com/deowasd/status/2122321197698265391"
       ],
       "created_at": "2026-11-16T13:29:39.000Z",
-      "replies": 1,
+      "replies": 8,
       "reposts": 0,
-      "likes": 0,
-      "views": 128,
+      "likes": 10,
+      "views": 1212,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -405,8 +422,8 @@
       "created_at": "2026-11-16T02:06:17.000Z",
       "replies": 0,
       "reposts": 1,
-      "likes": 8,
-      "views": 477,
+      "likes": 17,
+      "views": 837,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -426,7 +443,7 @@
       "replies": 1,
       "reposts": 1,
       "likes": 16,
-      "views": 1062,
+      "views": 1083,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -446,7 +463,7 @@
       "replies": 2,
       "reposts": 0,
       "likes": 57,
-      "views": 4941,
+      "views": 4952,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -455,21 +472,37 @@
       ]
     },
     {
-      "id": "2119147506915565838",
-      "author_id": "1262844103814983688",
-      "text": "APARCAO @Sr_Naranjaa https://t.co/g4Umlxq8jq",
-      "url": "https://x.com/deowasd/status/2119147506915565838",
-      "expanded_urls": [
-        "https://twitter.com/deowasd/status/2119147506915565838"
-      ],
-      "created_at": "2026-11-07T19:18:32.000Z",
-      "replies": 3,
-      "reposts": 0,
-      "likes": 31,
-      "views": 1127,
+      "id": "2122430497468920267",
+      "author_id": "3085086228",
+      "text": "RT @deowasd: El Rust esta cada vez mas complicado en cuanto a experiencia de juego, toda la gente con la que hablo concuerda en que no esta…",
+      "url": "https://x.com/Karinios0/status/2122430497468920267",
+      "expanded_urls": [],
+      "created_at": "2026-11-16T20:43:58.000Z",
+      "replies": 0,
+      "reposts": 4,
+      "likes": 0,
+      "views": 0,
       "monitored_by": [
         {
-          "account_id": "1262844103814983688",
+          "account_id": "3085086228",
+          "account_type": "streamer"
+        }
+      ]
+    },
+    {
+      "id": "2122346745656955188",
+      "author_id": "3085086228",
+      "text": "Veo a muchos llorando pq el @GTAlphaintel @RockstarGames sale nose cuantas horas antes en Nueva Zelanda, diciendo que es injusto que nose que que nose cuanto, yo no vi a nadie quejarse de que salga nose cuanto tiempo despues en PC dejando a afuera a gran parte del publico que no puede comprarse una PS5 solo para jugarlo. Doble moral 4ever",
+      "url": "https://x.com/Karinios0/status/2122346745656955188",
+      "expanded_urls": [],
+      "created_at": "2026-11-16T15:11:10.000Z",
+      "replies": 0,
+      "reposts": 0,
+      "likes": 8,
+      "views": 533,
+      "monitored_by": [
+        {
+          "account_id": "3085086228",
           "account_type": "streamer"
         }
       ]
@@ -504,7 +537,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 2,
-      "views": 68,
+      "views": 69,
       "monitored_by": [
         {
           "account_id": "3085086228",
@@ -521,44 +554,6 @@
       "created_at": "2026-11-12T20:47:42.000Z",
       "replies": 0,
       "reposts": 1,
-      "likes": 0,
-      "views": 0,
-      "monitored_by": [
-        {
-          "account_id": "3085086228",
-          "account_type": "streamer"
-        }
-      ]
-    },
-    {
-      "id": "2120593463968518585",
-      "author_id": "3085086228",
-      "text": "https://t.co/HRijeIZ3HB Snowball pipipiu pasense",
-      "url": "https://x.com/Karinios0/status/2120593463968518585",
-      "expanded_urls": [
-        "https://kick.com/karinios0"
-      ],
-      "created_at": "2026-11-11T19:04:15.000Z",
-      "replies": 0,
-      "reposts": 0,
-      "likes": 1,
-      "views": 73,
-      "monitored_by": [
-        {
-          "account_id": "3085086228",
-          "account_type": "streamer"
-        }
-      ]
-    },
-    {
-      "id": "2120145341840261611",
-      "author_id": "3085086228",
-      "text": "RT @SafiroVT: RADIANT ONLY HUSH 37W - 15L (26 HORAS)\n\ncomo se hizo sufrir este por dios, chau peluca gracias por todo.\n\ngracias por el agua…",
-      "url": "https://x.com/Karinios0/status/2120145341840261611",
-      "expanded_urls": [],
-      "created_at": "2026-11-10T13:23:34.000Z",
-      "replies": 0,
-      "reposts": 23,
       "likes": 0,
       "views": 0,
       "monitored_by": [
