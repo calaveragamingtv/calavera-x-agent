@@ -62,8 +62,8 @@
           "payload": null
         }
       },
-      "likes": 1236,
-      "views": 377286,
+      "likes": 1237,
+      "views": 377556,
       "replies": 76,
       "reposts": 123
     },
@@ -134,7 +134,7 @@
         }
       },
       "likes": 120,
-      "views": 23743,
+      "views": 23749,
       "replies": 5,
       "reposts": 8
     },
@@ -696,7 +696,7 @@
         }
       },
       "likes": 4,
-      "views": 1930,
+      "views": 1944,
       "replies": 0,
       "reposts": 0
     },
@@ -758,7 +758,7 @@
         }
       },
       "likes": 6,
-      "views": 1561,
+      "views": 1576,
       "replies": 0,
       "reposts": 1
     },
@@ -818,7 +818,7 @@
         }
       },
       "likes": 3,
-      "views": 1577,
+      "views": 1584,
       "replies": 0,
       "reposts": 0
     },
@@ -885,7 +885,7 @@
         }
       },
       "likes": 1,
-      "views": 1265,
+      "views": 1269,
       "replies": 0,
       "reposts": 0
     },
@@ -1259,7 +1259,7 @@
         }
       },
       "likes": 13,
-      "views": 1303,
+      "views": 1307,
       "replies": 2,
       "reposts": 2
     },
@@ -2850,7 +2850,7 @@
         }
       },
       "likes": 96,
-      "views": 14359,
+      "views": 14580,
       "replies": 5,
       "reposts": 8
     },
@@ -2920,8 +2920,8 @@
           }
         }
       },
-      "likes": 96,
-      "views": 17253,
+      "likes": 97,
+      "views": 17650,
       "replies": 5,
       "reposts": 7
     },
@@ -2983,7 +2983,7 @@
         }
       },
       "likes": 16,
-      "views": 1087,
+      "views": 1092,
       "replies": 1,
       "reposts": 1
     },
@@ -3373,7 +3373,7 @@
         }
       },
       "likes": 2,
-      "views": 69,
+      "views": 72,
       "replies": 0,
       "reposts": 0
     },
@@ -3619,7 +3619,7 @@
         }
       },
       "likes": 18,
-      "views": 960,
+      "views": 976,
       "replies": 1,
       "reposts": 1
     },
@@ -3681,7 +3681,7 @@
         }
       },
       "likes": 10,
-      "views": 1528,
+      "views": 1567,
       "replies": 9,
       "reposts": 0
     },
@@ -3750,9 +3750,9 @@
           }
         }
       },
-      "likes": 197,
-      "views": 33400,
-      "replies": 47,
+      "likes": 199,
+      "views": 34984,
+      "replies": 48,
       "reposts": 7
     },
     "2122425875320774778": {
@@ -3819,9 +3819,9 @@
           "payload": null
         }
       },
-      "likes": 73,
-      "views": 11077,
-      "replies": 30,
+      "likes": 74,
+      "views": 11439,
+      "replies": 31,
       "reposts": 4
     },
     "2122430497468920267": {
@@ -3940,7 +3940,7 @@
         }
       },
       "likes": 8,
-      "views": 572,
+      "views": 582,
       "replies": 0,
       "reposts": 0
     },
@@ -4010,10 +4010,10 @@
           "payload": null
         }
       },
-      "likes": 38,
-      "views": 2963,
+      "likes": 54,
+      "views": 4020,
       "replies": 5,
-      "reposts": 4
+      "reposts": 6
     },
     "2122706708606615773": {
       "id": "2122706708606615773",
@@ -4081,10 +4081,1025 @@
           }
         }
       },
-      "likes": 89,
-      "views": 10520,
-      "replies": 3,
-      "reposts": 8
+      "likes": 103,
+      "views": 12595,
+      "replies": 4,
+      "reposts": 9
+    },
+    "2123101108683858386": {
+      "id": "2123101108683858386",
+      "author_id": "779120759000137728",
+      "text": "Con CobaltMaps ahora puedes colocar los faros en cada esquina del mapa.\n\nIdeal para que los jugadores lo puedan tener más cerca y ayudar a su reparación para activar el DeepSea.\n\n¿Qué te parece? https://t.co/Lm5W2t93De",
+      "url": "https://x.com/RustSpain_com/status/2123101108683858386",
+      "created_at": "2026-11-18T17:08:44.000Z",
+      "expanded_urls": [
+        "https://twitter.com/RustSpain_com/status/2123101108683858386"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "779120759000137728",
+          "account_type": "server"
+        }
+      ],
+      "first_seen_at": "2026-11-19T10:15:40.971385+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2123101108683858386",
+          "score": 75,
+          "category": "update",
+          "priority": "high",
+          "recommended_action": "reply",
+          "reason": "Aporta información útil sobre mapas de Rust y mecánicas como DeepSea, excelente para debatir con la comunidad."
+        },
+        "completed_at": "2026-11-19T10:15:44.465609+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-19T10:15:51.923517+00:00",
+          "completed_at": "2026-11-19T10:15:52.608536+00:00",
+          "error": null,
+          "external_id": "2123359595980529715",
+          "payload": {
+            "post_id": "2123101108683858386",
+            "reply_text": "Tremendo para los mapas custom, te ahorras unos viajes eternos. Igual en las esquinas se arma alto desmadre con los botes.",
+            "mode": "live",
+            "stage": "completed"
+          }
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 10,
+      "views": 793,
+      "replies": 0,
+      "reposts": 1
+    },
+    "2123037229622706582": {
+      "id": "2123037229622706582",
+      "author_id": "779120759000137728",
+      "text": "Pregunta sería para los jugadores de Rust: ¿Jugaras a GTAVI en consola o esperaras a su versión de PC?",
+      "url": "https://x.com/RustSpain_com/status/2123037229622706582",
+      "created_at": "2026-11-18T12:54:54.000Z",
+      "expanded_urls": [],
+      "monitored_by": [
+        {
+          "account_id": "779120759000137728",
+          "account_type": "server"
+        }
+      ],
+      "first_seen_at": "2026-11-19T10:15:40.971401+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2123037229622706582",
+          "score": 55,
+          "category": "discussion",
+          "priority": "medium",
+          "recommended_action": "reply",
+          "reason": "Genera conversación sobre consolas vs PC enfocado a jugadores de Rust, buen punto para interactuar."
+        },
+        "completed_at": "2026-11-19T10:15:44.471544+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 1,
+      "views": 352,
+      "replies": 0,
+      "reposts": 0
+    },
+    "2123030615540867307": {
+      "id": "2123030615540867307",
+      "author_id": "779120759000137728",
+      "text": "RT @RustSpain_com: El tren pasa por arriba. La carretera sigue su camino.\n\nCobaltMaps genera pasos ferroviarios sobre carreteras cuando el…",
+      "url": "https://x.com/RustSpain_com/status/2123030615540867307",
+      "created_at": "2026-11-18T12:28:37.000Z",
+      "expanded_urls": [],
+      "monitored_by": [
+        {
+          "account_id": "779120759000137728",
+          "account_type": "server"
+        }
+      ],
+      "first_seen_at": "2026-11-19T10:15:40.971409+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2123030615540867307",
+          "score": 70,
+          "category": "update",
+          "priority": "high",
+          "recommended_action": "repost",
+          "reason": "Muestra novedades sobre la generación de mapas y estructuras en Rust, relevante para creadores de contenido de este juego."
+        },
+        "completed_at": "2026-11-19T10:15:44.476519+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-19T10:15:53.209710+00:00",
+          "completed_at": "2026-11-19T10:15:54.003662+00:00",
+          "error": null,
+          "external_id": "2123030615540867307",
+          "payload": {
+            "post_id": "2123030615540867307",
+            "mode": "live",
+            "stage": "completed"
+          }
+        }
+      },
+      "likes": 0,
+      "views": 0,
+      "replies": 0,
+      "reposts": 6
+    },
+    "2123068792523587927": {
+      "id": "2123068792523587927",
+      "author_id": "1542707718",
+      "text": "Stay ahead of the game! 🏃‍♀️‍➡️☢️📩\n\nGet the latest official Rust PC patch notes and updates delivered straight to your inbox.\n\nSign up for the Rust mailing list here: https://t.co/S1nefecL7R https://t.co/oJkOsr1btI",
+      "url": "https://x.com/playrust/status/2123068792523587927",
+      "created_at": "2026-11-18T15:00:19.000Z",
+      "expanded_urls": [
+        "https://rust.facepunch.com/newsletter/",
+        "https://twitter.com/playrust/status/2123068792523587927"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "1542707718",
+          "account_type": "official"
+        }
+      ],
+      "first_seen_at": "2026-11-19T10:15:40.971419+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2123068792523587927",
+          "score": 85,
+          "category": "official_news",
+          "priority": "high",
+          "recommended_action": "repost",
+          "reason": "Publicación oficial de Rust PC sobre parches y actualizaciones, altamente relevante para la audiencia de CalaveraGaming."
+        },
+        "completed_at": "2026-11-19T10:15:44.481424+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-19T10:15:56.089402+00:00",
+          "completed_at": "2026-11-19T10:15:57.168857+00:00",
+          "error": null,
+          "external_id": "2123068792523587927",
+          "payload": {
+            "post_id": "2123068792523587927",
+            "mode": "live",
+            "stage": "completed"
+          }
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-19T10:15:52.614572+00:00",
+          "completed_at": "2026-11-19T10:15:53.203853+00:00",
+          "error": null,
+          "external_id": "2123068792523587927",
+          "payload": {
+            "post_id": "2123068792523587927",
+            "mode": "live",
+            "stage": "completed"
+          }
+        }
+      },
+      "likes": 64,
+      "views": 10646,
+      "replies": 0,
+      "reposts": 2
+    },
+    "2123055492486549924": {
+      "id": "2123055492486549924",
+      "author_id": "1262844103814983688",
+      "text": "LLEGARON las gorras 2da edicion, WASD mas grande y color VERDE. Quedaron sacadas https://t.co/dhanRPuDkZ https://t.co/4tOF2JVmsh",
+      "url": "https://x.com/deowasd/status/2123055492486549924",
+      "created_at": "2026-11-18T14:07:28.000Z",
+      "expanded_urls": [
+        "https://www.mercadolibre.com.ar/gorra-wasd-gaming-2da-edicion-original--pad-de-regalo/up/MLAU5963199402",
+        "https://twitter.com/deowasd/status/2123055492486549924"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "1262844103814983688",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-19T10:15:40.971439+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2123055492486549924",
+          "score": 35,
+          "category": "creator",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "Merch de otro creador de contenido sin relación directa con la temática específica de Rust."
+        },
+        "completed_at": "2026-11-19T10:15:44.486563+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 20,
+      "views": 642,
+      "replies": 1,
+      "reposts": 0
+    },
+    "2123026617874141412": {
+      "id": "2123026617874141412",
+      "author_id": "3085086228",
+      "text": "Yo no veo el Rob Run ahi ☠️",
+      "url": "https://x.com/Karinios0/status/2123026617874141412",
+      "created_at": "2026-11-18T12:12:44.000Z",
+      "expanded_urls": [],
+      "monitored_by": [
+        {
+          "account_id": "3085086228",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-19T10:15:40.971458+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2123026617874141412",
+          "score": 15,
+          "category": "community",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "Mensaje críptico o sin contexto claro aplicable a Rust."
+        },
+        "completed_at": "2026-11-19T10:15:44.491556+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 3,
+      "views": 323,
+      "replies": 0,
+      "reposts": 0
+    },
+    "2123133376588841322": {
+      "id": "2123133376588841322",
+      "author_id": "736974333424369664",
+      "text": "ESTAMOS ON 🔴\n\nArrancamos noche de Project Zomboid y después wardgos.\n\nhttps://t.co/6f3pAsoWWB",
+      "url": "https://x.com/Agustabell212/status/2123133376588841322",
+      "created_at": "2026-11-18T19:16:57.000Z",
+      "expanded_urls": [
+        "https://kick.com/agustabell212"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "736974333424369664",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-19T10:15:40.971478+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2123133376588841322",
+          "score": 10,
+          "category": "creator",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "Aviso de directo de Project Zomboid, fuera de la temática de Rust."
+        },
+        "completed_at": "2026-11-19T10:15:44.496438+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-19T10:15:54.009700+00:00",
+          "completed_at": "2026-11-19T10:15:54.971650+00:00",
+          "error": null,
+          "external_id": "2123133376588841322",
+          "payload": {
+            "post_id": "2123133376588841322",
+            "mode": "live",
+            "stage": "completed"
+          }
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 29,
+      "views": 1475,
+      "replies": 0,
+      "reposts": 1
+    },
+    "2122342201711628468": {
+      "id": "2122342201711628468",
+      "author_id": "736974333424369664",
+      "text": "ESTAMOS ON 🔴\n\nPues arrancamos la semana de chill ... hoy Wardogs y mañana Project Zomboid ...\n\nhttps://t.co/6f3pAsop73",
+      "url": "https://x.com/Agustabell212/status/2122342201711628468",
+      "created_at": "2026-11-16T14:53:06.000Z",
+      "expanded_urls": [
+        "https://kick.com/agustabell212"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "736974333424369664",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-19T10:15:40.971482+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2122342201711628468",
+          "score": 10,
+          "category": "creator",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "Aviso de directo de Project Zomboid."
+        },
+        "completed_at": "2026-11-19T10:15:44.501334+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 22,
+      "views": 1951,
+      "replies": 1,
+      "reposts": 1
+    },
+    "2122073132303372687": {
+      "id": "2122073132303372687",
+      "author_id": "736974333424369664",
+      "text": "ESTAMOS ON 🔴\n\nPues arrancamos directito de chill y cortito de noche ...\n\nhttps://t.co/6f3pAsop73",
+      "url": "https://x.com/Agustabell212/status/2122073132303372687",
+      "created_at": "2026-11-15T21:03:55.000Z",
+      "expanded_urls": [
+        "https://kick.com/agustabell212"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "736974333424369664",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-19T10:15:40.971486+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2122073132303372687",
+          "score": 10,
+          "category": "creator",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "Aviso de directo general sin contenido de Rust."
+        },
+        "completed_at": "2026-11-19T10:15:44.506191+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 23,
+      "views": 1908,
+      "replies": 0,
+      "reposts": 3
+    },
+    "2121284712480338090": {
+      "id": "2121284712480338090",
+      "author_id": "736974333424369664",
+      "text": "ESTAMOS ON 🔴\n\nViernes y el cuerpo lo sabe ...\n\nhttps://t.co/6f3pAsoWWB",
+      "url": "https://x.com/Agustabell212/status/2121284712480338090",
+      "created_at": "2026-11-13T16:51:01.000Z",
+      "expanded_urls": [
+        "https://kick.com/agustabell212"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "736974333424369664",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-19T10:15:40.971491+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2121284712480338090",
+          "score": 10,
+          "category": "creator",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "Aviso de directo general."
+        },
+        "completed_at": "2026-11-19T10:15:44.511215+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 22,
+      "views": 1895,
+      "replies": 0,
+      "reposts": 1
+    },
+    "2119847412080468243": {
+      "id": "2119847412080468243",
+      "author_id": "736974333424369664",
+      "text": "ESTAMOS ON 🔴\n\nPues arrancamos directito de vicio y charlitas que pinta bien el dia hoy ....\n\nhttps://t.co/6f3pAsop73",
+      "url": "https://x.com/Agustabell212/status/2119847412080468243",
+      "created_at": "2026-11-09T17:39:42.000Z",
+      "expanded_urls": [
+        "https://kick.com/agustabell212"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "736974333424369664",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-19T10:15:40.971495+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2119847412080468243",
+          "score": 10,
+          "category": "creator",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "Aviso de directo general."
+        },
+        "completed_at": "2026-11-19T10:15:44.515985+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 32,
+      "views": 2374,
+      "replies": 1,
+      "reposts": 1
+    },
+    "2089795544361124249": {
+      "id": "2089795544361124249",
+      "author_id": "792712514429673472",
+      "text": "CUMPLI MI SUEÑO, 100.000 GRACIAS &lt;3\nhttps://t.co/Di3LuRkayf https://t.co/N9ISUbfiOJ",
+      "url": "https://x.com/nazegamingtv/status/2089795544361124249",
+      "created_at": "2026-08-18T19:24:18.000Z",
+      "expanded_urls": [
+        "https://www.youtube.com/watch?v=3vhPLtW0-tU",
+        "https://twitter.com/nazegamingtv/status/2089795544361124249"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "792712514429673472",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-19T10:15:40.971499+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2089795544361124249",
+          "score": 5,
+          "category": "other",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "Celebración de seguidores de otro creador antiguo y sin conexión con Rust."
+        },
+        "completed_at": "2026-11-19T10:15:44.520845+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-19T10:15:54.977688+00:00",
+          "completed_at": "2026-11-19T10:15:56.083467+00:00",
+          "error": null,
+          "external_id": "2089795544361124249",
+          "payload": {
+            "post_id": "2089795544361124249",
+            "mode": "live",
+            "stage": "completed"
+          }
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 104,
+      "views": 2466,
+      "replies": 15,
+      "reposts": 7
+    },
+    "2123221134443503884": {
+      "id": "2123221134443503884",
+      "author_id": "792712514429673472",
+      "text": "VENI A SALUDAR HOY GTA 6 EN DIRECTO!!!! https://t.co/Z0lu8DXxYA",
+      "url": "https://x.com/nazegamingtv/status/2123221134443503884",
+      "created_at": "2026-11-19T01:05:40.000Z",
+      "expanded_urls": [
+        "https://kick.com/naze"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "792712514429673472",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-19T10:15:40.971504+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2123221134443503884",
+          "score": 25,
+          "category": "creator",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "Anuncio de directo sobre GTA 6, sin relación con Rust."
+        },
+        "completed_at": "2026-11-19T10:15:44.527276+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 0,
+      "views": 83,
+      "replies": 0,
+      "reposts": 0
+    },
+    "2123013259322355981": {
+      "id": "2123013259322355981",
+      "author_id": "792712514429673472",
+      "text": "Hola cracks! Para evitar cualquier spoiler de GTA 6 voy a desconectarme de las redes hasta que prenda directo para jugarlo, nos vemos en unas horitas para recorrer Vice City juntos!🍹🌴🚨\n➡️ https://t.co/Z0lu8DXxYA",
+      "url": "https://x.com/nazegamingtv/status/2123013259322355981",
+      "created_at": "2026-11-18T11:19:39.000Z",
+      "expanded_urls": [
+        "https://kick.com/naze"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "792712514429673472",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-19T10:15:40.971508+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2123013259322355981",
+          "score": 25,
+          "category": "creator",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "Trata sobre el lanzamiento de GTA 6, totalmente ajeno al contenido de Rust de CalaveraGaming."
+        },
+        "completed_at": "2026-11-19T10:15:44.532367+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 7,
+      "views": 341,
+      "replies": 0,
+      "reposts": 0
+    },
+    "2122841039396307109": {
+      "id": "2122841039396307109",
+      "author_id": "792712514429673472",
+      "text": "Sobreviví 50 DIAS en ROBLOX Fust Survival en SOLITARIO 😨 https://t.co/aTQGt9j83I vía @YouTube",
+      "url": "https://x.com/nazegamingtv/status/2122841039396307109",
+      "created_at": "2026-11-17T23:55:18.000Z",
+      "expanded_urls": [
+        "https://www.youtube.com/watch?si=7-4A0cE5MDBrODNg&v=5VEgT5JLLSk&feature=youtu.be"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "792712514429673472",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-19T10:15:40.971512+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2122841039396307109",
+          "score": 20,
+          "category": "creator",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "Contenido enfocado en Roblox, no relevante para la audiencia de Rust."
+        },
+        "completed_at": "2026-11-19T10:15:44.537565+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 6,
+      "views": 266,
+      "replies": 1,
+      "reposts": 0
+    },
+    "2122305875196928108": {
+      "id": "2122305875196928108",
+      "author_id": "792712514429673472",
+      "text": "Hola fachas! A partir del 19/11 voy a estar empezando el modo historia de GTA VI en directo y subiendo mas de un video diario al canal, vamos a ir disfrutando y trolleando con todo lo que me encuentre XD asi que quien no pueda jugarlo y quiera disfrutarlo conmigo los invito por aca:\n🔴 Directos ➤ https://t.co/x6IqXE7ENP\n🎥 Videos ➤ https://t.co/089ErrYfbM",
+      "url": "https://x.com/nazegamingtv/status/2122305875196928108",
+      "created_at": "2026-11-16T12:28:45.000Z",
+      "expanded_urls": [
+        "https://kick.com/naze",
+        "https://www.youtube.com/@nazegamingtv"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "792712514429673472",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-19T10:15:40.971517+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2122305875196928108",
+          "score": 25,
+          "category": "creator",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "Promoción de streams de GTA VI por parte de otro creador."
+        },
+        "completed_at": "2026-11-19T10:15:44.542391+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 17,
+      "views": 616,
+      "replies": 2,
+      "reposts": 0
     }
   }
 }

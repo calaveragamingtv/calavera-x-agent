@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-17T18:02:50.391566+00:00",
-  "total": 64,
+  "updated_at": "2026-11-19T10:15:51.903240+00:00",
+  "total": 80,
   "evaluations": {
     "2118402970886836645": {
       "post_id": "2118402970886836645",
@@ -449,6 +449,118 @@
       "score": 85,
       "category": "rust",
       "reason": "Aporta información técnica útil y original sobre herramientas y mapas en Rust, generando valor genuino para la comunidad de jugadores y desarrolladores de servidores."
+    },
+    "2123133376588841322": {
+      "post_id": "2123133376588841322",
+      "should_like": true,
+      "score": 95,
+      "category": "kick",
+      "reason": "La publicación contiene un enlace válido a la plataforma Kick."
+    },
+    "2122342201711628468": {
+      "post_id": "2122342201711628468",
+      "should_like": true,
+      "score": 95,
+      "category": "kick",
+      "reason": "La publicación contiene un enlace válido a la plataforma Kick."
+    },
+    "2122073132303372687": {
+      "post_id": "2122073132303372687",
+      "should_like": true,
+      "score": 95,
+      "category": "kick",
+      "reason": "La publicación contiene un enlace válido a la plataforma Kick."
+    },
+    "2121284712480338090": {
+      "post_id": "2121284712480338090",
+      "should_like": true,
+      "score": 95,
+      "category": "kick",
+      "reason": "La publicación contiene un enlace válido a la plataforma Kick."
+    },
+    "2119847412080468243": {
+      "post_id": "2119847412080468243",
+      "should_like": true,
+      "score": 95,
+      "category": "kick",
+      "reason": "La publicación contiene un enlace válido a la plataforma Kick."
+    },
+    "2089795544361124249": {
+      "post_id": "2089795544361124249",
+      "should_like": true,
+      "score": 95,
+      "category": "youtube",
+      "reason": "La publicación contiene un enlace válido a la plataforma YouTube."
+    },
+    "2123221134443503884": {
+      "post_id": "2123221134443503884",
+      "should_like": true,
+      "score": 95,
+      "category": "kick",
+      "reason": "La publicación contiene un enlace válido a la plataforma Kick."
+    },
+    "2123013259322355981": {
+      "post_id": "2123013259322355981",
+      "should_like": true,
+      "score": 95,
+      "category": "kick",
+      "reason": "La publicación contiene un enlace válido a la plataforma Kick."
+    },
+    "2122841039396307109": {
+      "post_id": "2122841039396307109",
+      "should_like": true,
+      "score": 95,
+      "category": "youtube",
+      "reason": "La publicación contiene un enlace válido a la plataforma YouTube."
+    },
+    "2122305875196928108": {
+      "post_id": "2122305875196928108",
+      "should_like": true,
+      "score": 95,
+      "category": "kick",
+      "reason": "La publicación contiene enlaces válidos a las plataformas Kick y YouTube."
+    },
+    "2123068792523587927": {
+      "post_id": "2123068792523587927",
+      "should_like": true,
+      "score": 90,
+      "category": "gaming",
+      "reason": "La publicación contiene un enlace válido a la plataforma YouTube en sus URLs expandidas (rust.facepunch.com/newsletter/)."
+    },
+    "2123101108683858386": {
+      "post_id": "2123101108683858386",
+      "should_like": true,
+      "score": 85,
+      "category": "rust",
+      "reason": "Contenido original y útil para la comunidad de Rust sobre actualizaciones de mapas y mecánicas del juego."
+    },
+    "2123055492486549924": {
+      "post_id": "2123055492486549924",
+      "should_like": true,
+      "score": 80,
+      "category": "gaming",
+      "reason": "Anuncio de productos de merchandising de un creador, aportando valor a su comunidad y fortaleciendo relaciones."
+    },
+    "2123037229622706582": {
+      "post_id": "2123037229622706582",
+      "should_like": true,
+      "score": 78,
+      "category": "gaming",
+      "reason": "Pregunta interactiva dirigida a la comunidad de jugadores que fomenta la conversación y el debate sobre un lanzamiento importante."
+    },
+    "2123030615540867307": {
+      "post_id": "2123030615540867307",
+      "should_like": false,
+      "score": 60,
+      "category": "rust",
+      "reason": "Es un repost con información moderadamente interesante sobre Rust, pero de impacto y alcance limitado."
+    },
+    "2123026617874141412": {
+      "post_id": "2123026617874141412",
+      "should_like": false,
+      "score": 50,
+      "category": "other",
+      "reason": "Comentario críptico y sin contexto suficiente para aportar un valor genuino o generar una interacción relevante."
     }
   }
 }

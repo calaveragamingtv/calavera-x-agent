@@ -1,7 +1,7 @@
 {
   "account": "monitored_accounts",
-  "updated_at": "2026-11-18T10:11:17.932723+00:00",
-  "total": 29,
+  "updated_at": "2026-11-19T10:15:40.968388+00:00",
+  "total": 39,
   "posts": [
     {
       "id": "2102836402421387646",
@@ -14,8 +14,8 @@
       "created_at": "2026-09-23T19:04:01.000Z",
       "replies": 76,
       "reposts": 123,
-      "likes": 1236,
-      "views": 377286,
+      "likes": 1237,
+      "views": 377556,
       "monitored_by": [
         {
           "account_id": "742290493292285952",
@@ -35,7 +35,7 @@
       "replies": 5,
       "reposts": 8,
       "likes": 120,
-      "views": 23743,
+      "views": 23749,
       "monitored_by": [
         {
           "account_id": "742290493292285952",
@@ -111,7 +111,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 4,
-      "views": 1930,
+      "views": 1944,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -131,7 +131,7 @@
       "replies": 0,
       "reposts": 1,
       "likes": 6,
-      "views": 1561,
+      "views": 1576,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -149,7 +149,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 3,
-      "views": 1577,
+      "views": 1584,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -170,7 +170,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 1,
-      "views": 1265,
+      "views": 1269,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -190,7 +190,63 @@
       "replies": 2,
       "reposts": 2,
       "likes": 13,
-      "views": 1303,
+      "views": 1307,
+      "monitored_by": [
+        {
+          "account_id": "779120759000137728",
+          "account_type": "server"
+        }
+      ]
+    },
+    {
+      "id": "2123101108683858386",
+      "author_id": "779120759000137728",
+      "text": "Con CobaltMaps ahora puedes colocar los faros en cada esquina del mapa.\n\nIdeal para que los jugadores lo puedan tener más cerca y ayudar a su reparación para activar el DeepSea.\n\n¿Qué te parece? https://t.co/Lm5W2t93De",
+      "url": "https://x.com/RustSpain_com/status/2123101108683858386",
+      "expanded_urls": [
+        "https://twitter.com/RustSpain_com/status/2123101108683858386"
+      ],
+      "created_at": "2026-11-18T17:08:44.000Z",
+      "replies": 0,
+      "reposts": 1,
+      "likes": 10,
+      "views": 793,
+      "monitored_by": [
+        {
+          "account_id": "779120759000137728",
+          "account_type": "server"
+        }
+      ]
+    },
+    {
+      "id": "2123037229622706582",
+      "author_id": "779120759000137728",
+      "text": "Pregunta sería para los jugadores de Rust: ¿Jugaras a GTAVI en consola o esperaras a su versión de PC?",
+      "url": "https://x.com/RustSpain_com/status/2123037229622706582",
+      "expanded_urls": [],
+      "created_at": "2026-11-18T12:54:54.000Z",
+      "replies": 0,
+      "reposts": 0,
+      "likes": 1,
+      "views": 352,
+      "monitored_by": [
+        {
+          "account_id": "779120759000137728",
+          "account_type": "server"
+        }
+      ]
+    },
+    {
+      "id": "2123030615540867307",
+      "author_id": "779120759000137728",
+      "text": "RT @RustSpain_com: El tren pasa por arriba. La carretera sigue su camino.\n\nCobaltMaps genera pasos ferroviarios sobre carreteras cuando el…",
+      "url": "https://x.com/RustSpain_com/status/2123030615540867307",
+      "expanded_urls": [],
+      "created_at": "2026-11-18T12:28:37.000Z",
+      "replies": 0,
+      "reposts": 6,
+      "likes": 0,
+      "views": 0,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -208,9 +264,9 @@
       ],
       "created_at": "2026-11-17T15:02:56.000Z",
       "replies": 5,
-      "reposts": 4,
-      "likes": 38,
-      "views": 2963,
+      "reposts": 6,
+      "likes": 54,
+      "views": 4020,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -219,58 +275,23 @@
       ]
     },
     {
-      "id": "2120921072530767979",
-      "author_id": "779120759000137728",
-      "text": "RT @playrust: This month's update brought a massive amount of optimisations and performance improvements to Rust! ⚙️⏱️🏁\n\nRead all about the…",
-      "url": "https://x.com/RustSpain_com/status/2120921072530767979",
-      "expanded_urls": [],
-      "created_at": "2026-11-12T16:46:03.000Z",
-      "replies": 0,
-      "reposts": 23,
-      "likes": 0,
-      "views": 15,
-      "monitored_by": [
-        {
-          "account_id": "779120759000137728",
-          "account_type": "server"
-        }
-      ]
-    },
-    {
-      "id": "2120916426760524182",
-      "author_id": "779120759000137728",
-      "text": "Rust convertido en StarWars de aquí a 2 meses...\nhttps://t.co/oWwltYU8qr",
-      "url": "https://x.com/RustSpain_com/status/2120916426760524182",
+      "id": "2123068792523587927",
+      "author_id": "1542707718",
+      "text": "Stay ahead of the game! 🏃‍♀️‍➡️☢️📩\n\nGet the latest official Rust PC patch notes and updates delivered straight to your inbox.\n\nSign up for the Rust mailing list here: https://t.co/S1nefecL7R https://t.co/oJkOsr1btI",
+      "url": "https://x.com/playrust/status/2123068792523587927",
       "expanded_urls": [
-        "https://www.youtube.com/watch?v=HFHzp_tH-mk"
+        "https://rust.facepunch.com/newsletter/",
+        "https://twitter.com/playrust/status/2123068792523587927"
       ],
-      "created_at": "2026-11-12T16:27:35.000Z",
-      "replies": 1,
-      "reposts": 0,
-      "likes": 4,
-      "views": 313,
-      "monitored_by": [
-        {
-          "account_id": "779120759000137728",
-          "account_type": "server"
-        }
-      ]
-    },
-    {
-      "id": "2120896845391987027",
-      "author_id": "779120759000137728",
-      "text": "¡Ya wipeado nuestro Vanilla Main, Vanilla Solo Only y Modded x5! ¡Te esperamos!",
-      "url": "https://x.com/RustSpain_com/status/2120896845391987027",
-      "expanded_urls": [],
-      "created_at": "2026-11-12T15:09:46.000Z",
+      "created_at": "2026-11-18T15:00:19.000Z",
       "replies": 0,
-      "reposts": 0,
-      "likes": 1,
-      "views": 294,
+      "reposts": 2,
+      "likes": 64,
+      "views": 10646,
       "monitored_by": [
         {
-          "account_id": "779120759000137728",
-          "account_type": "server"
+          "account_id": "1542707718",
+          "account_type": "official"
         }
       ]
     },
@@ -284,10 +305,10 @@
         "https://twitter.com/playrust/status/2122706708606615773"
       ],
       "created_at": "2026-11-17T15:01:31.000Z",
-      "replies": 3,
-      "reposts": 8,
-      "likes": 89,
-      "views": 10520,
+      "replies": 4,
+      "reposts": 9,
+      "likes": 103,
+      "views": 12595,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -304,10 +325,10 @@
         "https://rust.facepunch.com/news/printed_and_polished"
       ],
       "created_at": "2026-11-16T14:59:49.000Z",
-      "replies": 47,
+      "replies": 48,
       "reposts": 7,
-      "likes": 197,
-      "views": 33400,
+      "likes": 199,
+      "views": 34984,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -327,8 +348,8 @@
       "created_at": "2026-11-14T15:00:09.000Z",
       "replies": 5,
       "reposts": 7,
-      "likes": 96,
-      "views": 17253,
+      "likes": 97,
+      "views": 17650,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -349,7 +370,7 @@
       "replies": 5,
       "reposts": 8,
       "likes": 96,
-      "views": 14359,
+      "views": 14580,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -358,23 +379,23 @@
       ]
     },
     {
-      "id": "2120894373671870797",
-      "author_id": "1542707718",
-      "text": "This month, we introduced the iconic new UZI 9mm Submachine Gun.\n🔫☢️🎯\n\nComplete with a folding stock. Offering two different ways to use the weapon.\n\nRead more about this month's additions on our DevBlog: https://t.co/h9bGJRqWUi https://t.co/oM8MiQ8SbH",
-      "url": "https://x.com/playrust/status/2120894373671870797",
+      "id": "2123055492486549924",
+      "author_id": "1262844103814983688",
+      "text": "LLEGARON las gorras 2da edicion, WASD mas grande y color VERDE. Quedaron sacadas https://t.co/dhanRPuDkZ https://t.co/4tOF2JVmsh",
+      "url": "https://x.com/deowasd/status/2123055492486549924",
       "expanded_urls": [
-        "https://rust.facepunch.com/news/printed_and_polished",
-        "https://twitter.com/playrust/status/2120894373671870797"
+        "https://www.mercadolibre.com.ar/gorra-wasd-gaming-2da-edicion-original--pad-de-regalo/up/MLAU5963199402",
+        "https://twitter.com/deowasd/status/2123055492486549924"
       ],
-      "created_at": "2026-11-12T14:59:57.000Z",
-      "replies": 11,
-      "reposts": 9,
-      "likes": 142,
-      "views": 14434,
+      "created_at": "2026-11-18T14:07:28.000Z",
+      "replies": 1,
+      "reposts": 0,
+      "likes": 20,
+      "views": 642,
       "monitored_by": [
         {
-          "account_id": "1542707718",
-          "account_type": "official"
+          "account_id": "1262844103814983688",
+          "account_type": "streamer"
         }
       ]
     },
@@ -385,10 +406,10 @@
       "url": "https://x.com/deowasd/status/2122425875320774778",
       "expanded_urls": [],
       "created_at": "2026-11-16T20:25:36.000Z",
-      "replies": 30,
+      "replies": 31,
       "reposts": 4,
-      "likes": 73,
-      "views": 11077,
+      "likes": 74,
+      "views": 11439,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -408,7 +429,7 @@
       "replies": 9,
       "reposts": 0,
       "likes": 10,
-      "views": 1528,
+      "views": 1567,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -426,7 +447,7 @@
       "replies": 1,
       "reposts": 1,
       "likes": 18,
-      "views": 960,
+      "views": 976,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -446,7 +467,7 @@
       "replies": 1,
       "reposts": 1,
       "likes": 16,
-      "views": 1087,
+      "views": 1092,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -455,21 +476,19 @@
       ]
     },
     {
-      "id": "2119590831476871268",
-      "author_id": "1262844103814983688",
-      "text": "4 Horitas de raid online y kitearon todos los defenders 💀 https://t.co/0BViy3Ik0I",
-      "url": "https://x.com/deowasd/status/2119590831476871268",
-      "expanded_urls": [
-        "https://twitter.com/deowasd/status/2119590831476871268"
-      ],
-      "created_at": "2026-11-09T00:40:08.000Z",
-      "replies": 2,
+      "id": "2123026617874141412",
+      "author_id": "3085086228",
+      "text": "Yo no veo el Rob Run ahi ☠️",
+      "url": "https://x.com/Karinios0/status/2123026617874141412",
+      "expanded_urls": [],
+      "created_at": "2026-11-18T12:12:44.000Z",
+      "replies": 0,
       "reposts": 0,
-      "likes": 58,
-      "views": 4954,
+      "likes": 3,
+      "views": 323,
       "monitored_by": [
         {
-          "account_id": "1262844103814983688",
+          "account_id": "3085086228",
           "account_type": "streamer"
         }
       ]
@@ -502,7 +521,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 8,
-      "views": 572,
+      "views": 582,
       "monitored_by": [
         {
           "account_id": "3085086228",
@@ -540,7 +559,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 2,
-      "views": 69,
+      "views": 72,
       "monitored_by": [
         {
           "account_id": "3085086228",
@@ -549,19 +568,203 @@
       ]
     },
     {
-      "id": "2120981886621417960",
-      "author_id": "3085086228",
-      "text": "RT @0800PolyyyyS: yo y mi ñery @Karinios0 10 segundos despues de entrar a un voice",
-      "url": "https://x.com/Karinios0/status/2120981886621417960",
-      "expanded_urls": [],
-      "created_at": "2026-11-12T20:47:42.000Z",
+      "id": "2123133376588841322",
+      "author_id": "736974333424369664",
+      "text": "ESTAMOS ON 🔴\n\nArrancamos noche de Project Zomboid y después wardgos.\n\nhttps://t.co/6f3pAsoWWB",
+      "url": "https://x.com/Agustabell212/status/2123133376588841322",
+      "expanded_urls": [
+        "https://kick.com/agustabell212"
+      ],
+      "created_at": "2026-11-18T19:16:57.000Z",
       "replies": 0,
       "reposts": 1,
-      "likes": 0,
-      "views": 0,
+      "likes": 29,
+      "views": 1475,
       "monitored_by": [
         {
-          "account_id": "3085086228",
+          "account_id": "736974333424369664",
+          "account_type": "streamer"
+        }
+      ]
+    },
+    {
+      "id": "2122342201711628468",
+      "author_id": "736974333424369664",
+      "text": "ESTAMOS ON 🔴\n\nPues arrancamos la semana de chill ... hoy Wardogs y mañana Project Zomboid ...\n\nhttps://t.co/6f3pAsop73",
+      "url": "https://x.com/Agustabell212/status/2122342201711628468",
+      "expanded_urls": [
+        "https://kick.com/agustabell212"
+      ],
+      "created_at": "2026-11-16T14:53:06.000Z",
+      "replies": 1,
+      "reposts": 1,
+      "likes": 22,
+      "views": 1951,
+      "monitored_by": [
+        {
+          "account_id": "736974333424369664",
+          "account_type": "streamer"
+        }
+      ]
+    },
+    {
+      "id": "2122073132303372687",
+      "author_id": "736974333424369664",
+      "text": "ESTAMOS ON 🔴\n\nPues arrancamos directito de chill y cortito de noche ...\n\nhttps://t.co/6f3pAsop73",
+      "url": "https://x.com/Agustabell212/status/2122073132303372687",
+      "expanded_urls": [
+        "https://kick.com/agustabell212"
+      ],
+      "created_at": "2026-11-15T21:03:55.000Z",
+      "replies": 0,
+      "reposts": 3,
+      "likes": 23,
+      "views": 1908,
+      "monitored_by": [
+        {
+          "account_id": "736974333424369664",
+          "account_type": "streamer"
+        }
+      ]
+    },
+    {
+      "id": "2121284712480338090",
+      "author_id": "736974333424369664",
+      "text": "ESTAMOS ON 🔴\n\nViernes y el cuerpo lo sabe ...\n\nhttps://t.co/6f3pAsoWWB",
+      "url": "https://x.com/Agustabell212/status/2121284712480338090",
+      "expanded_urls": [
+        "https://kick.com/agustabell212"
+      ],
+      "created_at": "2026-11-13T16:51:01.000Z",
+      "replies": 0,
+      "reposts": 1,
+      "likes": 22,
+      "views": 1895,
+      "monitored_by": [
+        {
+          "account_id": "736974333424369664",
+          "account_type": "streamer"
+        }
+      ]
+    },
+    {
+      "id": "2119847412080468243",
+      "author_id": "736974333424369664",
+      "text": "ESTAMOS ON 🔴\n\nPues arrancamos directito de vicio y charlitas que pinta bien el dia hoy ....\n\nhttps://t.co/6f3pAsop73",
+      "url": "https://x.com/Agustabell212/status/2119847412080468243",
+      "expanded_urls": [
+        "https://kick.com/agustabell212"
+      ],
+      "created_at": "2026-11-09T17:39:42.000Z",
+      "replies": 1,
+      "reposts": 1,
+      "likes": 32,
+      "views": 2374,
+      "monitored_by": [
+        {
+          "account_id": "736974333424369664",
+          "account_type": "streamer"
+        }
+      ]
+    },
+    {
+      "id": "2089795544361124249",
+      "author_id": "792712514429673472",
+      "text": "CUMPLI MI SUEÑO, 100.000 GRACIAS &lt;3\nhttps://t.co/Di3LuRkayf https://t.co/N9ISUbfiOJ",
+      "url": "https://x.com/nazegamingtv/status/2089795544361124249",
+      "expanded_urls": [
+        "https://www.youtube.com/watch?v=3vhPLtW0-tU",
+        "https://twitter.com/nazegamingtv/status/2089795544361124249"
+      ],
+      "created_at": "2026-08-18T19:24:18.000Z",
+      "replies": 15,
+      "reposts": 7,
+      "likes": 104,
+      "views": 2466,
+      "monitored_by": [
+        {
+          "account_id": "792712514429673472",
+          "account_type": "streamer"
+        }
+      ]
+    },
+    {
+      "id": "2123221134443503884",
+      "author_id": "792712514429673472",
+      "text": "VENI A SALUDAR HOY GTA 6 EN DIRECTO!!!! https://t.co/Z0lu8DXxYA",
+      "url": "https://x.com/nazegamingtv/status/2123221134443503884",
+      "expanded_urls": [
+        "https://kick.com/naze"
+      ],
+      "created_at": "2026-11-19T01:05:40.000Z",
+      "replies": 0,
+      "reposts": 0,
+      "likes": 0,
+      "views": 83,
+      "monitored_by": [
+        {
+          "account_id": "792712514429673472",
+          "account_type": "streamer"
+        }
+      ]
+    },
+    {
+      "id": "2123013259322355981",
+      "author_id": "792712514429673472",
+      "text": "Hola cracks! Para evitar cualquier spoiler de GTA 6 voy a desconectarme de las redes hasta que prenda directo para jugarlo, nos vemos en unas horitas para recorrer Vice City juntos!🍹🌴🚨\n➡️ https://t.co/Z0lu8DXxYA",
+      "url": "https://x.com/nazegamingtv/status/2123013259322355981",
+      "expanded_urls": [
+        "https://kick.com/naze"
+      ],
+      "created_at": "2026-11-18T11:19:39.000Z",
+      "replies": 0,
+      "reposts": 0,
+      "likes": 7,
+      "views": 341,
+      "monitored_by": [
+        {
+          "account_id": "792712514429673472",
+          "account_type": "streamer"
+        }
+      ]
+    },
+    {
+      "id": "2122841039396307109",
+      "author_id": "792712514429673472",
+      "text": "Sobreviví 50 DIAS en ROBLOX Fust Survival en SOLITARIO 😨 https://t.co/aTQGt9j83I vía @YouTube",
+      "url": "https://x.com/nazegamingtv/status/2122841039396307109",
+      "expanded_urls": [
+        "https://www.youtube.com/watch?si=7-4A0cE5MDBrODNg&v=5VEgT5JLLSk&feature=youtu.be"
+      ],
+      "created_at": "2026-11-17T23:55:18.000Z",
+      "replies": 1,
+      "reposts": 0,
+      "likes": 6,
+      "views": 266,
+      "monitored_by": [
+        {
+          "account_id": "792712514429673472",
+          "account_type": "streamer"
+        }
+      ]
+    },
+    {
+      "id": "2122305875196928108",
+      "author_id": "792712514429673472",
+      "text": "Hola fachas! A partir del 19/11 voy a estar empezando el modo historia de GTA VI en directo y subiendo mas de un video diario al canal, vamos a ir disfrutando y trolleando con todo lo que me encuentre XD asi que quien no pueda jugarlo y quiera disfrutarlo conmigo los invito por aca:\n🔴 Directos ➤ https://t.co/x6IqXE7ENP\n🎥 Videos ➤ https://t.co/089ErrYfbM",
+      "url": "https://x.com/nazegamingtv/status/2122305875196928108",
+      "expanded_urls": [
+        "https://kick.com/naze",
+        "https://www.youtube.com/@nazegamingtv"
+      ],
+      "created_at": "2026-11-16T12:28:45.000Z",
+      "replies": 2,
+      "reposts": 0,
+      "likes": 17,
+      "views": 616,
+      "monitored_by": [
+        {
+          "account_id": "792712514429673472",
           "account_type": "streamer"
         }
       ]
