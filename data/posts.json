@@ -1,6 +1,6 @@
 {
   "account": "monitored_accounts",
-  "updated_at": "2026-11-19T10:15:40.968388+00:00",
+  "updated_at": "2026-11-19T18:02:57.698494+00:00",
   "total": 39,
   "posts": [
     {
@@ -15,7 +15,7 @@
       "replies": 76,
       "reposts": 123,
       "likes": 1237,
-      "views": 377556,
+      "views": 377615,
       "monitored_by": [
         {
           "account_id": "742290493292285952",
@@ -35,7 +35,7 @@
       "replies": 5,
       "reposts": 8,
       "likes": 120,
-      "views": 23749,
+      "views": 23753,
       "monitored_by": [
         {
           "account_id": "742290493292285952",
@@ -111,7 +111,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 4,
-      "views": 1944,
+      "views": 1947,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -131,7 +131,7 @@
       "replies": 0,
       "reposts": 1,
       "likes": 6,
-      "views": 1576,
+      "views": 1579,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -149,7 +149,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 3,
-      "views": 1584,
+      "views": 1587,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -170,7 +170,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 1,
-      "views": 1269,
+      "views": 1273,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -190,7 +190,45 @@
       "replies": 2,
       "reposts": 2,
       "likes": 13,
-      "views": 1307,
+      "views": 1309,
+      "monitored_by": [
+        {
+          "account_id": "779120759000137728",
+          "account_type": "server"
+        }
+      ]
+    },
+    {
+      "id": "2123443699786858629",
+      "author_id": "779120759000137728",
+      "text": "Analizando la primera media hora de Wipe, estos son los números en los servidores Main Oficiales.\n\nDura la caída, especialmente para nosotros. \n\nVeremos como acaba la cosa, ahora mismo esto no se podría mantener en funcionamiento mucho más tiempo.😥 https://t.co/9EOQQF28Fe",
+      "url": "https://x.com/RustSpain_com/status/2123443699786858629",
+      "expanded_urls": [
+        "https://twitter.com/RustSpain_com/status/2123443699786858629"
+      ],
+      "created_at": "2026-11-19T15:50:04.000Z",
+      "replies": 2,
+      "reposts": 0,
+      "likes": 1,
+      "views": 500,
+      "monitored_by": [
+        {
+          "account_id": "779120759000137728",
+          "account_type": "server"
+        }
+      ]
+    },
+    {
+      "id": "2123403973335933433",
+      "author_id": "779120759000137728",
+      "text": "Si no tienes GTAVI, tranquilo tenemos un plan para tí en unas horas.\n\nWipe de nuestro Vanilla Main, Vanilla Solo Only y Modded x5 [Max Trio] a las 16h. Es decir, en menos de 2 horas...\n\n¡Te esperamos!",
+      "url": "https://x.com/RustSpain_com/status/2123403973335933433",
+      "expanded_urls": [],
+      "created_at": "2026-11-19T13:12:12.000Z",
+      "replies": 0,
+      "reposts": 1,
+      "likes": 2,
+      "views": 265,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -207,10 +245,10 @@
         "https://twitter.com/RustSpain_com/status/2123101108683858386"
       ],
       "created_at": "2026-11-18T17:08:44.000Z",
-      "replies": 0,
+      "replies": 1,
       "reposts": 1,
-      "likes": 10,
-      "views": 793,
+      "likes": 12,
+      "views": 948,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -228,7 +266,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 1,
-      "views": 352,
+      "views": 371,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -237,40 +275,22 @@
       ]
     },
     {
-      "id": "2123030615540867307",
-      "author_id": "779120759000137728",
-      "text": "RT @RustSpain_com: El tren pasa por arriba. La carretera sigue su camino.\n\nCobaltMaps genera pasos ferroviarios sobre carreteras cuando el…",
-      "url": "https://x.com/RustSpain_com/status/2123030615540867307",
-      "expanded_urls": [],
-      "created_at": "2026-11-18T12:28:37.000Z",
-      "replies": 0,
-      "reposts": 6,
-      "likes": 0,
-      "views": 0,
-      "monitored_by": [
-        {
-          "account_id": "779120759000137728",
-          "account_type": "server"
-        }
-      ]
-    },
-    {
-      "id": "2122707062371009017",
-      "author_id": "779120759000137728",
-      "text": "El tren pasa por arriba. La carretera sigue su camino.\n\nCobaltMaps genera pasos ferroviarios sobre carreteras cuando el cruce permite una solución válida. https://t.co/CMNt6WoPbP",
-      "url": "https://x.com/RustSpain_com/status/2122707062371009017",
+      "id": "2123431084419338353",
+      "author_id": "1542707718",
+      "text": "Get your sheep ready, as this month includes a new Armour Insert using Wool. 🐏☢️🧶\n\nIt offers a small buff to melee and projectile protection, plus a large buff to cold resistance, making those chilly Arctic nights more survivable. You'll find it on the Tier 1 tech tree.\n\nRead more on our DevBlog: https://t.co/MF9kei76SG",
+      "url": "https://x.com/playrust/status/2123431084419338353",
       "expanded_urls": [
-        "https://twitter.com/RustSpain_com/status/2122707062371009017"
+        "https://rust.facepunch.com/news/printed_and_polished"
       ],
-      "created_at": "2026-11-17T15:02:56.000Z",
-      "replies": 5,
-      "reposts": 6,
+      "created_at": "2026-11-19T14:59:56.000Z",
+      "replies": 6,
+      "reposts": 2,
       "likes": 54,
-      "views": 4020,
+      "views": 5628,
       "monitored_by": [
         {
-          "account_id": "779120759000137728",
-          "account_type": "server"
+          "account_id": "1542707718",
+          "account_type": "official"
         }
       ]
     },
@@ -284,10 +304,10 @@
         "https://twitter.com/playrust/status/2123068792523587927"
       ],
       "created_at": "2026-11-18T15:00:19.000Z",
-      "replies": 0,
-      "reposts": 2,
-      "likes": 64,
-      "views": 10646,
+      "replies": 1,
+      "reposts": 4,
+      "likes": 70,
+      "views": 11721,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -307,8 +327,8 @@
       "created_at": "2026-11-17T15:01:31.000Z",
       "replies": 4,
       "reposts": 9,
-      "likes": 103,
-      "views": 12595,
+      "likes": 104,
+      "views": 12881,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -327,8 +347,8 @@
       "created_at": "2026-11-16T14:59:49.000Z",
       "replies": 48,
       "reposts": 7,
-      "likes": 199,
-      "views": 34984,
+      "likes": 200,
+      "views": 35158,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -349,28 +369,7 @@
       "replies": 5,
       "reposts": 7,
       "likes": 97,
-      "views": 17650,
-      "monitored_by": [
-        {
-          "account_id": "1542707718",
-          "account_type": "official"
-        }
-      ]
-    },
-    {
-      "id": "2121294566078742754",
-      "author_id": "1542707718",
-      "text": "This week's community skins are now live on the Steam Item Store!\n🔫☢️☠️\n\nAvailable for a limited time only.\n\nView the full collection here: https://t.co/7wvbuwM45L https://t.co/INun4tVDfk",
-      "url": "https://x.com/playrust/status/2121294566078742754",
-      "expanded_urls": [
-        "https://store.steampowered.com/itemstore/252490/",
-        "https://twitter.com/playrust/status/2121294566078742754"
-      ],
-      "created_at": "2026-11-13T17:30:10.000Z",
-      "replies": 5,
-      "reposts": 8,
-      "likes": 96,
-      "views": 14580,
+      "views": 17836,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -390,8 +389,8 @@
       "created_at": "2026-11-18T14:07:28.000Z",
       "replies": 1,
       "reposts": 0,
-      "likes": 20,
-      "views": 642,
+      "likes": 21,
+      "views": 666,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -409,7 +408,7 @@
       "replies": 31,
       "reposts": 4,
       "likes": 74,
-      "views": 11439,
+      "views": 11465,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -429,7 +428,7 @@
       "replies": 9,
       "reposts": 0,
       "likes": 10,
-      "views": 1567,
+      "views": 1570,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -446,8 +445,8 @@
       "created_at": "2026-11-16T02:06:17.000Z",
       "replies": 1,
       "reposts": 1,
-      "likes": 18,
-      "views": 976,
+      "likes": 19,
+      "views": 977,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -485,7 +484,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 3,
-      "views": 323,
+      "views": 326,
       "monitored_by": [
         {
           "account_id": "3085086228",
@@ -568,6 +567,26 @@
       ]
     },
     {
+      "id": "2123458136879292460",
+      "author_id": "736974333424369664",
+      "text": "ESTAMOS ON 🔴\n\nPues dia 2 de Project Zomboid .42\n\nhttps://t.co/6f3pAsoWWB",
+      "url": "https://x.com/Agustabell212/status/2123458136879292460",
+      "expanded_urls": [
+        "https://kick.com/agustabell212"
+      ],
+      "created_at": "2026-11-19T16:47:26.000Z",
+      "replies": 1,
+      "reposts": 0,
+      "likes": 16,
+      "views": 1000,
+      "monitored_by": [
+        {
+          "account_id": "736974333424369664",
+          "account_type": "streamer"
+        }
+      ]
+    },
+    {
       "id": "2123133376588841322",
       "author_id": "736974333424369664",
       "text": "ESTAMOS ON 🔴\n\nArrancamos noche de Project Zomboid y después wardgos.\n\nhttps://t.co/6f3pAsoWWB",
@@ -578,8 +597,8 @@
       "created_at": "2026-11-18T19:16:57.000Z",
       "replies": 0,
       "reposts": 1,
-      "likes": 29,
-      "views": 1475,
+      "likes": 33,
+      "views": 1603,
       "monitored_by": [
         {
           "account_id": "736974333424369664",
@@ -599,7 +618,7 @@
       "replies": 1,
       "reposts": 1,
       "likes": 22,
-      "views": 1951,
+      "views": 1972,
       "monitored_by": [
         {
           "account_id": "736974333424369664",
@@ -619,7 +638,7 @@
       "replies": 0,
       "reposts": 3,
       "likes": 23,
-      "views": 1908,
+      "views": 1924,
       "monitored_by": [
         {
           "account_id": "736974333424369664",
@@ -639,27 +658,7 @@
       "replies": 0,
       "reposts": 1,
       "likes": 22,
-      "views": 1895,
-      "monitored_by": [
-        {
-          "account_id": "736974333424369664",
-          "account_type": "streamer"
-        }
-      ]
-    },
-    {
-      "id": "2119847412080468243",
-      "author_id": "736974333424369664",
-      "text": "ESTAMOS ON 🔴\n\nPues arrancamos directito de vicio y charlitas que pinta bien el dia hoy ....\n\nhttps://t.co/6f3pAsop73",
-      "url": "https://x.com/Agustabell212/status/2119847412080468243",
-      "expanded_urls": [
-        "https://kick.com/agustabell212"
-      ],
-      "created_at": "2026-11-09T17:39:42.000Z",
-      "replies": 1,
-      "reposts": 1,
-      "likes": 32,
-      "views": 2374,
+      "views": 1905,
       "monitored_by": [
         {
           "account_id": "736974333424369664",
@@ -679,8 +678,48 @@
       "created_at": "2026-08-18T19:24:18.000Z",
       "replies": 15,
       "reposts": 7,
-      "likes": 104,
+      "likes": 105,
       "views": 2466,
+      "monitored_by": [
+        {
+          "account_id": "792712514429673472",
+          "account_type": "streamer"
+        }
+      ]
+    },
+    {
+      "id": "2123460519084400814",
+      "author_id": "792712514429673472",
+      "text": "NO TE PIERDAS EL DIA 2 DE GTA VI! https://t.co/Z0lu8DX092",
+      "url": "https://x.com/nazegamingtv/status/2123460519084400814",
+      "expanded_urls": [
+        "https://kick.com/naze"
+      ],
+      "created_at": "2026-11-19T16:56:54.000Z",
+      "replies": 0,
+      "reposts": 0,
+      "likes": 2,
+      "views": 90,
+      "monitored_by": [
+        {
+          "account_id": "792712514429673472",
+          "account_type": "streamer"
+        }
+      ]
+    },
+    {
+      "id": "2123442924373393473",
+      "author_id": "792712514429673472",
+      "text": "MI PRIMER GAMEPLAY DE GTA 6 Y VOY AL TACON👠 \nhttps://t.co/WsXDBjxKW5",
+      "url": "https://x.com/nazegamingtv/status/2123442924373393473",
+      "expanded_urls": [
+        "https://www.youtube.com/watch?v=lQYhszDjAdw"
+      ],
+      "created_at": "2026-11-19T15:46:59.000Z",
+      "replies": 0,
+      "reposts": 0,
+      "likes": 6,
+      "views": 748,
       "monitored_by": [
         {
           "account_id": "792712514429673472",
@@ -699,8 +738,8 @@
       "created_at": "2026-11-19T01:05:40.000Z",
       "replies": 0,
       "reposts": 0,
-      "likes": 0,
-      "views": 83,
+      "likes": 1,
+      "views": 87,
       "monitored_by": [
         {
           "account_id": "792712514429673472",
@@ -720,48 +759,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 7,
-      "views": 341,
-      "monitored_by": [
-        {
-          "account_id": "792712514429673472",
-          "account_type": "streamer"
-        }
-      ]
-    },
-    {
-      "id": "2122841039396307109",
-      "author_id": "792712514429673472",
-      "text": "Sobreviví 50 DIAS en ROBLOX Fust Survival en SOLITARIO 😨 https://t.co/aTQGt9j83I vía @YouTube",
-      "url": "https://x.com/nazegamingtv/status/2122841039396307109",
-      "expanded_urls": [
-        "https://www.youtube.com/watch?si=7-4A0cE5MDBrODNg&v=5VEgT5JLLSk&feature=youtu.be"
-      ],
-      "created_at": "2026-11-17T23:55:18.000Z",
-      "replies": 1,
-      "reposts": 0,
-      "likes": 6,
-      "views": 266,
-      "monitored_by": [
-        {
-          "account_id": "792712514429673472",
-          "account_type": "streamer"
-        }
-      ]
-    },
-    {
-      "id": "2122305875196928108",
-      "author_id": "792712514429673472",
-      "text": "Hola fachas! A partir del 19/11 voy a estar empezando el modo historia de GTA VI en directo y subiendo mas de un video diario al canal, vamos a ir disfrutando y trolleando con todo lo que me encuentre XD asi que quien no pueda jugarlo y quiera disfrutarlo conmigo los invito por aca:\n🔴 Directos ➤ https://t.co/x6IqXE7ENP\n🎥 Videos ➤ https://t.co/089ErrYfbM",
-      "url": "https://x.com/nazegamingtv/status/2122305875196928108",
-      "expanded_urls": [
-        "https://kick.com/naze",
-        "https://www.youtube.com/@nazegamingtv"
-      ],
-      "created_at": "2026-11-16T12:28:45.000Z",
-      "replies": 2,
-      "reposts": 0,
-      "likes": 17,
-      "views": 616,
+      "views": 347,
       "monitored_by": [
         {
           "account_id": "792712514429673472",

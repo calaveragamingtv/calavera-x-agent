@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-19T10:15:51.903240+00:00",
-  "total": 80,
+  "updated_at": "2026-11-19T18:04:07.014362+00:00",
+  "total": 86,
   "evaluations": {
     "2118402970886836645": {
       "post_id": "2118402970886836645",
@@ -561,6 +561,48 @@
       "score": 50,
       "category": "other",
       "reason": "Comentario críptico y sin contexto suficiente para aportar un valor genuino o generar una interacción relevante."
+    },
+    "2123442924373393473": {
+      "post_id": "2123442924373393473",
+      "should_like": true,
+      "score": 95,
+      "category": "youtube",
+      "reason": "La publicación incluye un enlace válido a la plataforma YouTube permitiendo descubrir contenido de un creador."
+    },
+    "2123458136879292460": {
+      "post_id": "2123458136879292460",
+      "should_like": true,
+      "score": 90,
+      "category": "kick",
+      "reason": "La publicación incluye un enlace válido a la plataforma Kick, facilitando la interacción con el creador en directo."
+    },
+    "2123460519084400814": {
+      "post_id": "2123460519084400814",
+      "should_like": true,
+      "score": 90,
+      "category": "kick",
+      "reason": "La publicación contiene un enlace válido a la plataforma Kick para seguir la transmisión del creador."
+    },
+    "2123431084419338353": {
+      "post_id": "2123431084419338353",
+      "should_like": true,
+      "score": 85,
+      "category": "rust",
+      "reason": "Información oficial y detallada sobre una nueva mecánica de juego relacionada con la lana y las protecciones en Rust."
+    },
+    "2123443699786858629": {
+      "post_id": "2123443699786858629",
+      "should_like": true,
+      "score": 80,
+      "category": "rust",
+      "reason": "La publicación aporta información relevante y datos de análisis sobre el rendimiento de los servidores en el inicio de un wipe de Rust."
+    },
+    "2123403973335933433": {
+      "post_id": "2123403973335933433",
+      "should_like": true,
+      "score": 75,
+      "category": "rust",
+      "reason": "Anuncio útil y directo sobre los horarios y aperturas de nuevos servidores de Rust para la comunidad."
     }
   }
 }

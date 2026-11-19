@@ -1,9 +1,17 @@
 {
   "account": "monitored_accounts",
-  "analyzed_at": "2026-11-19T10:15:44.547320+00:00",
+  "analyzed_at": "2026-11-19T18:04:04.800493+00:00",
   "model": "gemini-3.5-flash-lite",
   "total": 39,
   "ranking": [
+    {
+      "post_id": "2123431084419338353",
+      "score": 95,
+      "category": "official_news",
+      "priority": "high",
+      "recommended_action": "repost",
+      "reason": "Es información oficial de Facepunch sobre una nueva mecánica (Armour Insert usando lana) y cambios en el DevBlog, contenido vital para la comunidad de Rust."
+    },
     {
       "post_id": "2122343890678095913",
       "score": 95,
@@ -27,6 +35,14 @@
       "priority": "high",
       "recommended_action": "ignore",
       "reason": "Enlace directo al Devblog de Rustafied. Información crucial pero poco propicia para un debate directo en este tweet específico."
+    },
+    {
+      "post_id": "2123443699786858629",
+      "score": 85,
+      "category": "community",
+      "priority": "high",
+      "recommended_action": "reply",
+      "reason": "Plantea un debate actual sobre el rendimiento y los números en servidores oficiales durante el wipe, permitiendo aportar una opinión basada en la experiencia de juego."
     },
     {
       "post_id": "2123068792523587927",
@@ -53,14 +69,6 @@
       "reason": "Es un comunicado oficial de la cuenta de PlayRust sobre el programa de HackerOne y recompensas económicas, muy relevante para informar a la comunidad sobre seguridad y estado del juego."
     },
     {
-      "post_id": "2121294566078742754",
-      "score": 85,
-      "category": "official_news",
-      "priority": "high",
-      "recommended_action": "repost",
-      "reason": "Es una publicación oficial de Facepunch sobre las nuevas skins semanales de Rust, contenido de interés directo para la comunidad y seguidores de CalaveraGaming."
-    },
-    {
       "post_id": "2121798654960812172",
       "score": 80,
       "category": "event",
@@ -77,6 +85,14 @@
       "reason": "Anuncio de un nuevo sistema de clanes en la web hispana de Rust. Útil para la comunidad hispanohablante."
     },
     {
+      "post_id": "2123403973335933433",
+      "score": 75,
+      "category": "event",
+      "priority": "high",
+      "recommended_action": "ignore",
+      "reason": "Anuncio de wipes de servidores comunitarios hispanos importantes, relevante para el ecosistema de Rust aunque con menor margen de interacción directa para aportar."
+    },
+    {
       "post_id": "2123101108683858386",
       "score": 75,
       "category": "update",
@@ -85,28 +101,12 @@
       "reason": "Aporta información útil sobre mapas de Rust y mecánicas como DeepSea, excelente para debatir con la comunidad."
     },
     {
-      "post_id": "2122707062371009017",
-      "score": 75,
-      "category": "community",
-      "priority": "high",
-      "recommended_action": "reply",
-      "reason": "Publicación de RustSpain sobre CobaltMaps y la generación de pasos ferroviarios, ofreciendo información útil y técnica sobre la creación de mapas y herramientas del juego."
-    },
-    {
       "post_id": "2122425875320774778",
       "score": 75,
       "category": "discussion",
       "priority": "high",
       "recommended_action": "reply",
       "reason": "Plantea un debate profundo sobre el estado actual de Rust, la experiencia de juego y la caída de jugadores. Como creador enfocado en Rust, CalaveraGaming tiene la oportunidad perfecta para aportar su propia perspectiva y generar conversación."
-    },
-    {
-      "post_id": "2123030615540867307",
-      "score": 70,
-      "category": "update",
-      "priority": "high",
-      "recommended_action": "repost",
-      "reason": "Muestra novedades sobre la generación de mapas y estructuras en Rust, relevante para creadores de contenido de este juego."
     },
     {
       "post_id": "2118402970886836645",
@@ -213,22 +213,6 @@
       "reason": "Trata sobre el lanzamiento de GTA 6, totalmente ajeno al contenido de Rust de CalaveraGaming."
     },
     {
-      "post_id": "2122305875196928108",
-      "score": 25,
-      "category": "creator",
-      "priority": "low",
-      "recommended_action": "ignore",
-      "reason": "Promoción de streams de GTA VI por parte de otro creador."
-    },
-    {
-      "post_id": "2122841039396307109",
-      "score": 20,
-      "category": "creator",
-      "priority": "low",
-      "recommended_action": "ignore",
-      "reason": "Contenido enfocado en Roblox, no relevante para la audiencia de Rust."
-    },
-    {
       "post_id": "2122321197698265391",
       "score": 15,
       "category": "other",
@@ -243,6 +227,14 @@
       "priority": "low",
       "recommended_action": "ignore",
       "reason": "Mensaje críptico o sin contexto claro aplicable a Rust."
+    },
+    {
+      "post_id": "2123458136879292460",
+      "score": 15,
+      "category": "other",
+      "priority": "low",
+      "recommended_action": "ignore",
+      "reason": "Trata sobre Project Zomboid y no guarda relación con Rust."
     },
     {
       "post_id": "2106695712423788928",
@@ -293,12 +285,20 @@
       "reason": "Aviso de directo general."
     },
     {
-      "post_id": "2119847412080468243",
+      "post_id": "2123460519084400814",
       "score": 10,
-      "category": "creator",
+      "category": "other",
       "priority": "low",
       "recommended_action": "ignore",
-      "reason": "Aviso de directo general."
+      "reason": "Publicación relacionada con GTA VI, totalmente ajena a la temática del canal."
+    },
+    {
+      "post_id": "2123442924373393473",
+      "score": 10,
+      "category": "other",
+      "priority": "low",
+      "recommended_action": "ignore",
+      "reason": "Gameplay de GTA VI, sin relación con Rust."
     },
     {
       "post_id": "2089795544361124249",
