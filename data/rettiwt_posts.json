@@ -11,7 +11,7 @@
     "replies": 76,
     "reposts": 123,
     "likes": 1237,
-    "views": 377615,
+    "views": 377968,
     "monitored_by": [
       {
         "account_id": "742290493292285952",
@@ -31,7 +31,7 @@
     "replies": 5,
     "reposts": 8,
     "likes": 120,
-    "views": 23753,
+    "views": 23760,
     "monitored_by": [
       {
         "account_id": "742290493292285952",
@@ -107,7 +107,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 4,
-    "views": 1947,
+    "views": 1949,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -127,7 +127,7 @@
     "replies": 0,
     "reposts": 1,
     "likes": 6,
-    "views": 1579,
+    "views": 1581,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -145,7 +145,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 3,
-    "views": 1587,
+    "views": 1588,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -166,7 +166,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 1,
-    "views": 1273,
+    "views": 1274,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -186,7 +186,27 @@
     "replies": 2,
     "reposts": 2,
     "likes": 13,
-    "views": 1309,
+    "views": 1373,
+    "monitored_by": [
+      {
+        "account_id": "779120759000137728",
+        "account_type": "server"
+      }
+    ]
+  },
+  {
+    "id": "2123498891316216296",
+    "author_id": "779120759000137728",
+    "text": "RT @playrustconsole: Playing RCE today, this is what the Island feels like... https://t.co/CqdbD4yedV",
+    "url": "https://x.com/RustSpain_com/status/2123498891316216296",
+    "expanded_urls": [
+      "https://twitter.com/playrustconsole/status/2123486913403199866"
+    ],
+    "created_at": "2026-11-19T19:29:23.000Z",
+    "replies": 0,
+    "reposts": 9,
+    "likes": 0,
+    "views": 17,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -203,10 +223,10 @@
       "https://twitter.com/RustSpain_com/status/2123443699786858629"
     ],
     "created_at": "2026-11-19T15:50:04.000Z",
-    "replies": 2,
-    "reposts": 0,
-    "likes": 1,
-    "views": 500,
+    "replies": 12,
+    "reposts": 2,
+    "likes": 16,
+    "views": 9346,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -223,8 +243,8 @@
     "created_at": "2026-11-19T13:12:12.000Z",
     "replies": 0,
     "reposts": 1,
-    "likes": 2,
-    "views": 265,
+    "likes": 6,
+    "views": 528,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -244,25 +264,7 @@
     "replies": 1,
     "reposts": 1,
     "likes": 12,
-    "views": 948,
-    "monitored_by": [
-      {
-        "account_id": "779120759000137728",
-        "account_type": "server"
-      }
-    ]
-  },
-  {
-    "id": "2123037229622706582",
-    "author_id": "779120759000137728",
-    "text": "Pregunta sería para los jugadores de Rust: ¿Jugaras a GTAVI en consola o esperaras a su versión de PC?",
-    "url": "https://x.com/RustSpain_com/status/2123037229622706582",
-    "expanded_urls": [],
-    "created_at": "2026-11-18T12:54:54.000Z",
-    "replies": 0,
-    "reposts": 0,
-    "likes": 1,
-    "views": 371,
+    "views": 1201,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -279,10 +281,10 @@
       "https://rust.facepunch.com/news/printed_and_polished"
     ],
     "created_at": "2026-11-19T14:59:56.000Z",
-    "replies": 6,
-    "reposts": 2,
-    "likes": 54,
-    "views": 5628,
+    "replies": 15,
+    "reposts": 7,
+    "likes": 117,
+    "views": 11206,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -300,10 +302,10 @@
       "https://twitter.com/playrust/status/2123068792523587927"
     ],
     "created_at": "2026-11-18T15:00:19.000Z",
-    "replies": 1,
+    "replies": 2,
     "reposts": 4,
     "likes": 70,
-    "views": 11721,
+    "views": 12426,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -324,7 +326,7 @@
     "replies": 4,
     "reposts": 9,
     "likes": 104,
-    "views": 12881,
+    "views": 13126,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -344,7 +346,7 @@
     "replies": 48,
     "reposts": 7,
     "likes": 200,
-    "views": 35158,
+    "views": 35438,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -365,7 +367,7 @@
     "replies": 5,
     "reposts": 7,
     "likes": 97,
-    "views": 17836,
+    "views": 17989,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -386,7 +388,7 @@
     "replies": 1,
     "reposts": 0,
     "likes": 21,
-    "views": 666,
+    "views": 718,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -404,7 +406,7 @@
     "replies": 31,
     "reposts": 4,
     "likes": 74,
-    "views": 11465,
+    "views": 11503,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -424,7 +426,7 @@
     "replies": 9,
     "reposts": 0,
     "likes": 10,
-    "views": 1570,
+    "views": 1575,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -442,7 +444,7 @@
     "replies": 1,
     "reposts": 1,
     "likes": 19,
-    "views": 977,
+    "views": 978,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -480,7 +482,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 3,
-    "views": 326,
+    "views": 329,
     "monitored_by": [
       {
         "account_id": "3085086228",
@@ -572,9 +574,9 @@
     ],
     "created_at": "2026-11-19T16:47:26.000Z",
     "replies": 1,
-    "reposts": 0,
-    "likes": 16,
-    "views": 1000,
+    "reposts": 2,
+    "likes": 27,
+    "views": 1614,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -592,9 +594,9 @@
     ],
     "created_at": "2026-11-18T19:16:57.000Z",
     "replies": 0,
-    "reposts": 1,
-    "likes": 33,
-    "views": 1603,
+    "reposts": 2,
+    "likes": 36,
+    "views": 1695,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -614,7 +616,7 @@
     "replies": 1,
     "reposts": 1,
     "likes": 22,
-    "views": 1972,
+    "views": 1988,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -634,7 +636,7 @@
     "replies": 0,
     "reposts": 3,
     "likes": 23,
-    "views": 1924,
+    "views": 1938,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -654,7 +656,7 @@
     "replies": 0,
     "reposts": 1,
     "likes": 22,
-    "views": 1905,
+    "views": 1913,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -675,7 +677,7 @@
     "replies": 15,
     "reposts": 7,
     "likes": 105,
-    "views": 2466,
+    "views": 2469,
     "monitored_by": [
       {
         "account_id": "792712514429673472",
@@ -695,7 +697,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 2,
-    "views": 90,
+    "views": 140,
     "monitored_by": [
       {
         "account_id": "792712514429673472",
@@ -714,8 +716,8 @@
     "created_at": "2026-11-19T15:46:59.000Z",
     "replies": 0,
     "reposts": 0,
-    "likes": 6,
-    "views": 748,
+    "likes": 7,
+    "views": 2088,
     "monitored_by": [
       {
         "account_id": "792712514429673472",
@@ -735,7 +737,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 1,
-    "views": 87,
+    "views": 95,
     "monitored_by": [
       {
         "account_id": "792712514429673472",
@@ -755,7 +757,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 7,
-    "views": 347,
+    "views": 353,
     "monitored_by": [
       {
         "account_id": "792712514429673472",

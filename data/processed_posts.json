@@ -63,7 +63,7 @@
         }
       },
       "likes": 1237,
-      "views": 377615,
+      "views": 377968,
       "replies": 76,
       "reposts": 123
     },
@@ -134,7 +134,7 @@
         }
       },
       "likes": 120,
-      "views": 23753,
+      "views": 23760,
       "replies": 5,
       "reposts": 8
     },
@@ -696,7 +696,7 @@
         }
       },
       "likes": 4,
-      "views": 1947,
+      "views": 1949,
       "replies": 0,
       "reposts": 0
     },
@@ -758,7 +758,7 @@
         }
       },
       "likes": 6,
-      "views": 1579,
+      "views": 1581,
       "replies": 0,
       "reposts": 1
     },
@@ -818,7 +818,7 @@
         }
       },
       "likes": 3,
-      "views": 1587,
+      "views": 1588,
       "replies": 0,
       "reposts": 0
     },
@@ -885,7 +885,7 @@
         }
       },
       "likes": 1,
-      "views": 1273,
+      "views": 1274,
       "replies": 0,
       "reposts": 0
     },
@@ -1259,7 +1259,7 @@
         }
       },
       "likes": 13,
-      "views": 1309,
+      "views": 1373,
       "replies": 2,
       "reposts": 2
     },
@@ -2921,7 +2921,7 @@
         }
       },
       "likes": 97,
-      "views": 17836,
+      "views": 17989,
       "replies": 5,
       "reposts": 7
     },
@@ -3619,7 +3619,7 @@
         }
       },
       "likes": 19,
-      "views": 977,
+      "views": 978,
       "replies": 1,
       "reposts": 1
     },
@@ -3681,7 +3681,7 @@
         }
       },
       "likes": 10,
-      "views": 1570,
+      "views": 1575,
       "replies": 9,
       "reposts": 0
     },
@@ -3751,7 +3751,7 @@
         }
       },
       "likes": 200,
-      "views": 35158,
+      "views": 35438,
       "replies": 48,
       "reposts": 7
     },
@@ -3820,7 +3820,7 @@
         }
       },
       "likes": 74,
-      "views": 11465,
+      "views": 11503,
       "replies": 31,
       "reposts": 4
     },
@@ -4082,7 +4082,7 @@
         }
       },
       "likes": 104,
-      "views": 12881,
+      "views": 13126,
       "replies": 4,
       "reposts": 9
     },
@@ -4116,13 +4116,17 @@
       },
       "actions": {
         "like": {
-          "status": "not_started",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-20T10:06:52.589222+00:00",
+          "completed_at": "2026-11-20T10:06:53.791235+00:00",
           "error": null,
-          "external_id": null,
-          "payload": null
+          "external_id": "2123101108683858386",
+          "payload": {
+            "post_id": "2123101108683858386",
+            "mode": "live",
+            "stage": "completed"
+          }
         },
         "reply": {
           "status": "completed",
@@ -4149,7 +4153,7 @@
         }
       },
       "likes": 12,
-      "views": 948,
+      "views": 1201,
       "replies": 1,
       "reposts": 1
     },
@@ -4344,8 +4348,8 @@
         }
       },
       "likes": 70,
-      "views": 11721,
-      "replies": 1,
+      "views": 12426,
+      "replies": 2,
       "reposts": 4
     },
     "2123055492486549924": {
@@ -4407,7 +4411,7 @@
         }
       },
       "likes": 21,
-      "views": 666,
+      "views": 718,
       "replies": 1,
       "reposts": 0
     },
@@ -4467,7 +4471,7 @@
         }
       },
       "likes": 3,
-      "views": 326,
+      "views": 329,
       "replies": 0,
       "reposts": 0
     },
@@ -4532,10 +4536,10 @@
           "payload": null
         }
       },
-      "likes": 33,
-      "views": 1603,
+      "likes": 36,
+      "views": 1695,
       "replies": 0,
-      "reposts": 1
+      "reposts": 2
     },
     "2122342201711628468": {
       "id": "2122342201711628468",
@@ -4595,7 +4599,7 @@
         }
       },
       "likes": 22,
-      "views": 1972,
+      "views": 1988,
       "replies": 1,
       "reposts": 1
     },
@@ -4657,7 +4661,7 @@
         }
       },
       "likes": 23,
-      "views": 1924,
+      "views": 1938,
       "replies": 0,
       "reposts": 3
     },
@@ -4719,7 +4723,7 @@
         }
       },
       "likes": 22,
-      "views": 1905,
+      "views": 1913,
       "replies": 0,
       "reposts": 1
     },
@@ -4848,7 +4852,7 @@
         }
       },
       "likes": 105,
-      "views": 2466,
+      "views": 2469,
       "replies": 15,
       "reposts": 7
     },
@@ -4910,7 +4914,7 @@
         }
       },
       "likes": 1,
-      "views": 87,
+      "views": 95,
       "replies": 0,
       "reposts": 0
     },
@@ -4972,7 +4976,7 @@
         }
       },
       "likes": 7,
-      "views": 347,
+      "views": 353,
       "replies": 0,
       "reposts": 0
     },
@@ -5140,13 +5144,18 @@
           "payload": null
         },
         "reply": {
-          "status": "not_started",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-20T10:06:49.519916+00:00",
+          "completed_at": "2026-11-20T10:06:50.429423+00:00",
           "error": null,
-          "external_id": null,
-          "payload": null
+          "external_id": "2123719709619257781",
+          "payload": {
+            "post_id": "2123443699786858629",
+            "reply_text": "Tremendo arranque, los main oficiales siempre sufren los primeros minutos con la cola de espera y los crasheos. Ojalá se estabilice pronto.",
+            "mode": "live",
+            "stage": "completed"
+          }
         },
         "repost": {
           "status": "not_started",
@@ -5158,10 +5167,10 @@
           "payload": null
         }
       },
-      "likes": 1,
-      "views": 500,
-      "replies": 2,
-      "reposts": 0
+      "likes": 16,
+      "views": 9346,
+      "replies": 12,
+      "reposts": 2
     },
     "2123403973335933433": {
       "id": "2123403973335933433",
@@ -5218,8 +5227,8 @@
           "payload": null
         }
       },
-      "likes": 2,
-      "views": 265,
+      "likes": 6,
+      "views": 528,
       "replies": 0,
       "reposts": 1
     },
@@ -5284,10 +5293,10 @@
           }
         }
       },
-      "likes": 54,
-      "views": 5628,
-      "replies": 6,
-      "reposts": 2
+      "likes": 117,
+      "views": 11206,
+      "replies": 15,
+      "reposts": 7
     },
     "2123458136879292460": {
       "id": "2123458136879292460",
@@ -5319,13 +5328,17 @@
       },
       "actions": {
         "like": {
-          "status": "not_started",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-20T10:06:50.455714+00:00",
+          "completed_at": "2026-11-20T10:06:51.537676+00:00",
           "error": null,
-          "external_id": null,
-          "payload": null
+          "external_id": "2123458136879292460",
+          "payload": {
+            "post_id": "2123458136879292460",
+            "mode": "live",
+            "stage": "completed"
+          }
         },
         "reply": {
           "status": "not_started",
@@ -5346,10 +5359,10 @@
           "payload": null
         }
       },
-      "likes": 16,
-      "views": 1000,
+      "likes": 27,
+      "views": 1614,
       "replies": 1,
-      "reposts": 0
+      "reposts": 2
     },
     "2123460519084400814": {
       "id": "2123460519084400814",
@@ -5409,7 +5422,7 @@
         }
       },
       "likes": 2,
-      "views": 90,
+      "views": 140,
       "replies": 0,
       "reposts": 0
     },
@@ -5443,6 +5456,72 @@
       },
       "actions": {
         "like": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-20T10:06:51.620177+00:00",
+          "completed_at": "2026-11-20T10:06:52.583941+00:00",
+          "error": null,
+          "external_id": "2123442924373393473",
+          "payload": {
+            "post_id": "2123442924373393473",
+            "mode": "live",
+            "stage": "completed"
+          }
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 7,
+      "views": 2088,
+      "replies": 0,
+      "reposts": 0
+    },
+    "2123498891316216296": {
+      "id": "2123498891316216296",
+      "author_id": "779120759000137728",
+      "text": "RT @playrustconsole: Playing RCE today, this is what the Island feels like... https://t.co/CqdbD4yedV",
+      "url": "https://x.com/RustSpain_com/status/2123498891316216296",
+      "created_at": "2026-11-19T19:29:23.000Z",
+      "expanded_urls": [
+        "https://twitter.com/playrustconsole/status/2123486913403199866"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "779120759000137728",
+          "account_type": "server"
+        }
+      ],
+      "first_seen_at": "2026-11-20T10:06:44.404407+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2123498891316216296",
+          "score": 45,
+          "category": "gameplay",
+          "priority": "medium",
+          "recommended_action": "ignore",
+          "reason": "Es un retweet sobre Rust Console Edition (RCE), lo cual tiene relación con el juego pero está enfocado en la versión de consolas y no aporta información relevante, noticias o temas de debate profundo para el creador."
+        },
+        "completed_at": "2026-11-20T10:06:47.270514+00:00"
+      },
+      "actions": {
+        "like": {
           "status": "not_started",
           "attempts": 0,
           "last_attempt_at": null,
@@ -5470,10 +5549,10 @@
           "payload": null
         }
       },
-      "likes": 6,
-      "views": 748,
+      "likes": 0,
+      "views": 17,
       "replies": 0,
-      "reposts": 0
+      "reposts": 9
     }
   }
 }

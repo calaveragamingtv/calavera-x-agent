@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-19T18:04:07.014362+00:00",
-  "total": 86,
+  "updated_at": "2026-11-20T10:06:49.501044+00:00",
+  "total": 87,
   "evaluations": {
     "2118402970886836645": {
       "post_id": "2118402970886836645",
@@ -603,6 +603,13 @@
       "score": 75,
       "category": "rust",
       "reason": "Anuncio útil y directo sobre los horarios y aperturas de nuevos servidores de Rust para la comunidad."
+    },
+    "2123498891316216296": {
+      "post_id": "2123498891316216296",
+      "should_like": true,
+      "score": 80,
+      "category": "rust",
+      "reason": "La publicación comparte un meme y un contenido entretenido relacionado con Rust Console Edition, generando un buen valor de entretenimiento para la comunidad."
     }
   }
 }

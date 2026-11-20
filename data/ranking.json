@@ -1,6 +1,6 @@
 {
   "account": "monitored_accounts",
-  "analyzed_at": "2026-11-19T18:04:04.800493+00:00",
+  "analyzed_at": "2026-11-20T10:06:47.276105+00:00",
   "model": "gemini-3.5-flash-lite",
   "total": 39,
   "ranking": [
@@ -133,20 +133,20 @@
       "reason": "Aviso de actualización de servidores por Rustafied."
     },
     {
-      "post_id": "2123037229622706582",
-      "score": 55,
-      "category": "discussion",
-      "priority": "medium",
-      "recommended_action": "reply",
-      "reason": "Genera conversación sobre consolas vs PC enfocado a jugadores de Rust, buen punto para interactuar."
-    },
-    {
       "post_id": "2120984198588575860",
       "score": 50,
       "category": "creator",
       "priority": "medium",
       "recommended_action": "ignore",
       "reason": "Es un aviso de directo jugando como solo player. No aporta contenido analítico pero muestra actividad de creadores."
+    },
+    {
+      "post_id": "2123498891316216296",
+      "score": 45,
+      "category": "gameplay",
+      "priority": "medium",
+      "recommended_action": "ignore",
+      "reason": "Es un retweet sobre Rust Console Edition (RCE), lo cual tiene relación con el juego pero está enfocado en la versión de consolas y no aporta información relevante, noticias o temas de debate profundo para el creador."
     },
     {
       "post_id": "2122430497468920267",
