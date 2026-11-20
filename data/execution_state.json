@@ -1,6 +1,6 @@
 {
   "date": "2026-11-20",
-  "calls": 3,
+  "calls": 4,
   "runs": [
     {
       "run_id": "44715621310",
@@ -9,6 +9,14 @@
       "call_date": "2026-11-20",
       "started_at": "2026-11-20T07:06:42.744349-03:00",
       "completed_at": "2026-11-20T07:06:53.908529-03:00"
+    },
+    {
+      "run_id": "44788800427",
+      "status": "completed",
+      "reserved_at": "2026-11-20T15:01:58.558325-03:00",
+      "call_date": "2026-11-20",
+      "started_at": "2026-11-20T15:02:32.322765-03:00",
+      "completed_at": "2026-11-20T15:02:38.045844-03:00"
     }
   ],
   "call_log": [
@@ -32,6 +40,13 @@
       "status": "skipped",
       "reason": "random_skip",
       "timestamp": "2026-11-20T11:01:35.369650-03:00"
+    },
+    {
+      "run_id": "44788800427",
+      "call": 4,
+      "status": "selected",
+      "reason": "mandatory_execution",
+      "timestamp": "2026-11-20T15:01:27.554045-03:00"
     }
   ]
 }

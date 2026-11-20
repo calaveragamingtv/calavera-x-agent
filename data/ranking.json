@@ -1,6 +1,6 @@
 {
   "account": "monitored_accounts",
-  "analyzed_at": "2026-11-20T10:06:47.276105+00:00",
+  "analyzed_at": "2026-11-20T18:02:35.553892+00:00",
   "model": "gemini-3.5-flash-lite",
   "total": 39,
   "ranking": [
@@ -45,6 +45,14 @@
       "reason": "Plantea un debate actual sobre el rendimiento y los números en servidores oficiales durante el wipe, permitiendo aportar una opinión basada en la experiencia de juego."
     },
     {
+      "post_id": "2123831286489825739",
+      "score": 85,
+      "category": "official_news",
+      "priority": "high",
+      "recommended_action": "repost",
+      "reason": "Anuncio oficial de Facepunch sobre nuevas skins comunitarias en la tienda de Steam, altamente relevante para la comunidad de Rust y útil para compartir en el perfil de CalaveraGaming."
+    },
+    {
       "post_id": "2123068792523587927",
       "score": 85,
       "category": "official_news",
@@ -59,14 +67,6 @@
       "priority": "high",
       "recommended_action": "repost",
       "reason": "Anuncio oficial de la cuenta principal de Rust sobre 'The Art of Rust', un libro de arte físico del juego, ideal para compartir con la comunidad por su alta relevancia oficial."
-    },
-    {
-      "post_id": "2121619198522622261",
-      "score": 85,
-      "category": "official_news",
-      "priority": "high",
-      "recommended_action": "repost",
-      "reason": "Es un comunicado oficial de la cuenta de PlayRust sobre el programa de HackerOne y recompensas económicas, muy relevante para informar a la comunidad sobre seguridad y estado del juego."
     },
     {
       "post_id": "2121798654960812172",
@@ -165,20 +165,20 @@
       "reason": "Creación ingeniosa dentro del juego por parte de un creador."
     },
     {
+      "post_id": "2123812041265664219",
+      "score": 35,
+      "category": "community",
+      "priority": "low",
+      "recommended_action": "ignore",
+      "reason": "Publicación sobre merchandising personal de otro creador que no está relacionada directamente con Rust ni aporta contenido útil para la audiencia de CalaveraGaming."
+    },
+    {
       "post_id": "2123055492486549924",
       "score": 35,
       "category": "creator",
       "priority": "low",
       "recommended_action": "ignore",
       "reason": "Merch de otro creador de contenido sin relación directa con la temática específica de Rust."
-    },
-    {
-      "post_id": "2120727160608711000",
-      "score": 35,
-      "category": "gameplay",
-      "priority": "low",
-      "recommended_action": "ignore",
-      "reason": "Publicación con un texto muy corto y poco contexto sobre Rust, dificulta aportar valor sin más información."
     },
     {
       "post_id": "2102836402421387646",
@@ -205,12 +205,12 @@
       "reason": "Anuncio de directo sobre GTA 6, sin relación con Rust."
     },
     {
-      "post_id": "2123013259322355981",
-      "score": 25,
+      "post_id": "2123829221814313138",
+      "score": 20,
       "category": "creator",
       "priority": "low",
       "recommended_action": "ignore",
-      "reason": "Trata sobre el lanzamiento de GTA 6, totalmente ajeno al contenido de Rust de CalaveraGaming."
+      "reason": "Aviso genérico de inicio de directo sin especificar si juega Rust ni aportar valor temático."
     },
     {
       "post_id": "2122321197698265391",
@@ -277,12 +277,12 @@
       "reason": "Aviso de directo general sin contenido de Rust."
     },
     {
-      "post_id": "2121284712480338090",
+      "post_id": "2123800624143958054",
       "score": 10,
-      "category": "creator",
+      "category": "other",
       "priority": "low",
       "recommended_action": "ignore",
-      "reason": "Aviso de directo general."
+      "reason": "Contenido centrado en GTA 6, totalmente ajeno a la temática de Rust de CalaveraGaming."
     },
     {
       "post_id": "2123460519084400814",

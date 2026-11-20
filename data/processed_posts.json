@@ -63,7 +63,7 @@
         }
       },
       "likes": 1237,
-      "views": 377968,
+      "views": 378182,
       "replies": 76,
       "reposts": 123
     },
@@ -134,7 +134,7 @@
         }
       },
       "likes": 120,
-      "views": 23760,
+      "views": 23767,
       "replies": 5,
       "reposts": 8
     },
@@ -1259,7 +1259,7 @@
         }
       },
       "likes": 13,
-      "views": 1373,
+      "views": 1378,
       "replies": 2,
       "reposts": 2
     },
@@ -3619,7 +3619,7 @@
         }
       },
       "likes": 19,
-      "views": 978,
+      "views": 982,
       "replies": 1,
       "reposts": 1
     },
@@ -3681,7 +3681,7 @@
         }
       },
       "likes": 10,
-      "views": 1575,
+      "views": 1578,
       "replies": 9,
       "reposts": 0
     },
@@ -3751,7 +3751,7 @@
         }
       },
       "likes": 200,
-      "views": 35438,
+      "views": 35552,
       "replies": 48,
       "reposts": 7
     },
@@ -3820,7 +3820,7 @@
         }
       },
       "likes": 74,
-      "views": 11503,
+      "views": 11532,
       "replies": 31,
       "reposts": 4
     },
@@ -4082,7 +4082,7 @@
         }
       },
       "likes": 104,
-      "views": 13126,
+      "views": 13230,
       "replies": 4,
       "reposts": 9
     },
@@ -4152,8 +4152,8 @@
           "payload": null
         }
       },
-      "likes": 12,
-      "views": 1201,
+      "likes": 13,
+      "views": 1236,
       "replies": 1,
       "reposts": 1
     },
@@ -4347,8 +4347,8 @@
           }
         }
       },
-      "likes": 70,
-      "views": 12426,
+      "likes": 74,
+      "views": 12637,
       "replies": 2,
       "reposts": 4
     },
@@ -4411,7 +4411,7 @@
         }
       },
       "likes": 21,
-      "views": 718,
+      "views": 724,
       "replies": 1,
       "reposts": 0
     },
@@ -4537,7 +4537,7 @@
         }
       },
       "likes": 36,
-      "views": 1695,
+      "views": 1730,
       "replies": 0,
       "reposts": 2
     },
@@ -4599,7 +4599,7 @@
         }
       },
       "likes": 22,
-      "views": 1988,
+      "views": 1995,
       "replies": 1,
       "reposts": 1
     },
@@ -4661,7 +4661,7 @@
         }
       },
       "likes": 23,
-      "views": 1938,
+      "views": 1943,
       "replies": 0,
       "reposts": 3
     },
@@ -4914,7 +4914,7 @@
         }
       },
       "likes": 1,
-      "views": 95,
+      "views": 98,
       "replies": 0,
       "reposts": 0
     },
@@ -5167,9 +5167,9 @@
           "payload": null
         }
       },
-      "likes": 16,
-      "views": 9346,
-      "replies": 12,
+      "likes": 19,
+      "views": 10171,
+      "replies": 14,
       "reposts": 2
     },
     "2123403973335933433": {
@@ -5227,8 +5227,8 @@
           "payload": null
         }
       },
-      "likes": 6,
-      "views": 528,
+      "likes": 7,
+      "views": 564,
       "replies": 0,
       "reposts": 1
     },
@@ -5293,9 +5293,9 @@
           }
         }
       },
-      "likes": 117,
-      "views": 11206,
-      "replies": 15,
+      "likes": 133,
+      "views": 12564,
+      "replies": 16,
       "reposts": 7
     },
     "2123458136879292460": {
@@ -5359,8 +5359,8 @@
           "payload": null
         }
       },
-      "likes": 27,
-      "views": 1614,
+      "likes": 28,
+      "views": 1707,
       "replies": 1,
       "reposts": 2
     },
@@ -5422,7 +5422,7 @@
         }
       },
       "likes": 2,
-      "views": 140,
+      "views": 145,
       "replies": 0,
       "reposts": 0
     },
@@ -5487,8 +5487,8 @@
           "payload": null
         }
       },
-      "likes": 7,
-      "views": 2088,
+      "likes": 8,
+      "views": 2214,
       "replies": 0,
       "reposts": 0
     },
@@ -5550,9 +5550,262 @@
         }
       },
       "likes": 0,
-      "views": 17,
+      "views": 18,
       "replies": 0,
-      "reposts": 9
+      "reposts": 10
+    },
+    "2123831286489825739": {
+      "id": "2123831286489825739",
+      "author_id": "1542707718",
+      "text": "A fresh set of Community Skins are now live on the Steam Item Store! 🔫☢️⚒️\n\nDon't miss out! Available for a limited time only.\n\nView the full collection here: https://t.co/7wvbuwM45L https://t.co/QYg3HAnVlj",
+      "url": "https://x.com/playrust/status/2123831286489825739",
+      "created_at": "2026-11-20T17:30:12.000Z",
+      "expanded_urls": [
+        "https://store.steampowered.com/itemstore/252490/",
+        "https://twitter.com/playrust/status/2123831286489825739"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "1542707718",
+          "account_type": "official"
+        }
+      ],
+      "first_seen_at": "2026-11-20T18:02:32.962511+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2123831286489825739",
+          "score": 85,
+          "category": "official_news",
+          "priority": "high",
+          "recommended_action": "repost",
+          "reason": "Anuncio oficial de Facepunch sobre nuevas skins comunitarias en la tienda de Steam, altamente relevante para la comunidad de Rust y útil para compartir en el perfil de CalaveraGaming."
+        },
+        "completed_at": "2026-11-20T18:02:35.526144+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-20T18:02:37.151619+00:00",
+          "completed_at": "2026-11-20T18:02:37.867957+00:00",
+          "error": null,
+          "external_id": "2123831286489825739",
+          "payload": {
+            "post_id": "2123831286489825739",
+            "mode": "live",
+            "stage": "completed"
+          }
+        }
+      },
+      "likes": 11,
+      "views": 2708,
+      "replies": 1,
+      "reposts": 0
+    },
+    "2123812041265664219": {
+      "id": "2123812041265664219",
+      "author_id": "1262844103814983688",
+      "text": "Comprando todo para despachar las primeras gorras wasd 2da edicion. Vamooo https://t.co/jPOLsUoUr1",
+      "url": "https://x.com/deowasd/status/2123812041265664219",
+      "created_at": "2026-11-20T16:13:43.000Z",
+      "expanded_urls": [
+        "https://twitter.com/deowasd/status/2123812041265664219"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "1262844103814983688",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-20T18:02:32.962548+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2123812041265664219",
+          "score": 35,
+          "category": "community",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "Publicación sobre merchandising personal de otro creador que no está relacionada directamente con Rust ni aporta contenido útil para la audiencia de CalaveraGaming."
+        },
+        "completed_at": "2026-11-20T18:02:35.535271+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 6,
+      "views": 163,
+      "replies": 0,
+      "reposts": 0
+    },
+    "2123829221814313138": {
+      "id": "2123829221814313138",
+      "author_id": "736974333424369664",
+      "text": "ESTAMOS ON 🔴\n\nPues arrancamos con el Viernes ...\n\nhttps://t.co/6f3pAsop73",
+      "url": "https://x.com/Agustabell212/status/2123829221814313138",
+      "created_at": "2026-11-20T17:21:59.000Z",
+      "expanded_urls": [
+        "https://kick.com/agustabell212"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "736974333424369664",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-20T18:02:32.962596+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2123829221814313138",
+          "score": 20,
+          "category": "creator",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "Aviso genérico de inicio de directo sin especificar si juega Rust ni aportar valor temático."
+        },
+        "completed_at": "2026-11-20T18:02:35.541623+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 9,
+      "views": 680,
+      "replies": 0,
+      "reposts": 0
+    },
+    "2123800624143958054": {
+      "id": "2123800624143958054",
+      "author_id": "792712514429673472",
+      "text": "NUEVO VIDEITO!!!\nEL MISTERIO PROHIBIDO DE GTA 6 https://t.co/Hx4RZn1HqB vía @YouTube",
+      "url": "https://x.com/nazegamingtv/status/2123800624143958054",
+      "created_at": "2026-11-20T15:28:21.000Z",
+      "expanded_urls": [
+        "https://www.youtube.com/watch?si=-0D7-f2-iYV53kWB&v=oYXVdZKCI6E&feature=youtu.be"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "792712514429673472",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-20T18:02:32.962624+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2123800624143958054",
+          "score": 10,
+          "category": "other",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "Contenido centrado en GTA 6, totalmente ajeno a la temática de Rust de CalaveraGaming."
+        },
+        "completed_at": "2026-11-20T18:02:35.547701+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 4,
+      "views": 207,
+      "replies": 0,
+      "reposts": 0
     }
   }
 }

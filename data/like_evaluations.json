@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-20T10:06:49.501044+00:00",
-  "total": 87,
+  "updated_at": "2026-11-20T18:02:37.147644+00:00",
+  "total": 91,
   "evaluations": {
     "2118402970886836645": {
       "post_id": "2118402970886836645",
@@ -610,6 +610,34 @@
       "score": 80,
       "category": "rust",
       "reason": "La publicación comparte un meme y un contenido entretenido relacionado con Rust Console Edition, generando un buen valor de entretenimiento para la comunidad."
+    },
+    "2123829221814313138": {
+      "post_id": "2123829221814313138",
+      "should_like": true,
+      "score": 95,
+      "category": "kick",
+      "reason": "La publicación incluye un enlace válido a Kick (kick.com), cumpliendo con la prioridad establecida para plataformas de streaming."
+    },
+    "2123800624143958054": {
+      "post_id": "2123800624143958054",
+      "should_like": true,
+      "score": 95,
+      "category": "youtube",
+      "reason": "La publicación incluye un enlace válido a YouTube (youtube.com / youtu.be), cumpliendo con la prioridad establecida para plataformas de contenido."
+    },
+    "2123831286489825739": {
+      "post_id": "2123831286489825739",
+      "should_like": true,
+      "score": 85,
+      "category": "rust",
+      "reason": "La publicación aporta valor genuino al informar sobre las nuevas skins oficiales de la comunidad en Rust, resultando de gran interés para los jugadores."
+    },
+    "2123812041265664219": {
+      "post_id": "2123812041265664219",
+      "should_like": true,
+      "score": 78,
+      "category": "professional",
+      "reason": "Muestra un logro personal y profesional de un creador relacionado con la producción de su marca de indumentaria, permitiendo generar una relación cercana."
     }
   }
 }

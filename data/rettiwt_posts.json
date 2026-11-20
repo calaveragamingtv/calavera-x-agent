@@ -11,7 +11,7 @@
     "replies": 76,
     "reposts": 123,
     "likes": 1237,
-    "views": 377968,
+    "views": 378182,
     "monitored_by": [
       {
         "account_id": "742290493292285952",
@@ -31,7 +31,7 @@
     "replies": 5,
     "reposts": 8,
     "likes": 120,
-    "views": 23760,
+    "views": 23767,
     "monitored_by": [
       {
         "account_id": "742290493292285952",
@@ -186,7 +186,7 @@
     "replies": 2,
     "reposts": 2,
     "likes": 13,
-    "views": 1373,
+    "views": 1378,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -204,9 +204,9 @@
     ],
     "created_at": "2026-11-19T19:29:23.000Z",
     "replies": 0,
-    "reposts": 9,
+    "reposts": 10,
     "likes": 0,
-    "views": 17,
+    "views": 18,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -223,10 +223,10 @@
       "https://twitter.com/RustSpain_com/status/2123443699786858629"
     ],
     "created_at": "2026-11-19T15:50:04.000Z",
-    "replies": 12,
+    "replies": 14,
     "reposts": 2,
-    "likes": 16,
-    "views": 9346,
+    "likes": 19,
+    "views": 10171,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -243,8 +243,8 @@
     "created_at": "2026-11-19T13:12:12.000Z",
     "replies": 0,
     "reposts": 1,
-    "likes": 6,
-    "views": 528,
+    "likes": 7,
+    "views": 564,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -263,12 +263,33 @@
     "created_at": "2026-11-18T17:08:44.000Z",
     "replies": 1,
     "reposts": 1,
-    "likes": 12,
-    "views": 1201,
+    "likes": 13,
+    "views": 1236,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
         "account_type": "server"
+      }
+    ]
+  },
+  {
+    "id": "2123831286489825739",
+    "author_id": "1542707718",
+    "text": "A fresh set of Community Skins are now live on the Steam Item Store! 🔫☢️⚒️\n\nDon't miss out! Available for a limited time only.\n\nView the full collection here: https://t.co/7wvbuwM45L https://t.co/QYg3HAnVlj",
+    "url": "https://x.com/playrust/status/2123831286489825739",
+    "expanded_urls": [
+      "https://store.steampowered.com/itemstore/252490/",
+      "https://twitter.com/playrust/status/2123831286489825739"
+    ],
+    "created_at": "2026-11-20T17:30:12.000Z",
+    "replies": 1,
+    "reposts": 0,
+    "likes": 11,
+    "views": 2708,
+    "monitored_by": [
+      {
+        "account_id": "1542707718",
+        "account_type": "official"
       }
     ]
   },
@@ -281,10 +302,10 @@
       "https://rust.facepunch.com/news/printed_and_polished"
     ],
     "created_at": "2026-11-19T14:59:56.000Z",
-    "replies": 15,
+    "replies": 16,
     "reposts": 7,
-    "likes": 117,
-    "views": 11206,
+    "likes": 133,
+    "views": 12564,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -304,8 +325,8 @@
     "created_at": "2026-11-18T15:00:19.000Z",
     "replies": 2,
     "reposts": 4,
-    "likes": 70,
-    "views": 12426,
+    "likes": 74,
+    "views": 12637,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -326,7 +347,7 @@
     "replies": 4,
     "reposts": 9,
     "likes": 104,
-    "views": 13126,
+    "views": 13230,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -346,7 +367,7 @@
     "replies": 48,
     "reposts": 7,
     "likes": 200,
-    "views": 35438,
+    "views": 35552,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -355,23 +376,22 @@
     ]
   },
   {
-    "id": "2121619198522622261",
-    "author_id": "1542707718",
-    "text": "Over $850k paid out! 💰☢️🐛\n\nSpot a bug? Find a vulnerability? Sniff out an exploit? Sign up for the Rust X HackerOne Program now!\n\nGet started here: https://t.co/KjmabieZmS https://t.co/WnhYOFlf36",
-    "url": "https://x.com/playrust/status/2121619198522622261",
+    "id": "2123812041265664219",
+    "author_id": "1262844103814983688",
+    "text": "Comprando todo para despachar las primeras gorras wasd 2da edicion. Vamooo https://t.co/jPOLsUoUr1",
+    "url": "https://x.com/deowasd/status/2123812041265664219",
     "expanded_urls": [
-      "https://rust.facepunch.com/news/soft-refresh",
-      "https://twitter.com/playrust/status/2121619198522622261"
+      "https://twitter.com/deowasd/status/2123812041265664219"
     ],
-    "created_at": "2026-11-14T15:00:09.000Z",
-    "replies": 5,
-    "reposts": 7,
-    "likes": 97,
-    "views": 17989,
+    "created_at": "2026-11-20T16:13:43.000Z",
+    "replies": 0,
+    "reposts": 0,
+    "likes": 6,
+    "views": 163,
     "monitored_by": [
       {
-        "account_id": "1542707718",
-        "account_type": "official"
+        "account_id": "1262844103814983688",
+        "account_type": "streamer"
       }
     ]
   },
@@ -388,7 +408,7 @@
     "replies": 1,
     "reposts": 0,
     "likes": 21,
-    "views": 718,
+    "views": 724,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -406,7 +426,7 @@
     "replies": 31,
     "reposts": 4,
     "likes": 74,
-    "views": 11503,
+    "views": 11532,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -426,7 +446,7 @@
     "replies": 9,
     "reposts": 0,
     "likes": 10,
-    "views": 1575,
+    "views": 1578,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -444,27 +464,7 @@
     "replies": 1,
     "reposts": 1,
     "likes": 19,
-    "views": 978,
-    "monitored_by": [
-      {
-        "account_id": "1262844103814983688",
-        "account_type": "streamer"
-      }
-    ]
-  },
-  {
-    "id": "2120727160608711000",
-    "author_id": "1262844103814983688",
-    "text": "67 BRO https://t.co/JtINmBEzXM",
-    "url": "https://x.com/deowasd/status/2120727160608711000",
-    "expanded_urls": [
-      "https://twitter.com/deowasd/status/2120727160608711000"
-    ],
-    "created_at": "2026-11-12T03:55:30.000Z",
-    "replies": 1,
-    "reposts": 1,
-    "likes": 16,
-    "views": 1092,
+    "views": 982,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -565,6 +565,26 @@
     ]
   },
   {
+    "id": "2123829221814313138",
+    "author_id": "736974333424369664",
+    "text": "ESTAMOS ON 🔴\n\nPues arrancamos con el Viernes ...\n\nhttps://t.co/6f3pAsop73",
+    "url": "https://x.com/Agustabell212/status/2123829221814313138",
+    "expanded_urls": [
+      "https://kick.com/agustabell212"
+    ],
+    "created_at": "2026-11-20T17:21:59.000Z",
+    "replies": 0,
+    "reposts": 0,
+    "likes": 9,
+    "views": 680,
+    "monitored_by": [
+      {
+        "account_id": "736974333424369664",
+        "account_type": "streamer"
+      }
+    ]
+  },
+  {
     "id": "2123458136879292460",
     "author_id": "736974333424369664",
     "text": "ESTAMOS ON 🔴\n\nPues dia 2 de Project Zomboid .42\n\nhttps://t.co/6f3pAsoWWB",
@@ -575,8 +595,8 @@
     "created_at": "2026-11-19T16:47:26.000Z",
     "replies": 1,
     "reposts": 2,
-    "likes": 27,
-    "views": 1614,
+    "likes": 28,
+    "views": 1707,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -596,7 +616,7 @@
     "replies": 0,
     "reposts": 2,
     "likes": 36,
-    "views": 1695,
+    "views": 1730,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -616,7 +636,7 @@
     "replies": 1,
     "reposts": 1,
     "likes": 22,
-    "views": 1988,
+    "views": 1995,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -636,27 +656,7 @@
     "replies": 0,
     "reposts": 3,
     "likes": 23,
-    "views": 1938,
-    "monitored_by": [
-      {
-        "account_id": "736974333424369664",
-        "account_type": "streamer"
-      }
-    ]
-  },
-  {
-    "id": "2121284712480338090",
-    "author_id": "736974333424369664",
-    "text": "ESTAMOS ON 🔴\n\nViernes y el cuerpo lo sabe ...\n\nhttps://t.co/6f3pAsoWWB",
-    "url": "https://x.com/Agustabell212/status/2121284712480338090",
-    "expanded_urls": [
-      "https://kick.com/agustabell212"
-    ],
-    "created_at": "2026-11-13T16:51:01.000Z",
-    "replies": 0,
-    "reposts": 1,
-    "likes": 22,
-    "views": 1913,
+    "views": 1943,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -686,6 +686,26 @@
     ]
   },
   {
+    "id": "2123800624143958054",
+    "author_id": "792712514429673472",
+    "text": "NUEVO VIDEITO!!!\nEL MISTERIO PROHIBIDO DE GTA 6 https://t.co/Hx4RZn1HqB vía @YouTube",
+    "url": "https://x.com/nazegamingtv/status/2123800624143958054",
+    "expanded_urls": [
+      "https://www.youtube.com/watch?si=-0D7-f2-iYV53kWB&v=oYXVdZKCI6E&feature=youtu.be"
+    ],
+    "created_at": "2026-11-20T15:28:21.000Z",
+    "replies": 0,
+    "reposts": 0,
+    "likes": 4,
+    "views": 207,
+    "monitored_by": [
+      {
+        "account_id": "792712514429673472",
+        "account_type": "streamer"
+      }
+    ]
+  },
+  {
     "id": "2123460519084400814",
     "author_id": "792712514429673472",
     "text": "NO TE PIERDAS EL DIA 2 DE GTA VI! https://t.co/Z0lu8DX092",
@@ -697,7 +717,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 2,
-    "views": 140,
+    "views": 145,
     "monitored_by": [
       {
         "account_id": "792712514429673472",
@@ -716,8 +736,8 @@
     "created_at": "2026-11-19T15:46:59.000Z",
     "replies": 0,
     "reposts": 0,
-    "likes": 7,
-    "views": 2088,
+    "likes": 8,
+    "views": 2214,
     "monitored_by": [
       {
         "account_id": "792712514429673472",
@@ -737,27 +757,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 1,
-    "views": 95,
-    "monitored_by": [
-      {
-        "account_id": "792712514429673472",
-        "account_type": "streamer"
-      }
-    ]
-  },
-  {
-    "id": "2123013259322355981",
-    "author_id": "792712514429673472",
-    "text": "Hola cracks! Para evitar cualquier spoiler de GTA 6 voy a desconectarme de las redes hasta que prenda directo para jugarlo, nos vemos en unas horitas para recorrer Vice City juntos!🍹🌴🚨\n➡️ https://t.co/Z0lu8DXxYA",
-    "url": "https://x.com/nazegamingtv/status/2123013259322355981",
-    "expanded_urls": [
-      "https://kick.com/naze"
-    ],
-    "created_at": "2026-11-18T11:19:39.000Z",
-    "replies": 0,
-    "reposts": 0,
-    "likes": 7,
-    "views": 353,
+    "views": 98,
     "monitored_by": [
       {
         "account_id": "792712514429673472",
