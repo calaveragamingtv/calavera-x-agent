@@ -1,7 +1,7 @@
 {
   "account": "monitored_accounts",
-  "analyzed_at": "2026-11-22T06:04:04.648216+00:00",
-  "model": "gemini-3.5-flash-lite",
+  "analyzed_at": "2026-11-22T10:04:24.333953+00:00",
+  "model": null,
   "total": 39,
   "ranking": [
     {
