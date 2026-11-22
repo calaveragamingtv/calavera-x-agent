@@ -11,7 +11,7 @@
     "replies": 76,
     "reposts": 123,
     "likes": 1237,
-    "views": 378434,
+    "views": 378617,
     "monitored_by": [
       {
         "account_id": "742290493292285952",
@@ -31,7 +31,7 @@
     "replies": 5,
     "reposts": 8,
     "likes": 120,
-    "views": 23779,
+    "views": 23785,
     "monitored_by": [
       {
         "account_id": "742290493292285952",
@@ -107,7 +107,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 4,
-    "views": 1952,
+    "views": 1955,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -127,7 +127,7 @@
     "replies": 0,
     "reposts": 1,
     "likes": 6,
-    "views": 1584,
+    "views": 1587,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -145,7 +145,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 3,
-    "views": 1590,
+    "views": 1593,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -166,7 +166,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 1,
-    "views": 1276,
+    "views": 1279,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -186,7 +186,45 @@
     "replies": 2,
     "reposts": 2,
     "likes": 13,
-    "views": 1383,
+    "views": 1386,
+    "monitored_by": [
+      {
+        "account_id": "779120759000137728",
+        "account_type": "server"
+      }
+    ]
+  },
+  {
+    "id": "2124232960362909920",
+    "author_id": "779120759000137728",
+    "text": "Túneles de Carretera para recortar camino por dentro de las montañas.👀\n\n¿Qué más ideas se te ocurren para mejorar los mapas? 🤔 https://t.co/sZGhpddVnS",
+    "url": "https://x.com/RustSpain_com/status/2124232960362909920",
+    "expanded_urls": [
+      "https://twitter.com/RustSpain_com/status/2124232960362909920"
+    ],
+    "created_at": "2026-11-21T20:06:18.000Z",
+    "replies": 1,
+    "reposts": 1,
+    "likes": 14,
+    "views": 1006,
+    "monitored_by": [
+      {
+        "account_id": "779120759000137728",
+        "account_type": "server"
+      }
+    ]
+  },
+  {
+    "id": "2124174443220004890",
+    "author_id": "779120759000137728",
+    "text": "RT @playrust: Here's a video explainer on the updated Blueprint progression system.\n📘☢️⚒️\n\nW or L? Let's hear it.\n\nRead more on our DevBlog…",
+    "url": "https://x.com/RustSpain_com/status/2124174443220004890",
+    "expanded_urls": [],
+    "created_at": "2026-11-21T16:13:47.000Z",
+    "replies": 0,
+    "reposts": 12,
+    "likes": 0,
+    "views": 9,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -226,7 +264,7 @@
     "replies": 15,
     "reposts": 2,
     "likes": 19,
-    "views": 10586,
+    "views": 10681,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -235,40 +273,23 @@
     ]
   },
   {
-    "id": "2123403973335933433",
-    "author_id": "779120759000137728",
-    "text": "Si no tienes GTAVI, tranquilo tenemos un plan para tí en unas horas.\n\nWipe de nuestro Vanilla Main, Vanilla Solo Only y Modded x5 [Max Trio] a las 16h. Es decir, en menos de 2 horas...\n\n¡Te esperamos!",
-    "url": "https://x.com/RustSpain_com/status/2123403973335933433",
-    "expanded_urls": [],
-    "created_at": "2026-11-19T13:12:12.000Z",
-    "replies": 0,
-    "reposts": 1,
-    "likes": 7,
-    "views": 587,
-    "monitored_by": [
-      {
-        "account_id": "779120759000137728",
-        "account_type": "server"
-      }
-    ]
-  },
-  {
-    "id": "2123101108683858386",
-    "author_id": "779120759000137728",
-    "text": "Con CobaltMaps ahora puedes colocar los faros en cada esquina del mapa.\n\nIdeal para que los jugadores lo puedan tener más cerca y ayudar a su reparación para activar el DeepSea.\n\n¿Qué te parece? https://t.co/Lm5W2t93De",
-    "url": "https://x.com/RustSpain_com/status/2123101108683858386",
+    "id": "2124156043898839547",
+    "author_id": "1542707718",
+    "text": "Here's a video explainer on the updated Blueprint progression system.\n📘☢️⚒️\n\nW or L? Let's hear it.\n\nRead more on our DevBlog: https://t.co/h9bGJRqWUi https://t.co/TbEeWfeWmk",
+    "url": "https://x.com/playrust/status/2124156043898839547",
     "expanded_urls": [
-      "https://twitter.com/RustSpain_com/status/2123101108683858386"
+      "https://rust.facepunch.com/news/printed_and_polished",
+      "https://twitter.com/playrust/status/2124156043898839547"
     ],
-    "created_at": "2026-11-18T17:08:44.000Z",
-    "replies": 1,
-    "reposts": 1,
-    "likes": 13,
-    "views": 1242,
+    "created_at": "2026-11-21T15:00:40.000Z",
+    "replies": 24,
+    "reposts": 12,
+    "likes": 187,
+    "views": 24441,
     "monitored_by": [
       {
-        "account_id": "779120759000137728",
-        "account_type": "server"
+        "account_id": "1542707718",
+        "account_type": "official"
       }
     ]
   },
@@ -284,8 +305,8 @@
     "created_at": "2026-11-20T17:30:12.000Z",
     "replies": 2,
     "reposts": 5,
-    "likes": 60,
-    "views": 10923,
+    "likes": 66,
+    "views": 12420,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -302,10 +323,10 @@
       "https://rust.facepunch.com/news/printed_and_polished"
     ],
     "created_at": "2026-11-19T14:59:56.000Z",
-    "replies": 16,
+    "replies": 15,
     "reposts": 7,
-    "likes": 146,
-    "views": 14324,
+    "likes": 148,
+    "views": 14680,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -326,7 +347,7 @@
     "replies": 2,
     "reposts": 4,
     "likes": 75,
-    "views": 12866,
+    "views": 13017,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -347,27 +368,7 @@
     "replies": 4,
     "reposts": 9,
     "likes": 104,
-    "views": 13380,
-    "monitored_by": [
-      {
-        "account_id": "1542707718",
-        "account_type": "official"
-      }
-    ]
-  },
-  {
-    "id": "2122343890678095913",
-    "author_id": "1542707718",
-    "text": "Workbenches no longer require blueprint fragments to craft, and scrap isn’t used on the tech trees. 🛠️☢️🪾\n\nInstead, we’re introducing three tiers of blueprints: blueprint fragments, blueprint pages and blueprint books. These are the new currencies spent to progress tech trees, one for each tech tree level.\n\nRead more on our DevBlog: https://t.co/MF9kei76SG",
-    "url": "https://x.com/playrust/status/2122343890678095913",
-    "expanded_urls": [
-      "https://rust.facepunch.com/news/printed_and_polished"
-    ],
-    "created_at": "2026-11-16T14:59:49.000Z",
-    "replies": 48,
-    "reposts": 7,
-    "likes": 200,
-    "views": 35751,
+    "views": 13512,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -384,10 +385,10 @@
       "https://twitter.com/deowasd/status/2123812041265664219"
     ],
     "created_at": "2026-11-20T16:13:43.000Z",
-    "replies": 0,
+    "replies": 1,
     "reposts": 0,
-    "likes": 14,
-    "views": 394,
+    "likes": 16,
+    "views": 505,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -408,7 +409,7 @@
     "replies": 1,
     "reposts": 0,
     "likes": 21,
-    "views": 734,
+    "views": 743,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -426,7 +427,7 @@
     "replies": 31,
     "reposts": 4,
     "likes": 74,
-    "views": 11575,
+    "views": 11601,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -446,7 +447,7 @@
     "replies": 9,
     "reposts": 0,
     "likes": 10,
-    "views": 1583,
+    "views": 1588,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -464,7 +465,7 @@
     "replies": 1,
     "reposts": 1,
     "likes": 19,
-    "views": 986,
+    "views": 988,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -482,7 +483,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 3,
-    "views": 329,
+    "views": 330,
     "monitored_by": [
       {
         "account_id": "3085086228",
@@ -518,7 +519,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 8,
-    "views": 582,
+    "views": 583,
     "monitored_by": [
       {
         "account_id": "3085086228",
@@ -575,8 +576,8 @@
     "created_at": "2026-11-20T17:21:59.000Z",
     "replies": 0,
     "reposts": 0,
-    "likes": 16,
-    "views": 1336,
+    "likes": 17,
+    "views": 1478,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -596,7 +597,7 @@
     "replies": 1,
     "reposts": 2,
     "likes": 30,
-    "views": 1803,
+    "views": 1859,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -616,7 +617,7 @@
     "replies": 0,
     "reposts": 2,
     "likes": 36,
-    "views": 1764,
+    "views": 1794,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -636,7 +637,7 @@
     "replies": 1,
     "reposts": 1,
     "likes": 22,
-    "views": 2008,
+    "views": 2023,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -656,7 +657,7 @@
     "replies": 0,
     "reposts": 3,
     "likes": 23,
-    "views": 1956,
+    "views": 1968,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -677,7 +678,25 @@
     "replies": 15,
     "reposts": 7,
     "likes": 105,
-    "views": 2469,
+    "views": 2474,
+    "monitored_by": [
+      {
+        "account_id": "792712514429673472",
+        "account_type": "streamer"
+      }
+    ]
+  },
+  {
+    "id": "2124175374263160958",
+    "author_id": "792712514429673472",
+    "text": "se me quemó mi monitor samsung 144hz jugando gta 6 en pleno directo, se puede tener mas mala suerte?",
+    "url": "https://x.com/nazegamingtv/status/2124175374263160958",
+    "expanded_urls": [],
+    "created_at": "2026-11-21T16:17:29.000Z",
+    "replies": 4,
+    "reposts": 0,
+    "likes": 15,
+    "views": 633,
     "monitored_by": [
       {
         "account_id": "792712514429673472",
@@ -697,7 +716,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 5,
-    "views": 766,
+    "views": 1135,
     "monitored_by": [
       {
         "account_id": "792712514429673472",
@@ -717,7 +736,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 2,
-    "views": 147,
+    "views": 148,
     "monitored_by": [
       {
         "account_id": "792712514429673472",
@@ -737,27 +756,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 9,
-    "views": 2684,
-    "monitored_by": [
-      {
-        "account_id": "792712514429673472",
-        "account_type": "streamer"
-      }
-    ]
-  },
-  {
-    "id": "2123221134443503884",
-    "author_id": "792712514429673472",
-    "text": "VENI A SALUDAR HOY GTA 6 EN DIRECTO!!!! https://t.co/Z0lu8DXxYA",
-    "url": "https://x.com/nazegamingtv/status/2123221134443503884",
-    "expanded_urls": [
-      "https://kick.com/naze"
-    ],
-    "created_at": "2026-11-19T01:05:40.000Z",
-    "replies": 0,
-    "reposts": 0,
-    "likes": 1,
-    "views": 98,
+    "views": 2874,
     "monitored_by": [
       {
         "account_id": "792712514429673472",

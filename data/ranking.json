@@ -1,9 +1,17 @@
 {
   "account": "monitored_accounts",
-  "analyzed_at": "2026-11-21T14:04:43.997315+00:00",
-  "model": null,
+  "analyzed_at": "2026-11-22T06:04:04.648216+00:00",
+  "model": "gemini-3.5-flash-lite",
   "total": 39,
   "ranking": [
+    {
+      "post_id": "2124156043898839547",
+      "score": 95,
+      "category": "official_news",
+      "priority": "high",
+      "recommended_action": "repost",
+      "reason": "Es la publicación oficial de Facepunch sobre el nuevo sistema de progresión de blueprints con video explicativo y DevBlog, crucial para la comunidad de Rust y ideal para compartir en el perfil de CalaveraGaming."
+    },
     {
       "post_id": "2123431084419338353",
       "score": 95,
@@ -13,20 +21,20 @@
       "reason": "Es información oficial de Facepunch sobre una nueva mecánica (Armour Insert usando lana) y cambios en el DevBlog, contenido vital para la comunidad de Rust."
     },
     {
-      "post_id": "2122343890678095913",
-      "score": 95,
-      "category": "official_news",
-      "priority": "high",
-      "recommended_action": "repost",
-      "reason": "Es una noticia oficial de Facepunch sobre un cambio radical en el sistema de crafteo y tech trees de Rust (blueprints). Impacta directamente en la jugabilidad y es contenido esencial para la comunidad y para un creador enfocado en el juego."
-    },
-    {
       "post_id": "2115490600191688909",
       "score": 92,
       "category": "update",
       "priority": "high",
       "recommended_action": "reply",
       "reason": "Presentación de la nueva arma Uzi con una mecánica única de culata. Excelente oportunidad para opinar sobre el meta de armas en Rust."
+    },
+    {
+      "post_id": "2124174443220004890",
+      "score": 88,
+      "category": "official_news",
+      "priority": "high",
+      "recommended_action": "reply",
+      "reason": "Es un retweet del anuncio oficial del sistema de blueprints por una cuenta relevante en español (RustSpain), excelente oportunidad para debatir y dar la opinión personal sobre si el cambio es un 'W o L'."
     },
     {
       "post_id": "2118412551943831955",
@@ -85,20 +93,12 @@
       "reason": "Anuncio de un nuevo sistema de clanes en la web hispana de Rust. Útil para la comunidad hispanohablante."
     },
     {
-      "post_id": "2123403973335933433",
+      "post_id": "2124232960362909920",
       "score": 75,
-      "category": "event",
-      "priority": "high",
-      "recommended_action": "ignore",
-      "reason": "Anuncio de wipes de servidores comunitarios hispanos importantes, relevante para el ecosistema de Rust aunque con menor margen de interacción directa para aportar."
-    },
-    {
-      "post_id": "2123101108683858386",
-      "score": 75,
-      "category": "update",
+      "category": "discussion",
       "priority": "high",
       "recommended_action": "reply",
-      "reason": "Aporta información útil sobre mapas de Rust y mecánicas como DeepSea, excelente para debatir con la comunidad."
+      "reason": "Plantea una pregunta directa a la comunidad sobre ideas para mejorar los mapas de Rust (túneles en carretera), perfecta para generar interacción y comentarios desde la perspectiva de un creador de contenido."
     },
     {
       "post_id": "2122425875320774778",
@@ -197,14 +197,6 @@
       "reason": "Retweet genérico sin contexto claro en el texto."
     },
     {
-      "post_id": "2123221134443503884",
-      "score": 25,
-      "category": "creator",
-      "priority": "low",
-      "recommended_action": "ignore",
-      "reason": "Anuncio de directo sobre GTA 6, sin relación con Rust."
-    },
-    {
       "post_id": "2123829221814313138",
       "score": 20,
       "category": "creator",
@@ -275,6 +267,14 @@
       "priority": "low",
       "recommended_action": "ignore",
       "reason": "Aviso de directo general sin contenido de Rust."
+    },
+    {
+      "post_id": "2124175374263160958",
+      "score": 10,
+      "category": "other",
+      "priority": "low",
+      "recommended_action": "ignore",
+      "reason": "La publicación trata sobre un problema técnico jugando GTA 6 y no guarda relación con Rust, por lo que no aporta valor a la cuenta de CalaveraGaming."
     },
     {
       "post_id": "2123800624143958054",

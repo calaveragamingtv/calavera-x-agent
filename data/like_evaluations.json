@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-20T18:02:37.147644+00:00",
-  "total": 91,
+  "updated_at": "2026-11-22T06:04:07.176213+00:00",
+  "total": 95,
   "evaluations": {
     "2118402970886836645": {
       "post_id": "2118402970886836645",
@@ -638,6 +638,34 @@
       "score": 78,
       "category": "professional",
       "reason": "Muestra un logro personal y profesional de un creador relacionado con la producción de su marca de indumentaria, permitiendo generar una relación cercana."
+    },
+    "2124156043898839547": {
+      "post_id": "2124156043898839547",
+      "should_like": true,
+      "score": 90,
+      "category": "rust",
+      "reason": "Contenido oficial relevante sobre la actualización del sistema de progresión de Rust, aportando información muy valiosa para la comunidad."
+    },
+    "2124232960362909920": {
+      "post_id": "2124232960362909920",
+      "should_like": true,
+      "score": 85,
+      "category": "rust",
+      "reason": "La publicación propone una idea creativa y constructiva sobre mecánicas de mapas para Rust, fomentando la participación de la comunidad."
+    },
+    "2124175374263160958": {
+      "post_id": "2124175374263160958",
+      "should_like": true,
+      "score": 80,
+      "category": "streaming",
+      "reason": "Anécdota desafortunada de un streamer durante una transmisión en directo, generando una oportunidad genuina de conectar y empatizar con un creador."
+    },
+    "2124174443220004890": {
+      "post_id": "2124174443220004890",
+      "should_like": false,
+      "score": 60,
+      "category": "rust",
+      "reason": "Es un simple retweet de un anuncio oficial sin aportar contenido adicional o valor propio en esta cuenta."
     }
   }
 }

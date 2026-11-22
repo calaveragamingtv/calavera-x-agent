@@ -63,7 +63,7 @@
         }
       },
       "likes": 1237,
-      "views": 378434,
+      "views": 378617,
       "replies": 76,
       "reposts": 123
     },
@@ -134,7 +134,7 @@
         }
       },
       "likes": 120,
-      "views": 23779,
+      "views": 23785,
       "replies": 5,
       "reposts": 8
     },
@@ -696,7 +696,7 @@
         }
       },
       "likes": 4,
-      "views": 1952,
+      "views": 1955,
       "replies": 0,
       "reposts": 0
     },
@@ -758,7 +758,7 @@
         }
       },
       "likes": 6,
-      "views": 1584,
+      "views": 1587,
       "replies": 0,
       "reposts": 1
     },
@@ -818,7 +818,7 @@
         }
       },
       "likes": 3,
-      "views": 1590,
+      "views": 1593,
       "replies": 0,
       "reposts": 0
     },
@@ -885,7 +885,7 @@
         }
       },
       "likes": 1,
-      "views": 1276,
+      "views": 1279,
       "replies": 0,
       "reposts": 0
     },
@@ -1259,7 +1259,7 @@
         }
       },
       "likes": 13,
-      "views": 1383,
+      "views": 1386,
       "replies": 2,
       "reposts": 2
     },
@@ -3619,7 +3619,7 @@
         }
       },
       "likes": 19,
-      "views": 986,
+      "views": 988,
       "replies": 1,
       "reposts": 1
     },
@@ -3681,7 +3681,7 @@
         }
       },
       "likes": 10,
-      "views": 1583,
+      "views": 1588,
       "replies": 9,
       "reposts": 0
     },
@@ -3820,7 +3820,7 @@
         }
       },
       "likes": 74,
-      "views": 11575,
+      "views": 11601,
       "replies": 31,
       "reposts": 4
     },
@@ -3940,7 +3940,7 @@
         }
       },
       "likes": 8,
-      "views": 582,
+      "views": 583,
       "replies": 0,
       "reposts": 0
     },
@@ -4082,7 +4082,7 @@
         }
       },
       "likes": 104,
-      "views": 13380,
+      "views": 13512,
       "replies": 4,
       "reposts": 9
     },
@@ -4348,7 +4348,7 @@
         }
       },
       "likes": 75,
-      "views": 12866,
+      "views": 13017,
       "replies": 2,
       "reposts": 4
     },
@@ -4411,7 +4411,7 @@
         }
       },
       "likes": 21,
-      "views": 734,
+      "views": 743,
       "replies": 1,
       "reposts": 0
     },
@@ -4471,7 +4471,7 @@
         }
       },
       "likes": 3,
-      "views": 329,
+      "views": 330,
       "replies": 0,
       "reposts": 0
     },
@@ -4537,7 +4537,7 @@
         }
       },
       "likes": 36,
-      "views": 1764,
+      "views": 1794,
       "replies": 0,
       "reposts": 2
     },
@@ -4571,13 +4571,17 @@
       },
       "actions": {
         "like": {
-          "status": "not_started",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-22T06:04:08.697034+00:00",
+          "completed_at": "2026-11-22T06:04:09.810422+00:00",
           "error": null,
-          "external_id": null,
-          "payload": null
+          "external_id": "2122342201711628468",
+          "payload": {
+            "post_id": "2122342201711628468",
+            "mode": "live",
+            "stage": "completed"
+          }
         },
         "reply": {
           "status": "not_started",
@@ -4599,7 +4603,7 @@
         }
       },
       "likes": 22,
-      "views": 2008,
+      "views": 2023,
       "replies": 1,
       "reposts": 1
     },
@@ -4661,7 +4665,7 @@
         }
       },
       "likes": 23,
-      "views": 1956,
+      "views": 1968,
       "replies": 0,
       "reposts": 3
     },
@@ -4852,7 +4856,7 @@
         }
       },
       "likes": 105,
-      "views": 2469,
+      "views": 2474,
       "replies": 15,
       "reposts": 7
     },
@@ -5168,7 +5172,7 @@
         }
       },
       "likes": 19,
-      "views": 10586,
+      "views": 10681,
       "replies": 15,
       "reposts": 2
     },
@@ -5293,9 +5297,9 @@
           }
         }
       },
-      "likes": 146,
-      "views": 14324,
-      "replies": 16,
+      "likes": 148,
+      "views": 14680,
+      "replies": 15,
       "reposts": 7
     },
     "2123458136879292460": {
@@ -5360,7 +5364,7 @@
         }
       },
       "likes": 30,
-      "views": 1803,
+      "views": 1859,
       "replies": 1,
       "reposts": 2
     },
@@ -5394,13 +5398,17 @@
       },
       "actions": {
         "like": {
-          "status": "not_started",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-22T06:04:09.817841+00:00",
+          "completed_at": "2026-11-22T06:04:10.945372+00:00",
           "error": null,
-          "external_id": null,
-          "payload": null
+          "external_id": "2123460519084400814",
+          "payload": {
+            "post_id": "2123460519084400814",
+            "mode": "live",
+            "stage": "completed"
+          }
         },
         "reply": {
           "status": "not_started",
@@ -5422,7 +5430,7 @@
         }
       },
       "likes": 2,
-      "views": 147,
+      "views": 148,
       "replies": 0,
       "reposts": 0
     },
@@ -5488,7 +5496,7 @@
         }
       },
       "likes": 9,
-      "views": 2684,
+      "views": 2874,
       "replies": 0,
       "reposts": 0
     },
@@ -5620,8 +5628,8 @@
           }
         }
       },
-      "likes": 60,
-      "views": 10923,
+      "likes": 66,
+      "views": 12420,
       "replies": 2,
       "reposts": 5
     },
@@ -5682,9 +5690,9 @@
           "payload": null
         }
       },
-      "likes": 14,
-      "views": 394,
-      "replies": 0,
+      "likes": 16,
+      "views": 505,
+      "replies": 1,
       "reposts": 0
     },
     "2123829221814313138": {
@@ -5748,8 +5756,8 @@
           "payload": null
         }
       },
-      "likes": 16,
-      "views": 1336,
+      "likes": 17,
+      "views": 1478,
       "replies": 0,
       "reposts": 0
     },
@@ -5815,8 +5823,266 @@
         }
       },
       "likes": 5,
-      "views": 766,
+      "views": 1135,
       "replies": 0,
+      "reposts": 0
+    },
+    "2124232960362909920": {
+      "id": "2124232960362909920",
+      "author_id": "779120759000137728",
+      "text": "Túneles de Carretera para recortar camino por dentro de las montañas.👀\n\n¿Qué más ideas se te ocurren para mejorar los mapas? 🤔 https://t.co/sZGhpddVnS",
+      "url": "https://x.com/RustSpain_com/status/2124232960362909920",
+      "created_at": "2026-11-21T20:06:18.000Z",
+      "expanded_urls": [
+        "https://twitter.com/RustSpain_com/status/2124232960362909920"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "779120759000137728",
+          "account_type": "server"
+        }
+      ],
+      "first_seen_at": "2026-11-22T06:04:02.789746+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2124232960362909920",
+          "score": 75,
+          "category": "discussion",
+          "priority": "high",
+          "recommended_action": "reply",
+          "reason": "Plantea una pregunta directa a la comunidad sobre ideas para mejorar los mapas de Rust (túneles en carretera), perfecta para generar interacción y comentarios desde la perspectiva de un creador de contenido."
+        },
+        "completed_at": "2026-11-22T06:04:04.620391+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 14,
+      "views": 1006,
+      "replies": 1,
+      "reposts": 1
+    },
+    "2124174443220004890": {
+      "id": "2124174443220004890",
+      "author_id": "779120759000137728",
+      "text": "RT @playrust: Here's a video explainer on the updated Blueprint progression system.\n📘☢️⚒️\n\nW or L? Let's hear it.\n\nRead more on our DevBlog…",
+      "url": "https://x.com/RustSpain_com/status/2124174443220004890",
+      "created_at": "2026-11-21T16:13:47.000Z",
+      "expanded_urls": [],
+      "monitored_by": [
+        {
+          "account_id": "779120759000137728",
+          "account_type": "server"
+        }
+      ],
+      "first_seen_at": "2026-11-22T06:04:02.789761+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2124174443220004890",
+          "score": 88,
+          "category": "official_news",
+          "priority": "high",
+          "recommended_action": "reply",
+          "reason": "Es un retweet del anuncio oficial del sistema de blueprints por una cuenta relevante en español (RustSpain), excelente oportunidad para debatir y dar la opinión personal sobre si el cambio es un 'W o L'."
+        },
+        "completed_at": "2026-11-22T06:04:04.627501+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-22T06:04:07.203189+00:00",
+          "completed_at": "2026-11-22T06:04:08.009389+00:00",
+          "error": null,
+          "external_id": "2124383406230516062",
+          "payload": {
+            "post_id": "2124174443220004890",
+            "reply_text": "Para mí es un W rotundo, le hacía falta una vuelta de tuerca al meta de progresión para que no sea siempre lo mismo en cada wipe.",
+            "mode": "live",
+            "stage": "completed"
+          }
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 0,
+      "views": 9,
+      "replies": 0,
+      "reposts": 12
+    },
+    "2124156043898839547": {
+      "id": "2124156043898839547",
+      "author_id": "1542707718",
+      "text": "Here's a video explainer on the updated Blueprint progression system.\n📘☢️⚒️\n\nW or L? Let's hear it.\n\nRead more on our DevBlog: https://t.co/h9bGJRqWUi https://t.co/TbEeWfeWmk",
+      "url": "https://x.com/playrust/status/2124156043898839547",
+      "created_at": "2026-11-21T15:00:40.000Z",
+      "expanded_urls": [
+        "https://rust.facepunch.com/news/printed_and_polished",
+        "https://twitter.com/playrust/status/2124156043898839547"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "1542707718",
+          "account_type": "official"
+        }
+      ],
+      "first_seen_at": "2026-11-22T06:04:02.789780+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2124156043898839547",
+          "score": 95,
+          "category": "official_news",
+          "priority": "high",
+          "recommended_action": "repost",
+          "reason": "Es la publicación oficial de Facepunch sobre el nuevo sistema de progresión de blueprints con video explicativo y DevBlog, crucial para la comunidad de Rust y ideal para compartir en el perfil de CalaveraGaming."
+        },
+        "completed_at": "2026-11-22T06:04:04.635396+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-22T06:04:10.952771+00:00",
+          "completed_at": "2026-11-22T06:04:11.937941+00:00",
+          "error": null,
+          "external_id": "2124156043898839547",
+          "payload": {
+            "post_id": "2124156043898839547",
+            "mode": "live",
+            "stage": "completed"
+          }
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-22T06:04:08.016791+00:00",
+          "completed_at": "2026-11-22T06:04:08.689603+00:00",
+          "error": null,
+          "external_id": "2124156043898839547",
+          "payload": {
+            "post_id": "2124156043898839547",
+            "mode": "live",
+            "stage": "completed"
+          }
+        }
+      },
+      "likes": 187,
+      "views": 24441,
+      "replies": 24,
+      "reposts": 12
+    },
+    "2124175374263160958": {
+      "id": "2124175374263160958",
+      "author_id": "792712514429673472",
+      "text": "se me quemó mi monitor samsung 144hz jugando gta 6 en pleno directo, se puede tener mas mala suerte?",
+      "url": "https://x.com/nazegamingtv/status/2124175374263160958",
+      "created_at": "2026-11-21T16:17:29.000Z",
+      "expanded_urls": [],
+      "monitored_by": [
+        {
+          "account_id": "792712514429673472",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-22T06:04:02.789874+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2124175374263160958",
+          "score": 10,
+          "category": "other",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "La publicación trata sobre un problema técnico jugando GTA 6 y no guarda relación con Rust, por lo que no aporta valor a la cuenta de CalaveraGaming."
+        },
+        "completed_at": "2026-11-22T06:04:04.641752+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 15,
+      "views": 633,
+      "replies": 4,
       "reposts": 0
     }
   }
