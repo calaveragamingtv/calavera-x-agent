@@ -1,6 +1,6 @@
 {
   "account": "monitored_accounts",
-  "updated_at": "2026-11-22T10:04:24.322294+00:00",
+  "updated_at": "2026-11-23T10:05:45.802622+00:00",
   "total": 39,
   "posts": [
     {
@@ -15,7 +15,7 @@
       "replies": 76,
       "reposts": 123,
       "likes": 1237,
-      "views": 378668,
+      "views": 379211,
       "monitored_by": [
         {
           "account_id": "742290493292285952",
@@ -34,8 +34,8 @@
       "created_at": "2026-10-28T17:07:17.000Z",
       "replies": 5,
       "reposts": 8,
-      "likes": 120,
-      "views": 23787,
+      "likes": 119,
+      "views": 23797,
       "monitored_by": [
         {
           "account_id": "742290493292285952",
@@ -111,7 +111,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 4,
-      "views": 1957,
+      "views": 1963,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -131,7 +131,7 @@
       "replies": 0,
       "reposts": 1,
       "likes": 6,
-      "views": 1589,
+      "views": 1594,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -148,8 +148,8 @@
       "created_at": "2026-11-05T18:30:40.000Z",
       "replies": 0,
       "reposts": 0,
-      "likes": 3,
-      "views": 1594,
+      "likes": 4,
+      "views": 1599,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -170,7 +170,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 1,
-      "views": 1280,
+      "views": 1284,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -190,7 +190,7 @@
       "replies": 2,
       "reposts": 2,
       "likes": 13,
-      "views": 1387,
+      "views": 1393,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -209,8 +209,8 @@
       "created_at": "2026-11-21T20:06:18.000Z",
       "replies": 1,
       "reposts": 1,
-      "likes": 15,
-      "views": 1169,
+      "likes": 17,
+      "views": 1570,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -226,9 +226,9 @@
       "expanded_urls": [],
       "created_at": "2026-11-21T16:13:47.000Z",
       "replies": 0,
-      "reposts": 13,
+      "reposts": 15,
       "likes": 0,
-      "views": 10,
+      "views": 11,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -268,11 +268,31 @@
       "replies": 15,
       "reposts": 2,
       "likes": 19,
-      "views": 10690,
+      "views": 10753,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
           "account_type": "server"
+        }
+      ]
+    },
+    {
+      "id": "2124548408044069118",
+      "author_id": "1542707718",
+      "text": "Tag your favourite Rust Creator! 📹☢️💻\n\nTell us! Who should we be keeping an eye on? https://t.co/6v0WPAuWJM",
+      "url": "https://x.com/playrust/status/2124548408044069118",
+      "expanded_urls": [
+        "https://twitter.com/playrust/status/2124548408044069118"
+      ],
+      "created_at": "2026-11-22T16:59:47.000Z",
+      "replies": 368,
+      "reposts": 11,
+      "likes": 303,
+      "views": 36489,
+      "monitored_by": [
+        {
+          "account_id": "1542707718",
+          "account_type": "official"
         }
       ]
     },
@@ -286,10 +306,10 @@
         "https://twitter.com/playrust/status/2124156043898839547"
       ],
       "created_at": "2026-11-21T15:00:40.000Z",
-      "replies": 26,
-      "reposts": 13,
-      "likes": 216,
-      "views": 26861,
+      "replies": 33,
+      "reposts": 15,
+      "likes": 284,
+      "views": 35010,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -309,8 +329,8 @@
       "created_at": "2026-11-20T17:30:12.000Z",
       "replies": 2,
       "reposts": 5,
-      "likes": 67,
-      "views": 12629,
+      "likes": 71,
+      "views": 13543,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -329,8 +349,8 @@
       "created_at": "2026-11-19T14:59:56.000Z",
       "replies": 15,
       "reposts": 7,
-      "likes": 148,
-      "views": 14736,
+      "likes": 149,
+      "views": 15000,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -351,28 +371,7 @@
       "replies": 2,
       "reposts": 4,
       "likes": 75,
-      "views": 13051,
-      "monitored_by": [
-        {
-          "account_id": "1542707718",
-          "account_type": "official"
-        }
-      ]
-    },
-    {
-      "id": "2122706708606615773",
-      "author_id": "1542707718",
-      "text": "From initial concept to in-game reality, explore the artistic journey of Rust in The Art of Rust, a beautifully crafted, full-colour hardback book.\n🎨☢️📖\n\nGet yours here: https://t.co/sgXegXlAGE https://t.co/CD37pdM8O9",
-      "url": "https://x.com/playrust/status/2122706708606615773",
-      "expanded_urls": [
-        "https://www.darkhorse.com/books/3009-843/art-of-rust-hc/",
-        "https://twitter.com/playrust/status/2122706708606615773"
-      ],
-      "created_at": "2026-11-17T15:01:31.000Z",
-      "replies": 4,
-      "reposts": 9,
-      "likes": 104,
-      "views": 13538,
+      "views": 13225,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -392,7 +391,7 @@
       "replies": 1,
       "reposts": 0,
       "likes": 16,
-      "views": 513,
+      "views": 540,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -413,7 +412,7 @@
       "replies": 1,
       "reposts": 0,
       "likes": 21,
-      "views": 743,
+      "views": 750,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -428,10 +427,10 @@
       "url": "https://x.com/deowasd/status/2122425875320774778",
       "expanded_urls": [],
       "created_at": "2026-11-16T20:25:36.000Z",
-      "replies": 31,
+      "replies": 30,
       "reposts": 4,
       "likes": 74,
-      "views": 11605,
+      "views": 11649,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -451,7 +450,7 @@
       "replies": 9,
       "reposts": 0,
       "likes": 10,
-      "views": 1588,
+      "views": 1591,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -469,10 +468,28 @@
       "replies": 1,
       "reposts": 1,
       "likes": 19,
-      "views": 988,
+      "views": 990,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
+          "account_type": "streamer"
+        }
+      ]
+    },
+    {
+      "id": "2124507119705530638",
+      "author_id": "3085086228",
+      "text": "RT @CoconutBGaming: @ROBRUNGame  Please make the game $20-$40 OR WHATEVER SOMETHING TO TAKE THESE CHEATERS OUTTA HERE!!! THE CHEATING IS OU…",
+      "url": "https://x.com/Karinios0/status/2124507119705530638",
+      "expanded_urls": [],
+      "created_at": "2026-11-22T14:15:43.000Z",
+      "replies": 0,
+      "reposts": 44,
+      "likes": 0,
+      "views": 0,
+      "monitored_by": [
+        {
+          "account_id": "3085086228",
           "account_type": "streamer"
         }
       ]
@@ -487,7 +504,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 3,
-      "views": 331,
+      "views": 332,
       "monitored_by": [
         {
           "account_id": "3085086228",
@@ -523,7 +540,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 8,
-      "views": 584,
+      "views": 585,
       "monitored_by": [
         {
           "account_id": "3085086228",
@@ -550,26 +567,6 @@
       ]
     },
     {
-      "id": "2120984198588575860",
-      "author_id": "3085086228",
-      "text": "https://t.co/HRijeIYvS3 SOLO PLAYER DESPUES DE MUCHO TIEMPO PASENSE A VERME SUFRIR",
-      "url": "https://x.com/Karinios0/status/2120984198588575860",
-      "expanded_urls": [
-        "https://kick.com/karinios0"
-      ],
-      "created_at": "2026-11-12T20:56:53.000Z",
-      "replies": 0,
-      "reposts": 0,
-      "likes": 2,
-      "views": 72,
-      "monitored_by": [
-        {
-          "account_id": "3085086228",
-          "account_type": "streamer"
-        }
-      ]
-    },
-    {
       "id": "2123829221814313138",
       "author_id": "736974333424369664",
       "text": "ESTAMOS ON 🔴\n\nPues arrancamos con el Viernes ...\n\nhttps://t.co/6f3pAsop73",
@@ -580,8 +577,8 @@
       "created_at": "2026-11-20T17:21:59.000Z",
       "replies": 0,
       "reposts": 0,
-      "likes": 17,
-      "views": 1488,
+      "likes": 18,
+      "views": 1576,
       "monitored_by": [
         {
           "account_id": "736974333424369664",
@@ -601,7 +598,7 @@
       "replies": 1,
       "reposts": 2,
       "likes": 30,
-      "views": 1864,
+      "views": 1903,
       "monitored_by": [
         {
           "account_id": "736974333424369664",
@@ -621,7 +618,7 @@
       "replies": 0,
       "reposts": 2,
       "likes": 36,
-      "views": 1799,
+      "views": 1829,
       "monitored_by": [
         {
           "account_id": "736974333424369664",
@@ -641,7 +638,7 @@
       "replies": 1,
       "reposts": 1,
       "likes": 23,
-      "views": 2025,
+      "views": 2039,
       "monitored_by": [
         {
           "account_id": "736974333424369664",
@@ -661,7 +658,7 @@
       "replies": 0,
       "reposts": 3,
       "likes": 23,
-      "views": 1969,
+      "views": 1980,
       "monitored_by": [
         {
           "account_id": "736974333424369664",
@@ -681,8 +678,8 @@
       "created_at": "2026-08-18T19:24:18.000Z",
       "replies": 15,
       "reposts": 7,
-      "likes": 105,
-      "views": 2476,
+      "likes": 106,
+      "views": 2483,
       "monitored_by": [
         {
           "account_id": "792712514429673472",
@@ -699,8 +696,8 @@
       "created_at": "2026-11-21T16:17:29.000Z",
       "replies": 4,
       "reposts": 0,
-      "likes": 15,
-      "views": 657,
+      "likes": 17,
+      "views": 815,
       "monitored_by": [
         {
           "account_id": "792712514429673472",
@@ -720,7 +717,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 5,
-      "views": 1217,
+      "views": 2067,
       "monitored_by": [
         {
           "account_id": "792712514429673472",
@@ -740,7 +737,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 3,
-      "views": 148,
+      "views": 156,
       "monitored_by": [
         {
           "account_id": "792712514429673472",
@@ -760,7 +757,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 9,
-      "views": 2918,
+      "views": 3108,
       "monitored_by": [
         {
           "account_id": "792712514429673472",

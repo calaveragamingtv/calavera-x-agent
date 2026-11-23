@@ -1,7 +1,7 @@
 {
   "account": "monitored_accounts",
-  "analyzed_at": "2026-11-22T10:04:24.333953+00:00",
-  "model": null,
+  "analyzed_at": "2026-11-23T10:05:47.159323+00:00",
+  "model": "gemini-3.5-flash-lite",
   "total": 39,
   "ranking": [
     {
@@ -27,6 +27,14 @@
       "priority": "high",
       "recommended_action": "reply",
       "reason": "Presentación de la nueva arma Uzi con una mecánica única de culata. Excelente oportunidad para opinar sobre el meta de armas en Rust."
+    },
+    {
+      "post_id": "2124548408044069118",
+      "score": 90,
+      "category": "official_news",
+      "priority": "high",
+      "recommended_action": "reply",
+      "reason": "Es una publicación oficial de la cuenta de Rust pidiendo etiquetar creadores de contenido favoritos, lo cual es una oportunidad directa para que CalaveraGaming se haga presente y posicione su canal."
     },
     {
       "post_id": "2124174443220004890",
@@ -67,14 +75,6 @@
       "priority": "high",
       "recommended_action": "repost",
       "reason": "Publicación oficial de Rust PC sobre parches y actualizaciones, altamente relevante para la audiencia de CalaveraGaming."
-    },
-    {
-      "post_id": "2122706708606615773",
-      "score": 85,
-      "category": "official_news",
-      "priority": "high",
-      "recommended_action": "repost",
-      "reason": "Anuncio oficial de la cuenta principal de Rust sobre 'The Art of Rust', un libro de arte físico del juego, ideal para compartir con la comunidad por su alta relevancia oficial."
     },
     {
       "post_id": "2121798654960812172",
@@ -133,20 +133,20 @@
       "reason": "Aviso de actualización de servidores por Rustafied."
     },
     {
-      "post_id": "2120984198588575860",
-      "score": 50,
-      "category": "creator",
-      "priority": "medium",
-      "recommended_action": "ignore",
-      "reason": "Es un aviso de directo jugando como solo player. No aporta contenido analítico pero muestra actividad de creadores."
-    },
-    {
       "post_id": "2123498891316216296",
       "score": 45,
       "category": "gameplay",
       "priority": "medium",
       "recommended_action": "ignore",
       "reason": "Es un retweet sobre Rust Console Edition (RCE), lo cual tiene relación con el juego pero está enfocado en la versión de consolas y no aporta información relevante, noticias o temas de debate profundo para el creador."
+    },
+    {
+      "post_id": "2124507119705530638",
+      "score": 45,
+      "category": "discussion",
+      "priority": "medium",
+      "recommended_action": "ignore",
+      "reason": "Toca el tema problemático de los cheaters y menciona a un creador de contenido, pero al ser un retweet con texto limitado y enfocado en otro juego o queja general, ofrece poco valor estratégico para una respuesta directa de CalaveraGaming."
     },
     {
       "post_id": "2122430497468920267",

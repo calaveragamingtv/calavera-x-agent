@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-22T06:04:07.176213+00:00",
-  "total": 95,
+  "updated_at": "2026-11-23T10:05:49.854391+00:00",
+  "total": 97,
   "evaluations": {
     "2118402970886836645": {
       "post_id": "2118402970886836645",
@@ -666,6 +666,20 @@
       "score": 60,
       "category": "rust",
       "reason": "Es un simple retweet de un anuncio oficial sin aportar contenido adicional o valor propio en esta cuenta."
+    },
+    "2124548408044069118": {
+      "post_id": "2124548408044069118",
+      "should_like": true,
+      "score": 85,
+      "category": "rust",
+      "reason": "La publicación oficial del juego invita a la comunidad a etiquetar creadores de contenido, lo que representa una excelente oportunidad para interactuar y conectar con la comunidad de Rust."
+    },
+    "2124507119705530638": {
+      "post_id": "2124507119705530638",
+      "should_like": false,
+      "score": 50,
+      "category": "gaming",
+      "reason": "Es un retweet de quejas sobre tramposos en un juego, un tema recurrente pero presentado de forma genérica y sin aportar una solución, análisis constructivo o valor informativo suficiente."
     }
   }
 }
