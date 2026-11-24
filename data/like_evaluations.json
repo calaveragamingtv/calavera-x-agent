@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T10:05:49.854391+00:00",
-  "total": 97,
+  "updated_at": "2026-11-24T10:08:32.619718+00:00",
+  "total": 100,
   "evaluations": {
     "2118402970886836645": {
       "post_id": "2118402970886836645",
@@ -680,6 +680,27 @@
       "score": 50,
       "category": "gaming",
       "reason": "Es un retweet de quejas sobre tramposos en un juego, un tema recurrente pero presentado de forma genérica y sin aportar una solución, análisis constructivo o valor informativo suficiente."
+    },
+    "2124880604751614018": {
+      "post_id": "2124880604751614018",
+      "should_like": true,
+      "score": 88,
+      "category": "rust",
+      "reason": "Contenido oficial y de gran interés sobre las últimas actualizaciones y novedades en el desarrollo de Rust, aportando valor genuino a la comunidad."
+    },
+    "2124884140642459977": {
+      "post_id": "2124884140642459977",
+      "should_like": true,
+      "score": 78,
+      "category": "rust",
+      "reason": "La publicación aporta información relevante y útil para la comunidad de jugadores sobre el reinicio (wipe) de servidores específicos."
+    },
+    "2124958480494936210": {
+      "post_id": "2124958480494936210",
+      "should_like": false,
+      "score": 65,
+      "category": "gaming",
+      "reason": "Comparte un logro personal de horas de juego en un título, pero no genera suficiente impacto, originalidad o valor analítico para superar el umbral de aprobación."
     }
   }
 }

@@ -63,7 +63,7 @@
         }
       },
       "likes": 1237,
-      "views": 379427,
+      "views": 379467,
       "replies": 76,
       "reposts": 123
     },
@@ -134,7 +134,7 @@
         }
       },
       "likes": 119,
-      "views": 23814,
+      "views": 23816,
       "replies": 5,
       "reposts": 8
     },
@@ -696,7 +696,7 @@
         }
       },
       "likes": 4,
-      "views": 1972,
+      "views": 1973,
       "replies": 0,
       "reposts": 0
     },
@@ -758,7 +758,7 @@
         }
       },
       "likes": 6,
-      "views": 1603,
+      "views": 1605,
       "replies": 0,
       "reposts": 1
     },
@@ -818,7 +818,7 @@
         }
       },
       "likes": 4,
-      "views": 1605,
+      "views": 1606,
       "replies": 0,
       "reposts": 0
     },
@@ -885,7 +885,7 @@
         }
       },
       "likes": 1,
-      "views": 1289,
+      "views": 1292,
       "replies": 0,
       "reposts": 0
     },
@@ -1259,7 +1259,7 @@
         }
       },
       "likes": 13,
-      "views": 1397,
+      "views": 1398,
       "replies": 2,
       "reposts": 2
     },
@@ -3619,7 +3619,7 @@
         }
       },
       "likes": 19,
-      "views": 990,
+      "views": 992,
       "replies": 1,
       "reposts": 1
     },
@@ -3681,7 +3681,7 @@
         }
       },
       "likes": 10,
-      "views": 1593,
+      "views": 1596,
       "replies": 9,
       "reposts": 0
     },
@@ -3820,7 +3820,7 @@
         }
       },
       "likes": 74,
-      "views": 11684,
+      "views": 11687,
       "replies": 30,
       "reposts": 4
     },
@@ -4383,13 +4383,17 @@
       },
       "actions": {
         "like": {
-          "status": "not_started",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-24T10:08:36.034126+00:00",
+          "completed_at": "2026-11-24T10:08:37.090090+00:00",
           "error": null,
-          "external_id": null,
-          "payload": null
+          "external_id": "2123055492486549924",
+          "payload": {
+            "post_id": "2123055492486549924",
+            "mode": "live",
+            "stage": "completed"
+          }
         },
         "reply": {
           "status": "not_started",
@@ -4411,7 +4415,7 @@
         }
       },
       "likes": 21,
-      "views": 754,
+      "views": 756,
       "replies": 1,
       "reposts": 0
     },
@@ -4537,7 +4541,7 @@
         }
       },
       "likes": 36,
-      "views": 1846,
+      "views": 1849,
       "replies": 0,
       "reposts": 2
     },
@@ -4603,7 +4607,7 @@
         }
       },
       "likes": 23,
-      "views": 2045,
+      "views": 2046,
       "replies": 1,
       "reposts": 1
     },
@@ -5302,7 +5306,7 @@
         }
       },
       "likes": 149,
-      "views": 15191,
+      "views": 15227,
       "replies": 15,
       "reposts": 7
     },
@@ -5368,7 +5372,7 @@
         }
       },
       "likes": 30,
-      "views": 1931,
+      "views": 1933,
       "replies": 1,
       "reposts": 2
     },
@@ -5500,7 +5504,7 @@
         }
       },
       "likes": 9,
-      "views": 3162,
+      "views": 3170,
       "replies": 0,
       "reposts": 0
     },
@@ -5534,13 +5538,17 @@
       },
       "actions": {
         "like": {
-          "status": "not_started",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-24T10:08:35.177615+00:00",
+          "completed_at": "2026-11-24T10:08:36.029245+00:00",
           "error": null,
-          "external_id": null,
-          "payload": null
+          "external_id": "2123498891316216296",
+          "payload": {
+            "post_id": "2123498891316216296",
+            "mode": "live",
+            "stage": "completed"
+          }
         },
         "reply": {
           "status": "not_started",
@@ -5633,7 +5641,7 @@
         }
       },
       "likes": 71,
-      "views": 13948,
+      "views": 14009,
       "replies": 2,
       "reposts": 5
     },
@@ -5695,7 +5703,7 @@
         }
       },
       "likes": 16,
-      "views": 552,
+      "views": 555,
       "replies": 1,
       "reposts": 0
     },
@@ -5761,7 +5769,7 @@
         }
       },
       "likes": 18,
-      "views": 1621,
+      "views": 1629,
       "replies": 0,
       "reposts": 0
     },
@@ -5827,7 +5835,7 @@
         }
       },
       "likes": 5,
-      "views": 2714,
+      "views": 2855,
       "replies": 0,
       "reposts": 0
     },
@@ -5898,7 +5906,7 @@
         }
       },
       "likes": 18,
-      "views": 1617,
+      "views": 1619,
       "replies": 2,
       "reposts": 1
     },
@@ -6034,8 +6042,8 @@
         }
       },
       "likes": 297,
-      "views": 37144,
-      "replies": 34,
+      "views": 37250,
+      "replies": 35,
       "reposts": 16
     },
     "2124175374263160958": {
@@ -6164,9 +6172,9 @@
           "payload": null
         }
       },
-      "likes": 376,
-      "views": 46378,
-      "replies": 472,
+      "likes": 380,
+      "views": 47468,
+      "replies": 477,
       "reposts": 12
     },
     "2124507119705530638": {
@@ -6266,17 +6274,17 @@
           "payload": null
         },
         "reply": {
-          "status": "drafted",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-24T10:08:32.637341+00:00",
+          "completed_at": "2026-11-24T10:08:33.250162+00:00",
           "error": null,
-          "external_id": null,
+          "external_id": "2125169692478197962",
           "payload": {
             "post_id": "2124884140642459977",
             "reply_text": "Se viene el caos en el trío, a farmear se ha dicho jajaja",
-            "generated_at": "2026-11-24T06:11:16.497274+00:00",
-            "stage": "drafted"
+            "mode": "live",
+            "stage": "completed"
           }
         },
         "repost": {
@@ -6290,7 +6298,7 @@
         }
       },
       "likes": 4,
-      "views": 353,
+      "views": 367,
       "replies": 0,
       "reposts": 0
     },
@@ -6325,13 +6333,17 @@
       },
       "actions": {
         "like": {
-          "status": "not_started",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-24T10:08:34.137607+00:00",
+          "completed_at": "2026-11-24T10:08:35.171866+00:00",
           "error": null,
-          "external_id": null,
-          "payload": null
+          "external_id": "2124880604751614018",
+          "payload": {
+            "post_id": "2124880604751614018",
+            "mode": "live",
+            "stage": "completed"
+          }
         },
         "reply": {
           "status": "not_started",
@@ -6343,22 +6355,22 @@
           "payload": null
         },
         "repost": {
-          "status": "drafted",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-24T10:08:33.255256+00:00",
+          "completed_at": "2026-11-24T10:08:34.132496+00:00",
           "error": null,
-          "external_id": null,
+          "external_id": "2124880604751614018",
           "payload": {
             "post_id": "2124880604751614018",
-            "generated_at": "2026-11-24T06:11:16.506687+00:00",
-            "stage": "drafted"
+            "mode": "live",
+            "stage": "completed"
           }
         }
       },
-      "likes": 112,
-      "views": 10156,
-      "replies": 13,
+      "likes": 120,
+      "views": 10941,
+      "replies": 12,
       "reposts": 7
     },
     "2124958480494936210": {
@@ -6419,7 +6431,7 @@
         }
       },
       "likes": 0,
-      "views": 78,
+      "views": 86,
       "replies": 0,
       "reposts": 0
     }
