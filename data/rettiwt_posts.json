@@ -10,8 +10,8 @@
     "created_at": "2026-09-23T19:04:01.000Z",
     "replies": 76,
     "reposts": 123,
-    "likes": 1238,
-    "views": 379257,
+    "likes": 1237,
+    "views": 379427,
     "monitored_by": [
       {
         "account_id": "742290493292285952",
@@ -31,7 +31,7 @@
     "replies": 5,
     "reposts": 8,
     "likes": 119,
-    "views": 23802,
+    "views": 23814,
     "monitored_by": [
       {
         "account_id": "742290493292285952",
@@ -107,7 +107,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 4,
-    "views": 1965,
+    "views": 1972,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -127,7 +127,7 @@
     "replies": 0,
     "reposts": 1,
     "likes": 6,
-    "views": 1596,
+    "views": 1603,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -145,7 +145,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 4,
-    "views": 1600,
+    "views": 1605,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -166,7 +166,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 1,
-    "views": 1285,
+    "views": 1289,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -186,7 +186,25 @@
     "replies": 2,
     "reposts": 2,
     "likes": 13,
-    "views": 1393,
+    "views": 1397,
+    "monitored_by": [
+      {
+        "account_id": "779120759000137728",
+        "account_type": "server"
+      }
+    ]
+  },
+  {
+    "id": "2124884140642459977",
+    "author_id": "779120759000137728",
+    "text": "Recién wipeados nuestros servidores Vanilla Mondays, Vanilla Trio Mondays y Modded x5 [Solo,Duo,Trio]",
+    "url": "https://x.com/RustSpain_com/status/2124884140642459977",
+    "expanded_urls": [],
+    "created_at": "2026-11-23T15:13:52.000Z",
+    "replies": 0,
+    "reposts": 0,
+    "likes": 4,
+    "views": 353,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -206,7 +224,7 @@
     "replies": 2,
     "reposts": 1,
     "likes": 18,
-    "views": 1589,
+    "views": 1617,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -244,7 +262,7 @@
     "replies": 0,
     "reposts": 12,
     "likes": 0,
-    "views": 18,
+    "views": 19,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -253,22 +271,23 @@
     ]
   },
   {
-    "id": "2123443699786858629",
-    "author_id": "779120759000137728",
-    "text": "Analizando la primera media hora de Wipe, estos son los números en los servidores Main Oficiales.\n\nDura la caída, especialmente para nosotros. \n\nVeremos como acaba la cosa, ahora mismo esto no se podría mantener en funcionamiento mucho más tiempo.😥 https://t.co/9EOQQF28Fe",
-    "url": "https://x.com/RustSpain_com/status/2123443699786858629",
+    "id": "2124880604751614018",
+    "author_id": "1542707718",
+    "text": "Flocks of birds have been added to a minor wildlife expansion. Crow and Seagull flocks will fly across the map, looking for things that interest them. 🦆☢️🦅\n\nRead more on our DevBlog: https://t.co/h9bGJRqWUi https://t.co/zGUQePGFQf",
+    "url": "https://x.com/playrust/status/2124880604751614018",
     "expanded_urls": [
-      "https://twitter.com/RustSpain_com/status/2123443699786858629"
+      "https://rust.facepunch.com/news/printed_and_polished",
+      "https://twitter.com/playrust/status/2124880604751614018"
     ],
-    "created_at": "2026-11-19T15:50:04.000Z",
-    "replies": 15,
-    "reposts": 2,
-    "likes": 19,
-    "views": 10758,
+    "created_at": "2026-11-23T14:59:49.000Z",
+    "replies": 13,
+    "reposts": 7,
+    "likes": 112,
+    "views": 10156,
     "monitored_by": [
       {
-        "account_id": "779120759000137728",
-        "account_type": "server"
+        "account_id": "1542707718",
+        "account_type": "official"
       }
     ]
   },
@@ -281,10 +300,10 @@
       "https://twitter.com/playrust/status/2124548408044069118"
     ],
     "created_at": "2026-11-22T16:59:47.000Z",
-    "replies": 403,
+    "replies": 472,
     "reposts": 12,
-    "likes": 326,
-    "views": 39041,
+    "likes": 376,
+    "views": 46378,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -304,8 +323,8 @@
     "created_at": "2026-11-21T15:00:40.000Z",
     "replies": 34,
     "reposts": 16,
-    "likes": 293,
-    "views": 36061,
+    "likes": 297,
+    "views": 37144,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -326,7 +345,7 @@
     "replies": 2,
     "reposts": 5,
     "likes": 71,
-    "views": 13641,
+    "views": 13948,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -346,28 +365,7 @@
     "replies": 15,
     "reposts": 7,
     "likes": 149,
-    "views": 15035,
-    "monitored_by": [
-      {
-        "account_id": "1542707718",
-        "account_type": "official"
-      }
-    ]
-  },
-  {
-    "id": "2123068792523587927",
-    "author_id": "1542707718",
-    "text": "Stay ahead of the game! 🏃‍♀️‍➡️☢️📩\n\nGet the latest official Rust PC patch notes and updates delivered straight to your inbox.\n\nSign up for the Rust mailing list here: https://t.co/S1nefecL7R https://t.co/oJkOsr1btI",
-    "url": "https://x.com/playrust/status/2123068792523587927",
-    "expanded_urls": [
-      "https://rust.facepunch.com/newsletter/",
-      "https://twitter.com/playrust/status/2123068792523587927"
-    ],
-    "created_at": "2026-11-18T15:00:19.000Z",
-    "replies": 2,
-    "reposts": 4,
-    "likes": 75,
-    "views": 13249,
+    "views": 15191,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -387,7 +385,7 @@
     "replies": 1,
     "reposts": 0,
     "likes": 16,
-    "views": 543,
+    "views": 552,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -408,7 +406,7 @@
     "replies": 1,
     "reposts": 0,
     "likes": 21,
-    "views": 751,
+    "views": 754,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -426,7 +424,7 @@
     "replies": 30,
     "reposts": 4,
     "likes": 74,
-    "views": 11660,
+    "views": 11684,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -446,7 +444,7 @@
     "replies": 9,
     "reposts": 0,
     "likes": 10,
-    "views": 1591,
+    "views": 1593,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -468,6 +466,26 @@
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
+        "account_type": "streamer"
+      }
+    ]
+  },
+  {
+    "id": "2124958480494936210",
+    "author_id": "3085086228",
+    "text": "Primeras 100 horas en @ROBRUNGame \nNot bad 🔫🔫🔫 https://t.co/X5lpHUq7tE",
+    "url": "https://x.com/Karinios0/status/2124958480494936210",
+    "expanded_urls": [
+      "https://twitter.com/Karinios0/status/2124958480494936210"
+    ],
+    "created_at": "2026-11-23T20:09:16.000Z",
+    "replies": 0,
+    "reposts": 0,
+    "likes": 0,
+    "views": 78,
+    "monitored_by": [
+      {
+        "account_id": "3085086228",
         "account_type": "streamer"
       }
     ]
@@ -500,7 +518,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 3,
-    "views": 332,
+    "views": 335,
     "monitored_by": [
       {
         "account_id": "3085086228",
@@ -536,25 +554,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 8,
-    "views": 585,
-    "monitored_by": [
-      {
-        "account_id": "3085086228",
-        "account_type": "streamer"
-      }
-    ]
-  },
-  {
-    "id": "2121798654960812172",
-    "author_id": "3085086228",
-    "text": "RT @s3kox: ⚠️Se acerca la TWITCH RIVALS DE RUST 🏆 ⚠️\n\nEl equipo esta CASI cerrado pero… \n\npuede que haya alguna vacante aun , lo vuelvo a p…",
-    "url": "https://x.com/Karinios0/status/2121798654960812172",
-    "expanded_urls": [],
-    "created_at": "2026-11-15T02:53:15.000Z",
-    "replies": 0,
-    "reposts": 13,
-    "likes": 0,
-    "views": 0,
+    "views": 586,
     "monitored_by": [
       {
         "account_id": "3085086228",
@@ -574,7 +574,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 18,
-    "views": 1582,
+    "views": 1621,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -594,7 +594,7 @@
     "replies": 1,
     "reposts": 2,
     "likes": 30,
-    "views": 1907,
+    "views": 1931,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -614,7 +614,7 @@
     "replies": 0,
     "reposts": 2,
     "likes": 36,
-    "views": 1829,
+    "views": 1846,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -634,7 +634,7 @@
     "replies": 1,
     "reposts": 1,
     "likes": 23,
-    "views": 2040,
+    "views": 2045,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -654,7 +654,7 @@
     "replies": 0,
     "reposts": 3,
     "likes": 24,
-    "views": 1981,
+    "views": 1986,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -675,7 +675,7 @@
     "replies": 15,
     "reposts": 7,
     "likes": 106,
-    "views": 2483,
+    "views": 2484,
     "monitored_by": [
       {
         "account_id": "792712514429673472",
@@ -693,7 +693,7 @@
     "replies": 4,
     "reposts": 0,
     "likes": 17,
-    "views": 824,
+    "views": 843,
     "monitored_by": [
       {
         "account_id": "792712514429673472",
@@ -713,7 +713,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 5,
-    "views": 2109,
+    "views": 2714,
     "monitored_by": [
       {
         "account_id": "792712514429673472",
@@ -753,7 +753,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 9,
-    "views": 3114,
+    "views": 3162,
     "monitored_by": [
       {
         "account_id": "792712514429673472",
