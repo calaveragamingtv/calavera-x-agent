@@ -1,7 +1,7 @@
 {
   "account": "monitored_accounts",
-  "analyzed_at": "2026-11-24T10:08:31.044155+00:00",
-  "model": null,
+  "analyzed_at": "2026-11-25T10:12:13.970473+00:00",
+  "model": "gemini-3.5-flash-lite",
   "total": 39,
   "ranking": [
     {
@@ -11,14 +11,6 @@
       "priority": "high",
       "recommended_action": "repost",
       "reason": "Es la publicación oficial de Facepunch sobre el nuevo sistema de progresión de blueprints con video explicativo y DevBlog, crucial para la comunidad de Rust y ideal para compartir en el perfil de CalaveraGaming."
-    },
-    {
-      "post_id": "2123431084419338353",
-      "score": 95,
-      "category": "official_news",
-      "priority": "high",
-      "recommended_action": "repost",
-      "reason": "Es información oficial de Facepunch sobre una nueva mecánica (Armour Insert usando lana) y cambios en el DevBlog, contenido vital para la comunidad de Rust."
     },
     {
       "post_id": "2115490600191688909",
@@ -59,6 +51,14 @@
       "priority": "high",
       "recommended_action": "ignore",
       "reason": "Enlace directo al Devblog de Rustafied. Información crucial pero poco propicia para un debate directo en este tweet específico."
+    },
+    {
+      "post_id": "2125243074519421256",
+      "score": 85,
+      "category": "official_news",
+      "priority": "high",
+      "recommended_action": "repost",
+      "reason": "Anuncio oficial de Facepunch sobre la salida del soundtrack original de Rust en vinilo. Es una gran noticia para la comunidad y una excelente oportunidad para que CalaveraGaming comparta el contenido oficial en su perfil."
     },
     {
       "post_id": "2123831286489825739",
@@ -173,6 +173,14 @@
       "reason": "Merch de otro creador de contenido sin relación directa con la temática específica de Rust."
     },
     {
+      "post_id": "2125383906727715064",
+      "score": 35,
+      "category": "community",
+      "priority": "low",
+      "recommended_action": "ignore",
+      "reason": "Reflexión personal de un creador de contenido sobre las dificultades de hacer videos, sin relación directa con Rust ni temas relevantes para el canal."
+    },
+    {
       "post_id": "2102836402421387646",
       "score": 30,
       "category": "event",
@@ -221,6 +229,14 @@
       "reason": "Mensaje críptico o sin contexto claro aplicable a Rust."
     },
     {
+      "post_id": "2125252424843600081",
+      "score": 15,
+      "category": "gameplay",
+      "priority": "low",
+      "recommended_action": "ignore",
+      "reason": "Aviso de directo enfocado en otros juegos (Wardgos y Project Zomboid). No guarda relación con Rust."
+    },
+    {
       "post_id": "2123458136879292460",
       "score": 15,
       "category": "other",
@@ -261,12 +277,12 @@
       "reason": "Aviso de directo de Project Zomboid."
     },
     {
-      "post_id": "2122073132303372687",
+      "post_id": "2125346890665591212",
       "score": 10,
       "category": "creator",
       "priority": "low",
       "recommended_action": "ignore",
-      "reason": "Aviso de directo general sin contenido de Rust."
+      "reason": "Promoción de un video de YouTube sobre GTA VI. Totalmente ajeno a la temática de Rust de CalaveraGaming."
     },
     {
       "post_id": "2124175374263160958",
@@ -283,22 +299,6 @@
       "priority": "low",
       "recommended_action": "ignore",
       "reason": "Contenido centrado en GTA 6, totalmente ajeno a la temática de Rust de CalaveraGaming."
-    },
-    {
-      "post_id": "2123460519084400814",
-      "score": 10,
-      "category": "other",
-      "priority": "low",
-      "recommended_action": "ignore",
-      "reason": "Publicación relacionada con GTA VI, totalmente ajena a la temática del canal."
-    },
-    {
-      "post_id": "2123442924373393473",
-      "score": 10,
-      "category": "other",
-      "priority": "low",
-      "recommended_action": "ignore",
-      "reason": "Gameplay de GTA VI, sin relación con Rust."
     },
     {
       "post_id": "2089795544361124249",

@@ -63,7 +63,7 @@
         }
       },
       "likes": 1237,
-      "views": 379467,
+      "views": 379687,
       "replies": 76,
       "reposts": 123
     },
@@ -134,7 +134,7 @@
         }
       },
       "likes": 119,
-      "views": 23816,
+      "views": 23826,
       "replies": 5,
       "reposts": 8
     },
@@ -696,7 +696,7 @@
         }
       },
       "likes": 4,
-      "views": 1973,
+      "views": 1979,
       "replies": 0,
       "reposts": 0
     },
@@ -758,7 +758,7 @@
         }
       },
       "likes": 6,
-      "views": 1605,
+      "views": 1611,
       "replies": 0,
       "reposts": 1
     },
@@ -818,7 +818,7 @@
         }
       },
       "likes": 4,
-      "views": 1606,
+      "views": 1611,
       "replies": 0,
       "reposts": 0
     },
@@ -885,7 +885,7 @@
         }
       },
       "likes": 1,
-      "views": 1292,
+      "views": 1296,
       "replies": 0,
       "reposts": 0
     },
@@ -1259,7 +1259,7 @@
         }
       },
       "likes": 13,
-      "views": 1398,
+      "views": 1400,
       "replies": 2,
       "reposts": 2
     },
@@ -3681,7 +3681,7 @@
         }
       },
       "likes": 10,
-      "views": 1596,
+      "views": 1598,
       "replies": 9,
       "reposts": 0
     },
@@ -3820,7 +3820,7 @@
         }
       },
       "likes": 74,
-      "views": 11687,
+      "views": 11696,
       "replies": 30,
       "reposts": 4
     },
@@ -3940,7 +3940,7 @@
         }
       },
       "likes": 8,
-      "views": 586,
+      "views": 588,
       "replies": 0,
       "reposts": 0
     },
@@ -4414,8 +4414,8 @@
           "payload": null
         }
       },
-      "likes": 21,
-      "views": 756,
+      "likes": 22,
+      "views": 762,
       "replies": 1,
       "reposts": 0
     },
@@ -4475,7 +4475,7 @@
         }
       },
       "likes": 3,
-      "views": 335,
+      "views": 338,
       "replies": 0,
       "reposts": 0
     },
@@ -4541,7 +4541,7 @@
         }
       },
       "likes": 36,
-      "views": 1849,
+      "views": 1871,
       "replies": 0,
       "reposts": 2
     },
@@ -4607,7 +4607,7 @@
         }
       },
       "likes": 23,
-      "views": 2046,
+      "views": 2058,
       "replies": 1,
       "reposts": 1
     },
@@ -4864,7 +4864,7 @@
         }
       },
       "likes": 106,
-      "views": 2484,
+      "views": 2487,
       "replies": 15,
       "reposts": 7
     },
@@ -5372,7 +5372,7 @@
         }
       },
       "likes": 30,
-      "views": 1933,
+      "views": 1960,
       "replies": 1,
       "reposts": 2
     },
@@ -5641,7 +5641,7 @@
         }
       },
       "likes": 71,
-      "views": 14009,
+      "views": 14262,
       "replies": 2,
       "reposts": 5
     },
@@ -5703,7 +5703,7 @@
         }
       },
       "likes": 16,
-      "views": 555,
+      "views": 563,
       "replies": 1,
       "reposts": 0
     },
@@ -5769,7 +5769,7 @@
         }
       },
       "likes": 18,
-      "views": 1629,
+      "views": 1671,
       "replies": 0,
       "reposts": 0
     },
@@ -5835,7 +5835,7 @@
         }
       },
       "likes": 5,
-      "views": 2855,
+      "views": 3191,
       "replies": 0,
       "reposts": 0
     },
@@ -5906,7 +5906,7 @@
         }
       },
       "likes": 18,
-      "views": 1619,
+      "views": 1627,
       "replies": 2,
       "reposts": 1
     },
@@ -6041,8 +6041,8 @@
           }
         }
       },
-      "likes": 297,
-      "views": 37250,
+      "likes": 299,
+      "views": 37698,
       "replies": 35,
       "reposts": 16
     },
@@ -6102,7 +6102,7 @@
         }
       },
       "likes": 17,
-      "views": 843,
+      "views": 857,
       "replies": 4,
       "reposts": 0
     },
@@ -6172,10 +6172,10 @@
           "payload": null
         }
       },
-      "likes": 380,
-      "views": 47468,
-      "replies": 477,
-      "reposts": 12
+      "likes": 399,
+      "views": 50202,
+      "replies": 494,
+      "reposts": 14
     },
     "2124507119705530638": {
       "id": "2124507119705530638",
@@ -6298,8 +6298,8 @@
         }
       },
       "likes": 4,
-      "views": 367,
-      "replies": 0,
+      "views": 439,
+      "replies": 1,
       "reposts": 0
     },
     "2124880604751614018": {
@@ -6368,10 +6368,10 @@
           }
         }
       },
-      "likes": 120,
-      "views": 10941,
-      "replies": 12,
-      "reposts": 7
+      "likes": 136,
+      "views": 12940,
+      "replies": 15,
+      "reposts": 8
     },
     "2124958480494936210": {
       "id": "2124958480494936210",
@@ -6430,8 +6430,271 @@
           "payload": null
         }
       },
+      "likes": 2,
+      "views": 148,
+      "replies": 0,
+      "reposts": 0
+    },
+    "2125243074519421256": {
+      "id": "2125243074519421256",
+      "author_id": "1542707718",
+      "text": "The Rust Original Soundtrack is officially coming to vinyl. 🎶☢️🎧\n\nSecure your copy of Alex Rehberg's acclaimed, atmospheric score, beautifully pressed onto a deluxe triple LP.\n\nPre-order yours here: https://t.co/AYVAb4PCvV https://t.co/3D7UlZOq1Y",
+      "url": "https://x.com/playrust/status/2125243074519421256",
+      "created_at": "2026-11-24T15:00:08.000Z",
+      "expanded_urls": [
+        "https://lnk.to/rust-vinyl",
+        "https://twitter.com/playrust/status/2125243074519421256"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "1542707718",
+          "account_type": "official"
+        }
+      ],
+      "first_seen_at": "2026-11-25T10:12:06.160710+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2125243074519421256",
+          "score": 85,
+          "category": "official_news",
+          "priority": "high",
+          "recommended_action": "repost",
+          "reason": "Anuncio oficial de Facepunch sobre la salida del soundtrack original de Rust en vinilo. Es una gran noticia para la comunidad y una excelente oportunidad para que CalaveraGaming comparta el contenido oficial en su perfil."
+        },
+        "completed_at": "2026-11-25T10:12:13.939481+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-25T10:12:22.636155+00:00",
+          "completed_at": "2026-11-25T10:12:23.756205+00:00",
+          "error": null,
+          "external_id": "2125243074519421256",
+          "payload": {
+            "post_id": "2125243074519421256",
+            "mode": "live",
+            "stage": "completed"
+          }
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-25T10:12:19.867894+00:00",
+          "completed_at": "2026-11-25T10:12:20.528840+00:00",
+          "error": null,
+          "external_id": "2125243074519421256",
+          "payload": {
+            "post_id": "2125243074519421256",
+            "mode": "live",
+            "stage": "completed"
+          }
+        }
+      },
+      "likes": 73,
+      "views": 10065,
+      "replies": 4,
+      "reposts": 5
+    },
+    "2125252424843600081": {
+      "id": "2125252424843600081",
+      "author_id": "736974333424369664",
+      "text": "ESTAMOS ON 🔴\n\nPues arrancamos directito de Wardgos y después lo mismo Project Zomboid ....\n\nhttps://t.co/6f3pAsop73",
+      "url": "https://x.com/Agustabell212/status/2125252424843600081",
+      "created_at": "2026-11-24T15:37:18.000Z",
+      "expanded_urls": [
+        "https://kick.com/agustabell212"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "736974333424369664",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-25T10:12:06.160790+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2125252424843600081",
+          "score": 15,
+          "category": "gameplay",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "Aviso de directo enfocado en otros juegos (Wardgos y Project Zomboid). No guarda relación con Rust."
+        },
+        "completed_at": "2026-11-25T10:12:13.949502+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-25T10:12:20.536937+00:00",
+          "completed_at": "2026-11-25T10:12:21.561723+00:00",
+          "error": null,
+          "external_id": "2125252424843600081",
+          "payload": {
+            "post_id": "2125252424843600081",
+            "mode": "live",
+            "stage": "completed"
+          }
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 20,
+      "views": 1221,
+      "replies": 0,
+      "reposts": 1
+    },
+    "2125346890665591212": {
+      "id": "2125346890665591212",
+      "author_id": "792712514429673472",
+      "text": "Hice la EXPLOSIÓN MÁS GRANDE de GTA VI !! | (Grand Theft Auto 6) https://t.co/vaGxEweJuf vía @YouTube \n\nDenle amor que le meti mucha edicion &lt;3",
+      "url": "https://x.com/nazegamingtv/status/2125346890665591212",
+      "created_at": "2026-11-24T21:52:40.000Z",
+      "expanded_urls": [
+        "https://www.youtube.com/watch?si=uDUUBR8kzjjnF_Bn&v=h0Zp1XKWyaI&feature=youtu.be"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "792712514429673472",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-25T10:12:06.160820+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2125346890665591212",
+          "score": 10,
+          "category": "creator",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "Promoción de un video de YouTube sobre GTA VI. Totalmente ajeno a la temática de Rust de CalaveraGaming."
+        },
+        "completed_at": "2026-11-25T10:12:13.956657+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-25T10:12:21.569530+00:00",
+          "completed_at": "2026-11-25T10:12:22.628218+00:00",
+          "error": null,
+          "external_id": "2125346890665591212",
+          "payload": {
+            "post_id": "2125346890665591212",
+            "mode": "live",
+            "stage": "completed"
+          }
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 2,
+      "views": 262,
+      "replies": 1,
+      "reposts": 0
+    },
+    "2125383906727715064": {
+      "id": "2125383906727715064",
+      "author_id": "792712514429673472",
+      "text": "ultimamente se me esta haciendo complicado el crear contenido, siempre me gusto ver los youtubers old school que le meten edicion a los videos, se jugaban la partida a las risas y la subian para entretener, sin filtros… no digo que eso sea lo que esta bien solo que realmente siempre intente hacer eso, lo que a mi me gusta, pero ultimamente siento que los mensajes que recibo no son mas que pidiendo otra cosa, ni siquiera diciendo algo sobre el video, si gustó o almenos dejando una critica, como si mi video fuera algo mas y talvez lo es, se que hay problemas peores, pero cada uno tiene sus problemas y este es mi mundo y lo que me hace feliz desde siempre, subir videos para entretener, por eso nose por cuanto tiempo pueda seguir asi, voy a replantearme si lo que estoy haciendo es lo correcto o si yo estoy tomando un mal camino:)",
+      "url": "https://x.com/nazegamingtv/status/2125383906727715064",
+      "created_at": "2026-11-25T00:19:45.000Z",
+      "expanded_urls": [],
+      "monitored_by": [
+        {
+          "account_id": "792712514429673472",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-25T10:12:06.160826+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2125383906727715064",
+          "score": 35,
+          "category": "community",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "Reflexión personal de un creador de contenido sobre las dificultades de hacer videos, sin relación directa con Rust ni temas relevantes para el canal."
+        },
+        "completed_at": "2026-11-25T10:12:13.963554+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
       "likes": 0,
-      "views": 86,
+      "views": 29,
       "replies": 0,
       "reposts": 0
     }

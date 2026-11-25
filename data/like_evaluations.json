@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-24T10:08:32.619718+00:00",
-  "total": 100,
+  "updated_at": "2026-11-25T10:12:19.841848+00:00",
+  "total": 104,
   "evaluations": {
     "2118402970886836645": {
       "post_id": "2118402970886836645",
@@ -701,6 +701,34 @@
       "score": 65,
       "category": "gaming",
       "reason": "Comparte un logro personal de horas de juego en un título, pero no genera suficiente impacto, originalidad o valor analítico para superar el umbral de aprobación."
+    },
+    "2125252424843600081": {
+      "post_id": "2125252424843600081",
+      "should_like": true,
+      "score": 90,
+      "category": "kick",
+      "reason": "La publicación contiene un enlace válido a Kick (kick.com), cumpliendo con la prioridad establecida para plataformas de contenido en vivo y oportunidades de relación."
+    },
+    "2125346890665591212": {
+      "post_id": "2125346890665591212",
+      "should_like": true,
+      "score": 90,
+      "category": "youtube",
+      "reason": "La publicación incluye un enlace válido a YouTube (youtube.com), aplicando la prioridad para creadores de contenido y oportunidades de interacción."
+    },
+    "2125243074519421256": {
+      "post_id": "2125243074519421256",
+      "should_like": true,
+      "score": 85,
+      "category": "rust",
+      "reason": "Anuncio oficial relevante sobre el lanzamiento de la banda sonora de Rust en formato de vinilo, aportando un valor genuino para la comunidad y los seguidores del juego."
+    },
+    "2125383906727715064": {
+      "post_id": "2125383906727715064",
+      "should_like": true,
+      "score": 75,
+      "category": "professional",
+      "reason": "Reflexión personal y genuina de un creador sobre las dificultades de la creación de contenido, permitiendo conectar con sus experiencias y abriendo espacio a una conversación constructiva."
     }
   }
 }

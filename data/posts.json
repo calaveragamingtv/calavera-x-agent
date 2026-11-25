@@ -1,6 +1,6 @@
 {
   "account": "monitored_accounts",
-  "updated_at": "2026-11-24T10:08:31.035435+00:00",
+  "updated_at": "2026-11-25T10:12:06.156296+00:00",
   "total": 39,
   "posts": [
     {
@@ -15,7 +15,7 @@
       "replies": 76,
       "reposts": 123,
       "likes": 1237,
-      "views": 379467,
+      "views": 379687,
       "monitored_by": [
         {
           "account_id": "742290493292285952",
@@ -35,7 +35,7 @@
       "replies": 5,
       "reposts": 8,
       "likes": 119,
-      "views": 23816,
+      "views": 23826,
       "monitored_by": [
         {
           "account_id": "742290493292285952",
@@ -111,7 +111,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 4,
-      "views": 1973,
+      "views": 1979,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -131,7 +131,7 @@
       "replies": 0,
       "reposts": 1,
       "likes": 6,
-      "views": 1605,
+      "views": 1611,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -149,7 +149,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 4,
-      "views": 1606,
+      "views": 1611,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -170,7 +170,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 1,
-      "views": 1292,
+      "views": 1296,
       "monitored_by": [
         {
           "account_id": "2508236846",
@@ -190,7 +190,7 @@
       "replies": 2,
       "reposts": 2,
       "likes": 13,
-      "views": 1398,
+      "views": 1400,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -205,10 +205,10 @@
       "url": "https://x.com/RustSpain_com/status/2124884140642459977",
       "expanded_urls": [],
       "created_at": "2026-11-23T15:13:52.000Z",
-      "replies": 0,
+      "replies": 1,
       "reposts": 0,
       "likes": 4,
-      "views": 367,
+      "views": 439,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -228,7 +228,7 @@
       "replies": 2,
       "reposts": 1,
       "likes": 18,
-      "views": 1619,
+      "views": 1627,
       "monitored_by": [
         {
           "account_id": "779120759000137728",
@@ -275,6 +275,27 @@
       ]
     },
     {
+      "id": "2125243074519421256",
+      "author_id": "1542707718",
+      "text": "The Rust Original Soundtrack is officially coming to vinyl. 🎶☢️🎧\n\nSecure your copy of Alex Rehberg's acclaimed, atmospheric score, beautifully pressed onto a deluxe triple LP.\n\nPre-order yours here: https://t.co/AYVAb4PCvV https://t.co/3D7UlZOq1Y",
+      "url": "https://x.com/playrust/status/2125243074519421256",
+      "expanded_urls": [
+        "https://lnk.to/rust-vinyl",
+        "https://twitter.com/playrust/status/2125243074519421256"
+      ],
+      "created_at": "2026-11-24T15:00:08.000Z",
+      "replies": 4,
+      "reposts": 5,
+      "likes": 73,
+      "views": 10065,
+      "monitored_by": [
+        {
+          "account_id": "1542707718",
+          "account_type": "official"
+        }
+      ]
+    },
+    {
       "id": "2124880604751614018",
       "author_id": "1542707718",
       "text": "Flocks of birds have been added to a minor wildlife expansion. Crow and Seagull flocks will fly across the map, looking for things that interest them. 🦆☢️🦅\n\nRead more on our DevBlog: https://t.co/h9bGJRqWUi https://t.co/zGUQePGFQf",
@@ -284,10 +305,10 @@
         "https://twitter.com/playrust/status/2124880604751614018"
       ],
       "created_at": "2026-11-23T14:59:49.000Z",
-      "replies": 12,
-      "reposts": 7,
-      "likes": 120,
-      "views": 10941,
+      "replies": 15,
+      "reposts": 8,
+      "likes": 136,
+      "views": 12940,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -304,10 +325,10 @@
         "https://twitter.com/playrust/status/2124548408044069118"
       ],
       "created_at": "2026-11-22T16:59:47.000Z",
-      "replies": 477,
-      "reposts": 12,
-      "likes": 380,
-      "views": 47468,
+      "replies": 494,
+      "reposts": 14,
+      "likes": 399,
+      "views": 50202,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -327,8 +348,8 @@
       "created_at": "2026-11-21T15:00:40.000Z",
       "replies": 35,
       "reposts": 16,
-      "likes": 297,
-      "views": 37250,
+      "likes": 299,
+      "views": 37698,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -349,27 +370,7 @@
       "replies": 2,
       "reposts": 5,
       "likes": 71,
-      "views": 14009,
-      "monitored_by": [
-        {
-          "account_id": "1542707718",
-          "account_type": "official"
-        }
-      ]
-    },
-    {
-      "id": "2123431084419338353",
-      "author_id": "1542707718",
-      "text": "Get your sheep ready, as this month includes a new Armour Insert using Wool. 🐏☢️🧶\n\nIt offers a small buff to melee and projectile protection, plus a large buff to cold resistance, making those chilly Arctic nights more survivable. You'll find it on the Tier 1 tech tree.\n\nRead more on our DevBlog: https://t.co/MF9kei76SG",
-      "url": "https://x.com/playrust/status/2123431084419338353",
-      "expanded_urls": [
-        "https://rust.facepunch.com/news/printed_and_polished"
-      ],
-      "created_at": "2026-11-19T14:59:56.000Z",
-      "replies": 15,
-      "reposts": 7,
-      "likes": 149,
-      "views": 15227,
+      "views": 14262,
       "monitored_by": [
         {
           "account_id": "1542707718",
@@ -389,7 +390,7 @@
       "replies": 1,
       "reposts": 0,
       "likes": 16,
-      "views": 555,
+      "views": 563,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -409,8 +410,8 @@
       "created_at": "2026-11-18T14:07:28.000Z",
       "replies": 1,
       "reposts": 0,
-      "likes": 21,
-      "views": 756,
+      "likes": 22,
+      "views": 762,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -428,7 +429,7 @@
       "replies": 30,
       "reposts": 4,
       "likes": 74,
-      "views": 11687,
+      "views": 11696,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -448,7 +449,7 @@
       "replies": 9,
       "reposts": 0,
       "likes": 10,
-      "views": 1596,
+      "views": 1598,
       "monitored_by": [
         {
           "account_id": "1262844103814983688",
@@ -485,8 +486,8 @@
       "created_at": "2026-11-23T20:09:16.000Z",
       "replies": 0,
       "reposts": 0,
-      "likes": 0,
-      "views": 86,
+      "likes": 2,
+      "views": 148,
       "monitored_by": [
         {
           "account_id": "3085086228",
@@ -522,7 +523,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 3,
-      "views": 335,
+      "views": 338,
       "monitored_by": [
         {
           "account_id": "3085086228",
@@ -558,10 +559,30 @@
       "replies": 0,
       "reposts": 0,
       "likes": 8,
-      "views": 586,
+      "views": 588,
       "monitored_by": [
         {
           "account_id": "3085086228",
+          "account_type": "streamer"
+        }
+      ]
+    },
+    {
+      "id": "2125252424843600081",
+      "author_id": "736974333424369664",
+      "text": "ESTAMOS ON 🔴\n\nPues arrancamos directito de Wardgos y después lo mismo Project Zomboid ....\n\nhttps://t.co/6f3pAsop73",
+      "url": "https://x.com/Agustabell212/status/2125252424843600081",
+      "expanded_urls": [
+        "https://kick.com/agustabell212"
+      ],
+      "created_at": "2026-11-24T15:37:18.000Z",
+      "replies": 0,
+      "reposts": 1,
+      "likes": 20,
+      "views": 1221,
+      "monitored_by": [
+        {
+          "account_id": "736974333424369664",
           "account_type": "streamer"
         }
       ]
@@ -578,7 +599,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 18,
-      "views": 1629,
+      "views": 1671,
       "monitored_by": [
         {
           "account_id": "736974333424369664",
@@ -598,7 +619,7 @@
       "replies": 1,
       "reposts": 2,
       "likes": 30,
-      "views": 1933,
+      "views": 1960,
       "monitored_by": [
         {
           "account_id": "736974333424369664",
@@ -618,7 +639,7 @@
       "replies": 0,
       "reposts": 2,
       "likes": 36,
-      "views": 1849,
+      "views": 1871,
       "monitored_by": [
         {
           "account_id": "736974333424369664",
@@ -638,27 +659,7 @@
       "replies": 1,
       "reposts": 1,
       "likes": 23,
-      "views": 2046,
-      "monitored_by": [
-        {
-          "account_id": "736974333424369664",
-          "account_type": "streamer"
-        }
-      ]
-    },
-    {
-      "id": "2122073132303372687",
-      "author_id": "736974333424369664",
-      "text": "ESTAMOS ON 🔴\n\nPues arrancamos directito de chill y cortito de noche ...\n\nhttps://t.co/6f3pAsop73",
-      "url": "https://x.com/Agustabell212/status/2122073132303372687",
-      "expanded_urls": [
-        "https://kick.com/agustabell212"
-      ],
-      "created_at": "2026-11-15T21:03:55.000Z",
-      "replies": 0,
-      "reposts": 3,
-      "likes": 24,
-      "views": 1986,
+      "views": 2058,
       "monitored_by": [
         {
           "account_id": "736974333424369664",
@@ -679,7 +680,45 @@
       "replies": 15,
       "reposts": 7,
       "likes": 106,
-      "views": 2484,
+      "views": 2487,
+      "monitored_by": [
+        {
+          "account_id": "792712514429673472",
+          "account_type": "streamer"
+        }
+      ]
+    },
+    {
+      "id": "2125346890665591212",
+      "author_id": "792712514429673472",
+      "text": "Hice la EXPLOSIÓN MÁS GRANDE de GTA VI !! | (Grand Theft Auto 6) https://t.co/vaGxEweJuf vía @YouTube \n\nDenle amor que le meti mucha edicion &lt;3",
+      "url": "https://x.com/nazegamingtv/status/2125346890665591212",
+      "expanded_urls": [
+        "https://www.youtube.com/watch?si=uDUUBR8kzjjnF_Bn&v=h0Zp1XKWyaI&feature=youtu.be"
+      ],
+      "created_at": "2026-11-24T21:52:40.000Z",
+      "replies": 1,
+      "reposts": 0,
+      "likes": 2,
+      "views": 262,
+      "monitored_by": [
+        {
+          "account_id": "792712514429673472",
+          "account_type": "streamer"
+        }
+      ]
+    },
+    {
+      "id": "2125383906727715064",
+      "author_id": "792712514429673472",
+      "text": "ultimamente se me esta haciendo complicado el crear contenido, siempre me gusto ver los youtubers old school que le meten edicion a los videos, se jugaban la partida a las risas y la subian para entretener, sin filtros… no digo que eso sea lo que esta bien solo que realmente siempre intente hacer eso, lo que a mi me gusta, pero ultimamente siento que los mensajes que recibo no son mas que pidiendo otra cosa, ni siquiera diciendo algo sobre el video, si gustó o almenos dejando una critica, como si mi video fuera algo mas y talvez lo es, se que hay problemas peores, pero cada uno tiene sus problemas y este es mi mundo y lo que me hace feliz desde siempre, subir videos para entretener, por eso nose por cuanto tiempo pueda seguir asi, voy a replantearme si lo que estoy haciendo es lo correcto o si yo estoy tomando un mal camino:)",
+      "url": "https://x.com/nazegamingtv/status/2125383906727715064",
+      "expanded_urls": [],
+      "created_at": "2026-11-25T00:19:45.000Z",
+      "replies": 0,
+      "reposts": 0,
+      "likes": 0,
+      "views": 29,
       "monitored_by": [
         {
           "account_id": "792712514429673472",
@@ -697,7 +736,7 @@
       "replies": 4,
       "reposts": 0,
       "likes": 17,
-      "views": 843,
+      "views": 857,
       "monitored_by": [
         {
           "account_id": "792712514429673472",
@@ -717,47 +756,7 @@
       "replies": 0,
       "reposts": 0,
       "likes": 5,
-      "views": 2855,
-      "monitored_by": [
-        {
-          "account_id": "792712514429673472",
-          "account_type": "streamer"
-        }
-      ]
-    },
-    {
-      "id": "2123460519084400814",
-      "author_id": "792712514429673472",
-      "text": "NO TE PIERDAS EL DIA 2 DE GTA VI! https://t.co/Z0lu8DX092",
-      "url": "https://x.com/nazegamingtv/status/2123460519084400814",
-      "expanded_urls": [
-        "https://kick.com/naze"
-      ],
-      "created_at": "2026-11-19T16:56:54.000Z",
-      "replies": 0,
-      "reposts": 0,
-      "likes": 3,
-      "views": 156,
-      "monitored_by": [
-        {
-          "account_id": "792712514429673472",
-          "account_type": "streamer"
-        }
-      ]
-    },
-    {
-      "id": "2123442924373393473",
-      "author_id": "792712514429673472",
-      "text": "MI PRIMER GAMEPLAY DE GTA 6 Y VOY AL TACON👠 \nhttps://t.co/WsXDBjxKW5",
-      "url": "https://x.com/nazegamingtv/status/2123442924373393473",
-      "expanded_urls": [
-        "https://www.youtube.com/watch?v=lQYhszDjAdw"
-      ],
-      "created_at": "2026-11-19T15:46:59.000Z",
-      "replies": 0,
-      "reposts": 0,
-      "likes": 9,
-      "views": 3170,
+      "views": 3191,
       "monitored_by": [
         {
           "account_id": "792712514429673472",
