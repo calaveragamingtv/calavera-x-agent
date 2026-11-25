@@ -1,6 +1,6 @@
 {
   "date": "2026-11-25",
-  "calls": 3,
+  "calls": 4,
   "runs": [
     {
       "run_id": "45590920381",
@@ -40,6 +40,13 @@
       "status": "selected",
       "reason": "random_selection",
       "timestamp": "2026-11-25T11:01:27.372943-03:00"
+    },
+    {
+      "run_id": "45670800960",
+      "call": 4,
+      "status": "skipped",
+      "reason": "daily_execution_target_reached",
+      "timestamp": "2026-11-25T15:01:22.915569-03:00"
     }
   ]
 }
