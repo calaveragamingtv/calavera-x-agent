@@ -1,0 +1,86 @@
+
+name: Daily X Agent Report
+
+on:
+  schedule:
+    - cron: "15 3 * * *"
+
+  workflow_dispatch:
+    inputs:
+      report_date:
+        description: "Fecha del reporte (YYYY-MM-DD). Vacío = ayer en Argentina"
+        required: false
+        type: string
+
+      dry_run:
+        description: "Generar reporte sin enviar email"
+        required: false
+        type: boolean
+        default: true
+
+      force:
+        description: "Enviar nuevamente aunque ya exista un reporte enviado"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: x-agent-daily-report
+  cancel-in-progress: false
+
+jobs:
+  daily-report:
+    name: Generate and Send Daily Report
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate daily report
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          REPORT_EMAIL_FROM: ${{ secrets.REPORT_EMAIL_FROM }}
+          REPORT_EMAIL_TO: ${{ secrets.REPORT_EMAIL_TO }}
+        run: |
+          ARGS=""
+
+          if [ -n "${{ inputs.report_date }}" ]; then
+            ARGS="$ARGS --date ${{ inputs.report_date }}"
+          fi
+
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+
+          if [ "${{ inputs.force }}" = "true" ]; then
+            ARGS="$ARGS --force"
+          fi
+
+          python -m src.reports.daily_report $ARGS
+
+      - name: Commit report data
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add data/daily_reports/
+
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: save daily X agent report"
+            git push
+          else
+            echo "No report data changes to commit."
+          fi
