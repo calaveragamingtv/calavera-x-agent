@@ -26,6 +26,7 @@ on:
 
 permissions:
   contents: write
+  actions: read
 
 concurrency:
   group: x-agent-daily-report
@@ -35,8 +36,109 @@ jobs:
   daily-report:
     name: Generate and Send Daily Report
     runs-on: ubuntu-latest
+    timeout-minutes: 120
 
     steps:
+      - name: Wait for X Agent executions
+        uses: actions/github-script@v7
+        env:
+          REPORT_DATE: ${{ inputs.report_date }}
+        with:
+          script: |
+            const timezone = "America/Argentina/Buenos_Aires";
+
+            function localDate() {
+              const parts = new Intl.DateTimeFormat("en-CA", {
+                timeZone: timezone,
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit"
+              }).formatToParts(new Date());
+
+              const values = Object.fromEntries(
+                parts.map(part => [part.type, part.value])
+              );
+
+              return `${values.year}-${values.month}-${values.day}`;
+            }
+
+            function previousDay(dateString) {
+              const date = new Date(`${dateString}T00:00:00Z`);
+              date.setUTCDate(date.getUTCDate() - 1);
+              return date.toISOString().slice(0, 10);
+            }
+
+            const reportDate =
+              process.env.REPORT_DATE || previousDay(localDate());
+
+            if (!/^\d{4}-\d{2}-\d{2}$/.test(reportDate)) {
+              throw new Error(`Invalid report date: ${reportDate}`);
+            }
+
+            // Argentina is UTC-3.
+            const start = new Date(`${reportDate}T03:00:00.000Z`);
+            const end = new Date(start.getTime() + 24 * 60 * 60 * 1000);
+
+            const startIso = start.toISOString();
+            const endIso = end.toISOString();
+
+            core.info(`Report date: ${reportDate}`);
+            core.info(`Checking executions from ${startIso} to ${endIso}`);
+
+            const maxWaitMinutes = 90;
+            const pollIntervalMs = 30000;
+            const deadline = Date.now() + maxWaitMinutes * 60 * 1000;
+
+            while (true) {
+              const runs = await github.paginate(
+                github.rest.actions.listWorkflowRuns,
+                {
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  workflow_id: "scrape-x.yml",
+                  per_page: 100,
+                  created: `${startIso}..${endIso}`
+                }
+              );
+
+              const activeRuns = runs.filter(run => {
+                const createdAt = new Date(run.created_at);
+
+                return (
+                  createdAt >= start &&
+                  createdAt < end &&
+                  run.status !== "completed"
+                );
+              });
+
+              if (activeRuns.length === 0) {
+                core.info(
+                  "All X Agent executions for this report date have finished."
+                );
+                break;
+              }
+
+              core.info(
+                `${activeRuns.length} X Agent execution(s) still active:`
+              );
+
+              for (const run of activeRuns) {
+                core.info(
+                  `Run ${run.id}: ${run.status} - ${run.html_url}`
+                );
+              }
+
+              if (Date.now() >= deadline) {
+                throw new Error(
+                  `Timed out waiting for X Agent executions after ${maxWaitMinutes} minutes.`
+                );
+              }
+
+              await new Promise(resolve =>
+                setTimeout(resolve, pollIntervalMs)
+              );
+            }
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -53,22 +155,25 @@ jobs:
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           REPORT_EMAIL_FROM: ${{ secrets.REPORT_EMAIL_FROM }}
           REPORT_EMAIL_TO: ${{ secrets.REPORT_EMAIL_TO }}
+          REPORT_DATE: ${{ inputs.report_date }}
+          DRY_RUN: ${{ inputs.dry_run }}
+          FORCE: ${{ inputs.force }}
         run: |
-          ARGS=""
+          ARGS=()
 
-          if [ -n "${{ inputs.report_date }}" ]; then
-            ARGS="$ARGS --date ${{ inputs.report_date }}"
+          if [ -n "$REPORT_DATE" ]; then
+            ARGS+=(--date "$REPORT_DATE")
           fi
 
-          if [ "${{ inputs.dry_run }}" = "true" ]; then
-            ARGS="$ARGS --dry-run"
+          if [ "$DRY_RUN" = "true" ]; then
+            ARGS+=(--dry-run)
           fi
 
-          if [ "${{ inputs.force }}" = "true" ]; then
-            ARGS="$ARGS --force"
+          if [ "$FORCE" = "true" ]; then
+            ARGS+=(--force)
           fi
 
-          python -m src.reports.daily_report $ARGS
+          python -m src.reports.daily_report "${ARGS[@]}"
 
       - name: Commit report data
         if: success()
