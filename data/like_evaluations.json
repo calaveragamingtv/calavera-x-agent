@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-25T10:12:19.841848+00:00",
-  "total": 104,
+  "updated_at": "2026-11-26T10:03:12.899835+00:00",
+  "total": 108,
   "evaluations": {
     "2118402970886836645": {
       "post_id": "2118402970886836645",
@@ -729,6 +729,34 @@
       "score": 75,
       "category": "professional",
       "reason": "Reflexión personal y genuina de un creador sobre las dificultades de la creación de contenido, permitiendo conectar con sus experiencias y abriendo espacio a una conversación constructiva."
+    },
+    "2125620385370837109": {
+      "post_id": "2125620385370837109",
+      "should_like": true,
+      "score": 95,
+      "category": "kick",
+      "reason": "La publicación contiene un enlace válido a la plataforma Kick, cumpliendo con la prioridad de enlaces para fomentar relaciones con creadores y streamers."
+    },
+    "2125674865952706858": {
+      "post_id": "2125674865952706858",
+      "should_like": true,
+      "score": 82,
+      "category": "community",
+      "reason": "La publicación promueve una votación oficial organizada por la comunidad de creadores de Rust, fomentando la participación y el reconocimiento dentro del ecosistema."
+    },
+    "2125605504168665446": {
+      "post_id": "2125605504168665446",
+      "should_like": true,
+      "score": 78,
+      "category": "rust",
+      "reason": "Publicación oficial de la cuenta de Rust con un mensaje de interacción directa para la comunidad, generando un fuerte sentido de pertenencia y engagement."
+    },
+    "2125662120574648789": {
+      "post_id": "2125662120574648789",
+      "should_like": false,
+      "score": 65,
+      "category": "rust",
+      "reason": "La publicación ofrece una noticia sobre una nueva suscripción y personalización en Rust, pero carece de suficiente profundidad o impacto para alcanzar el umbral de aprobación."
     }
   }
 }

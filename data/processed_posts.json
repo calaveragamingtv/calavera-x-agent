@@ -62,8 +62,8 @@
           "payload": null
         }
       },
-      "likes": 1237,
-      "views": 379727,
+      "likes": 1236,
+      "views": 379914,
       "replies": 76,
       "reposts": 123
     },
@@ -134,7 +134,7 @@
         }
       },
       "likes": 119,
-      "views": 23828,
+      "views": 23832,
       "replies": 5,
       "reposts": 8
     },
@@ -696,7 +696,7 @@
         }
       },
       "likes": 4,
-      "views": 1979,
+      "views": 1987,
       "replies": 0,
       "reposts": 0
     },
@@ -758,7 +758,7 @@
         }
       },
       "likes": 6,
-      "views": 1611,
+      "views": 1619,
       "replies": 0,
       "reposts": 1
     },
@@ -818,7 +818,7 @@
         }
       },
       "likes": 4,
-      "views": 1611,
+      "views": 1617,
       "replies": 0,
       "reposts": 0
     },
@@ -885,7 +885,7 @@
         }
       },
       "likes": 1,
-      "views": 1296,
+      "views": 1300,
       "replies": 0,
       "reposts": 0
     },
@@ -1259,7 +1259,7 @@
         }
       },
       "likes": 13,
-      "views": 1400,
+      "views": 1405,
       "replies": 2,
       "reposts": 2
     },
@@ -3619,7 +3619,7 @@
         }
       },
       "likes": 19,
-      "views": 992,
+      "views": 994,
       "replies": 1,
       "reposts": 1
     },
@@ -3681,7 +3681,7 @@
         }
       },
       "likes": 10,
-      "views": 1599,
+      "views": 1602,
       "replies": 9,
       "reposts": 0
     },
@@ -3819,8 +3819,8 @@
           "payload": null
         }
       },
-      "likes": 74,
-      "views": 11698,
+      "likes": 73,
+      "views": 11702,
       "replies": 30,
       "reposts": 4
     },
@@ -3940,7 +3940,7 @@
         }
       },
       "likes": 8,
-      "views": 588,
+      "views": 589,
       "replies": 0,
       "reposts": 0
     },
@@ -4415,7 +4415,7 @@
         }
       },
       "likes": 22,
-      "views": 762,
+      "views": 763,
       "replies": 1,
       "reposts": 0
     },
@@ -4475,7 +4475,7 @@
         }
       },
       "likes": 3,
-      "views": 338,
+      "views": 340,
       "replies": 0,
       "reposts": 0
     },
@@ -4541,7 +4541,7 @@
         }
       },
       "likes": 36,
-      "views": 1873,
+      "views": 1882,
       "replies": 0,
       "reposts": 2
     },
@@ -5372,7 +5372,7 @@
         }
       },
       "likes": 30,
-      "views": 1962,
+      "views": 1975,
       "replies": 1,
       "reposts": 2
     },
@@ -5703,7 +5703,7 @@
         }
       },
       "likes": 16,
-      "views": 564,
+      "views": 568,
       "replies": 1,
       "reposts": 0
     },
@@ -5769,7 +5769,7 @@
         }
       },
       "likes": 18,
-      "views": 1674,
+      "views": 1691,
       "replies": 0,
       "reposts": 0
     },
@@ -5835,7 +5835,7 @@
         }
       },
       "likes": 5,
-      "views": 3236,
+      "views": 3414,
       "replies": 0,
       "reposts": 0
     },
@@ -5906,7 +5906,7 @@
         }
       },
       "likes": 18,
-      "views": 1629,
+      "views": 1636,
       "replies": 2,
       "reposts": 1
     },
@@ -6074,13 +6074,17 @@
       },
       "actions": {
         "like": {
-          "status": "not_started",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-26T10:03:17.189234+00:00",
+          "completed_at": "2026-11-26T10:03:18.198091+00:00",
           "error": null,
-          "external_id": null,
-          "payload": null
+          "external_id": "2124175374263160958",
+          "payload": {
+            "post_id": "2124175374263160958",
+            "mode": "live",
+            "stage": "completed"
+          }
         },
         "reply": {
           "status": "not_started",
@@ -6102,7 +6106,7 @@
         }
       },
       "likes": 17,
-      "views": 857,
+      "views": 862,
       "replies": 4,
       "reposts": 0
     },
@@ -6172,10 +6176,10 @@
           "payload": null
         }
       },
-      "likes": 400,
-      "views": 50353,
+      "likes": 402,
+      "views": 51150,
       "replies": 495,
-      "reposts": 14
+      "reposts": 15
     },
     "2124507119705530638": {
       "id": "2124507119705530638",
@@ -6298,7 +6302,7 @@
         }
       },
       "likes": 4,
-      "views": 444,
+      "views": 473,
       "replies": 1,
       "reposts": 0
     },
@@ -6368,8 +6372,8 @@
           }
         }
       },
-      "likes": 136,
-      "views": 13101,
+      "likes": 138,
+      "views": 13721,
       "replies": 15,
       "reposts": 8
     },
@@ -6430,8 +6434,8 @@
           "payload": null
         }
       },
-      "likes": 2,
-      "views": 151,
+      "likes": 3,
+      "views": 164,
       "replies": 0,
       "reposts": 0
     },
@@ -6501,8 +6505,8 @@
           }
         }
       },
-      "likes": 78,
-      "views": 10875,
+      "likes": 83,
+      "views": 12148,
       "replies": 4,
       "reposts": 6
     },
@@ -6568,7 +6572,7 @@
         }
       },
       "likes": 22,
-      "views": 1257,
+      "views": 1377,
       "replies": 0,
       "reposts": 1
     },
@@ -6634,7 +6638,7 @@
         }
       },
       "likes": 3,
-      "views": 290,
+      "views": 334,
       "replies": 1,
       "reposts": 0
     },
@@ -6694,9 +6698,277 @@
         }
       },
       "likes": 0,
-      "views": 33,
-      "replies": 0,
+      "views": 44,
+      "replies": 1,
       "reposts": 0
+    },
+    "2125662120574648789": {
+      "id": "2125662120574648789",
+      "author_id": "779120759000137728",
+      "text": "La personalización de los jugadores estará disponible únicamente con la nueva suscripción de pago Rust Premium. https://t.co/t9WW9H7uKA",
+      "url": "https://x.com/RustSpain_com/status/2125662120574648789",
+      "created_at": "2026-11-25T18:45:17.000Z",
+      "expanded_urls": [
+        "https://twitter.com/RustSpain_com/status/2125662120574648789"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "779120759000137728",
+          "account_type": "server"
+        }
+      ],
+      "first_seen_at": "2026-11-26T10:02:52.784158+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2125662120574648789",
+          "score": 85,
+          "category": "official_news",
+          "priority": "high",
+          "recommended_action": "reply",
+          "reason": "Trata sobre un cambio potencialmente polémico o importante en las mecánicas de personalización y monetización del juego, ideal para generar debate con la comunidad."
+        },
+        "completed_at": "2026-11-26T10:03:09.526514+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-26T10:03:12.926783+00:00",
+          "completed_at": "2026-11-26T10:03:13.690979+00:00",
+          "error": null,
+          "external_id": "2125893127861084323",
+          "payload": {
+            "post_id": "2125662120574648789",
+            "reply_text": "No me digas que ahora hay que pagar extra para andar en bolas por la isla...",
+            "mode": "live",
+            "stage": "completed"
+          }
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 5,
+      "views": 517,
+      "replies": 1,
+      "reposts": 0
+    },
+    "2125674865952706858": {
+      "id": "2125674865952706858",
+      "author_id": "1542707718",
+      "text": "📣 ​Put down the rock and pick up a ballot. @Keeno_Rust is running a community awards vote - head over and show some love to your favorite Rust creators and moments from this year! 🗳",
+      "url": "https://x.com/playrust/status/2125674865952706858",
+      "created_at": "2026-11-25T19:35:55.000Z",
+      "expanded_urls": [],
+      "monitored_by": [
+        {
+          "account_id": "1542707718",
+          "account_type": "official"
+        }
+      ],
+      "first_seen_at": "2026-11-26T10:02:52.784188+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2125674865952706858",
+          "score": 90,
+          "category": "event",
+          "priority": "high",
+          "recommended_action": "repost",
+          "reason": "Es una publicación oficial de Facepunch anunciando los premios de la comunidad organizados por Keeno_Rust, lo cual es muy relevante para creadores y la comunidad de Rust."
+        },
+        "completed_at": "2026-11-26T10:03:09.537333+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-26T10:03:16.207008+00:00",
+          "completed_at": "2026-11-26T10:03:17.181182+00:00",
+          "error": null,
+          "external_id": "2125674865952706858",
+          "payload": {
+            "post_id": "2125674865952706858",
+            "mode": "live",
+            "stage": "completed"
+          }
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-26T10:03:14.438625+00:00",
+          "completed_at": "2026-11-26T10:03:15.147547+00:00",
+          "error": null,
+          "external_id": "2125674865952706858",
+          "payload": {
+            "post_id": "2125674865952706858",
+            "mode": "live",
+            "stage": "completed"
+          }
+        }
+      },
+      "likes": 48,
+      "views": 8775,
+      "replies": 2,
+      "reposts": 5
+    },
+    "2125605504168665446": {
+      "id": "2125605504168665446",
+      "author_id": "1542707718",
+      "text": "I need you, and I miss you. 🫶☢️🔫 https://t.co/hYSPACVpJt",
+      "url": "https://x.com/playrust/status/2125605504168665446",
+      "created_at": "2026-11-25T15:00:18.000Z",
+      "expanded_urls": [
+        "https://twitter.com/playrust/status/2125605504168665446"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "1542707718",
+          "account_type": "official"
+        }
+      ],
+      "first_seen_at": "2026-11-26T10:02:52.784196+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2125605504168665446",
+          "score": 50,
+          "category": "community",
+          "priority": "medium",
+          "recommended_action": "reply",
+          "reason": "Publicación oficial de Rust con un enfoque general de comunidad, útil para interactuar de forma casual con la audiencia pero sin información técnica o de novedades."
+        },
+        "completed_at": "2026-11-26T10:03:09.545878+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "reply": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-26T10:03:13.699222+00:00",
+          "completed_at": "2026-11-26T10:03:14.430501+00:00",
+          "error": null,
+          "external_id": "2125893131027743216",
+          "payload": {
+            "post_id": "2125605504168665446",
+            "reply_text": "The toxic relationship we all keep coming back to 💀",
+            "mode": "live",
+            "stage": "completed"
+          }
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 836,
+      "views": 39666,
+      "replies": 24,
+      "reposts": 68
+    },
+    "2125620385370837109": {
+      "id": "2125620385370837109",
+      "author_id": "736974333424369664",
+      "text": "ESTAMOS ON 🔴\n\nPues arrancamos con el vicio...\n\nhttps://t.co/6f3pAsoWWB",
+      "url": "https://x.com/Agustabell212/status/2125620385370837109",
+      "created_at": "2026-11-25T15:59:26.000Z",
+      "expanded_urls": [
+        "https://kick.com/agustabell212"
+      ],
+      "monitored_by": [
+        {
+          "account_id": "736974333424369664",
+          "account_type": "streamer"
+        }
+      ],
+      "first_seen_at": "2026-11-26T10:02:52.784265+00:00",
+      "analysis": {
+        "status": "completed",
+        "result": {
+          "post_id": "2125620385370837109",
+          "score": 25,
+          "category": "creator",
+          "priority": "low",
+          "recommended_action": "ignore",
+          "reason": "Es un aviso de directo genérico de otro creador sin especificar detalles que aporten valor directo a CalaveraGaming."
+        },
+        "completed_at": "2026-11-26T10:03:09.553293+00:00"
+      },
+      "actions": {
+        "like": {
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-26T10:03:15.155842+00:00",
+          "completed_at": "2026-11-26T10:03:16.198895+00:00",
+          "error": null,
+          "external_id": "2125620385370837109",
+          "payload": {
+            "post_id": "2125620385370837109",
+            "mode": "live",
+            "stage": "completed"
+          }
+        },
+        "reply": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        },
+        "repost": {
+          "status": "not_started",
+          "attempts": 0,
+          "last_attempt_at": null,
+          "completed_at": null,
+          "error": null,
+          "external_id": null,
+          "payload": null
+        }
+      },
+      "likes": 21,
+      "views": 1622,
+      "replies": 0,
+      "reposts": 2
     }
   }
 }
