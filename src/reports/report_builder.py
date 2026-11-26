@@ -2,437 +2,395 @@
 import html
 import json
 
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
 
 ACTIONS = ("like", "reply", "repost")
+
 ACTION_LABELS = {
-    "like": "Like",
-    "reply": "Reply",
-    "repost": "Repost",
+    "like": "Likes",
+    "reply": "Replies",
+    "repost": "Reposts",
 }
 
 
-def _load_json(path):
-    with Path(path).open("r", encoding="utf-8") as file:
-        return json.load(file)
-
-
-def _parse_datetime(value):
-    if not value or not isinstance(value, str):
+def parse_timestamp(value):
+    if not value:
         return None
 
     try:
-        normalized = value.replace("Z", "+00:00")
-        parsed = datetime.fromisoformat(normalized)
+        parsed = datetime.fromisoformat(
+            str(value).replace("Z", "+00:00")
+        )
 
         if parsed.tzinfo is None:
-            return parsed.replace(tzinfo=ZoneInfo("UTC"))
+            parsed = parsed.replace(tzinfo=timezone.utc)
 
         return parsed
-    except ValueError:
+    except (ValueError, TypeError):
         return None
 
 
-def _local_date(value, timezone):
-    parsed = _parse_datetime(value)
-
-    if parsed is None:
-        return None
-
-    return parsed.astimezone(timezone).date()
-
-
-def _post_url(post, post_id):
+def get_post_url(post):
     url = post.get("url")
 
     if isinstance(url, str) and url.startswith(("https://", "http://")):
         return url
 
-    return f"https://x.com/i/status/{post_id}"
+    post_id = post.get("id")
+
+    if post_id:
+        return f"https://x.com/i/status/{post_id}"
+
+    return None
 
 
-def _reply_url(external_id):
-    if not external_id:
-        return None
-
-    value = str(external_id)
-
-    if value.startswith(("https://", "http://")):
-        return value
-
-    return f"https://x.com/i/status/{value}"
-
-
-def _action_record(post_id, post, action_name, action_data):
-    original_url = _post_url(post, post_id)
+def get_action_url(action_name, action_data, post):
     external_id = action_data.get("external_id")
 
-    record = {
-        "action": action_name,
-        "label": ACTION_LABELS[action_name],
-        "post_id": str(post_id),
-        "author": post.get("author") or post.get("username") or "Autor desconocido",
-        "text": post.get("text") or "",
-        "original_url": original_url,
-        "completed_at": action_data.get("completed_at"),
-        "action_url": original_url,
-        "reply_url": None,
-        "payload": action_data.get("payload") or {},
-    }
+    if action_name == "reply" and external_id:
+        external_id = str(external_id)
 
-    if action_name == "reply":
-        record["reply_url"] = _reply_url(external_id)
-        record["action_url"] = record["reply_url"] or original_url
+        if external_id.startswith(("https://", "http://")):
+            return external_id
 
-    return record
+        return f"https://x.com/i/status/{external_id}"
+
+    return get_post_url(post)
 
 
 def build_daily_report(
     tracker_path="data/processed_posts.json",
-    config_path="config/x_actions.json",
     report_date=None,
+    timezone_name="America/Argentina/Buenos_Aires",
 ):
-    """
-    Build a daily report using confirmed actions from the tracker.
-
-    Only actions with status='completed' and a completed_at timestamp
-    belonging to the requested local calendar day are counted.
-    """
-
-    config = _load_json(config_path)
-    timezone_name = config.get("timezone")
-
-    if not timezone_name:
-        raise ValueError("Missing timezone in config/x_actions.json")
-
+    tracker_path = Path(tracker_path)
     local_timezone = ZoneInfo(timezone_name)
 
     if report_date is None:
-        report_date = datetime.now(local_timezone).date() - timedelta(days=1)
+        report_date = datetime.now(local_timezone).date()
     elif isinstance(report_date, str):
         report_date = date.fromisoformat(report_date)
 
-    tracker = _load_json(tracker_path)
+    if not tracker_path.exists():
+        raise FileNotFoundError(
+            f"Tracker file not found: {tracker_path}"
+        )
+
+    with tracker_path.open("r", encoding="utf-8") as file:
+        tracker = json.load(file)
+
     posts = tracker.get("posts", {})
 
-    if not isinstance(posts, dict):
-        raise ValueError("Invalid tracker structure: 'posts' must be an object")
-
-    actions_by_type = {action: [] for action in ACTIONS}
-    issues = []
+    report = {
+        "date": report_date.isoformat(),
+        "timezone": timezone_name,
+        "totals": {
+            "like": 0,
+            "reply": 0,
+            "repost": 0,
+            "analyzed": 0,
+            "failed": 0,
+            "drafted": 0,
+        },
+        "actions": {
+            "like": [],
+            "reply": [],
+            "repost": [],
+        },
+    }
 
     for post_id, post in posts.items():
         if not isinstance(post, dict):
             continue
 
-        post_actions = post.get("actions", {})
-
-        if not isinstance(post_actions, dict):
-            continue
-
-        for action_name in ACTIONS:
-            action_data = post_actions.get(action_name, {})
-
-            if not isinstance(action_data, dict):
-                continue
-
-            status = action_data.get("status")
-            completed_at = action_data.get("completed_at")
-
-            if status == "completed":
-                if _local_date(completed_at, local_timezone) == report_date:
-                    actions_by_type[action_name].append(
-                        _action_record(
-                            post_id,
-                            post,
-                            action_name,
-                            action_data,
-                        )
-                    )
-
-            elif status in ("failed", "unknown"):
-                attempted_at = action_data.get("last_attempt_at")
-
-                if _local_date(attempted_at, local_timezone) == report_date:
-                    issues.append({
-                        "action": action_name,
-                        "label": ACTION_LABELS[action_name],
-                        "post_id": str(post_id),
-                        "author": (
-                            post.get("author")
-                            or post.get("username")
-                            or "Autor desconocido"
-                        ),
-                        "text": post.get("text") or "",
-                        "original_url": _post_url(post, post_id),
-                        "status": status,
-                        "attempted_at": attempted_at,
-                        "error": action_data.get("error"),
-                    })
-
-    for action_name in ACTIONS:
-        actions_by_type[action_name].sort(
-            key=lambda item: item.get("completed_at") or ""
+        analysis = post.get("analysis", {})
+        analysis_timestamp = parse_timestamp(
+            analysis.get("completed_at")
         )
 
-    issues.sort(key=lambda item: item.get("attempted_at") or "")
+        if (
+            analysis.get("status") == "completed"
+            and analysis_timestamp
+            and analysis_timestamp.astimezone(local_timezone).date()
+            == report_date
+        ):
+            report["totals"]["analyzed"] += 1
 
-    totals = {
-        action_name: len(records)
-        for action_name, records in actions_by_type.items()
-    }
+        for action_name in ACTIONS:
+            action_data = post.get("actions", {}).get(
+                action_name, {}
+            )
 
-    return {
-        "date": report_date.isoformat(),
-        "timezone": timezone_name,
-        "totals": totals,
-        "total_interactions": sum(totals.values()),
-        "failed_or_unknown": len(issues),
-        "actions": actions_by_type,
-        "issues": issues,
-    }
+            status = action_data.get("status")
+            completed_at = parse_timestamp(
+                action_data.get("completed_at")
+            )
+            attempted_at = parse_timestamp(
+                action_data.get("last_attempt_at")
+            )
 
-
-def render_html(report):
-    """Render the daily report as a self-contained HTML email."""
-
-    report_date = html.escape(report["date"])
-    totals = report["totals"]
-
-    def action_section(action_name, records):
-        label = ACTION_LABELS[action_name]
-
-        if not records:
-            return f"""
-                <h2>{label}s</h2>
-                <p class="muted">No hubo {label.lower()}s confirmados.</p>
-            """
-
-        rows = []
-
-        for item in records:
-            author = html.escape(str(item["author"]))
-            post_text = html.escape(str(item["text"]))
-            original_url = html.escape(item["original_url"], quote=True)
-            action_url = html.escape(item["action_url"], quote=True)
-            completed_at = html.escape(str(item["completed_at"] or ""))
-
-            links = f'<a href="{original_url}">Ver post original</a>'
-
-            if action_name == "reply" and item.get("reply_url"):
-                links += (
-                    f' &nbsp;·&nbsp; '
-                    f'<a href="{action_url}">Ver reply publicado</a>'
+            if (
+                status == "completed"
+                and completed_at
+                and completed_at.astimezone(local_timezone).date()
+                == report_date
+            ):
+                post_url = get_post_url(post)
+                action_url = get_action_url(
+                    action_name,
+                    action_data,
+                    post,
                 )
 
-            rows.append(f"""
-                <tr>
-                    <td>
-                        <strong>@{author.lstrip("@")}</strong>
-                        <p class="post-text">{post_text}</p>
-                        <p class="links">{links}</p>
-                        <p class="muted small">{completed_at}</p>
-                    </td>
-                </tr>
-            """)
+                payload = action_data.get("payload")
+                if not isinstance(payload, dict):
+                    payload = {}
 
-        return f"""
-            <h2>{label}s <span class="count">{len(records)}</span></h2>
-            <table class="details">
-                {''.join(rows)}
-            </table>
-        """
+                item = {
+                    "post_id": str(post.get("id") or post_id),
+                    "author": post.get("author") or "Autor desconocido",
+                    "text": post.get("text") or "",
+                    "post_url": post_url,
+                    "action_url": action_url,
+                    "completed_at": completed_at.astimezone(
+                        local_timezone
+                    ).strftime("%H:%M:%S"),
+                    "reply_text": (
+                        payload.get("reply_text")
+                        if action_name == "reply"
+                        else None
+                    ),
+                }
 
-    sections = "".join(
-        action_section(action_name, report["actions"][action_name])
-        for action_name in ACTIONS
+                report["actions"][action_name].append(item)
+                report["totals"][action_name] += 1
+
+            elif (
+                status == "failed"
+                and attempted_at
+                and attempted_at.astimezone(local_timezone).date()
+                == report_date
+            ):
+                report["totals"]["failed"] += 1
+
+            payload = action_data.get("payload")
+            if not isinstance(payload, dict):
+                payload = {}
+
+            draft_timestamp = parse_timestamp(
+                payload.get("generated_at")
+            )
+
+            if (
+                status == "drafted"
+                and draft_timestamp
+                and draft_timestamp.astimezone(local_timezone).date()
+                == report_date
+            ):
+                report["totals"]["drafted"] += 1
+
+    report["totals"]["interactions"] = sum(
+        report["totals"][action]
+        for action in ACTIONS
     )
 
-    issue_rows = []
+    return report
 
-    for issue in report["issues"]:
-        author = html.escape(str(issue["author"]))
-        status = html.escape(str(issue["status"]).upper())
-        error = html.escape(str(issue.get("error") or "Sin detalle"))
-        url = html.escape(issue["original_url"], quote=True)
 
-        issue_rows.append(f"""
-            <tr>
-                <td>
-                    <strong>{issue["label"]}</strong> · @{author.lstrip("@")}
-                    <span class="status">{status}</span>
-                    <p class="muted small">{error}</p>
-                    <a href="{url}">Ver post</a>
-                </td>
-            </tr>
-        """)
+def build_html_report(report):
+    totals = report["totals"]
+    report_date = html.escape(report["date"])
 
-    issues_section = ""
+    cards = [
+        ("Likes", totals["like"]),
+        ("Replies", totals["reply"]),
+        ("Reposts", totals["repost"]),
+        ("Interacciones", totals["interactions"]),
+        ("Posts analizados", totals["analyzed"]),
+        ("Fallos", totals["failed"]),
+        ("Borradores", totals["drafted"]),
+    ]
 
-    if issue_rows:
-        issues_section = f"""
-            <h2>Incidencias <span class="count">{len(issue_rows)}</span></h2>
-            <table class="details">
-                {''.join(issue_rows)}
-            </table>
+    cards_html = "".join(
+        f"""
+        <td style="padding:10px;width:33%;vertical-align:top;">
+            <div style="
+                background:#17221c;
+                border:1px solid #304638;
+                border-radius:10px;
+                padding:16px;
+            ">
+                <div style="color:#a8b5aa;font-size:12px;">
+                    {html.escape(label)}
+                </div>
+                <div style="
+                    color:#b6f36b;
+                    font-size:26px;
+                    font-weight:bold;
+                    margin-top:6px;
+                ">
+                    {value}
+                </div>
+            </div>
+        </td>
+        """
+        for label, value in cards
+    )
+
+    sections_html = ""
+
+    for action_name in ACTIONS:
+        items = report["actions"][action_name]
+        label = ACTION_LABELS[action_name]
+
+        sections_html += f"""
+        <h2 style="
+            color:#b6f36b;
+            font-size:18px;
+            margin-top:30px;
+        ">
+            {label} ({len(items)})
+        </h2>
         """
 
-    return f"""\
-<!doctype html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-    body {{
-        margin: 0;
-        padding: 24px 12px;
-        background: #101510;
-        color: #e8eee8;
-        font-family: Arial, Helvetica, sans-serif;
-    }}
-    .container {{
-        max-width: 680px;
-        margin: 0 auto;
-        background: #182019;
-        border: 1px solid #344334;
-        border-radius: 12px;
-        overflow: hidden;
-    }}
-    .header {{
-        padding: 28px;
-        background: #202d20;
-        border-bottom: 3px solid #8aaa36;
-    }}
-    .brand {{
-        color: #a9c85b;
-        font-size: 12px;
-        font-weight: bold;
-        letter-spacing: 2px;
-    }}
-    h1 {{
-        margin: 12px 0 4px;
-        font-size: 26px;
-    }}
-    .date {{
-        color: #b5c0b5;
-        font-size: 14px;
-    }}
-    .content {{
-        padding: 24px;
-    }}
-    .stats {{
-        width: 100%;
-        border-collapse: separate;
-        border-spacing: 8px;
-        margin: 0 -8px 24px;
-    }}
-    .stats td {{
-        width: 33.33%;
-        padding: 16px 8px;
-        text-align: center;
-        background: #222d22;
-        border: 1px solid #354535;
-        border-radius: 8px;
-    }}
-    .number {{
-        display: block;
-        color: #b4d45d;
-        font-size: 28px;
-        font-weight: bold;
-    }}
-    .stat-label {{
-        color: #b5c0b5;
-        font-size: 12px;
-    }}
-    h2 {{
-        margin: 28px 0 12px;
-        padding-bottom: 9px;
-        border-bottom: 1px solid #394739;
-        font-size: 18px;
-    }}
-    .count {{
-        color: #b4d45d;
-        font-size: 14px;
-    }}
-    .details {{
-        width: 100%;
-        border-collapse: collapse;
-    }}
-    .details td {{
-        padding: 15px 12px;
-        background: #202920;
-        border-bottom: 1px solid #394739;
-        overflow-wrap: anywhere;
-    }}
-    .post-text {{
-        color: #e1e8e1;
-        line-height: 1.5;
-        white-space: pre-wrap;
-    }}
-    a {{
-        color: #b4d45d;
-        text-decoration: none;
-    }}
-    .links {{
-        font-size: 13px;
-    }}
-    .muted {{
-        color: #9eaa9e;
-    }}
-    .small {{
-        font-size: 11px;
-    }}
-    .status {{
-        float: right;
-        color: #e6b76a;
-        font-size: 11px;
-    }}
-    .footer {{
-        padding: 18px 24px;
-        color: #829082;
-        font-size: 11px;
-        border-top: 1px solid #344334;
-    }}
-</style>
-</head>
-<body>
-<div class="container">
-    <div class="header">
-        <div class="brand">CALAVERA GAMING · X AGENT</div>
-        <h1>Reporte diario</h1>
-        <div class="date">{report_date}</div>
-    </div>
-    <div class="content">
-        <table class="stats">
-            <tr>
-                <td>
-                    <span class="number">{totals["like"]}</span>
-                    <span class="stat-label">LIKES</span>
-                </td>
-                <td>
-                    <span class="number">{totals["reply"]}</span>
-                    <span class="stat-label">REPLIES</span>
-                </td>
-                <td>
-                    <span class="number">{totals["repost"]}</span>
-                    <span class="stat-label">REPOSTS</span>
-                </td>
-            </tr>
-        </table>
-        <p><strong>{report["total_interactions"]}</strong> interacciones confirmadas en total.</p>
-        {sections}
-        {issues_section}
-    </div>
-    <div class="footer">
-        Reporte automático · Zona horaria: {html.escape(report["timezone"])}
-        <br>
-        Solo se contabilizan acciones confirmadas por el agente.
-    </div>
-</div>
-</body>
-</html>
-"""
+        if not items:
+            sections_html += """
+            <p style="color:#89968c;">
+                No se registraron acciones completadas.
+            </p>
+            """
+            continue
+
+        for item in items:
+            author = html.escape(str(item["author"]))
+            text = html.escape(str(item["text"]))
+            time = html.escape(str(item["completed_at"]))
+
+            post_link = ""
+            if item["post_url"]:
+                post_link = (
+                    f'<a href="{html.escape(item["post_url"], quote=True)}" '
+                    'style="color:#b6f36b;">Publicación original</a>'
+                )
+
+            action_link = ""
+            if item["action_url"]:
+                link_label = (
+                    "Ver respuesta publicada"
+                    if action_name == "reply"
+                    else "Ver publicación"
+                )
+                action_link = (
+                    f'<a href="{html.escape(item["action_url"], quote=True)}" '
+                    'style="color:#b6f36b;">'
+                    f'{link_label}</a>'
+                )
+
+            reply_text = ""
+            if item.get("reply_text"):
+                reply_text = f"""
+                <div style="
+                    background:#101914;
+                    border-left:3px solid #b6f36b;
+                    padding:12px;
+                    margin-top:12px;
+                    color:#d6dfd8;
+                ">
+                    {html.escape(str(item["reply_text"]))}
+                </div>
+                """
+
+            sections_html += f"""
+            <div style="
+                background:#17221c;
+                border:1px solid #304638;
+                border-radius:10px;
+                padding:16px;
+                margin-bottom:12px;
+            ">
+                <div style="color:#b6f36b;font-weight:bold;">
+                    @{author}
+                </div>
+                <div style="
+                    color:#d6dfd8;
+                    margin-top:10px;
+                    white-space:pre-wrap;
+                ">
+                    {text}
+                </div>
+                {reply_text}
+                <div style="
+                    color:#89968c;
+                    font-size:12px;
+                    margin-top:12px;
+                ">
+                    Hora Argentina: {time}
+                </div>
+                <div style="margin-top:12px;">
+                    {action_link}
+                    {"&nbsp; | &nbsp;" if action_link and post_link else ""}
+                    {post_link}
+                </div>
+            </div>
+            """
+
+    return f"""
+    <!DOCTYPE html>
+    <html>
+    <body style="
+        margin:0;
+        padding:24px;
+        background:#0d1510;
+        font-family:Arial,sans-serif;
+        color:#e5eee7;
+    ">
+        <div style="max-width:850px;margin:auto;">
+            <div style="
+                background:#17221c;
+                border:1px solid #304638;
+                border-radius:12px;
+                padding:24px;
+            ">
+                <div style="
+                    color:#b6f36b;
+                    font-size:13px;
+                    font-weight:bold;
+                    letter-spacing:2px;
+                ">
+                    CALAVERA GAMING
+                </div>
+
+                <h1 style="margin:12px 0 4px;font-size:26px;">
+                    X Agent — Reporte diario
+                </h1>
+
+                <div style="color:#a8b5aa;">
+                    {report_date} · Hora de Argentina
+                </div>
+            </div>
+
+            <table style="
+                width:100%;
+                border-collapse:collapse;
+                margin-top:14px;
+            ">
+                <tr>{cards_html[:len(cards_html)]}</tr>
+            </table>
+
+            {sections_html}
+
+            <div style="
+                color:#657268;
+                font-size:11px;
+                text-align:center;
+                margin-top:30px;
+            ">
+                Reporte automático generado por Calavera X Agent
+            </div>
+        </div>
+    </body>
+    </html>
+    """
