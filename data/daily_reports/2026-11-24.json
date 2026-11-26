@@ -1,0 +1,66 @@
+{
+  "date": "2026-11-24",
+  "timezone": "America/Argentina/Buenos_Aires",
+  "totals": {
+    "like": 3,
+    "reply": 1,
+    "repost": 1,
+    "analyzed": 3,
+    "failed": 0,
+    "drafted": 0,
+    "interactions": 5
+  },
+  "actions": {
+    "like": [
+      {
+        "post_id": "2123055492486549924",
+        "author": "Autor desconocido",
+        "text": "LLEGARON las gorras 2da edicion, WASD mas grande y color VERDE. Quedaron sacadas https://t.co/dhanRPuDkZ https://t.co/4tOF2JVmsh",
+        "post_url": "https://x.com/deowasd/status/2123055492486549924",
+        "action_url": "https://x.com/deowasd/status/2123055492486549924",
+        "completed_at": "07:08:37",
+        "reply_text": null
+      },
+      {
+        "post_id": "2123498891316216296",
+        "author": "Autor desconocido",
+        "text": "RT @playrustconsole: Playing RCE today, this is what the Island feels like... https://t.co/CqdbD4yedV",
+        "post_url": "https://x.com/RustSpain_com/status/2123498891316216296",
+        "action_url": "https://x.com/RustSpain_com/status/2123498891316216296",
+        "completed_at": "07:08:36",
+        "reply_text": null
+      },
+      {
+        "post_id": "2124880604751614018",
+        "author": "Autor desconocido",
+        "text": "Flocks of birds have been added to a minor wildlife expansion. Crow and Seagull flocks will fly across the map, looking for things that interest them. 🦆☢️🦅\n\nRead more on our DevBlog: https://t.co/h9bGJRqWUi https://t.co/zGUQePGFQf",
+        "post_url": "https://x.com/playrust/status/2124880604751614018",
+        "action_url": "https://x.com/playrust/status/2124880604751614018",
+        "completed_at": "07:08:35",
+        "reply_text": null
+      }
+    ],
+    "reply": [
+      {
+        "post_id": "2124884140642459977",
+        "author": "Autor desconocido",
+        "text": "Recién wipeados nuestros servidores Vanilla Mondays, Vanilla Trio Mondays y Modded x5 [Solo,Duo,Trio]",
+        "post_url": "https://x.com/RustSpain_com/status/2124884140642459977",
+        "action_url": "https://x.com/i/status/2125169692478197962",
+        "completed_at": "07:08:33",
+        "reply_text": "Se viene el caos en el trío, a farmear se ha dicho jajaja"
+      }
+    ],
+    "repost": [
+      {
+        "post_id": "2124880604751614018",
+        "author": "Autor desconocido",
+        "text": "Flocks of birds have been added to a minor wildlife expansion. Crow and Seagull flocks will fly across the map, looking for things that interest them. 🦆☢️🦅\n\nRead more on our DevBlog: https://t.co/h9bGJRqWUi https://t.co/zGUQePGFQf",
+        "post_url": "https://x.com/playrust/status/2124880604751614018",
+        "action_url": "https://x.com/playrust/status/2124880604751614018",
+        "completed_at": "07:08:34",
+        "reply_text": null
+      }
+    ]
+  }
+}
