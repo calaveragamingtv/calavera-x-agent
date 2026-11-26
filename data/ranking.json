@@ -1,9 +1,17 @@
 {
   "account": "monitored_accounts",
-  "analyzed_at": "2026-11-26T10:03:09.560676+00:00",
+  "analyzed_at": "2026-11-26T18:05:06.747351+00:00",
   "model": "gemini-3.5-flash-lite",
   "total": 39,
   "ranking": [
+    {
+      "post_id": "2125967897130369420",
+      "score": 95,
+      "category": "official_news",
+      "priority": "high",
+      "recommended_action": "repost",
+      "reason": "Anuncio oficial de Facepunch sobre la cancelación temporal de la personalización de personajes debido al feedback, además del wipe de la Staging Branch con nuevas características como los tatuajes y cambios en el tech tree."
+    },
     {
       "post_id": "2115490600191688909",
       "score": 92,
@@ -27,22 +35,6 @@
       "priority": "high",
       "recommended_action": "repost",
       "reason": "Es una noticia oficial directa de @playrust sobre una expansión de fauna con adición de aves y un devblog, contenido vital para la comunidad de Rust."
-    },
-    {
-      "post_id": "2124548408044069118",
-      "score": 90,
-      "category": "official_news",
-      "priority": "high",
-      "recommended_action": "reply",
-      "reason": "Es una publicación oficial de la cuenta de Rust pidiendo etiquetar creadores de contenido favoritos, lo cual es una oportunidad directa para que CalaveraGaming se haga presente y posicione su canal."
-    },
-    {
-      "post_id": "2124174443220004890",
-      "score": 88,
-      "category": "official_news",
-      "priority": "high",
-      "recommended_action": "reply",
-      "reason": "Es un retweet del anuncio oficial del sistema de blueprints por una cuenta relevante en español (RustSpain), excelente oportunidad para debatir y dar la opinión personal sobre si el cambio es un 'W o L'."
     },
     {
       "post_id": "2118412551943831955",
@@ -107,6 +99,14 @@
       "priority": "medium",
       "recommended_action": "ignore",
       "reason": "Aviso simple de actualización de cliente por parte de Rustafied."
+    },
+    {
+      "post_id": "2125967663524376713",
+      "score": 65,
+      "category": "community",
+      "priority": "medium",
+      "recommended_action": "ignore",
+      "reason": "Anuncio de wipe de servidores de RustSpain. Es relevante para jugadores hispanohablantes, pero para CalaveraGaming como creador de contenido no aporta material para debate o análisis profundo."
     },
     {
       "post_id": "2124884140642459977",

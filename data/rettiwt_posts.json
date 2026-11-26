@@ -11,7 +11,7 @@
     "replies": 76,
     "reposts": 123,
     "likes": 1236,
-    "views": 379914,
+    "views": 379991,
     "monitored_by": [
       {
         "account_id": "742290493292285952",
@@ -31,7 +31,7 @@
     "replies": 5,
     "reposts": 8,
     "likes": 119,
-    "views": 23832,
+    "views": 23834,
     "monitored_by": [
       {
         "account_id": "742290493292285952",
@@ -107,7 +107,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 4,
-    "views": 1987,
+    "views": 1988,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -127,7 +127,7 @@
     "replies": 0,
     "reposts": 1,
     "likes": 6,
-    "views": 1619,
+    "views": 1620,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -145,7 +145,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 4,
-    "views": 1617,
+    "views": 1618,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -166,7 +166,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 1,
-    "views": 1300,
+    "views": 1301,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -195,6 +195,24 @@
     ]
   },
   {
+    "id": "2125967663524376713",
+    "author_id": "779120759000137728",
+    "text": "Wipeados nuestros servidores Vanilla Main, Vanilla Solo Only y Modded x5. ¡Te esperamos!",
+    "url": "https://x.com/RustSpain_com/status/2125967663524376713",
+    "expanded_urls": [],
+    "created_at": "2026-11-26T14:59:24.000Z",
+    "replies": 0,
+    "reposts": 0,
+    "likes": 3,
+    "views": 112,
+    "monitored_by": [
+      {
+        "account_id": "779120759000137728",
+        "account_type": "server"
+      }
+    ]
+  },
+  {
     "id": "2125662120574648789",
     "author_id": "779120759000137728",
     "text": "La personalización de los jugadores estará disponible únicamente con la nueva suscripción de pago Rust Premium. https://t.co/t9WW9H7uKA",
@@ -203,10 +221,10 @@
       "https://twitter.com/RustSpain_com/status/2125662120574648789"
     ],
     "created_at": "2026-11-25T18:45:17.000Z",
-    "replies": 1,
+    "replies": 3,
     "reposts": 0,
-    "likes": 5,
-    "views": 517,
+    "likes": 8,
+    "views": 792,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -224,7 +242,7 @@
     "replies": 1,
     "reposts": 0,
     "likes": 4,
-    "views": 473,
+    "views": 485,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -253,20 +271,22 @@
     ]
   },
   {
-    "id": "2124174443220004890",
-    "author_id": "779120759000137728",
-    "text": "RT @playrust: Here's a video explainer on the updated Blueprint progression system.\n📘☢️⚒️\n\nW or L? Let's hear it.\n\nRead more on our DevBlog…",
-    "url": "https://x.com/RustSpain_com/status/2124174443220004890",
-    "expanded_urls": [],
-    "created_at": "2026-11-21T16:13:47.000Z",
-    "replies": 0,
-    "reposts": 16,
-    "likes": 0,
-    "views": 11,
+    "id": "2125967897130369420",
+    "author_id": "1542707718",
+    "text": "Our plan for customisation was to add it as a way of letting you change your character if you weren’t happy with it. We feared we’d end up with everyone looking the same and lose the wild mix of characters that makes Rust what it is. To solve this, we had planned to limit how many people could access it.\n\nAfter reading all the community feedback, we’ve realised the only option is to hold it back and keep thinking about it.\n\nHowever, Staging Branch has now been wiped. 🧹🧼🧽\n\nJump on to test out:\n- The new Tattooing feature\n- Updated rain wetness\n- Tech Tree reshuffle, and much more!\n\nhttps://t.co/X7zCE06tJ9",
+    "url": "https://x.com/playrust/status/2125967897130369420",
+    "expanded_urls": [
+      "https://rust.facepunch.com/staging"
+    ],
+    "created_at": "2026-11-26T15:00:19.000Z",
+    "replies": 33,
+    "reposts": 4,
+    "likes": 140,
+    "views": 21051,
     "monitored_by": [
       {
-        "account_id": "779120759000137728",
-        "account_type": "server"
+        "account_id": "1542707718",
+        "account_type": "official"
       }
     ]
   },
@@ -278,9 +298,9 @@
     "expanded_urls": [],
     "created_at": "2026-11-25T19:35:55.000Z",
     "replies": 2,
-    "reposts": 5,
-    "likes": 48,
-    "views": 8775,
+    "reposts": 6,
+    "likes": 59,
+    "views": 10701,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -297,10 +317,10 @@
       "https://twitter.com/playrust/status/2125605504168665446"
     ],
     "created_at": "2026-11-25T15:00:18.000Z",
-    "replies": 24,
-    "reposts": 68,
-    "likes": 836,
-    "views": 39666,
+    "replies": 30,
+    "reposts": 80,
+    "likes": 1042,
+    "views": 51972,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -320,8 +340,8 @@
     "created_at": "2026-11-24T15:00:08.000Z",
     "replies": 4,
     "reposts": 6,
-    "likes": 83,
-    "views": 12148,
+    "likes": 85,
+    "views": 12534,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -341,28 +361,8 @@
     "created_at": "2026-11-23T14:59:49.000Z",
     "replies": 15,
     "reposts": 8,
-    "likes": 138,
-    "views": 13721,
-    "monitored_by": [
-      {
-        "account_id": "1542707718",
-        "account_type": "official"
-      }
-    ]
-  },
-  {
-    "id": "2124548408044069118",
-    "author_id": "1542707718",
-    "text": "Tag your favourite Rust Creator! 📹☢️💻\n\nTell us! Who should we be keeping an eye on? https://t.co/6v0WPAuWJM",
-    "url": "https://x.com/playrust/status/2124548408044069118",
-    "expanded_urls": [
-      "https://twitter.com/playrust/status/2124548408044069118"
-    ],
-    "created_at": "2026-11-22T16:59:47.000Z",
-    "replies": 495,
-    "reposts": 15,
-    "likes": 402,
-    "views": 51150,
+    "likes": 137,
+    "views": 13931,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -382,7 +382,7 @@
     "replies": 1,
     "reposts": 0,
     "likes": 16,
-    "views": 568,
+    "views": 569,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -421,7 +421,7 @@
     "replies": 30,
     "reposts": 4,
     "likes": 73,
-    "views": 11702,
+    "views": 11704,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -570,8 +570,8 @@
     "created_at": "2026-11-25T15:59:26.000Z",
     "replies": 0,
     "reposts": 2,
-    "likes": 21,
-    "views": 1622,
+    "likes": 23,
+    "views": 1712,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -591,7 +591,7 @@
     "replies": 0,
     "reposts": 1,
     "likes": 22,
-    "views": 1377,
+    "views": 1414,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -611,7 +611,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 18,
-    "views": 1691,
+    "views": 1704,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -631,7 +631,7 @@
     "replies": 1,
     "reposts": 2,
     "likes": 30,
-    "views": 1975,
+    "views": 1981,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -651,7 +651,7 @@
     "replies": 0,
     "reposts": 2,
     "likes": 36,
-    "views": 1882,
+    "views": 1885,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -692,7 +692,7 @@
     "replies": 1,
     "reposts": 0,
     "likes": 3,
-    "views": 334,
+    "views": 343,
     "monitored_by": [
       {
         "account_id": "792712514429673472",
@@ -710,7 +710,7 @@
     "replies": 1,
     "reposts": 0,
     "likes": 0,
-    "views": 44,
+    "views": 48,
     "monitored_by": [
       {
         "account_id": "792712514429673472",
@@ -727,8 +727,8 @@
     "created_at": "2026-11-21T16:17:29.000Z",
     "replies": 4,
     "reposts": 0,
-    "likes": 17,
-    "views": 862,
+    "likes": 18,
+    "views": 864,
     "monitored_by": [
       {
         "account_id": "792712514429673472",
@@ -748,7 +748,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 5,
-    "views": 3414,
+    "views": 3441,
     "monitored_by": [
       {
         "account_id": "792712514429673472",

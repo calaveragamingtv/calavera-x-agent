@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-26T10:03:12.899835+00:00",
-  "total": 108,
+  "updated_at": "2026-11-26T18:05:07.966253+00:00",
+  "total": 110,
   "evaluations": {
     "2118402970886836645": {
       "post_id": "2118402970886836645",
@@ -757,6 +757,20 @@
       "score": 65,
       "category": "rust",
       "reason": "La publicación ofrece una noticia sobre una nueva suscripción y personalización en Rust, pero carece de suficiente profundidad o impacto para alcanzar el umbral de aprobación."
+    },
+    "2125967897130369420": {
+      "post_id": "2125967897130369420",
+      "should_like": true,
+      "score": 88,
+      "category": "rust",
+      "reason": "Contenido oficial muy interesante y valioso sobre las novedades del juego, actualizaciones de la rama de pruebas y la respuesta directa de los desarrolladores al feedback de la comunidad."
+    },
+    "2125967663524376713": {
+      "post_id": "2125967663524376713",
+      "should_like": false,
+      "score": 65,
+      "category": "rust",
+      "reason": "La publicación anuncia el reinicio de servidores de Rust, lo cual aporta información útil para la comunidad de jugadores, pero su enfoque promocional y estándar resulta moderadamente interesante sin llegar a justificar un Like."
     }
   }
 }
