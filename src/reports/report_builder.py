@@ -4,6 +4,7 @@ import json
 
 from datetime import date, datetime, timezone
 from pathlib import Path
+from urllib.parse import urlparse
 from zoneinfo import ZoneInfo
 
 
@@ -45,6 +46,37 @@ def get_post_url(post):
         return f"https://x.com/i/status/{post_id}"
 
     return None
+
+
+def get_author(post):
+    """
+    Extract the X username from the original post URL.
+    The tracker stores author_id but not the username.
+    """
+    url = get_post_url(post)
+
+    if url:
+        try:
+            parts = [
+                part
+                for part in urlparse(url).path.split("/")
+                if part
+            ]
+
+            if len(parts) >= 3 and parts[1] == "status":
+                username = parts[0]
+
+                if username.lower() not in ("i", "intent"):
+                    return username
+        except (ValueError, TypeError):
+            pass
+
+    author_id = post.get("author_id")
+
+    if author_id:
+        return f"ID {author_id}"
+
+    return "Autor desconocido"
 
 
 def get_action_url(action_name, action_data, post):
@@ -146,12 +178,13 @@ def build_daily_report(
                 )
 
                 payload = action_data.get("payload")
+
                 if not isinstance(payload, dict):
                     payload = {}
 
                 item = {
                     "post_id": str(post.get("id") or post_id),
-                    "author": post.get("author") or "Autor desconocido",
+                    "author": get_author(post),
                     "text": post.get("text") or "",
                     "post_url": post_url,
                     "action_url": action_url,
@@ -177,6 +210,7 @@ def build_daily_report(
                 report["totals"]["failed"] += 1
 
             payload = action_data.get("payload")
+
             if not isinstance(payload, dict):
                 payload = {}
 
@@ -200,10 +234,37 @@ def build_daily_report(
     return report
 
 
-def build_html_report(report):
-    totals = report["totals"]
-    report_date = html.escape(report["date"])
+def build_metric_card(label, value):
+    return f"""
+    <td width="25%" style="padding:6px;vertical-align:top;">
+        <div style="
+            background:#17221c;
+            border:1px solid #304638;
+            border-radius:10px;
+            padding:16px;
+            min-height:65px;
+        ">
+            <div style="
+                color:#a8b5aa;
+                font-size:12px;
+                line-height:17px;
+            ">
+                {html.escape(label)}
+            </div>
+            <div style="
+                color:#b6f36b;
+                font-size:26px;
+                font-weight:bold;
+                margin-top:6px;
+            ">
+                {value}
+            </div>
+        </div>
+    </td>
+    """
 
+
+def build_metrics_html(totals):
     cards = [
         ("Likes", totals["like"]),
         ("Replies", totals["reply"]),
@@ -214,31 +275,43 @@ def build_html_report(report):
         ("Borradores", totals["drafted"]),
     ]
 
-    cards_html = "".join(
-        f"""
-        <td style="padding:10px;width:33%;vertical-align:top;">
-            <div style="
-                background:#17221c;
-                border:1px solid #304638;
-                border-radius:10px;
-                padding:16px;
-            ">
-                <div style="color:#a8b5aa;font-size:12px;">
-                    {html.escape(label)}
-                </div>
-                <div style="
-                    color:#b6f36b;
-                    font-size:26px;
-                    font-weight:bold;
-                    margin-top:6px;
-                ">
-                    {value}
-                </div>
-            </div>
-        </td>
-        """
-        for label, value in cards
-    )
+    rows = []
+
+    for index in range(0, len(cards), 4):
+        row_cards = cards[index:index + 4]
+
+        cells = "".join(
+            build_metric_card(label, value)
+            for label, value in row_cards
+        )
+
+        missing_cells = 4 - len(row_cards)
+
+        if missing_cells:
+            cells += (
+                '<td width="25%" style="padding:6px;"></td>'
+                * missing_cells
+            )
+
+        rows.append(f"<tr>{cells}</tr>")
+
+    return f"""
+    <table
+        role="presentation"
+        width="100%"
+        cellpadding="0"
+        cellspacing="0"
+        border="0"
+        style="border-collapse:collapse;margin-top:14px;"
+    >
+        {''.join(rows)}
+    </table>
+    """
+
+
+def build_html_report(report):
+    totals = report["totals"]
+    report_date = html.escape(report["date"])
 
     sections_html = ""
 
@@ -269,27 +342,39 @@ def build_html_report(report):
             text = html.escape(str(item["text"]))
             time = html.escape(str(item["completed_at"]))
 
-            post_link = ""
-            if item["post_url"]:
-                post_link = (
-                    f'<a href="{html.escape(item["post_url"], quote=True)}" '
-                    'style="color:#b6f36b;">Publicación original</a>'
-                )
+            post_url = item.get("post_url")
+            action_url = item.get("action_url")
 
+            post_link = ""
             action_link = ""
-            if item["action_url"]:
-                link_label = (
-                    "Ver respuesta publicada"
-                    if action_name == "reply"
-                    else "Ver publicación"
-                )
-                action_link = (
-                    f'<a href="{html.escape(item["action_url"], quote=True)}" '
-                    'style="color:#b6f36b;">'
-                    f'{link_label}</a>'
-                )
+
+            if action_name == "reply":
+                if action_url and action_url != post_url:
+                    action_link = (
+                        f'<a href="{html.escape(action_url, quote=True)}" '
+                        'style="color:#b6f36b;">'
+                        'Ver respuesta publicada</a>'
+                    )
+
+                if post_url:
+                    post_link = (
+                        f'<a href="{html.escape(post_url, quote=True)}" '
+                        'style="color:#b6f36b;">'
+                        'Publicación original</a>'
+                    )
+
+            else:
+                # Likes and reposts only need one link:
+                # both actions refer to the original post.
+                if post_url:
+                    action_link = (
+                        f'<a href="{html.escape(post_url, quote=True)}" '
+                        'style="color:#b6f36b;">'
+                        'Ver publicación</a>'
+                    )
 
             reply_text = ""
+
             if item.get("reply_text"):
                 reply_text = f"""
                 <div style="
@@ -303,6 +388,14 @@ def build_html_report(report):
                 </div>
                 """
 
+            links = action_link
+
+            if post_link:
+                if links:
+                    links += "&nbsp; | &nbsp;"
+
+                links += post_link
+
             sections_html += f"""
             <div style="
                 background:#17221c;
@@ -314,6 +407,7 @@ def build_html_report(report):
                 <div style="color:#b6f36b;font-weight:bold;">
                     @{author}
                 </div>
+
                 <div style="
                     color:#d6dfd8;
                     margin-top:10px;
@@ -321,7 +415,9 @@ def build_html_report(report):
                 ">
                     {text}
                 </div>
+
                 {reply_text}
+
                 <div style="
                     color:#89968c;
                     font-size:12px;
@@ -329,13 +425,14 @@ def build_html_report(report):
                 ">
                     Hora Argentina: {time}
                 </div>
+
                 <div style="margin-top:12px;">
-                    {action_link}
-                    {"&nbsp; | &nbsp;" if action_link and post_link else ""}
-                    {post_link}
+                    {links}
                 </div>
             </div>
             """
+
+    metrics_html = build_metrics_html(totals)
 
     return f"""
     <!DOCTYPE html>
@@ -348,6 +445,7 @@ def build_html_report(report):
         color:#e5eee7;
     ">
         <div style="max-width:850px;margin:auto;">
+
             <div style="
                 background:#17221c;
                 border:1px solid #304638;
@@ -372,13 +470,7 @@ def build_html_report(report):
                 </div>
             </div>
 
-            <table style="
-                width:100%;
-                border-collapse:collapse;
-                margin-top:14px;
-            ">
-                <tr>{cards_html[:len(cards_html)]}</tr>
-            </table>
+            {metrics_html}
 
             {sections_html}
 
@@ -390,6 +482,7 @@ def build_html_report(report):
             ">
                 Reporte automático generado por Calavera X Agent
             </div>
+
         </div>
     </body>
     </html>
