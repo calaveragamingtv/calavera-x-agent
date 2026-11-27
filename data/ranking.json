@@ -1,6 +1,6 @@
 {
   "account": "monitored_accounts",
-  "analyzed_at": "2026-11-26T18:05:06.747351+00:00",
+  "analyzed_at": "2026-11-27T14:12:08.117097+00:00",
   "model": "gemini-3.5-flash-lite",
   "total": 39,
   "ranking": [
@@ -45,6 +45,14 @@
       "reason": "Enlace directo al Devblog de Rustafied. Información crucial pero poco propicia para un debate directo en este tweet específico."
     },
     {
+      "post_id": "2126059466500010205",
+      "score": 85,
+      "category": "official_news",
+      "priority": "high",
+      "recommended_action": "repost",
+      "reason": "Es un retweet de la cuenta oficial de PlayRust que aborda un tema crucial y de gran interés para toda la comunidad: los planes de personalización y cambio de personaje en el juego."
+    },
+    {
       "post_id": "2125662120574648789",
       "score": 85,
       "category": "official_news",
@@ -67,14 +75,6 @@
       "priority": "high",
       "recommended_action": "reply",
       "reason": "Anuncio de un nuevo sistema de clanes en la web hispana de Rust. Útil para la comunidad hispanohablante."
-    },
-    {
-      "post_id": "2124232960362909920",
-      "score": 75,
-      "category": "discussion",
-      "priority": "high",
-      "recommended_action": "reply",
-      "reason": "Plantea una pregunta directa a la comunidad sobre ideas para mejorar los mapas de Rust (túneles en carretera), perfecta para generar interacción y comentarios desde la perspectiva de un creador de contenido."
     },
     {
       "post_id": "2122425875320774778",
@@ -109,20 +109,20 @@
       "reason": "Anuncio de wipe de servidores de RustSpain. Es relevante para jugadores hispanohablantes, pero para CalaveraGaming como creador de contenido no aporta material para debate o análisis profundo."
     },
     {
-      "post_id": "2124884140642459977",
-      "score": 65,
-      "category": "event",
-      "priority": "medium",
-      "recommended_action": "reply",
-      "reason": "Anuncia el wipe de servidores activos en español (RustSpain), útil para interactuar con la comunidad hispanohablante sobre el inicio de ciclo."
-    },
-    {
       "post_id": "2118410685184950683",
       "score": 64,
       "category": "update",
       "priority": "medium",
       "recommended_action": "ignore",
       "reason": "Aviso de actualización de servidores por Rustafied."
+    },
+    {
+      "post_id": "2126096394037653830",
+      "score": 55,
+      "category": "community",
+      "priority": "medium",
+      "recommended_action": "ignore",
+      "reason": "Menciona una novedad sobre un servidor x5 y un sistema de vallas publicitarias con CobaltMaps, lo cual es relevante para jugadores de ese servidor específico pero tiene un impacto limitado para el contenido general de CalaveraGaming."
     },
     {
       "post_id": "2125605504168665446",

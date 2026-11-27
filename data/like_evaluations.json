@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-26T18:05:07.966253+00:00",
-  "total": 110,
+  "updated_at": "2026-11-27T14:12:09.356410+00:00",
+  "total": 112,
   "evaluations": {
     "2118402970886836645": {
       "post_id": "2118402970886836645",
@@ -771,6 +771,20 @@
       "score": 65,
       "category": "rust",
       "reason": "La publicación anuncia el reinicio de servidores de Rust, lo cual aporta información útil para la comunidad de jugadores, pero su enfoque promocional y estándar resulta moderadamente interesante sin llegar a justificar un Like."
+    },
+    "2126096394037653830": {
+      "post_id": "2126096394037653830",
+      "should_like": true,
+      "score": 85,
+      "category": "rust",
+      "reason": "La publicación aporta valor genuino al presentar una novedad técnica y un nuevo sistema útil para servidores de Rust, mostrando desarrollo e innovación en la comunidad."
+    },
+    "2126059466500010205": {
+      "post_id": "2126059466500010205",
+      "should_like": false,
+      "score": 50,
+      "category": "rust",
+      "reason": "Se trata de un repost (retweet) genérico sin contenido original añadido ni suficiente profundidad para justificar un Like según los criterios establecidos."
     }
   }
 }
