@@ -63,7 +63,7 @@
         }
       },
       "likes": 1236,
-      "views": 380173,
+      "views": 380209,
       "replies": 76,
       "reposts": 123
     },
@@ -134,7 +134,7 @@
         }
       },
       "likes": 119,
-      "views": 23838,
+      "views": 23839,
       "replies": 5,
       "reposts": 8
     },
@@ -696,7 +696,7 @@
         }
       },
       "likes": 4,
-      "views": 1995,
+      "views": 1998,
       "replies": 0,
       "reposts": 0
     },
@@ -730,20 +730,16 @@
       },
       "actions": {
         "like": {
-          "status": "drafted",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-27T18:16:05.549828+00:00",
+          "completed_at": "2026-11-27T18:16:06.634423+00:00",
           "error": null,
-          "external_id": null,
+          "external_id": "2118412551943831955",
           "payload": {
             "post_id": "2118412551943831955",
-            "reason": "interesting_post",
-            "score": 78,
-            "category": "rust",
-            "evaluation_reason": "Información útil y directa sobre la disponibilidad del devblog de Rust.",
-            "generated_at": "2026-11-27T14:12:09.377204+00:00",
-            "stage": "drafted"
+            "mode": "live",
+            "stage": "completed"
           }
         },
         "reply": {
@@ -766,7 +762,7 @@
         }
       },
       "likes": 6,
-      "views": 1627,
+      "views": 1629,
       "replies": 0,
       "reposts": 1
     },
@@ -826,7 +822,7 @@
         }
       },
       "likes": 4,
-      "views": 1623,
+      "views": 1624,
       "replies": 0,
       "reposts": 0
     },
@@ -893,7 +889,7 @@
         }
       },
       "likes": 1,
-      "views": 1306,
+      "views": 1307,
       "replies": 0,
       "reposts": 0
     },
@@ -3627,7 +3623,7 @@
         }
       },
       "likes": 19,
-      "views": 995,
+      "views": 996,
       "replies": 1,
       "reposts": 1
     },
@@ -3689,7 +3685,7 @@
         }
       },
       "likes": 10,
-      "views": 1605,
+      "views": 1606,
       "replies": 9,
       "reposts": 0
     },
@@ -3828,7 +3824,7 @@
         }
       },
       "likes": 73,
-      "views": 11706,
+      "views": 11708,
       "replies": 30,
       "reposts": 4
     },
@@ -4423,7 +4419,7 @@
         }
       },
       "likes": 22,
-      "views": 765,
+      "views": 766,
       "replies": 1,
       "reposts": 0
     },
@@ -4483,7 +4479,7 @@
         }
       },
       "likes": 3,
-      "views": 343,
+      "views": 344,
       "replies": 0,
       "reposts": 0
     },
@@ -4549,7 +4545,7 @@
         }
       },
       "likes": 36,
-      "views": 1891,
+      "views": 1892,
       "replies": 0,
       "reposts": 2
     },
@@ -5380,7 +5376,7 @@
         }
       },
       "likes": 30,
-      "views": 1989,
+      "views": 1992,
       "replies": 1,
       "reposts": 2
     },
@@ -5711,7 +5707,7 @@
         }
       },
       "likes": 16,
-      "views": 576,
+      "views": 577,
       "replies": 1,
       "reposts": 0
     },
@@ -5777,7 +5773,7 @@
         }
       },
       "likes": 18,
-      "views": 1723,
+      "views": 1727,
       "replies": 0,
       "reposts": 0
     },
@@ -5843,7 +5839,7 @@
         }
       },
       "likes": 5,
-      "views": 3514,
+      "views": 3518,
       "replies": 0,
       "reposts": 0
     },
@@ -6114,7 +6110,7 @@
         }
       },
       "likes": 18,
-      "views": 867,
+      "views": 868,
       "replies": 4,
       "reposts": 0
     },
@@ -6381,7 +6377,7 @@
         }
       },
       "likes": 138,
-      "views": 14279,
+      "views": 14333,
       "replies": 15,
       "reposts": 8
     },
@@ -6443,7 +6439,7 @@
         }
       },
       "likes": 3,
-      "views": 167,
+      "views": 168,
       "replies": 0,
       "reposts": 0
     },
@@ -6514,7 +6510,7 @@
         }
       },
       "likes": 86,
-      "views": 13003,
+      "views": 13069,
       "replies": 4,
       "reposts": 6
     },
@@ -6580,7 +6576,7 @@
         }
       },
       "likes": 22,
-      "views": 1459,
+      "views": 1466,
       "replies": 0,
       "reposts": 1
     },
@@ -6773,7 +6769,7 @@
         }
       },
       "likes": 8,
-      "views": 868,
+      "views": 872,
       "replies": 3,
       "reposts": 0
     },
@@ -6840,8 +6836,8 @@
           }
         }
       },
-      "likes": 63,
-      "views": 12101,
+      "likes": 64,
+      "views": 12359,
       "replies": 2,
       "reposts": 6
     },
@@ -6907,8 +6903,8 @@
           "payload": null
         }
       },
-      "likes": 1172,
-      "views": 59709,
+      "likes": 1184,
+      "views": 60392,
       "replies": 32,
       "reposts": 90
     },
@@ -6974,7 +6970,7 @@
         }
       },
       "likes": 23,
-      "views": 1836,
+      "views": 1852,
       "replies": 0,
       "reposts": 2
     },
@@ -7034,7 +7030,7 @@
         }
       },
       "likes": 4,
-      "views": 207,
+      "views": 218,
       "replies": 0,
       "reposts": 0
     },
@@ -7068,20 +7064,16 @@
       },
       "actions": {
         "like": {
-          "status": "drafted",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-27T18:16:03.352634+00:00",
+          "completed_at": "2026-11-27T18:16:04.500211+00:00",
           "error": null,
-          "external_id": null,
+          "external_id": "2125967897130369420",
           "payload": {
             "post_id": "2125967897130369420",
-            "reason": "interesting_post",
-            "score": 88,
-            "category": "rust",
-            "evaluation_reason": "Contenido oficial muy interesante y valioso sobre las novedades del juego, actualizaciones de la rama de pruebas y la respuesta directa de los desarrolladores al feedback de la comunidad.",
-            "generated_at": "2026-11-27T14:12:09.360509+00:00",
-            "stage": "drafted"
+            "mode": "live",
+            "stage": "completed"
           }
         },
         "reply": {
@@ -7107,9 +7099,9 @@
           }
         }
       },
-      "likes": 327,
-      "views": 73726,
-      "replies": 103,
+      "likes": 336,
+      "views": 78009,
+      "replies": 106,
       "reposts": 18
     },
     "2126096394037653830": {
@@ -7142,20 +7134,16 @@
       },
       "actions": {
         "like": {
-          "status": "drafted",
-          "attempts": 0,
-          "last_attempt_at": null,
-          "completed_at": null,
+          "status": "completed",
+          "attempts": 1,
+          "last_attempt_at": "2026-11-27T18:16:04.508484+00:00",
+          "completed_at": "2026-11-27T18:16:05.541603+00:00",
           "error": null,
-          "external_id": null,
+          "external_id": "2126096394037653830",
           "payload": {
             "post_id": "2126096394037653830",
-            "reason": "interesting_post",
-            "score": 85,
-            "category": "rust",
-            "evaluation_reason": "La publicación aporta valor genuino al presentar una novedad técnica y un nuevo sistema útil para servidores de Rust, mostrando desarrollo e innovación en la comunidad.",
-            "generated_at": "2026-11-27T14:12:09.369397+00:00",
-            "stage": "drafted"
+            "mode": "live",
+            "stage": "completed"
           }
         },
         "reply": {
@@ -7178,7 +7166,7 @@
         }
       },
       "likes": 7,
-      "views": 281,
+      "views": 301,
       "replies": 0,
       "reposts": 0
     },
@@ -7242,7 +7230,7 @@
         }
       },
       "likes": 0,
-      "views": 10,
+      "views": 11,
       "replies": 0,
       "reposts": 18
     }
