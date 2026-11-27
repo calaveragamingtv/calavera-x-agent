@@ -1,0 +1,84 @@
+{
+  "date": "2026-11-26",
+  "timezone": "America/Argentina/Buenos_Aires",
+  "totals": {
+    "like": 3,
+    "reply": 2,
+    "repost": 2,
+    "analyzed": 6,
+    "failed": 0,
+    "drafted": 0,
+    "interactions": 7
+  },
+  "actions": {
+    "like": [
+      {
+        "post_id": "2124175374263160958",
+        "author": "nazegamingtv",
+        "text": "se me quemó mi monitor samsung 144hz jugando gta 6 en pleno directo, se puede tener mas mala suerte?",
+        "post_url": "https://x.com/nazegamingtv/status/2124175374263160958",
+        "action_url": "https://x.com/nazegamingtv/status/2124175374263160958",
+        "completed_at": "07:03:18",
+        "reply_text": null
+      },
+      {
+        "post_id": "2125674865952706858",
+        "author": "playrust",
+        "text": "📣 ​Put down the rock and pick up a ballot. @Keeno_Rust is running a community awards vote - head over and show some love to your favorite Rust creators and moments from this year! 🗳",
+        "post_url": "https://x.com/playrust/status/2125674865952706858",
+        "action_url": "https://x.com/playrust/status/2125674865952706858",
+        "completed_at": "07:03:17",
+        "reply_text": null
+      },
+      {
+        "post_id": "2125620385370837109",
+        "author": "Agustabell212",
+        "text": "ESTAMOS ON 🔴\n\nPues arrancamos con el vicio...\n\nhttps://t.co/6f3pAsoWWB",
+        "post_url": "https://x.com/Agustabell212/status/2125620385370837109",
+        "action_url": "https://x.com/Agustabell212/status/2125620385370837109",
+        "completed_at": "07:03:16",
+        "reply_text": null
+      }
+    ],
+    "reply": [
+      {
+        "post_id": "2125662120574648789",
+        "author": "RustSpain_com",
+        "text": "La personalización de los jugadores estará disponible únicamente con la nueva suscripción de pago Rust Premium. https://t.co/t9WW9H7uKA",
+        "post_url": "https://x.com/RustSpain_com/status/2125662120574648789",
+        "action_url": "https://x.com/i/status/2125893127861084323",
+        "completed_at": "07:03:13",
+        "reply_text": "No me digas que ahora hay que pagar extra para andar en bolas por la isla..."
+      },
+      {
+        "post_id": "2125605504168665446",
+        "author": "playrust",
+        "text": "I need you, and I miss you. 🫶☢️🔫 https://t.co/hYSPACVpJt",
+        "post_url": "https://x.com/playrust/status/2125605504168665446",
+        "action_url": "https://x.com/i/status/2125893131027743216",
+        "completed_at": "07:03:14",
+        "reply_text": "The toxic relationship we all keep coming back to 💀"
+      }
+    ],
+    "repost": [
+      {
+        "post_id": "2125674865952706858",
+        "author": "playrust",
+        "text": "📣 ​Put down the rock and pick up a ballot. @Keeno_Rust is running a community awards vote - head over and show some love to your favorite Rust creators and moments from this year! 🗳",
+        "post_url": "https://x.com/playrust/status/2125674865952706858",
+        "action_url": "https://x.com/playrust/status/2125674865952706858",
+        "completed_at": "07:03:15",
+        "reply_text": null
+      },
+      {
+        "post_id": "2125967897130369420",
+        "author": "playrust",
+        "text": "Our plan for customisation was to add it as a way of letting you change your character if you weren’t happy with it. We feared we’d end up with everyone looking the same and lose the wild mix of characters that makes Rust what it is. To solve this, we had planned to limit how many people could access it.\n\nAfter reading all the community feedback, we’ve realised the only option is to hold it back and keep thinking about it.\n\nHowever, Staging Branch has now been wiped. 🧹🧼🧽\n\nJump on to test out:\n- The new Tattooing feature\n- Updated rain wetness\n- Tech Tree reshuffle, and much more!\n\nhttps://t.co/X7zCE06tJ9",
+        "post_url": "https://x.com/playrust/status/2125967897130369420",
+        "action_url": "https://x.com/playrust/status/2125967897130369420",
+        "completed_at": "15:05:08",
+        "reply_text": null
+      }
+    ]
+  }
+}
