@@ -1,7 +1,7 @@
 {
   "account": "monitored_accounts",
-  "analyzed_at": "2026-11-27T18:16:03.350163+00:00",
-  "model": null,
+  "analyzed_at": "2026-11-28T06:07:44.144713+00:00",
+  "model": "gemini-3.5-flash-lite",
   "total": 39,
   "ranking": [
     {
@@ -253,6 +253,14 @@
       "reason": "Trata sobre Project Zomboid y no guarda relación con Rust."
     },
     {
+      "post_id": "2126445754596118536",
+      "score": 15,
+      "category": "other",
+      "priority": "low",
+      "recommended_action": "ignore",
+      "reason": "Es un aviso genérico de directo sin mencionar Rust ni aportar contenido relevante para la comunidad del juego."
+    },
+    {
       "post_id": "2106695712423788928",
       "score": 12,
       "category": "other",
@@ -285,22 +293,6 @@
       "reason": "Promoción de un video de YouTube sobre GTA VI. Totalmente ajeno a la temática de Rust de CalaveraGaming."
     },
     {
-      "post_id": "2124175374263160958",
-      "score": 10,
-      "category": "other",
-      "priority": "low",
-      "recommended_action": "ignore",
-      "reason": "La publicación trata sobre un problema técnico jugando GTA 6 y no guarda relación con Rust, por lo que no aporta valor a la cuenta de CalaveraGaming."
-    },
-    {
-      "post_id": "2123800624143958054",
-      "score": 10,
-      "category": "other",
-      "priority": "low",
-      "recommended_action": "ignore",
-      "reason": "Contenido centrado en GTA 6, totalmente ajeno a la temática de Rust de CalaveraGaming."
-    },
-    {
       "post_id": "2089795544361124249",
       "score": 5,
       "category": "other",
@@ -315,6 +307,14 @@
       "priority": "low",
       "recommended_action": "ignore",
       "reason": "La publicación trata sobre GTA VI y no tiene ninguna relación con Rust, juego en el que se especializa CalaveraGaming."
+    },
+    {
+      "post_id": "2126437697740804260",
+      "score": 0,
+      "category": "other",
+      "priority": "low",
+      "recommended_action": "ignore",
+      "reason": "Trata sobre Roblox y GTA 6, totalmente ajeno a Rust y al nicho de CalaveraGaming."
     }
   ]
 }

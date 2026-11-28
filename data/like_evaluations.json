@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-27T14:12:09.356410+00:00",
-  "total": 112,
+  "updated_at": "2026-11-28T06:07:45.432286+00:00",
+  "total": 114,
   "evaluations": {
     "2118402970886836645": {
       "post_id": "2118402970886836645",
@@ -785,6 +785,20 @@
       "score": 50,
       "category": "rust",
       "reason": "Se trata de un repost (retweet) genérico sin contenido original añadido ni suficiente profundidad para justificar un Like según los criterios establecidos."
+    },
+    "2126445754596118536": {
+      "post_id": "2126445754596118536",
+      "should_like": true,
+      "score": 95,
+      "category": "kick",
+      "reason": "La publicación incluye un enlace válido a la plataforma Kick, cumpliendo con la prioridad de enlaces para oportunidades de relación con creadores."
+    },
+    "2126437697740804260": {
+      "post_id": "2126437697740804260",
+      "should_like": true,
+      "score": 95,
+      "category": "youtube",
+      "reason": "La publicación contiene un enlace válido a YouTube, lo que activa la prioridad de plataformas de contenido para apoyar y conectar con creadores."
     }
   }
 }

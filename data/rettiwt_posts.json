@@ -11,7 +11,7 @@
     "replies": 76,
     "reposts": 123,
     "likes": 1236,
-    "views": 380209,
+    "views": 380355,
     "monitored_by": [
       {
         "account_id": "742290493292285952",
@@ -31,7 +31,7 @@
     "replies": 5,
     "reposts": 8,
     "likes": 119,
-    "views": 23839,
+    "views": 23842,
     "monitored_by": [
       {
         "account_id": "742290493292285952",
@@ -107,7 +107,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 4,
-    "views": 1998,
+    "views": 2001,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -126,8 +126,8 @@
     "created_at": "2026-11-05T18:38:05.000Z",
     "replies": 0,
     "reposts": 1,
-    "likes": 6,
-    "views": 1629,
+    "likes": 7,
+    "views": 1632,
     "monitored_by": [
       {
         "account_id": "2508236846",
@@ -186,7 +186,7 @@
     "replies": 2,
     "reposts": 2,
     "likes": 13,
-    "views": 1408,
+    "views": 1410,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -205,8 +205,8 @@
     "created_at": "2026-11-26T23:30:55.000Z",
     "replies": 0,
     "reposts": 0,
-    "likes": 7,
-    "views": 301,
+    "likes": 8,
+    "views": 370,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -224,7 +224,7 @@
     "replies": 0,
     "reposts": 18,
     "likes": 0,
-    "views": 11,
+    "views": 12,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -242,7 +242,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 4,
-    "views": 218,
+    "views": 240,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -262,7 +262,7 @@
     "replies": 3,
     "reposts": 0,
     "likes": 8,
-    "views": 872,
+    "views": 884,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -279,10 +279,10 @@
       "https://rust.facepunch.com/staging"
     ],
     "created_at": "2026-11-26T15:00:19.000Z",
-    "replies": 106,
+    "replies": 109,
     "reposts": 18,
-    "likes": 336,
-    "views": 78009,
+    "likes": 347,
+    "views": 84730,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -300,7 +300,7 @@
     "replies": 2,
     "reposts": 6,
     "likes": 64,
-    "views": 12359,
+    "views": 12663,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -318,9 +318,9 @@
     ],
     "created_at": "2026-11-25T15:00:18.000Z",
     "replies": 32,
-    "reposts": 90,
-    "likes": 1184,
-    "views": 60392,
+    "reposts": 91,
+    "likes": 1190,
+    "views": 61167,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -341,7 +341,7 @@
     "replies": 4,
     "reposts": 6,
     "likes": 86,
-    "views": 13069,
+    "views": 13224,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -362,7 +362,7 @@
     "replies": 15,
     "reposts": 8,
     "likes": 138,
-    "views": 14333,
+    "views": 14437,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -382,7 +382,7 @@
     "replies": 1,
     "reposts": 0,
     "likes": 16,
-    "views": 577,
+    "views": 580,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -403,7 +403,7 @@
     "replies": 1,
     "reposts": 0,
     "likes": 22,
-    "views": 766,
+    "views": 769,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -420,8 +420,8 @@
     "created_at": "2026-11-16T20:25:36.000Z",
     "replies": 30,
     "reposts": 4,
-    "likes": 73,
-    "views": 11708,
+    "likes": 74,
+    "views": 11718,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -441,7 +441,7 @@
     "replies": 9,
     "reposts": 0,
     "likes": 10,
-    "views": 1606,
+    "views": 1608,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -459,7 +459,7 @@
     "replies": 1,
     "reposts": 1,
     "likes": 19,
-    "views": 996,
+    "views": 997,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -479,7 +479,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 3,
-    "views": 168,
+    "views": 169,
     "monitored_by": [
       {
         "account_id": "3085086228",
@@ -515,7 +515,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 3,
-    "views": 344,
+    "views": 345,
     "monitored_by": [
       {
         "account_id": "3085086228",
@@ -551,7 +551,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 8,
-    "views": 592,
+    "views": 593,
     "monitored_by": [
       {
         "account_id": "3085086228",
@@ -571,7 +571,7 @@
     "replies": 0,
     "reposts": 2,
     "likes": 23,
-    "views": 1852,
+    "views": 1892,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -591,7 +591,7 @@
     "replies": 0,
     "reposts": 1,
     "likes": 22,
-    "views": 1466,
+    "views": 1487,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -611,7 +611,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 18,
-    "views": 1727,
+    "views": 1738,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -631,7 +631,7 @@
     "replies": 1,
     "reposts": 2,
     "likes": 30,
-    "views": 1992,
+    "views": 1997,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -651,7 +651,7 @@
     "replies": 0,
     "reposts": 2,
     "likes": 36,
-    "views": 1892,
+    "views": 1896,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -673,6 +673,46 @@
     "reposts": 7,
     "likes": 106,
     "views": 2488,
+    "monitored_by": [
+      {
+        "account_id": "792712514429673472",
+        "account_type": "streamer"
+      }
+    ]
+  },
+  {
+    "id": "2126445754596118536",
+    "author_id": "792712514429673472",
+    "text": "YA EN DIRECTO PASATE A SALUDARME!!! NUEVO RETO! https://t.co/Z0lu8DX092",
+    "url": "https://x.com/nazegamingtv/status/2126445754596118536",
+    "expanded_urls": [
+      "https://kick.com/naze"
+    ],
+    "created_at": "2026-11-27T22:39:10.000Z",
+    "replies": 0,
+    "reposts": 0,
+    "likes": 2,
+    "views": 113,
+    "monitored_by": [
+      {
+        "account_id": "792712514429673472",
+        "account_type": "streamer"
+      }
+    ]
+  },
+  {
+    "id": "2126437697740804260",
+    "author_id": "792712514429673472",
+    "text": "Pase 50 DIAS en ROBLOX GTA 6! 😱 (POBRE a RICO) https://t.co/MnA1PlWQ9E vía @YouTube",
+    "url": "https://x.com/nazegamingtv/status/2126437697740804260",
+    "expanded_urls": [
+      "https://www.youtube.com/watch?si=Jj4Zr8gzPVafbnrY&v=438P8dBw7XU&feature=youtu.be"
+    ],
+    "created_at": "2026-11-27T22:07:09.000Z",
+    "replies": 0,
+    "reposts": 0,
+    "likes": 2,
+    "views": 230,
     "monitored_by": [
       {
         "account_id": "792712514429673472",
@@ -711,44 +751,6 @@
     "reposts": 0,
     "likes": 0,
     "views": 52,
-    "monitored_by": [
-      {
-        "account_id": "792712514429673472",
-        "account_type": "streamer"
-      }
-    ]
-  },
-  {
-    "id": "2124175374263160958",
-    "author_id": "792712514429673472",
-    "text": "se me quemó mi monitor samsung 144hz jugando gta 6 en pleno directo, se puede tener mas mala suerte?",
-    "url": "https://x.com/nazegamingtv/status/2124175374263160958",
-    "expanded_urls": [],
-    "created_at": "2026-11-21T16:17:29.000Z",
-    "replies": 4,
-    "reposts": 0,
-    "likes": 18,
-    "views": 868,
-    "monitored_by": [
-      {
-        "account_id": "792712514429673472",
-        "account_type": "streamer"
-      }
-    ]
-  },
-  {
-    "id": "2123800624143958054",
-    "author_id": "792712514429673472",
-    "text": "NUEVO VIDEITO!!!\nEL MISTERIO PROHIBIDO DE GTA 6 https://t.co/Hx4RZn1HqB vía @YouTube",
-    "url": "https://x.com/nazegamingtv/status/2123800624143958054",
-    "expanded_urls": [
-      "https://www.youtube.com/watch?si=-0D7-f2-iYV53kWB&v=oYXVdZKCI6E&feature=youtu.be"
-    ],
-    "created_at": "2026-11-20T15:28:21.000Z",
-    "replies": 0,
-    "reposts": 0,
-    "likes": 5,
-    "views": 3518,
     "monitored_by": [
       {
         "account_id": "792712514429673472",
