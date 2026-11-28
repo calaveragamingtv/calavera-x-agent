@@ -11,7 +11,7 @@
     "replies": 76,
     "reposts": 123,
     "likes": 1236,
-    "views": 380355,
+    "views": 380390,
     "monitored_by": [
       {
         "account_id": "742290493292285952",
@@ -31,7 +31,7 @@
     "replies": 5,
     "reposts": 8,
     "likes": 119,
-    "views": 23842,
+    "views": 23843,
     "monitored_by": [
       {
         "account_id": "742290493292285952",
@@ -206,7 +206,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 8,
-    "views": 370,
+    "views": 375,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -262,7 +262,7 @@
     "replies": 3,
     "reposts": 0,
     "likes": 8,
-    "views": 884,
+    "views": 888,
     "monitored_by": [
       {
         "account_id": "779120759000137728",
@@ -279,10 +279,10 @@
       "https://rust.facepunch.com/staging"
     ],
     "created_at": "2026-11-26T15:00:19.000Z",
-    "replies": 109,
+    "replies": 111,
     "reposts": 18,
-    "likes": 347,
-    "views": 84730,
+    "likes": 351,
+    "views": 85975,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -300,7 +300,7 @@
     "replies": 2,
     "reposts": 6,
     "likes": 64,
-    "views": 12663,
+    "views": 12741,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -318,9 +318,9 @@
     ],
     "created_at": "2026-11-25T15:00:18.000Z",
     "replies": 32,
-    "reposts": 91,
-    "likes": 1190,
-    "views": 61167,
+    "reposts": 92,
+    "likes": 1191,
+    "views": 61343,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -341,7 +341,7 @@
     "replies": 4,
     "reposts": 6,
     "likes": 86,
-    "views": 13224,
+    "views": 13262,
     "monitored_by": [
       {
         "account_id": "1542707718",
@@ -362,11 +362,31 @@
     "replies": 15,
     "reposts": 8,
     "likes": 138,
-    "views": 14437,
+    "views": 14467,
     "monitored_by": [
       {
         "account_id": "1542707718",
         "account_type": "official"
+      }
+    ]
+  },
+  {
+    "id": "2126594837483016321",
+    "author_id": "1262844103814983688",
+    "text": "RT @deowasd: LLEGARON las gorras 2da edicion, WASD mas grande y color VERDE. Quedaron sacadas https://t.co/dhanRPuDkZ https://t.co/4tOF2JVm…",
+    "url": "https://x.com/deowasd/status/2126594837483016321",
+    "expanded_urls": [
+      "https://www.mercadolibre.com.ar/gorra-wasd-gaming-2da-edicion-original--pad-de-regalo/up/MLAU5963199402"
+    ],
+    "created_at": "2026-11-28T08:31:34.000Z",
+    "replies": 0,
+    "reposts": 1,
+    "likes": 0,
+    "views": 0,
+    "monitored_by": [
+      {
+        "account_id": "1262844103814983688",
+        "account_type": "streamer"
       }
     ]
   },
@@ -381,8 +401,8 @@
     "created_at": "2026-11-20T16:13:43.000Z",
     "replies": 1,
     "reposts": 0,
-    "likes": 16,
-    "views": 580,
+    "likes": 17,
+    "views": 584,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -401,9 +421,9 @@
     ],
     "created_at": "2026-11-18T14:07:28.000Z",
     "replies": 1,
-    "reposts": 0,
-    "likes": 22,
-    "views": 769,
+    "reposts": 1,
+    "likes": 25,
+    "views": 802,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -421,7 +441,7 @@
     "replies": 30,
     "reposts": 4,
     "likes": 74,
-    "views": 11718,
+    "views": 11720,
     "monitored_by": [
       {
         "account_id": "1262844103814983688",
@@ -450,24 +470,6 @@
     ]
   },
   {
-    "id": "2122149223525232833",
-    "author_id": "1262844103814983688",
-    "text": "Amigos voy a stremear GTA VI 24/7 hasta pasarlo. Se viene",
-    "url": "https://x.com/deowasd/status/2122149223525232833",
-    "expanded_urls": [],
-    "created_at": "2026-11-16T02:06:17.000Z",
-    "replies": 1,
-    "reposts": 1,
-    "likes": 19,
-    "views": 997,
-    "monitored_by": [
-      {
-        "account_id": "1262844103814983688",
-        "account_type": "streamer"
-      }
-    ]
-  },
-  {
     "id": "2124958480494936210",
     "author_id": "3085086228",
     "text": "Primeras 100 horas en @ROBRUNGame \nNot bad 🔫🔫🔫 https://t.co/X5lpHUq7tE",
@@ -479,7 +481,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 3,
-    "views": 169,
+    "views": 170,
     "monitored_by": [
       {
         "account_id": "3085086228",
@@ -515,7 +517,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 3,
-    "views": 345,
+    "views": 346,
     "monitored_by": [
       {
         "account_id": "3085086228",
@@ -551,7 +553,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 8,
-    "views": 593,
+    "views": 594,
     "monitored_by": [
       {
         "account_id": "3085086228",
@@ -571,7 +573,7 @@
     "replies": 0,
     "reposts": 2,
     "likes": 23,
-    "views": 1892,
+    "views": 1897,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -591,7 +593,7 @@
     "replies": 0,
     "reposts": 1,
     "likes": 22,
-    "views": 1487,
+    "views": 1490,
     "monitored_by": [
       {
         "account_id": "736974333424369664",
@@ -691,8 +693,8 @@
     "created_at": "2026-11-27T22:39:10.000Z",
     "replies": 0,
     "reposts": 0,
-    "likes": 2,
-    "views": 113,
+    "likes": 3,
+    "views": 119,
     "monitored_by": [
       {
         "account_id": "792712514429673472",
@@ -712,7 +714,7 @@
     "replies": 0,
     "reposts": 0,
     "likes": 2,
-    "views": 230,
+    "views": 242,
     "monitored_by": [
       {
         "account_id": "792712514429673472",

@@ -1,6 +1,6 @@
 {
   "account": "monitored_accounts",
-  "analyzed_at": "2026-11-28T06:07:44.144713+00:00",
+  "analyzed_at": "2026-11-28T10:09:10.499638+00:00",
   "model": "gemini-3.5-flash-lite",
   "total": 39,
   "ranking": [
@@ -269,6 +269,14 @@
       "reason": "Retweet de contenido exterior o ambiguo."
     },
     {
+      "post_id": "2126594837483016321",
+      "score": 10,
+      "category": "other",
+      "priority": "low",
+      "recommended_action": "ignore",
+      "reason": "La publicación es un RT sobre merchandising de gorras de otro creador (deowasd) sin relación alguna con el juego Rust ni con contenido de gaming."
+    },
+    {
       "post_id": "2122346745656955188",
       "score": 10,
       "category": "other",
@@ -299,14 +307,6 @@
       "priority": "low",
       "recommended_action": "ignore",
       "reason": "Celebración de seguidores de otro creador antiguo y sin conexión con Rust."
-    },
-    {
-      "post_id": "2122149223525232833",
-      "score": 0,
-      "category": "other",
-      "priority": "low",
-      "recommended_action": "ignore",
-      "reason": "La publicación trata sobre GTA VI y no tiene ninguna relación con Rust, juego en el que se especializa CalaveraGaming."
     },
     {
       "post_id": "2126437697740804260",

@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-28T06:07:45.432286+00:00",
-  "total": 114,
+  "updated_at": "2026-11-28T10:09:12.631938+00:00",
+  "total": 115,
   "evaluations": {
     "2118402970886836645": {
       "post_id": "2118402970886836645",
@@ -799,6 +799,13 @@
       "score": 95,
       "category": "youtube",
       "reason": "La publicación contiene un enlace válido a YouTube, lo que activa la prioridad de plataformas de contenido para apoyar y conectar con creadores."
+    },
+    "2126594837483016321": {
+      "post_id": "2126594837483016321",
+      "should_like": true,
+      "score": 80,
+      "category": "gaming",
+      "reason": "La publicación anuncia el lanzamiento de la segunda edición de merchandising de un creador, representando una buena oportunidad para generar relaciones e interacciones dentro de la comunidad de streaming."
     }
   }
 }
