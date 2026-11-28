@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-27",
+  "timezone": "America/Argentina/Buenos_Aires",
+  "totals": {
+    "like": 3,
+    "reply": 0,
+    "repost": 0,
+    "analyzed": 2,
+    "failed": 0,
+    "drafted": 0,
+    "interactions": 3
+  },
+  "actions": {
+    "like": [
+      {
+        "post_id": "2118412551943831955",
+        "author": "Rustafied",
+        "text": "Devblog is out! https://t.co/6Fa9Z58Guj",
+        "post_url": "https://x.com/Rustafied/status/2118412551943831955",
+        "action_url": "https://x.com/Rustafied/status/2118412551943831955",
+        "completed_at": "15:16:06",
+        "reply_text": null
+      },
+      {
+        "post_id": "2125967897130369420",
+        "author": "playrust",
+        "text": "Our plan for customisation was to add it as a way of letting you change your character if you weren’t happy with it. We feared we’d end up with everyone looking the same and lose the wild mix of characters that makes Rust what it is. To solve this, we had planned to limit how many people could access it.\n\nAfter reading all the community feedback, we’ve realised the only option is to hold it back and keep thinking about it.\n\nHowever, Staging Branch has now been wiped. 🧹🧼🧽\n\nJump on to test out:\n- The new Tattooing feature\n- Updated rain wetness\n- Tech Tree reshuffle, and much more!\n\nhttps://t.co/X7zCE06tJ9",
+        "post_url": "https://x.com/playrust/status/2125967897130369420",
+        "action_url": "https://x.com/playrust/status/2125967897130369420",
+        "completed_at": "15:16:04",
+        "reply_text": null
+      },
+      {
+        "post_id": "2126096394037653830",
+        "author": "RustSpain_com",
+        "text": "Nuevo Sistema de vallas publicitarias que se colocan automáticamente con CobaltMaps.\n\nEsto estará disponible en algún momento en nuestro server x5. https://t.co/ITLtAlH262",
+        "post_url": "https://x.com/RustSpain_com/status/2126096394037653830",
+        "action_url": "https://x.com/RustSpain_com/status/2126096394037653830",
+        "completed_at": "15:16:05",
+        "reply_text": null
+      }
+    ],
+    "reply": [],
+    "repost": []
+  }
+}
